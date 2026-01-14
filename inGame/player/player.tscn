@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd0auisdvfagw"]
+
+[ext_resource type="PackedScene" uid="uid://ctlnpeebeoqgd" path="res://inGame/npc/npc.tscn" id="1_kfrmh"]
+[ext_resource type="Script" uid="uid://sj0wnis8wnpb" path="res://inGame/player/player.gd" id="2_v55o0"]
+[ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="3_eymni"]
+[ext_resource type="AudioStream" uid="uid://jxg26yncsnmv" path="res://placeholderArt/sfx/attackPlus.wav" id="4_gtbgf"]
+[ext_resource type="AudioStream" uid="uid://bug0c63f6jtmr" path="res://placeholderArt/sfx/sprun_get.wav" id="5_gtbgf"]
+
+[node name="Player" instance=ExtResource("1_kfrmh")]
+size_flags_vertical = 3
+script = ExtResource("2_v55o0")
+sprun_slots = 3
+sprun_container_angle = 135
+sprun_distance = 60
+sprun_active = 0
+new_action = Array[Resource]([])
+player_type = 2
+icon = null
+speed_stat = 5
+attack_stat = 6
+
+[node name="VSeparator2" parent="VBoxContainer" index="0"]
+size_flags_stretch_ratio = 0.16
+
+[node name="Icon" parent="VBoxContainer" index="1"]
+expand_mode = 2
+
+[node name="SprunContainer" type="Control" parent="VBoxContainer/Icon" index="0"]
+layout_mode = 1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VSeparator" parent="VBoxContainer" index="2"]
+size_flags_stretch_ratio = 0.13
+
+[node name="VSeparator3" parent="VBoxContainer" index="4"]
+size_flags_stretch_ratio = 0.05
+
+[node name="BigAttack" parent="." index="5" instance=ExtResource("3_eymni")]
+stream = ExtResource("4_gtbgf")
+
+[node name="SprunGet" parent="." index="6" instance=ExtResource("3_eymni")]
+stream = ExtResource("5_gtbgf")
