@@ -3,11 +3,8 @@
 	
 	Connect to 2D, 3D (Amalgame!)... when?
 	
-	Sprun Upgrade system (increase Sprun slots, ATK, DFD, SPD):
-		Starts at 1, to 3, to 5, to 7... (1 -> 1.5 -> 2 -> 3 -> 5?)
-		Increase ATK, DEF, SPD 
-	
 	Sprun cost stat showing on the bar (when attack, add atk stat, on dfd, add dfd stat...)
+	All enemies have button on them
 	
 2 (more mechanics):
 	More enemy intents (debuff, buff, charge up, unknown)
@@ -37,6 +34,7 @@
 	Differentiate between similar enemies and rats
 	(Kitty, the Sun Robot thing) Gaining new attacks in new form
 		Resizing Actions Tabs (think about when I played my own game on mobile) - Only changed by font_size, or perhaps add code..?
+	Key pressed and released sound effect (like Kinito.PET!!!!!!!!!)
 4: 
 	Death saves? (Deltarune, DnD, revival at all?)
 	Kitty's 6 Lives (the 7th I don't talk about)
@@ -46,11 +44,18 @@
 	art and music lol
 	https://lonebot.itch.io/make-it-juicy
 	
+	Shovel's Pixel Perfect screen resolution thing (1920 x 1080)
+	
 	And create content lol 
 		Actions
 		Characters
 		Enemies
 		Progression(?)
+5:
+	Distributing...:
+		Steam, Itch, so on
+	Outreaching:
+		Shovel: Showcase Saturday on Discord (find the emails of content creators and so on) 
 
 Quirks:
 	Balance the funny and serious (makes both more meaningful)
@@ -93,4 +98,5 @@ Currently finished:
 	... I miss the Milkyway Devlogging
 	Even if nobody read it
 	
-	Increase Max Sprun slots action
+	Fixed Big Enemy not appearing in randomized waves
+	Sprun Cost Stat in info bar

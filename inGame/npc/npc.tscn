@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ctlnpeebeoqgd"]
+[gd_scene load_steps=26 format=3 uid="uid://ctlnpeebeoqgd"]
 
 [ext_resource type="Texture2D" uid="uid://c3p85tdu00duw" path="res://placeholderArt/icon.svg" id="1_2jrf3"]
 [ext_resource type="Script" uid="uid://cdbuic4bcd67n" path="res://inGame/npc/npc.gd" id="1_3atjd"]
@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://qwvtdoovi5il" path="res://placeholderArt/sfx/shieldMaybeCloth.wav" id="6_dvc8s"]
 [ext_resource type="AudioStream" uid="uid://cvxoanu0qn6i8" path="res://placeholderArt/sfx/shieldBetter.wav" id="7_7swic"]
 [ext_resource type="AudioStream" uid="uid://c6a7y511mjrn3" path="res://placeholderArt/sfx/death.wav" id="8_yjg3n"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hhgrb"]
 
 [sub_resource type="Gradient" id="Gradient_fq4yk"]
 offsets = PackedFloat32Array(0, 0.19444445, 0.8611111, 1)
@@ -194,6 +196,32 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1)
 }
 
+[sub_resource type="Animation" id="Animation_7qu08"]
+resource_name = "buff"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Icon:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(0.76, -0.25, 0, 0.25, 0, 1.7, -0.05166667, -0.15666668, 0, 0, 0.76, -0.06333333, 0.15666667, 0, 0),
+"times": PackedFloat32Array(0, 0.31, 0.69)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Icon/Control/BuffParticle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.31),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_eymni"]
 resource_name = "defend"
 tracks/0/type = "bezier"
@@ -330,32 +358,6 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4, 1)
 }
 
-[sub_resource type="Animation" id="Animation_7qu08"]
-resource_name = "buff"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/Icon:size_flags_stretch_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2, 2),
-"points": PackedFloat32Array(0.76, -0.25, 0, 0.25, 0, 1.7, -0.05166667, -0.15666668, 0, 0, 0.76, -0.06333333, 0.15666667, 0, 0),
-"times": PackedFloat32Array(0, 0.31, 0.69)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer/Icon/Control/BuffParticle:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.31),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eymni"]
 _data = {
 &"RESET": SubResource("Animation_v55o0"),
@@ -396,7 +398,7 @@ size_flags_stretch_ratio = 0.34
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.76
-texture = ExtResource("1_2jrf3")
+texture = SubResource("PlaceholderTexture2D_hhgrb")
 expand_mode = 3
 stretch_mode = 5
 

@@ -20,7 +20,7 @@ func check_cost(sprun: int) -> void:
 
 func send_info() -> void:
 	$Focus.play()
-	Root.button_info(info)
+	Root.button_info(info, sprun_cost)
 
 func _on_focus_entered() -> void:
 	send_info()

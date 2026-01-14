@@ -17,6 +17,10 @@ extends Control
 
 @onready var LittlePlayerIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/LittlePlayerIcon
 @onready var ActionInfo: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/ActionInfo
+@onready var SprunCostIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/SprunCostIcon
+@onready var SprunCostLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/SprunCostLabel
+
+
 @onready var TWKPrepRoundsLabel: Label = $TWK/Labels/VBoxContainer/Num
 @onready var TopBarPrepRoundsLabel: Label = $RootGame/TopBar/HBoxContainer/TextureRect/PrepRoundsLabel
 
@@ -68,7 +72,9 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, MIDDLE, END, TRANSITION}
 				BAK.disabled = false
 				back_action = func(): 
 					turn = TURN_TYPE.PLAYER
-					current_enemy.get_child(-1).queue_free()
+					# removes all enemy selector children, since they're the last to be added
+					for enemy in Enemies.get_children():
+						enemy.get_child(-1).queue_free()
 					BAK.disabled = true
 					# may be worth turning the back_action to be the empty function
 			TURN_TYPE.MIDDLE:
@@ -222,10 +228,13 @@ func add_turn_order_point(point) -> void:
 	now_mark.add_child(new_turn_order_point)
 	#temp_turn_order_point = new_turn_order_point
 
-func select_enemy() -> void:
+func select_enemy(index : int) -> void:
 	
-	current_player.action_victim = current_enemy
-	current_enemy.get_child(-1).queue_free()
+	current_player.action_victim = Enemies.get_child(index)
+	
+	# removes all enemy selector children (as they are always last
+	for enemy in Enemies.get_children():
+		enemy.get_child(-1).queue_free()
 	
 	player_pass_turn()
 
@@ -240,7 +249,7 @@ func add_enemy_wave() -> void:
 	########################### AAAAAAAAAAAAAAAAAAAAAAAAA
 	
 	
-	match(randi_range(1, 1)):
+	match(randi_range(0, 1)):
 		0:
 			# one big 
 			var big_boi = BIGG.instantiate()
@@ -385,22 +394,39 @@ func remove_dead_actions(dead: Node) -> void:
 				$TPK/Soundd.play()
 
 # technically a signal function... to change the info when for focus and mouse_entering
-func button_info(new_info: String) -> void:
+func button_info(new_info: String, sprun_cost: int = 0) -> void:
 	ActionInfo.text = new_info
+	
+	if sprun_cost == 0:
+		SprunCostIcon.visible = false
+		SprunCostLabel.visible = false
+	else:
+		SprunCostIcon.visible = true
+		SprunCostLabel.visible = true
+	
+	SprunCostLabel.text = str(sprun_cost)
 
 func initiate_select_enemy() -> void:
 	
 	if Enemies.get_child_count() > 1:
-		var selector = ENEMY_SELECTION.instantiate()
-		selector.text = ''
-		selector.info = current_enemy.name
-		selector.connect("pressed", select_enemy)
-		selector.call_deferred("grab_focus")
 		
-		current_enemy = Enemies.get_child(0)
-		current_enemy.add_child(selector)
-		
-		turn = TURN_TYPE.SELECT_ENEMY
+		for enemy in Enemies.get_children():
+			
+			var index = enemy.get_index()
+			var selector = ENEMY_SELECTION.instantiate()
+			#selector.enemy_index = index
+			selector.text = ''
+			selector.info = enemy.name
+			#selector.connect("pressed", select_enemy, index)
+			selector.pressed.connect(select_enemy.bind(index))
+			
+			#if index == 0:
+				#selector.call_deferred("grab_focus")
+				# first enemy grabs focus
+			  
+			#current_enemy = Enemies.get_child(0)
+			enemy.add_child(selector)
+		#turn = TURN_TYPE.SELECT_ENEMY
 	else:
 		current_player.action_victim = current_enemy
 		player_pass_turn()

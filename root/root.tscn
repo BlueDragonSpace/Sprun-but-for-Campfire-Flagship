@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d3wbwxma2hkqm"]
+[gd_scene load_steps=43 format=3 uid="uid://d3wbwxma2hkqm"]
 
 [ext_resource type="Theme" uid="uid://cyy1ccrel07nx" path="res://root/root.tres" id="1_vvh5c"]
 [ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/root.gd" id="2_jnlp7"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bpyet5t7bpkww" path="res://placeholderArt/myPixelArt/BiggBlue-1.png.png" id="10_vmoya"]
 [ext_resource type="Texture2D" uid="uid://dtkrx4fskgr5r" path="res://placeholderArt/myPixelArt/littleBlue-1.png.png" id="11_lgq8l"]
 [ext_resource type="Texture2D" uid="uid://cl4v4yeo1gn2m" path="res://placeholderArt/myPixelArt/SwordCarrot-1.png.png" id="13_mg5wv"]
+[ext_resource type="Texture2D" uid="uid://dbpy4cytd2toj" path="res://placeholderArt/myPixelArt/HigherQualityNewSprun.png" id="14_5cox1"]
 [ext_resource type="Texture2D" uid="uid://bvhkmrse4oqmm" path="res://placeholderArt/myPixelArt/ShieldBadArt-1.png.png" id="14_x1xj5"]
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="15_3ud1x"]
 [ext_resource type="AudioStream" uid="uid://cnnno1v7nqa7f" path="res://placeholderArt/sfx/start.wav" id="15_x1xj5"]
@@ -1075,8 +1076,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.9999924
-offset_bottom = 4.0000076
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -1094,16 +1093,36 @@ expand_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "so much is out there...
-so many more people more capable than me
-must become them..."
+text = "wonchy"
 vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SprunCostIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+layout_mode = 2
+texture = ExtResource("14_5cox1")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SprunCostLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 
 [node name="Actions" type="TabContainer" parent="RootGame/LowerBar/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 tab_alignment = 1
-current_tab = 3
+current_tab = 5
 drag_to_rearrange_enabled = true
 
 [node name="BackButton" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
@@ -1114,7 +1133,7 @@ metadata/_tab_index = 0
 [node name="BAK" parent="RootGame/LowerBar/VBoxContainer/Actions/BackButton" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "BAK"
-info = "Rechoose last action. (Currently only works while choosing a target on ATK)"
+info = "Rechoose last action. (currently only works for attacking)"
 usable_on_player = 1
 
 [node name="Attack" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
@@ -1127,14 +1146,14 @@ layout_mode = 2
 text = "ATK"
 icon = ExtResource("13_mg5wv")
 expand_icon = true
-info = "Attack 1 target."
+info = "Deal damage to enemy."
 usable_on_player = 34
 requires_target = true
 
 [node name="BigATK" parent="RootGame/LowerBar/VBoxContainer/Actions/Attack" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "ATK+"
-info = " Costs 1 Sprun. A more damaging attack."
+info = "Deal 2.5x damage to enemy."
 sprun_cost = 1
 requires_target = true
 
@@ -1148,9 +1167,10 @@ layout_mode = 2
 text = "DFD"
 icon = ExtResource("14_x1xj5")
 expand_icon = true
-info = "Defend from attacks."
+info = "Defend against enemy attacks."
 
 [node name="Sprun" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
@@ -1164,24 +1184,24 @@ info = "Create 1 Sprun."
 [node name="IncreaseSprunSlots" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "Increase Sprun Slots"
-info = "Increase this character's sprun reserve. Costs the max amount of sprun they can hold."
+info = "Increase your max Sprun storage. Costs the max amount of sprun you can hold."
 
 [node name="ATKUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "ATK Upgrade"
-info = "Multiplies ATK stat by 1.5. Costs 2 more Sprun every time you use this action."
+info = "Multiply current ATK by 1.5. Costs 2 more sprun for each use."
 sprun_cost = 1
 
 [node name="DFDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "DFD Upgrade"
-info = "Multiplies DFD stat by 1.5. Costs 2 more Sprun every time you use this action."
+info = "Multiply current DFD by 1.5. Costs 2 more sprun for each use."
 sprun_cost = 1
 
 [node name="SPDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "SPD Upgrade"
-info = "Multiplies SPD by 1.5. Costs 2 more Sprun every time you use this action."
+info = "Multiply current SPD by 1.5. Costs 2 more sprun for each use."
 sprun_cost = 1
 
 [node name="Other" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
@@ -1193,7 +1213,7 @@ metadata/_tab_index = 4
 visible = false
 layout_mode = 2
 text = "ITM"
-info = "Do an item uwu (no inventory yet lol)"
+info = "not implemented yet lol"
 
 [node name="PASS" parent="RootGame/LowerBar/VBoxContainer/Actions/Other" instance=ExtResource("10_th5d7")]
 layout_mode = 2
@@ -1202,33 +1222,32 @@ info = "Pass this character's turn."
 usable_on_player = 1
 
 [node name="DevTools" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 5
 
 [node name="Masochism" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "Masochism"
-info = "Dev tool lol: 10 damage to self, immediately"
+info = "damage self for 10"
 usable_on_player = 1
 
 [node name="FlashEvily" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "Evil Flash"
-info = "DEv tOOl: 10 damage to current enemy, immediately"
+info = "immediately damage current_enemy for 10 (doesn't kill)"
 usable_on_player = 1
 requires_target = true
 
 [node name="AutoSprun" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "wow free sprun cheater"
-info = "anime freeze frame focus ahhhhh"
+info = "give urself a free sprun (game doesn't check for new sprun)"
 usable_on_player = 1
 
 [node name="AutoHeal" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "HealThySelf"
-info = "Heals10Immediately"
+info = "Heal self for 10... cheater"
 usable_on_player = 1
 
 [node name="NextRound" parent="RootGame" instance=ExtResource("15_3ud1x")]
@@ -1269,7 +1288,6 @@ layout_mode = 2
 [node name="Retry" parent="TPK/CenterBox" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "Git gud"
-info = "Don't do it..."
 
 [node name="Soundd" parent="TPK" instance=ExtResource("15_3ud1x")]
 stream = ExtResource("16_qd0xu")
