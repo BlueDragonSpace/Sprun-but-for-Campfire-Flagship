@@ -1,17 +1,12 @@
 
 1 (core mechanics):
-	
 	Connect to 2D, 3D (Amalgame!)... when?
-	
-	Sprun cost stat showing on the bar (when attack, add atk stat, on dfd, add dfd stat...)
-	All enemies have button on them
 	
 2 (more mechanics):
 	More enemy intents (debuff, buff, charge up, unknown)
 	Different kinds of Sprun (Red used on ATK, so on)
 	add_lambda() -> Notif, subtracting sprun_cost
-	All enemies have a button on them (instead of tabbing to choose a different one)
-	Basic Chara class (a mouse cannot attack, nor sprun)
+	Speed is currently an invisible statistic... (make art, add to infoBar)
 3:
 	Poison Debuff (for Rat and beyond)
 	Sprun Movement Shifting depending on size (too far when small, to close when big)
@@ -35,10 +30,15 @@
 	(Kitty, the Sun Robot thing) Gaining new attacks in new form
 		Resizing Actions Tabs (think about when I played my own game on mobile) - Only changed by font_size, or perhaps add code..?
 	Key pressed and released sound effect (like Kinito.PET!!!!!!!!!)
+	
+3.5?:
+	All characters get a certain attack if there is a certain character in scene
+	DFD and ATK action
+	
 4: 
 	Death saves? (Deltarune, DnD, revival at all?)
 	Kitty's 6 Lives (the 7th I don't talk about)
-	Hide unnecessary tabs
+	Hide unnecessary tabs (rat cannot defend)
 	Every time an enemy dies, the TurnOrderPoint is off on which turn it really is
 	
 	art and music lol
@@ -50,7 +50,8 @@
 		Actions
 		Characters
 		Enemies
-		Progression(?)
+		Progression(?) / Scaling
+	
 5:
 	Distributing...:
 		Steam, Itch, so on
@@ -59,7 +60,7 @@
 
 Quirks:
 	Balance the funny and serious (makes both more meaningful)
-	2...3...4!
+	2...3...4! (Tangled Up)
 	Looking up Camera Angle (size up)
 
 Turn sections:
@@ -72,14 +73,15 @@ Turn sections:
 
 Refactoring
 	Animation tracks don't worry about unresolvable tracks (the NPC's animate node has a track for Enemy intent, but Player doesn't have intent and doesn't need the track)
-	Make HP changing set by a tween
+	Make HP changing set by a tween (instead of process)
 	Set that one .set() method that isn't already in ready() for some reason
+	Open slot for an Action resource on the ActionButton (for use in default player actions)
 
 
-Tips:
+Tips for players:
 	Hey you can rearrange the tabs on the Action Bar (thanks Godot!)
 	Beating the final enemy of a wave immediately ends the wave; you can't do actions in the turn past ending the enemy
-	Have prep_rounds_remaining set to at least 3, cuz it -1 when activated, and I'm too lazy to add a "s" on the end for a 1
+	Prep rounds will always be at least two, because I am too lazy to add an "s" to the end
 
 Bugs:
 	On the animation to the first player (after a round), last player's actions show up (but aren't clickable, thankfully)
@@ -95,8 +97,4 @@ Rodent Lord Rodents:
 	Flying Squirels, chipmunks, beavers, capybaras, gopher, base squirel
 
 Currently finished:
-	... I miss the Milkyway Devlogging
-	Even if nobody read it
-	
-	Fixed Big Enemy not appearing in randomized waves
-	Sprun Cost Stat in info bar
+	Added ATK and DFD stat to info bar

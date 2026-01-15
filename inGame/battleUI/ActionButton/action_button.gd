@@ -7,7 +7,9 @@ extends Button
 @onready var Root = get_tree().get_current_scene()
 
 @export var info: String = 'default text... uwu'
-@export var sprun_cost = 0
+@export var sprun_cost : int = 0
+@export var atk_mult : float = 0.0
+@export var dfd_mult : float = 0.0
 
 @export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var usable_on_player: int = 0
 @export var requires_target = false
@@ -20,7 +22,7 @@ func check_cost(sprun: int) -> void:
 
 func send_info() -> void:
 	$Focus.play()
-	Root.button_info(info, sprun_cost)
+	Root.button_info(info, sprun_cost, atk_mult, dfd_mult)
 
 func _on_focus_entered() -> void:
 	send_info()

@@ -19,6 +19,10 @@ extends Control
 @onready var ActionInfo: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/ActionInfo
 @onready var SprunCostIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/SprunCostIcon
 @onready var SprunCostLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/SprunCostLabel
+@onready var ATKStatIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/ATKStatIcon
+@onready var ATKStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/ATKStatLabel
+@onready var DFDStatIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/DFDStatIcon
+@onready var DFDStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/DFDStatLabel
 
 
 @onready var TWKPrepRoundsLabel: Label = $TWK/Labels/VBoxContainer/Num
@@ -145,35 +149,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 	
-	NoiseBackground.texture.noise.offset += Vector3(delta * 0.1, delta * 5, delta * 5)
-	
-	match(turn):
-		pass
-		#TURN_TYPE.ENEMY:
-			#match(current_enemy.intent):
-				#current_enemy.INTENTS.ATTACK:
-					#mid_animation_action = func(): current_enemy.attack(current_player)
-					#Animate.play("enemyAttack")
-					##this thing is getting called way too many times...
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action("TabAction"):
-		if turn == TURN_TYPE.SELECT_ENEMY:
-			# change the enemy selected (remove current selection from previous enemy, add it to new enemy); if it's the last enemy, choose the first
-			current_enemy.get_child(-1).queue_free()
-			
-			var child_index = current_enemy.get_index()
-			if child_index == Enemies.get_child_count() - 1:
-				current_enemy = Enemies.get_child(0)
-			else:
-				current_enemy = Enemies.get_child(child_index + 1)
-				
-			var selector = ENEMY_SELECTION.instantiate()
-			selector.connect("pressed", select_enemy)
-			selector.text = ''
-			selector.info = current_enemy.name
-			selector.call_deferred("grab_focus")
-			current_enemy.add_child(selector)
+	NoiseBackground.texture.noise.offset += Vector3(delta * 3, delta * 3, delta * 5)
 
 ## custom functions (other than signals) below
 
@@ -394,27 +370,45 @@ func remove_dead_actions(dead: Node) -> void:
 				$TPK/Soundd.play()
 
 # technically a signal function... to change the info when for focus and mouse_entering
-func button_info(new_info: String, sprun_cost: int = 0) -> void:
+func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, dfd_value: float = 0) -> void:
 	ActionInfo.text = new_info
 	
+	# probably a better way to do this... but double nodes? and this many values?
+	
+	## SPRUN
 	if sprun_cost == 0:
 		SprunCostIcon.visible = false
 		SprunCostLabel.visible = false
 	else:
 		SprunCostIcon.visible = true
 		SprunCostLabel.visible = true
+		SprunCostLabel.text = str(sprun_cost)
 	
-	SprunCostLabel.text = str(sprun_cost)
+	## ATK
+	if atk_value == 0:
+		ATKStatIcon.visible = false
+		ATKStatLabel.visible = false
+	else:
+		ATKStatIcon.visible = true
+		ATKStatLabel.visible = true
+		ATKStatLabel.text = str(int(atk_value * current_player.attack_stat))
+	
+	## DFD
+	if dfd_value == 0:
+		DFDStatIcon.visible = false
+		DFDStatLabel.visible = false
+	else:
+		DFDStatIcon.visible = true
+		DFDStatLabel.visible = true
+		DFDStatLabel.text = str(int(dfd_value * current_player.defend_stat))
 
 func initiate_select_enemy() -> void:
 	
 	if Enemies.get_child_count() > 1:
-		
 		for enemy in Enemies.get_children():
 			
 			var index = enemy.get_index()
 			var selector = ENEMY_SELECTION.instantiate()
-			#selector.enemy_index = index
 			selector.text = ''
 			selector.info = enemy.name
 			#selector.connect("pressed", select_enemy, index)
@@ -422,11 +416,11 @@ func initiate_select_enemy() -> void:
 			
 			#if index == 0:
 				#selector.call_deferred("grab_focus")
-				# first enemy grabs focus
+				# first enemy grabs focus (intended for tabbing mode, without mouse)
 			  
 			#current_enemy = Enemies.get_child(0)
 			enemy.add_child(selector)
-		#turn = TURN_TYPE.SELECT_ENEMY
+		turn = TURN_TYPE.SELECT_ENEMY
 	else:
 		current_player.action_victim = current_enemy
 		player_pass_turn()

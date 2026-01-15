@@ -1022,7 +1022,6 @@ layout_mode = 2
 speed_range = 5
 attack_range = 2
 icon = ExtResource("10_vmoya")
-max_hp = 8
 
 [node name="Keykeeper" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("4_y5gj7")]
 layout_mode = 2
@@ -1101,6 +1100,36 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="ATKStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+layout_mode = 2
+texture = ExtResource("13_mg5wv")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ATKStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator3" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="DFDStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+layout_mode = 2
+texture = ExtResource("14_x1xj5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DFDStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SprunCostIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
 layout_mode = 2
 texture = ExtResource("14_5cox1")
@@ -1147,6 +1176,7 @@ text = "ATK"
 icon = ExtResource("13_mg5wv")
 expand_icon = true
 info = "Deal damage to enemy."
+atk_mult = 1.0
 usable_on_player = 34
 requires_target = true
 
@@ -1155,6 +1185,7 @@ layout_mode = 2
 text = "ATK+"
 info = "Deal 2.5x damage to enemy."
 sprun_cost = 1
+atk_mult = 2.5
 requires_target = true
 
 [node name="Defend" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
@@ -1168,6 +1199,7 @@ text = "DFD"
 icon = ExtResource("14_x1xj5")
 expand_icon = true
 info = "Defend against enemy attacks."
+dfd_mult = 1.0
 
 [node name="Sprun" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
 visible = false
@@ -1191,12 +1223,14 @@ layout_mode = 2
 text = "ATK Upgrade"
 info = "Multiply current ATK by 1.5. Costs 2 more sprun for each use."
 sprun_cost = 1
+atk_mult = 1.0
 
 [node name="DFDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("10_th5d7")]
 layout_mode = 2
 text = "DFD Upgrade"
 info = "Multiply current DFD by 1.5. Costs 2 more sprun for each use."
 sprun_cost = 1
+dfd_mult = 1.0
 
 [node name="SPDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("10_th5d7")]
 layout_mode = 2

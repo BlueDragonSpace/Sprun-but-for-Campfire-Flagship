@@ -20,6 +20,8 @@ const PLAYER_TYPE = 'All, Basic, Wizerd, Kitty, Rodent Lord, Rat, Mouse, Hamster
 #@export var modifier: float = 1 # multiplies by a specific stat
 @export var sprun_necessary: int = 0 # necessary to carry out the action
 @export var sprun_loss: int = 0 #taken away upon use
+@export var atk_mult : float = 0.0 # ditto below
+@export var dfd_mult : float = 0.0 # must be set to above 0 to appear on infoBar
 @export var requires_target: bool = false # disables upon prep rounds
 @export var button_info: String = 'button info' # hover over button
 
