@@ -1,6 +1,6 @@
 extends Control
 
-@onready var Root = get_tree().get_current_scene()
+@onready var OneDRoot = get_tree().get_current_scene().get_child(0)
 
 @onready var Icon: TextureRect = $VBoxContainer/Icon
 @onready var HP: TextureProgressBar = $VBoxContainer/LowerBar/HP
@@ -125,7 +125,7 @@ func die() -> void:
 	# you can only die once
 	if is_dead == false:
 		is_dead = true
-		Root.remove_dead_actions(self)
+		OneDRoot.remove_dead_actions(self)
 		Animate.call_deferred("play", "die")
 	
 	$Death.play()

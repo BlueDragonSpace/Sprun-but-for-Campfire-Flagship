@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://gev2dyw1rchd"]
+
+[ext_resource type="PackedScene" uid="uid://dehg5ipwadmh2" path="res://root/three_d/Environment/basic_block/basic_block.tscn" id="1_b24ii"]
+[ext_resource type="Script" uid="uid://c0pex3eotlc6u" path="res://root/three_d/Environment/basic_block/one_way_platform/one_way_platform.gd" id="2_ujs73"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b24ii"]
+resource_local_to_scene = true
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ujs73"]
+resource_local_to_scene = true
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lwaqd"]
+size = Vector3(1.01, 0.22, 1.01)
+
+[node name="OneWayPlatform" instance=ExtResource("1_b24ii")]
+script = ExtResource("2_ujs73")
+area_margin = 0.01
+sz = Vector3(1, 0.2, 1)
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_b24ii")
+disabled = true
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_ujs73")
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("BoxShape3D_lwaqd")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

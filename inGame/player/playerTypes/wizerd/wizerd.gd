@@ -21,7 +21,7 @@ func die() -> void:
 	# you can only die once
 	if is_dead == false:
 		is_dead = true
-		Root.remove_dead_actions(self)
+		OneDRoot.remove_dead_actions(self)
 		Animate.call_deferred("play", "die")
 	
 	$wawaawawawa.play()

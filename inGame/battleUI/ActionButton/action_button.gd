@@ -4,7 +4,7 @@ extends Button
 # -Action class or Resource
 
 # info for the info bar
-@onready var Root = get_tree().get_current_scene()
+@onready var OneDRoot = get_tree().get_current_scene().get_child(0)
 
 @export var info: String = 'default text... uwu'
 @export var sprun_cost : int = 0
@@ -22,7 +22,7 @@ func check_cost(sprun: int) -> void:
 
 func send_info() -> void:
 	$Focus.play()
-	Root.button_info(info, sprun_cost, atk_mult, dfd_mult)
+	OneDRoot.button_info(info, sprun_cost, atk_mult, dfd_mult)
 
 func _on_focus_entered() -> void:
 	send_info()

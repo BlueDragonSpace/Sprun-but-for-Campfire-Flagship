@@ -64,22 +64,22 @@ func add_actions(custom_actions : Array) -> void:
 			0: ## ATTACK
 				lambda = func(): 
 					intended_action = Callable(self, this_action.func_name).bind(this_action.atk_mult)
-					Root.initiate_select_enemy()
+					OneDRoot.initiate_select_enemy()
 			1: ## DEFEND
 				print('no lamda set for custom defend actions in player.gd')
 			#2: ## SPRUN
 				#lambda = func():
 					#intended_action = Callable(self, this_action.func_name)
-					#Root.player_pass_turn()
+					#OneDRoot.player_pass_turn()
 			_:
 				lambda = func():
 					intended_action = Callable(self, this_action.func_name)
-					Root.player_pass_turn()
+					OneDRoot.player_pass_turn()
 				
 		new_button.connect("pressed", lambda)
 		
 		# 0 is Back Button, so everything past that is fair game
-		Root.Actions.get_child(this_action.action_type + 1).add_child(new_button)
+		OneDRoot.Actions.get_child(this_action.action_type + 1).add_child(new_button)
 
 func set_sprun(new_sprun_count):
 	## I *would* set this as the set(new) method for active_sprun, but then it calls before ready and gives me an error
@@ -125,12 +125,12 @@ func set_sprun_slots(slots) -> void:
 			@warning_ignore("integer_division")
 			sprun.visual_rotation += deg_to_rad(slot * sprun_container_angle / (sprun_slots - 1))
 	set_sprun(sprun_active)
-# player has it's intended actions set by the Root (because it's from input from the UI)
+# player has it's intended actions set by the OneDRoot (because it's from input from the UI)
 
 func initiate_attack(action_name: String):
 	
 	self.intended_action = Callable(self, action_name)
-	Root.initiate_select_enemy()
+	OneDRoot.initiate_select_enemy()
 
 func big_attack():
 	set_sprun(sprun_active - 1)

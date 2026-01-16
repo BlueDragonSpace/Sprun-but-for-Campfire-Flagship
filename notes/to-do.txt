@@ -1,12 +1,35 @@
 
-1 (core mechanics):
-	Connect to 2D, 3D (Amalgame!)... when?
+1 (Connections):
+	Connecting:
+		Move characters to be outside of one_d_root (for all dimensions)
+		
+		Attacks:
+			Hitboxes
+			Env. Blocking
+			Line of Sight
+			Ranged vs Melee attacks
+			different targeting system
+			rat spawning position
+		New things:
+			Environment,
+			Movement Distance,
+			Position shifting (from/to 1D, 2D from / to 3D is already covered)
+			Beep-O Camera (Rabbids)
+		
+		Transitioning: find position on 2D screen of a 3D character (local)
+		Move camera script to not be apart of just one player (but the average position of each of them)
+	
+1.5 (not Connecting, ver importan):
+	Character Selection screen
 	
 2 (more mechanics):
 	More enemy intents (debuff, buff, charge up, unknown)
 	Different kinds of Sprun (Red used on ATK, so on)
 	add_lambda() -> Notif, subtracting sprun_cost
 	Speed is currently an invisible statistic... (make art, add to infoBar)
+	
+	RACCOONNNNNN!!!!!!!!!
+	
 3:
 	Poison Debuff (for Rat and beyond)
 	Sprun Movement Shifting depending on size (too far when small, to close when big)
@@ -33,11 +56,11 @@
 	
 3.5?:
 	All characters get a certain attack if there is a certain character in scene
-	DFD and ATK action
+	DFD and ATK action (at same time)
 	
 4: 
 	Death saves? (Deltarune, DnD, revival at all?)
-	Kitty's 6 Lives (the 7th I don't talk about)
+	Kitty's 6 Lives (the 7th I don't talk about) [wait was it 9 actually]
 	Hide unnecessary tabs (rat cannot defend)
 	Every time an enemy dies, the TurnOrderPoint is off on which turn it really is
 	

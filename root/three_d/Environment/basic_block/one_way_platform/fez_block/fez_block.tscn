@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbxw2lsx4tatu"]
+
+[ext_resource type="PackedScene" uid="uid://gev2dyw1rchd" path="res://root/three_d/Environment/basic_block/one_way_platform/one_way_platform.tscn" id="1_lexno"]
+[ext_resource type="Script" uid="uid://0g2yn83het4y" path="res://root/three_d/Environment/basic_block/one_way_platform/fez_block/fez_block.gd" id="2_ivcdx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lexno"]
+resource_local_to_scene = true
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lexno"]
+albedo_color = Color(0.3254902, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ivcdx"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_lexno")
+size = Vector3(1, 0.2, 1)
+
+[node name="FezBlock" instance=ExtResource("1_lexno")]
+collision_mask = 0
+script = ExtResource("2_ivcdx")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_lexno")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_ivcdx")
+
+[node name="Rays" type="Node3D" parent="." index="3"]
+
+[node name="XRay" type="RayCast3D" parent="Rays" index="0"]
+target_position = Vector3(0.6, 0, 0)
+
+[node name="XnRay" type="RayCast3D" parent="Rays" index="1"]
+target_position = Vector3(-0.6, 0, 0)
+
+[node name="ZRay" type="RayCast3D" parent="Rays" index="2"]
+target_position = Vector3(0, 0, 0.6)
+
+[node name="ZnRay" type="RayCast3D" parent="Rays" index="3"]
+target_position = Vector3(0, 0, -0.6)
