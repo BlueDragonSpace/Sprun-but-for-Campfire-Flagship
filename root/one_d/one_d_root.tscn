@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://d3wbwxma2hkqm"]
+[gd_scene load_steps=51 format=3 uid="uid://d3wbwxma2hkqm"]
 
 [ext_resource type="Theme" uid="uid://cyy1ccrel07nx" path="res://root/root.tres" id="1_nt0n7"]
 [ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/one_d/one_d_root.gd" id="2_vitat"]
@@ -24,9 +24,13 @@
 [ext_resource type="AudioStream" uid="uid://brilchhialjul" path="res://placeholderArt/sfx/TPK.wav" id="21_obdg4"]
 [ext_resource type="PackedScene" uid="uid://c0jqgkvlg5u4e" path="res://inGame/characterSelect/characterSelector.tscn" id="22_akxu1"]
 [ext_resource type="AudioStream" uid="uid://c1hfdtenc3114" path="res://placeholderArt/sfx/TWK.wav" id="22_kypvo"]
+[ext_resource type="Texture2D" uid="uid://cvggsr6dniihs" path="res://placeholderArt/myPixelArt/wizerdhat-1.png (1).png" id="23_8iljn"]
 [ext_resource type="AudioStream" uid="uid://cnnno1v7nqa7f" path="res://placeholderArt/sfx/start.wav" id="23_8xuts"]
 [ext_resource type="Shader" uid="uid://ddycup0alwvnl" path="res://shaders/chromaticAberation.gdshader" id="24_a1wwb"]
+[ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="24_yxtmk"]
 [ext_resource type="Shader" uid="uid://dftiegl3xn8fh" path="res://shaders/pixelizer.gdshader" id="25_28rp8"]
+[ext_resource type="Texture2D" uid="uid://bs2vr1mqvjcph" path="res://placeholderArt/myPixelArt/RodentLordRn-1.png.png" id="25_b1nt6"]
+[ext_resource type="Texture2D" uid="uid://dmidkhslqal7n" path="res://placeholderArt/myPixelArt/Rattttttt-1.png.png" id="26_20myc"]
 [ext_resource type="Shader" uid="uid://bo0lvrtc1mrha" path="res://shaders/rainbows.gdshader" id="26_v6bl5"]
 
 [sub_resource type="Gradient" id="Gradient_ovlcs"]
@@ -941,7 +945,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_nt0n7")
 script = ExtResource("2_vitat")
-in_prep_round = false
 
 [node name="NoiseBackground" type="TextureRect" parent="."]
 layout_mode = 1
@@ -1094,19 +1097,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="Wizerd" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_ih4ah")]
-layout_mode = 2
-
-[node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
-layout_mode = 2
-sprun_distance = 75
-
-[node name="Rodent Lord" parent="RootGame/BattleScreen/Charas" instance=ExtResource("7_p81qd")]
-layout_mode = 2
-
-[node name="Rat" parent="RootGame/BattleScreen/Charas" instance=ExtResource("8_37sdc")]
-layout_mode = 2
 
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)
@@ -1419,14 +1409,22 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.17
 
-[node name="AwesomeTastic" type="TextureRect" parent="CharacterSelect/VBoxContainer"]
+[node name="BigIcon" type="TextureRect" parent="CharacterSelect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 texture = ExtResource("16_x4h2s")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Info" type="Label" parent="CharacterSelect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Wow awesome text here"
+horizontal_alignment = 1
+
+[node name="SubInfo" type="Label" parent="CharacterSelect/VBoxContainer"]
+modulate = Color(0.68307734, 0.6830774, 0.68307734, 1)
 layout_mode = 2
 text = "Wow awesome text here"
 horizontal_alignment = 1
@@ -1437,25 +1435,44 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.17
 
-[node name="GridContainer" type="GridContainer" parent="CharacterSelect/VBoxContainer"]
+[node name="CharacterChoosing" type="GridContainer" parent="CharacterSelect/VBoxContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="Wizard" parent="CharacterSelect/VBoxContainer/GridContainer" instance=ExtResource("22_akxu1")]
+[node name="Wizard" parent="CharacterSelect/VBoxContainer/CharacterChoosing" instance=ExtResource("22_akxu1")]
 layout_mode = 2
 text = "Wizard"
+icon = ExtResource("23_8iljn")
+info = "Magics"
+sub_info = "Powerful attacks, little HP"
+info_icon = ExtResource("23_8iljn")
+linked_character = ExtResource("5_ih4ah")
 
-[node name="Kitty" parent="CharacterSelect/VBoxContainer/GridContainer" instance=ExtResource("22_akxu1")]
+[node name="Kitty" parent="CharacterSelect/VBoxContainer/CharacterChoosing" instance=ExtResource("22_akxu1")]
 layout_mode = 2
 text = "Kitty"
+icon = ExtResource("24_yxtmk")
+info = "Is Kitty"
+sub_info = "The Chosen."
+info_icon = ExtResource("24_yxtmk")
+linked_character = ExtResource("6_ajhc2")
 
-[node name="RodentLord" parent="CharacterSelect/VBoxContainer/GridContainer" instance=ExtResource("22_akxu1")]
+[node name="RodentLord" parent="CharacterSelect/VBoxContainer/CharacterChoosing" instance=ExtResource("22_akxu1")]
 layout_mode = 2
 text = "Rodent Lord"
+icon = ExtResource("25_b1nt6")
+info = "Summoner (of Rats)"
+sub_info = "Like a Necromancer. But cooler."
+info_icon = ExtResource("25_b1nt6")
+linked_character = ExtResource("7_p81qd")
 
-[node name="Raccoon" parent="CharacterSelect/VBoxContainer/GridContainer" instance=ExtResource("22_akxu1")]
+[node name="Raccoon" parent="CharacterSelect/VBoxContainer/CharacterChoosing" instance=ExtResource("22_akxu1")]
 layout_mode = 2
 text = "Raccoon"
+info = "wow not ready yet"
+sub_info = "currently spawns a basic rat"
+info_icon = ExtResource("26_20myc")
+linked_character = ExtResource("8_37sdc")
 
 [node name="EndCharacterSelect" type="Button" parent="CharacterSelect/VBoxContainer"]
 layout_mode = 2

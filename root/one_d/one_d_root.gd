@@ -28,6 +28,8 @@ extends Control
 @onready var TWKPrepRoundsLabel: Label = $TWK/Labels/VBoxContainer/Num
 @onready var TopBarPrepRoundsLabel: Label = $RootGame/TopBar/HBoxContainer/TextureRect/PrepRoundsLabel
 
+# initialize game function
+
 @onready var Animate: AnimationPlayer = $Animate
 
 var current_player = null:
@@ -44,6 +46,7 @@ const BIGG = preload("uid://bs8426h8sndoy")
 const LITTLES = preload("uid://b6qpplfncfiyr")
 
 @export var started : bool = false
+@export var init_chara_num = 3 # how many characters can you start with
 
 ## player section
 var player_actions = []
@@ -114,7 +117,35 @@ const player_pass_text = [' looks a little agitated', ' probably needs some coff
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	button_info("A last stand.")
+	button_info("You didn't character select...")
+	
+	Engine.time_scale = 1.0 # restarts for the top-right scale thing
+	
+	if started: 
+		
+		# started means that the characters I need are already inside of the Chara node
+		
+		$RootGame.visible = true
+		$RootGame.modulate.a = 1.0
+		$IntroSequence.visible = false
+		%CharacterSelect.visible = false
+		initialize_game()
+	else:
+		$RootGame.visible = false
+		$RootGame.modulate.a = 0.0
+		$IntroSequence.visible = true
+		$IntroSequence.modulate.a = 1.0
+		
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
+	
+	NoiseBackground.texture.noise.offset += Vector3(delta * 3, delta * 3, delta * 5)
+
+## custom functions (other than signals) below
+func initialize_game() -> void:
 	current_player = Charas.get_child(0)
 	current_enemy = Enemies.get_child(0)
 	
@@ -131,27 +162,6 @@ func _ready() -> void:
 	#check_actions_visible(current_player.player_type)
 	call_deferred("check_actions_visible", current_player.player_type)
 	set_enemies_intents()
-	
-	Engine.time_scale = 1.0 # restarts for the top-right scale thing
-	
-	if started: 
-		$RootGame.visible = true
-		$RootGame.modulate.a = 1.0
-		$IntroSequence.visible = false
-	else:
-		$RootGame.visible = false
-		$RootGame.modulate.a = 0.0
-		$IntroSequence.visible = true
-		$IntroSequence.modulate.a = 1.0
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("restart"):
-		get_tree().reload_current_scene()
-	
-	NoiseBackground.texture.noise.offset += Vector3(delta * 3, delta * 3, delta * 5)
-
-## custom functions (other than signals) below
 
 # helpers? I guess
 func restart_tree() -> void:
@@ -583,5 +593,29 @@ func _on_play_speed_slider_value_changed(value: float) -> void:
 
 
 func _on_end_character_select_pressed() -> void:
-	if 
-	Animate.play('chara_select_to_game')
+	
+	# ew bad code...
+	
+	# add the characters selected
+	%CharacterSelect.check_characters_selected()
+	
+	if %CharacterSelect.characters_selected == init_chara_num:
+		%CharacterSelect.load_characters()
+		for character in %CharacterSelect.character_array:
+			var cha = character.instantiate()
+			Charas.add_child(cha)
+			Animate.play('chara_select_to_game')
+		button_info('A last stand.')
+		initialize_game()
+	elif %CharacterSelect.characters_selected > 0 and %CharacterSelect.characters_selected < init_chara_num:
+		%CharacterSelect.load_characters()
+		for character in %CharacterSelect.character_array:
+			var cha = character.instantiate()
+			Charas.add_child(cha)
+			Animate.play('chara_select_to_game')
+		button_info('Damaged goods, before even beginning their journey.')
+		initialize_game()
+	elif %CharacterSelect.characters_selected == 0:
+			%CharacterSelect.nice_try_buddy()
+	else:
+		%CharacterSelect.too_many_characters()

@@ -20,6 +20,9 @@
 		Move camera script to not be apart of just one player (but the average position of each of them)
 	
 1.5 (not Connecting, ver importan):
+	
+	# weird rat problem
+	
 	Character Selection screen
 	
 2 (more mechanics):

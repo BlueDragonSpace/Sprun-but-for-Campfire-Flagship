@@ -3,7 +3,7 @@ extends Node
 var dimension = 1
 
 @onready var OneDRoot: Control = $OneDRoot
-@onready var ThreeDRoot: Node3D = $ThreeDRoot
+# @onready var ThreeDRoot: Node3D = $ThreeDRoot
 
 @onready var Animate: AnimationPlayer = $Animate
 

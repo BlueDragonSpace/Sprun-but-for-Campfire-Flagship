@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0jqgkvlg5u4e"]
+[gd_scene load_steps=3 format=3 uid="uid://c0jqgkvlg5u4e"]
 
 [ext_resource type="Script" uid="uid://bk48hqpclfcsx" path="res://inGame/characterSelect/character_selector.gd" id="1_28c6a"]
+[ext_resource type="Texture2D" uid="uid://c8n0k3x2k67si" path="res://placeholderArt/myPixelArt/NewSprun-1.png.png" id="1_mvnu0"]
 
 [node name="CharacterSelector" type="CheckBox"]
+text = "gwuh"
+icon = ExtResource("1_mvnu0")
 script = ExtResource("1_28c6a")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

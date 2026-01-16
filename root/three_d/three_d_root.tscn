@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://cu1ueum56s1rl"]
+
+[ext_resource type="PackedScene" uid="uid://crwqeuod3418" path="res://root/three_d/Entities/Players/3d_player.tscn" id="1_84ns2"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_j4b2l"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_js5vo"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j4b2l"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j4b2l"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_js5vo"]
+sky_material = SubResource("ProceduralSkyMaterial_j4b2l")
+
+[sub_resource type="Environment" id="Environment_ovlcs"]
+background_mode = 2
+sky = SubResource("Sky_js5vo")
+tonemap_mode = 2
+
+[node name="ThreeDRoot" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape3D_j4b2l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_js5vo")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.95664597, 0.29125324, 0, -0.29125324, 0.95664597, 0, 0.6758058, 0.8455131)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+mesh = SubResource("BoxMesh_j4b2l")
+skeleton = NodePath("../..")
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(-0.31321353, -0.27659816, 0.9085102, -1.7763568e-15, 0.95664597, 0.2912532, -0.94968265, 0.09122445, -0.29963446, 2.382008, 0.6758058, -1.1333528)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+mesh = SubResource("BoxMesh_j4b2l")
+skeleton = NodePath("../..")
+
+[node name="GreatGloriousSun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ovlcs")
+
+[node name="3DPlayer" parent="." instance=ExtResource("1_84ns2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4674301, 1, -0.84338164)
