@@ -63,7 +63,7 @@ func add_actions(custom_actions : Array) -> void:
 		match(this_action.action_type):
 			0: ## ATTACK
 				lambda = func(): 
-					intended_action = Callable(self, this_action.func_name).bind(this_action.atk_mult)
+					intended_action = Callable(self, this_action.func_name).bind(this_action.atk_mult, this_action.sprun_loss)
 					OneDRoot.initiate_select_enemy()
 			1: ## DEFEND
 				print('no lamda set for custom defend actions in player.gd')

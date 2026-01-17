@@ -1,10 +1,12 @@
-[gd_scene load_steps=51 format=3 uid="uid://d3wbwxma2hkqm"]
+[gd_scene load_steps=54 format=3 uid="uid://d3wbwxma2hkqm"]
 
 [ext_resource type="Theme" uid="uid://cyy1ccrel07nx" path="res://root/root.tres" id="1_nt0n7"]
 [ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/one_d/one_d_root.gd" id="2_vitat"]
 [ext_resource type="Texture2D" uid="uid://b535plvyviqhb" path="res://placeholderArt/ChoosyCorners-1.png (1).png" id="3_o1hsu"]
 [ext_resource type="PackedScene" uid="uid://c8l8w4n02trfl" path="res://inGame/sound/mute_button.tscn" id="4_wohbx"]
+[ext_resource type="PackedScene" uid="uid://bbku30glrarxd" path="res://inGame/player/playerTypes/raccoon/raccoon.tscn" id="5_b1nt6"]
 [ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/player/action.gd" id="6_20myc"]
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
 [ext_resource type="PackedScene" uid="uid://c02utralqt5h" path="res://inGame/player/playerTypes/ratface/rat.tscn" id="8_37sdc"]
@@ -49,6 +51,18 @@ height = 256
 noise = SubResource("FastNoiseLite_ovlcs")
 color_ramp = SubResource("Gradient_ovlcs")
 in_3d_space = true
+
+[sub_resource type="Resource" id="Resource_05ql3"]
+resource_local_to_scene = true
+script = ExtResource("6_20myc")
+name = "Daggers"
+func_name = "daggers"
+player_type = 4096
+sprun_necessary = 2
+sprun_loss = 2
+atk_mult = 0.75
+requires_target = true
+button_info = "Attacks all enemies. Chosen enemy is dealt double damage."
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gj8ci"]
 shader = ExtResource("24_a1wwb")
@@ -511,6 +525,80 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.29887357, 3.4666667, 3.9032607)
 }
 
+[sub_resource type="Animation" id="Animation_akxu1"]
+resource_name = "chara_select_to_game"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootGame:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootGame:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.5833334, 0.16666669, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.2, 5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:started")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NoiseBackground:texture:color_ramp:colors")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedColorArray(1.4920532e-06, 0.5304824, 0.2201744, 1, 0.72519064, 0.00041941137, 0.7291304, 1), PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterSelect:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.33333334, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CharacterSelect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_mg5wv"]
 resource_name = "exiting_TWK"
 tracks/0/type = "value"
@@ -847,80 +935,6 @@ tracks/2/keys = {
 "values": [3, 3]
 }
 
-[sub_resource type="Animation" id="Animation_akxu1"]
-resource_name = "chara_select_to_game"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RootGame:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RootGame:modulate:a")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.5833334, 0.16666669, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(2.2, 5)
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:started")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("NoiseBackground:texture:color_ramp:colors")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [PackedColorArray(1.4920532e-06, 0.5304824, 0.2201744, 1, 0.72519064, 0.00041941137, 0.7291304, 1), PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)]
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CharacterSelect:modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.33333334, 0.16666667, 0, 0),
-"times": PackedFloat32Array(0, 2)
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CharacterSelect:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 2.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y3dhr"]
 _data = {
 &"RESET": SubResource("Animation_5jge4"),
@@ -945,6 +959,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_nt0n7")
 script = ExtResource("2_vitat")
+started = true
 
 [node name="NoiseBackground" type="TextureRect" parent="."]
 layout_mode = 1
@@ -1097,6 +1112,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Raccoon" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_b1nt6")]
+layout_mode = 2
+sprun_slots = 2
+sprun_active = 2
+new_action = Array[Resource]([SubResource("Resource_05ql3")])
 
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)

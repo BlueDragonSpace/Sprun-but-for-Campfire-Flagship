@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2tkettp813ev"]
+
+[ext_resource type="Texture2D" uid="uid://cud2twh7olt08" path="res://placeholderArt/snakeBox.png" id="1_dsacy"]
+[ext_resource type="Script" uid="uid://bnan03pr2jes3" path="res://inGame/npc/de_buff_rect/de_buff_rect.gd" id="2_xe3hw"]
+
+[node name="DeBuffRect" type="TextureRect"]
+texture = ExtResource("1_dsacy")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("2_xe3hw")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

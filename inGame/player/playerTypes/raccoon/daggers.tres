@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://ch56xq26ov4yl"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/player/action.gd" id="1_0g0tm"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_0g0tm")
+name = "Daggers"
+func_name = "daggers"
+player_type = 4096
+sprun_necessary = 1
+sprun_loss = 1
+atk_mult = 0.8
+requires_target = true
+button_info = "Attacks all enemies."

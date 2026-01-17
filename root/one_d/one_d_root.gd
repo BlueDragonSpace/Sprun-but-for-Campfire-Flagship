@@ -46,7 +46,8 @@ const BIGG = preload("uid://bs8426h8sndoy")
 const LITTLES = preload("uid://b6qpplfncfiyr")
 
 @export var started : bool = false
-@export var init_chara_num = 3 # how many characters can you start with
+# how many characters can you start with
+@export var init_chara_num = 3
 
 ## player section
 var player_actions = []
@@ -576,6 +577,24 @@ func _on_flash_evily_pressed() -> void:
 	current_enemy.current_hp -= 10
 func _on_auto_sprun_pressed() -> void:
 	current_player.set_sprun(current_player.sprun_active + 1)
+	check_cost_all_actions(current_player.sprun_active) #HERE CHECK THIS
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 func _on_auto_heal_pressed() -> void:
 	current_player.current_hp += 10
 

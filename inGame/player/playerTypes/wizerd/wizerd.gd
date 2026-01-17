@@ -2,7 +2,7 @@ extends "res://inGame/player/player.gd"
 
 @onready var WizerdAnimate: AnimationPlayer = $WizerdAnimate
 
-func mega_lazer(atk_mult) -> void:
+func mega_lazer(atk_mult, sprun_loss) -> void:
 	
 	# link the static 7 to the number in the action!!!
 	## Currently working on adding ATK and DFD values to the info bar
@@ -10,7 +10,7 @@ func mega_lazer(atk_mult) -> void:
 	action_victim.take_damage(attack_stat * atk_mult)
 	WizerdAnimate.play("mega_lazer")
 	
-	set_sprun(sprun_active - 2) # ? blunder, this should be set inside of the action...
+	set_sprun(sprun_active - sprun_loss) # ? blunder, this should be set inside of the action...
 	
 	$MegaLazer.play()
 

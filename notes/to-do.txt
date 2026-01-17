@@ -20,10 +20,9 @@
 		Move camera script to not be apart of just one player (but the average position of each of them)
 	
 1.5 (not Connecting, ver importan):
-	
-	# weird rat problem
-	
-	Character Selection screen
+	Buff moves
+	Kitty Hide (Buff, technically)
+	Raccoon's other moves
 	
 2 (more mechanics):
 	More enemy intents (debuff, buff, charge up, unknown)
@@ -111,9 +110,11 @@ Tips for players:
 
 Bugs:
 	On the animation to the first player (after a round), last player's actions show up (but aren't clickable, thankfully)
+	Damage Display isn't always damage impacted (setting Daggers to .8 makes display 3, but impact 4)
 
 Noot noot
 Holy carp the game works on mobile by accident!!!!
+Uhhhhh weird stuff happens when you have multiple Basic class characters
 
 Rodent Lord Rodents:
 	Rats (poison + bite)

@@ -5,10 +5,11 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_cky2r")
-name = "Reflection"
-func_name = "reflection"
-action_type = 3
-player_type = 8
-sprun_necessary = 9
-sprun_loss = 9
-button_info = "Become what you were born to be."
+name = "Daggers"
+func_name = "daggers"
+player_type = 4096
+sprun_necessary = 1
+sprun_loss = 1
+atk_mult = 0.8
+requires_target = true
+button_info = "Attacks all enemies."
