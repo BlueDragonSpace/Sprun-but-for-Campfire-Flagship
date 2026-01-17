@@ -1,6 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccl3stwaax0r3"]
+[gd_scene load_steps=6 format=3 uid="uid://ccl3stwaax0r3"]
 
 [ext_resource type="Script" uid="uid://c6rlpq23yp3y5" path="res://inGame/battleUI/notif.gd" id="1_qmarc"]
+
+[sub_resource type="Animation" id="Animation_qmarc"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_h4ija"]
 resource_name = "fade_up"
@@ -31,8 +45,9 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_qmarc"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_u5uem"]
+resource_name = "pop_up"
+length = 0.2
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,18 +55,20 @@ tracks/0/path = NodePath(".:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.1, 0, 0.1, 0, 1, -0.033333335, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.2)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u5uem"]
 _data = {
 &"RESET": SubResource("Animation_qmarc"),
-&"fade_up": SubResource("Animation_h4ija")
+&"fade_up": SubResource("Animation_h4ija"),
+&"pop_in": SubResource("Animation_u5uem")
 }
 
 [node name="Notif" type="ColorRect"]
+z_index = 99
 custom_minimum_size = Vector2(175, 75)
 anchors_preset = 5
 anchor_left = 0.5
@@ -110,3 +127,4 @@ size_flags_stretch_ratio = 0.1
 libraries = {
 &"": SubResource("AnimationLibrary_u5uem")
 }
+autoplay = "pop_in"

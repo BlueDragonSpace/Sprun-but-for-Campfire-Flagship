@@ -6,6 +6,7 @@ extends Control
 @onready var HP: TextureProgressBar = $VBoxContainer/LowerBar/HP
 @onready var CurrentHp: Label = $VBoxContainer/LowerBar/HP/HPBar/CurrentHP
 @onready var MaxHp: Label = $VBoxContainer/LowerBar/HP/HPBar/MaxHP
+@onready var DeBuffs: HBoxContainer = $VBoxContainer/DeBuffs
 
 @onready var Animate: AnimationPlayer = $Animate
 
@@ -20,6 +21,7 @@ var current_hp: int = max_hp
 
 @export var attack_stat : int = 3
 @export var defend_stat : int = 5
+
 
 # bad code: is it Npc or Character!
 # and worst of all: Characters are contolled by Player, meaning that they are literal PCs instead of NPCs
@@ -44,6 +46,8 @@ var size_transition = 0.0:
 		size_transition = new
 		size_flags_stretch_ratio = size_transition
 		set_deferred("HP.size_flags_stretch_ratio", size_transition)
+
+const DE_BUFF_RECT = preload("uid://b2tkettp813ev")
 
 func _ready() -> void:
 	set_max_hp(max_hp)

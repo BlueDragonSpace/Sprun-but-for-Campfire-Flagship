@@ -20,9 +20,13 @@
 		Move camera script to not be apart of just one player (but the average position of each of them)
 	
 1.5 (not Connecting, ver importan):
-	Buff moves
-	Kitty Hide (Buff, technically)
+	Buff moves:
+		Run check-up at start of prep to remove all buffs
+		Make Hide actually do something
 	Raccoon's other moves
+	
+	Prevent next debuff buff
+	(prevent next buff debuff? no that's way too meta)
 	
 2 (more mechanics):
 	More enemy intents (debuff, buff, charge up, unknown)

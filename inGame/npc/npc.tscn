@@ -1,10 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://ctlnpeebeoqgd"]
+[gd_scene load_steps=26 format=3 uid="uid://ctlnpeebeoqgd"]
 
 [ext_resource type="Texture2D" uid="uid://c3p85tdu00duw" path="res://placeholderArt/icon.svg" id="1_2jrf3"]
 [ext_resource type="Script" uid="uid://cdbuic4bcd67n" path="res://inGame/npc/npc.gd" id="1_3atjd"]
 [ext_resource type="Texture2D" uid="uid://skl6oj4btwmf" path="res://placeholderArt/myPixelArt/HPBar (1)/hp2.png" id="3_bj2b7"]
 [ext_resource type="Texture2D" uid="uid://c8n0k3x2k67si" path="res://placeholderArt/myPixelArt/NewSprun-1.png.png" id="3_hhgrb"]
-[ext_resource type="PackedScene" uid="uid://b2tkettp813ev" path="res://inGame/npc/de_buff_rect/de_buff_rect.tscn" id="4_fq4yk"]
 [ext_resource type="Texture2D" uid="uid://cfkr8gbn4j4sj" path="res://placeholderArt/myPixelArt/HPBar (1)/hp0.png" id="4_hhgrb"]
 [ext_resource type="Texture2D" uid="uid://bvhkmrse4oqmm" path="res://placeholderArt/myPixelArt/ShieldBadArt-1.png.png" id="4_wk2dw"]
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="5_dvc8s"]
@@ -433,12 +432,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.15
 alignment = 1
 
-[node name="DeBuffRect" parent="VBoxContainer/DeBuffs" instance=ExtResource("4_fq4yk")]
-layout_mode = 2
-de_buff_name = "canI"
-info = "Love talking or else bad"
-
-[node name="VSeparator4" type="VSeparator" parent="VBoxContainer"]
+[node name="VSeparator456" type="VSeparator" parent="VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3

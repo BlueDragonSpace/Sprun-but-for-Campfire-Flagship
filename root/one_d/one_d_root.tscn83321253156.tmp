@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="6_20myc"]
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
-[ext_resource type="Resource" uid="uid://cu7gb1lix0hyn" path="res://inGame/npc/player/playerTypes/kitty/hide.tres" id="7_05ql3"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
 [ext_resource type="Resource" uid="uid://d21q8e62mtv0h" path="res://inGame/npc/player/playerTypes/kitty/reflection.tres" id="8_20myc"]
 [ext_resource type="PackedScene" uid="uid://c02utralqt5h" path="res://inGame/npc/player/playerTypes/ratface/rat.tscn" id="8_37sdc"]
@@ -54,7 +53,7 @@ noise = SubResource("FastNoiseLite_ovlcs")
 color_ramp = SubResource("Gradient_ovlcs")
 in_3d_space = true
 
-[sub_resource type="Resource" id="Resource_gba7a"]
+[sub_resource type="Resource" id="Resource_05ql3"]
 resource_local_to_scene = true
 script = ExtResource("6_20myc")
 name = "Daggers"
@@ -65,6 +64,15 @@ sprun_loss = 2
 atk_mult = 0.75
 requires_target = true
 button_info = "Attacks all enemies. Chosen enemy is dealt double damage."
+
+[sub_resource type="Resource" id="Resource_gba7a"]
+resource_local_to_scene = true
+script = ExtResource("6_20myc")
+name = "Hide"
+func_name = "hideAction"
+action_type = 3
+player_type = 8
+button_info = "Enemies cannot directly target this character until next turn."
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gj8ci"]
 shader = ExtResource("24_a1wwb")
@@ -1115,17 +1123,15 @@ size_flags_horizontal = 3
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
-layout_mode = 2
-new_action = Array[Resource]([ExtResource("8_20myc"), ExtResource("7_05ql3")])
-max_hp = 90
-
 [node name="Raccoon" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_b1nt6")]
 layout_mode = 2
 sprun_slots = 2
 sprun_active = 2
-new_action = Array[Resource]([SubResource("Resource_gba7a")])
-max_hp = 90
+new_action = Array[Resource]([SubResource("Resource_05ql3")])
+
+[node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
+layout_mode = 2
+new_action = Array[Resource]([ExtResource("8_20myc"), SubResource("Resource_gba7a")])
 
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)
@@ -1136,7 +1142,6 @@ size_flags_stretch_ratio = 0.3
 [node name="Enemies" type="GridContainer" parent="RootGame/BattleScreen"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="Gatekeeper" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
@@ -1146,62 +1151,6 @@ attack_range = 2
 icon = ExtResource("10_fshsv")
 
 [node name="Keykeeper" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
-layout_mode = 2
-speed_middle_value = 4
-speed_range = 3
-attack_range = 2
-icon = ExtResource("11_qswi8")
-max_hp = 8
-
-[node name="Keykeeper2" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
-layout_mode = 2
-speed_middle_value = 4
-speed_range = 3
-attack_range = 2
-icon = ExtResource("11_qswi8")
-max_hp = 8
-
-[node name="Keykeeper3" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
-layout_mode = 2
-speed_middle_value = 4
-speed_range = 3
-attack_range = 2
-icon = ExtResource("11_qswi8")
-max_hp = 8
-
-[node name="Keykeeper4" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
-layout_mode = 2
-speed_middle_value = 4
-speed_range = 3
-attack_range = 2
-icon = ExtResource("11_qswi8")
-max_hp = 8
-
-[node name="Keykeeper5" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
-layout_mode = 2
-speed_middle_value = 4
-speed_range = 3
-attack_range = 2
-icon = ExtResource("11_qswi8")
-max_hp = 8
-
-[node name="Keykeeper6" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
-layout_mode = 2
-speed_middle_value = 4
-speed_range = 3
-attack_range = 2
-icon = ExtResource("11_qswi8")
-max_hp = 8
-
-[node name="Keykeeper7" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
-layout_mode = 2
-speed_middle_value = 4
-speed_range = 3
-attack_range = 2
-icon = ExtResource("11_qswi8")
-max_hp = 8
-
-[node name="Keykeeper8" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
 layout_mode = 2
 speed_middle_value = 4
 speed_range = 3

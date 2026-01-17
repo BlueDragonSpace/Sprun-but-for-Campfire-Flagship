@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwmmic7hdg4aa"]
-
-[ext_resource type="PackedScene" uid="uid://b2tkettp813ev" path="res://inGame/npc/de_buff_rect/de_buff_rect.tscn" id="1_dvsrl"]
-
-[node name="Hide" instance=ExtResource("1_dvsrl")]
-de_buff_name = "Hide"
-info = "Prevents being select directly for attacks for this turn."

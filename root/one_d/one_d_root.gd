@@ -138,14 +138,14 @@ func _ready() -> void:
 		$IntroSequence.modulate.a = 1.0
 		
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("restart"):
-		get_tree().reload_current_scene()
-	
 	NoiseBackground.texture.noise.offset += Vector3(delta * 3, delta * 3, delta * 5)
 
 ## custom functions (other than signals) below
+
+
 func initialize_game() -> void:
 	current_player = Charas.get_child(0)
 	current_enemy = Enemies.get_child(0)
@@ -164,11 +164,10 @@ func initialize_game() -> void:
 	call_deferred("check_actions_visible", current_player.player_type)
 	set_enemies_intents()
 
-# helpers? I guess
 func restart_tree() -> void:
 	get_tree().reload_current_scene()
 
-# real-deal hard deez nuts
+# real-deal deez nuts
 func set_enemies_intents() -> void:
 	for enemy in Enemies.get_children():
 		if enemy.is_dead == false:
@@ -179,8 +178,26 @@ func set_enemies_intents() -> void:
 				#I capitalize NodePaths, and make variables lowercase...
 			tween.tween_property(enemy.Intent, "modulate", Color(1.0,1.0,1.0,1.0),1.0)
 			
-			# chooses a random target from all players
-			enemy.set_intended_action(Charas.get_child(randi_range(0, Charas.get_child_count() - 1)))
+			## choose a target
+			
+			if Charas.get_children().size() == 1:
+				enemy.set_intended_action(Charas.get_child(0))
+				print('only one target, no hiding')
+			else:
+				print('multiple targets to choose')
+				# first, figure out if any are unavailable (hiding)
+				var all_charas = Charas.get_children()
+				
+				for chara in all_charas.size() - 1:
+					for debuff_child in all_charas[chara].DeBuffs.get_children():
+						if debuff_child.debuff.debuff_type == DeBuff.DEBUFF.HIDE:
+							print('cannot target the hider')
+							all_charas.remove_at(chara)
+						else:
+							print(debuff_child.debuff.display_name)
+				
+				# now direct an attack towards a randomly chosen target (overridden by aggro)
+				enemy.set_intended_action(all_charas[randi_range(0, all_charas.size() - 1)])
 
 func set_turn_order() -> void:
 	## sorts the Turn Order

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://cu7gb1lix0hyn"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="1_0kngo"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_0kngo")
+name = "Hide"
+func_name = "hideAction"
+action_type = 3
+player_type = 8
+button_info = "Enemies cannot directly target this character next turn."
