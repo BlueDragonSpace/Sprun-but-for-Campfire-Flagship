@@ -10,13 +10,15 @@ enum DEBUFF {
 	STRENGTH, # increase atk damage
 	FORTITUDE, # increase defense
 	HIDE, # prevents being targeted, should be able to get attacked by group target, however
-	SALVE,
+	SALVE, # prevent next debuff (pancea sts)
 	
 	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, #spacer
 	## DEBUFFS
 	VULNERABLE, # take more attack damage
 	WEAK, # do less attack damage
 	FRAIL, # do less defense
+	POISON, # damage over time
+	# prevent next buff debuff (haha kinda nuts there)
 }
 @export var debuff_type = DEBUFF.STRENGTH
 

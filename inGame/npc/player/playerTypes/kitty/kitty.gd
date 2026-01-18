@@ -1,6 +1,6 @@
 extends "res://inGame/npc/player/player.gd"
 
-func reflection() -> void:
+func reflection(_sprun_cost) -> void:
 	
 	# the dream that started it all
 	
@@ -17,7 +17,7 @@ func reflection() -> void:
 
 const HIDE = preload("uid://24y2bom7sjw5")
 
-func hideAction() -> void:
+func hideAction(_sprun_cost) -> void:
 	
 	if check_debuff(DeBuff.DEBUFF.HIDE):
 		for debuff_child in DeBuffs.get_children():

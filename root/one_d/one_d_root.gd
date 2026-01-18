@@ -61,10 +61,12 @@ var in_prep_round = false
 var prep_rounds_remaining = 3
 
 ## In-Battle
-enum TURN_TYPE {PLAYER, SELECT_ENEMY, MIDDLE, END, TRANSITION}
+enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 @export var turn = TURN_TYPE.PLAYER:
 	set(new):
 		match(new):
+			# goes through what the previous state was, and does things based on that
+			
 			TURN_TYPE.PLAYER:
 				# disabling
 				disable_all_actions(false)
@@ -85,6 +87,15 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, MIDDLE, END, TRANSITION}
 						enemy.get_child(-1).queue_free()
 					BAK.disabled = true
 					# may be worth turning the back_action to be the empty function
+			TURN_TYPE.SELECT_ALLY:
+				disable_all_actions(true)
+				BAK.disabled = false
+				back_action = func(): 
+					turn = TURN_TYPE.PLAYER
+					# removes all enemy selector children, since they're the last to be added
+					for chara in Charas.get_children():
+						chara.get_child(-1).queue_free()
+					BAK.disabled = true
 			TURN_TYPE.MIDDLE:
 				middle_round_loop()
 			TURN_TYPE.END:
@@ -236,6 +247,16 @@ func select_enemy(index : int) -> void:
 	
 	player_pass_turn()
 
+func select_ally(index : int) -> void:
+	# pretty much copy/paste select_enemy, but for allies
+	
+	current_player.action_victim = Charas.get_child(index)
+	
+	for chara in Charas.get_children():
+		chara.get_child(-1).queue_free()
+	
+	player_pass_turn()
+
 func add_enemy_wave() -> void:
 	
 	current_wave += 1
@@ -291,7 +312,7 @@ func disable_all_actions(boolean: bool) -> void:
 func disable_all_attacks(boolean: bool) -> void:
 	for container in Actions.get_children():
 		for action in container.get_children():
-			if action.requires_target:
+			if action.prep_disable:
 				action.disabled = boolean
 
 func check_upgrade_cost_actions(character: Node) -> void:
@@ -445,6 +466,24 @@ func initiate_select_enemy() -> void:
 		turn = TURN_TYPE.SELECT_ENEMY
 	else:
 		current_player.action_victim = current_enemy
+		player_pass_turn()
+
+func initiate_select_ally() -> void:
+	# pretty much the same exact code as initiate_select_enemy, but for charas
+	
+	if Charas.get_child_count() > 1:
+		for chara in Charas.get_children():
+			
+			var index = chara.get_index()
+			var selector = ENEMY_SELECTION.instantiate()
+			selector.text = ''
+			selector.info = chara.name
+			selector.pressed.connect(select_ally.bind(index))
+			
+			chara.add_child(selector)
+		turn = TURN_TYPE.SELECT_ALLY
+	else:
+		current_player.action_victim = current_player # selects itself by default lol
 		player_pass_turn()
 
 # whenever each character passes their turn (and for the final character pass)

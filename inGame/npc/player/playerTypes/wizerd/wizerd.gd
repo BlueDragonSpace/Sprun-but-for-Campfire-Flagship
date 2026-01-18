@@ -14,14 +14,7 @@ func mega_lazer(atk_mult, sprun_loss) -> void:
 	
 	$MegaLazer.play()
 
-func die() -> void:
-	# yup, redefined fo wizard funzies
-	# probably gonna mess me up down the line, but funzies
+func heal(sprun_loss : int) -> void:
+	action_victim.current_hp += 10
 	
-	# you can only die once
-	if is_dead == false:
-		is_dead = true
-		OneDRoot.remove_dead_actions(self)
-		Animate.call_deferred("play", "die")
-	
-	$wawaawawawa.play()
+	set_sprun(sprun_active - sprun_loss)

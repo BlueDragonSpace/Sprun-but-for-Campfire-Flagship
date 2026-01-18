@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="1_0kngo"]
 
 [resource]
-resource_local_to_scene = true
 script = ExtResource("1_0kngo")
 name = "Hide"
 func_name = "hideAction"

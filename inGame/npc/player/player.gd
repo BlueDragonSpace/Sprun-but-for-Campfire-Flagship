@@ -53,10 +53,11 @@ func add_actions(custom_actions : Array) -> void:
 		new_button.sprun_cost = this_action.sprun_necessary
 		new_button.text = this_action.name
 		new_button.usable_on_player = this_action.player_type
-		new_button.requires_target = this_action.requires_target
+		new_button.prep_disable = this_action.prep_disable
 		new_button.visible = false # Button needs to be visible for it to be used
 		new_button.atk_mult = this_action.atk_mult
 		new_button.dfd_mult = this_action.dfd_mult
+		new_button.ally_target = this_action.ally_target
 		
 		@warning_ignore("standalone_expression")
 		var lambda = func() : null
@@ -73,8 +74,11 @@ func add_actions(custom_actions : Array) -> void:
 					#OneDRoot.player_pass_turn()
 			_:
 				lambda = func():
-					intended_action = Callable(self, this_action.func_name)
-					OneDRoot.player_pass_turn()
+					intended_action = Callable(self, this_action.func_name).bind(this_action.sprun_loss)
+					if this_action.ally_target:
+						OneDRoot.initiate_select_ally()
+					else:
+						OneDRoot.player_pass_turn()
 				
 		new_button.connect("pressed", lambda)
 		

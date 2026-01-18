@@ -12,7 +12,8 @@ extends Button
 @export var dfd_mult : float = 0.0
 
 @export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var usable_on_player: int = 0
-@export var requires_target = false
+@export var prep_disable = false
+@export var ally_target = false
 
 func check_cost(sprun: int) -> void:
 	if sprun >= sprun_cost:

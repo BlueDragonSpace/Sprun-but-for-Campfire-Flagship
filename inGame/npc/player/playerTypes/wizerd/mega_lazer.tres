@@ -10,5 +10,5 @@ player_type = 4
 sprun_necessary = 3
 sprun_loss = 2
 atk_mult = 5.0
-requires_target = true
+prep_disable = true
 button_info = "Costs 3 sprun, but only takes away 2. Tremendous damage."

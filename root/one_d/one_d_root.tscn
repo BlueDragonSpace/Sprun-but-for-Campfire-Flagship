@@ -9,8 +9,8 @@
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="6_20myc"]
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
-[ext_resource type="Resource" uid="uid://d21q8e62mtv0h" path="res://inGame/npc/player/playerTypes/kitty/reflection.tres" id="8_20myc"]
 [ext_resource type="PackedScene" uid="uid://c02utralqt5h" path="res://inGame/npc/player/playerTypes/ratface/rat.tscn" id="8_37sdc"]
+[ext_resource type="Resource" uid="uid://c3a14axpyy1n0" path="res://inGame/npc/player/playerTypes/wizerd/mega_lazer.tres" id="9_20myc"]
 [ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/npc/enemy/enemy.tscn" id="9_r1xw6"]
 [ext_resource type="Texture2D" uid="uid://bpyet5t7bpkww" path="res://placeholderArt/myPixelArt/BiggBlue-1.png.png" id="10_fshsv"]
 [ext_resource type="Texture2D" uid="uid://dtkrx4fskgr5r" path="res://placeholderArt/myPixelArt/littleBlue-1.png.png" id="11_qswi8"]
@@ -56,23 +56,26 @@ in_3d_space = true
 [sub_resource type="Resource" id="Resource_20myc"]
 resource_local_to_scene = true
 script = ExtResource("6_20myc")
-name = "Hide"
-func_name = "hideAction"
-action_type = 3
-player_type = 8
-button_info = "Enemies cannot directly target this character next turn."
-
-[sub_resource type="Resource" id="Resource_05ql3"]
-resource_local_to_scene = true
-script = ExtResource("6_20myc")
 name = "Daggers"
 func_name = "daggers"
 player_type = 4096
 sprun_necessary = 2
 sprun_loss = 2
 atk_mult = 0.75
-requires_target = true
 button_info = "Attacks all enemies. Chosen enemy is dealt double damage."
+
+[sub_resource type="Resource" id="Resource_05ql3"]
+resource_local_to_scene = true
+script = ExtResource("6_20myc")
+name = "Heal"
+func_name = "heal"
+action_type = 3
+player_type = 4
+sprun_necessary = 5
+sprun_loss = 3
+atk_mult = 0.5
+ally_target = true
+button_info = "Heals 10 damage. Takes away 3 sprun."
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gj8ci"]
 shader = ExtResource("24_a1wwb")
@@ -670,7 +673,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [4, 2]
+"values": [5, 3]
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -919,7 +922,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [3, 0]
+"values": [5, 0]
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -1125,15 +1128,18 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
 layout_mode = 2
-new_action = Array[Resource]([ExtResource("8_20myc"), SubResource("Resource_20myc")])
 max_hp = 90
 
 [node name="Raccoon" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_b1nt6")]
 layout_mode = 2
 sprun_slots = 2
 sprun_active = 2
-new_action = Array[Resource]([SubResource("Resource_05ql3")])
+new_action = Array[Resource]([SubResource("Resource_20myc")])
 max_hp = 90
+
+[node name="Wizerd" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_ih4ah")]
+layout_mode = 2
+new_action = Array[Resource]([ExtResource("9_20myc"), SubResource("Resource_05ql3")])
 
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)
@@ -1364,7 +1370,6 @@ expand_icon = true
 info = "Deal damage to enemy."
 atk_mult = 1.0
 usable_on_player = 34
-requires_target = true
 
 [node name="BigATK" parent="RootGame/LowerBar/VBoxContainer/Actions/Attack" instance=ExtResource("17_32om6")]
 layout_mode = 2
@@ -1372,7 +1377,6 @@ text = "ATK+"
 info = "Deal 2.5x damage to enemy."
 sprun_cost = 1
 atk_mult = 2.5
-requires_target = true
 
 [node name="Defend" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
 layout_mode = 2
@@ -1456,7 +1460,6 @@ layout_mode = 2
 text = "Evil Flash"
 info = "immediately damage current_enemy for 10 (doesn't kill)"
 usable_on_player = 1
-requires_target = true
 
 [node name="AutoSprun" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" instance=ExtResource("17_32om6")]
 layout_mode = 2

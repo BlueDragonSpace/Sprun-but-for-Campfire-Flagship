@@ -14,9 +14,3 @@ icon = ExtResource("4_gqmbh")
 speed_stat = 3
 max_hp = 22
 attack_stat = 4
-
-[node name="ShieldNum" parent="VBoxContainer/LowerBar/Shield" index="0"]
-size_flags_stretch_ratio = 1.0
-
-[node name="VSeparator3" parent="VBoxContainer" index="4"]
-layout_mode = 2

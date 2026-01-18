@@ -11,5 +11,5 @@ player_type = 4096
 sprun_necessary = 1
 sprun_loss = 1
 atk_mult = 0.8
-requires_target = true
+prep_disable = true
 button_info = "Attacks all enemies."
