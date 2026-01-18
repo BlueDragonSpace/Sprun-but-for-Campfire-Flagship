@@ -182,19 +182,13 @@ func set_enemies_intents() -> void:
 			
 			if Charas.get_children().size() == 1:
 				enemy.set_intended_action(Charas.get_child(0))
-				print('only one target, no hiding')
 			else:
-				print('multiple targets to choose')
 				# first, figure out if any are unavailable (hiding)
 				var all_charas = Charas.get_children()
 				
-				for chara in all_charas.size() - 1:
-					for debuff_child in all_charas[chara].DeBuffs.get_children():
-						if debuff_child.debuff.debuff_type == DeBuff.DEBUFF.HIDE:
-							print('cannot target the hider')
-							all_charas.remove_at(chara)
-						else:
-							print(debuff_child.debuff.display_name)
+				for chara_num in all_charas.size() - 1:
+					if all_charas[chara_num].check_debuff(DeBuff.DEBUFF.HIDE):
+						all_charas.remove_at(chara_num)
 				
 				# now direct an attack towards a randomly chosen target (overridden by aggro)
 				enemy.set_intended_action(all_charas[randi_range(0, all_charas.size() - 1)])
@@ -542,6 +536,10 @@ func final_pass_turn() -> void:
 	
 	for player in Charas.get_children():
 		player.intended_action = Callable(Global, "empty_function")
+		
+		# ticks down all debuffs
+		for debuff_child in player.DeBuffs.get_children():
+			debuff_child.expiration -= 1
 	
 	$RootGame/NextRound.play()
 	

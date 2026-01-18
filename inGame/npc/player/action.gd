@@ -10,7 +10,7 @@ extends Resource
 
 @export var name: String = "action name" # word on the button
 @export var func_name: String = 'in code name' # my stuff
-# utilized to put the action into a folder, doesn't determine its function
+# utilized to put the action into a folder, doesn't determine its function (does add modifiers tho)
 enum ACTION_TYPE {ATTACK, DEFEND, SPRUN, OTHER}
 @export var action_type = ACTION_TYPE.ATTACK
 # must be one of these players to see the ability (also if used illegitamitely, does the empty function)

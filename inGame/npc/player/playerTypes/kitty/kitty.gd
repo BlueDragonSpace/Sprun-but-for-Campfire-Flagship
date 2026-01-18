@@ -18,7 +18,13 @@ func reflection() -> void:
 const HIDE = preload("uid://24y2bom7sjw5")
 
 func hideAction() -> void:
-	var hide_debuff = DE_BUFF_RECT.instantiate()
-	hide_debuff.debuff = HIDE
 	
-	DeBuffs.add_child(hide_debuff)
+	if check_debuff(DeBuff.DEBUFF.HIDE):
+		for debuff_child in DeBuffs.get_children():
+			if debuff_child.debuff.debuff_type == DeBuff.DEBUFF.HIDE:
+				debuff_child.expiration += 2
+				break
+	else:
+		var child = DE_BUFF_RECT.instantiate()
+		child.debuff = HIDE
+		DeBuffs.add_child(child)

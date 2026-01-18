@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="6_20myc"]
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
-[ext_resource type="Resource" uid="uid://cu7gb1lix0hyn" path="res://inGame/npc/player/playerTypes/kitty/hide.tres" id="7_05ql3"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
 [ext_resource type="Resource" uid="uid://d21q8e62mtv0h" path="res://inGame/npc/player/playerTypes/kitty/reflection.tres" id="8_20myc"]
 [ext_resource type="PackedScene" uid="uid://c02utralqt5h" path="res://inGame/npc/player/playerTypes/ratface/rat.tscn" id="8_37sdc"]
@@ -54,7 +53,16 @@ noise = SubResource("FastNoiseLite_ovlcs")
 color_ramp = SubResource("Gradient_ovlcs")
 in_3d_space = true
 
-[sub_resource type="Resource" id="Resource_gba7a"]
+[sub_resource type="Resource" id="Resource_20myc"]
+resource_local_to_scene = true
+script = ExtResource("6_20myc")
+name = "Hide"
+func_name = "hideAction"
+action_type = 3
+player_type = 8
+button_info = "Enemies cannot directly target this character next turn."
+
+[sub_resource type="Resource" id="Resource_05ql3"]
 resource_local_to_scene = true
 script = ExtResource("6_20myc")
 name = "Daggers"
@@ -1117,14 +1125,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
 layout_mode = 2
-new_action = Array[Resource]([ExtResource("8_20myc"), ExtResource("7_05ql3")])
+new_action = Array[Resource]([ExtResource("8_20myc"), SubResource("Resource_20myc")])
 max_hp = 90
 
 [node name="Raccoon" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_b1nt6")]
 layout_mode = 2
 sprun_slots = 2
 sprun_active = 2
-new_action = Array[Resource]([SubResource("Resource_gba7a")])
+new_action = Array[Resource]([SubResource("Resource_05ql3")])
 max_hp = 90
 
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen"]

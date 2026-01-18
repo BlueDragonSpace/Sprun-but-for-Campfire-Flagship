@@ -23,6 +23,9 @@
 	Buff moves:
 		Run check-up at start of prep to remove all buffs
 		Make Hide actually do something
+	
+	Debuffs have time limits, add if already in place
+		
 	Raccoon's other moves
 	
 	Prevent next debuff buff

@@ -9,4 +9,4 @@ name = "Hide"
 func_name = "hideAction"
 action_type = 3
 player_type = 8
-button_info = "Enemies cannot directly target this character next turn."
+button_info = "Enemies cannot directly target this character the next 2 turns. Ineffective while alone."
