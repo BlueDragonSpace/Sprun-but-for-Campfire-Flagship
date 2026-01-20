@@ -12,12 +12,12 @@ var rat_count = 1
 
 const RAT = preload("uid://c02utralqt5h")
 
-func call_rat() -> void:
+func call_rat(sprun_cost : int) -> void:
 	
 	var rat = RAT.instantiate()
 	rat.name = "Rat " + str(rat_count)
 	OneDRoot.Charas.add_child(rat)
-	set_sprun(sprun_active - 2)
+	set_sprun(sprun_active - sprun_cost)
 	# poison damage?
 	
 	rat_count += 1

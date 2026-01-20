@@ -29,6 +29,35 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_scwi5"]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0, 0, -0.050000004, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.29)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_6s5l5"]
 resource_name = "pop_in"
 length = 0.2
@@ -53,21 +82,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(2, 0),
 "points": PackedFloat32Array(0, 0, 0, 0.033333335, 0.16666667, 1, -0.1, 0, 0.1, 0),
 "times": PackedFloat32Array(0, 0.2)
-}
-
-[sub_resource type="Animation" id="Animation_scwi5"]
-resource_name = "fade_out"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0, 0, -0.050000004, 0.16666667, 0, 0),
-"times": PackedFloat32Array(0, 0.3)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_scwi5"]

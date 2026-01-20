@@ -12,5 +12,6 @@ new_action = Array[Resource]([ExtResource("3_gqmbh")])
 player_type = 4098
 icon = ExtResource("4_gqmbh")
 speed_stat = 3
-max_hp = 22
+max_hp = 32
 attack_stat = 4
+defend_stat = 6

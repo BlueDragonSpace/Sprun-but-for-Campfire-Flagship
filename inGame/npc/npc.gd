@@ -1,3 +1,4 @@
+#@abstract ## means that the npc class is not supposed to be utilized on it's own
 extends Control
 
 @onready var OneDRoot = get_tree().get_current_scene().get_child(0)
@@ -17,7 +18,14 @@ extends Control
 @export var speed_stat : int = 12
 
 @export var max_hp: int = 40
-var current_hp: int = max_hp
+var current_hp: int = max_hp:
+	set(new):
+		current_hp = clamp(new, 0, max_hp)
+		
+		if HP.value > current_hp:
+			visual_hp(current_hp)
+		elif HP.value < current_hp:
+			visual_hp(current_hp)
 
 @export var attack_stat : int = 3
 @export var defend_stat : int = 5
@@ -58,21 +66,23 @@ func _ready() -> void:
 	HP.size_flags_stretch_ratio = size_transition
 	
 	add_ready()
+
 # this function is meant to be added on to the ready function, by children, so they don't have to redefine ready
+#@abstract
 func add_ready() -> void:
 	pass
 
-func _process(_delta) -> void:
-	
-	# wait a second I could just set this to a tween
-	if HP.value > current_hp:
-		visual_hp(int(HP.value) - 1)
-	elif HP.value < current_hp:
-		visual_hp(int(HP.value) + 1)
-
 func visual_hp(new_hp : int) -> void:
-	HP.value = new_hp
-	CurrentHp.text = str(int(HP.value))
+	
+	var tween = create_tween()
+	tween.tween_method(set_current_hp_text, HP.value, new_hp, 0.4)  # tweens the text
+	# uses HP.value as from because that value currently hasn't been changed yet
+	
+	var other_tween = create_tween()
+	other_tween.tween_property(HP, "value", new_hp, 0.3)
+
+func set_current_hp_text(new_hp : int) -> void:
+	CurrentHp.text = str(new_hp)
 
 func set_max_hp(new_hp : int) -> void:
 	

@@ -129,3 +129,4 @@ stream = ExtResource("6_k0qa8")
 
 [node name="wawaawawawa" parent="." index="9" instance=ExtResource("5_qfx5e")]
 stream = ExtResource("7_k0qa8")
+bus = &"SFX"

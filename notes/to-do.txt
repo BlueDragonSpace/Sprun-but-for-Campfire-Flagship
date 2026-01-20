@@ -19,9 +19,11 @@
 		Transitioning: find position on 2D screen of a 3D character (local)
 		Move camera script to not be apart of just one player (but the average position of each of them)
 	
-1.5 (not Connecting, ver importan):
 	
-	Select an ally (Heal)
+1.5 (BUGGS THAT ARE REALLY BAD AND GAME BREAKING):
+	Overheal
+	
+1.75 (not Connecting or bug, ver importan):
 	
 	Raccoon's other moves
 	
@@ -61,7 +63,9 @@
 3.5?:
 	All characters get a certain attack if there is a certain character in scene
 	DFD and ATK action (at same time)
-	
+	Settings
+	Credits:
+		My personal touch (not some boring - ahh rolling text)
 4: 
 	Death saves? (Deltarune, DnD, revival at all?)
 	Kitty's 6 Lives (the 7th I don't talk about) [wait was it 9 actually]

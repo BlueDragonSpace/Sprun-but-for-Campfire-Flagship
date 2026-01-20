@@ -22,7 +22,7 @@ const PLAYER_TYPE = 'All, Basic, Wizerd, Kitty, Rodent Lord, Rat, Mouse, Hamster
 @export var sprun_loss: int = 0 #taken away upon use
 @export var atk_mult : float = 0.0 # ditto below
 @export var dfd_mult : float = 0.0 # must be set to above 0 to appear on infoBar
-@export var prep_disable: bool = false # disables upon prep rounds
+@export var prep_disable: bool = false # disables upon prep rounds (seems to not work, but also not necessary anymore to prevent errors)
 @export var ally_target: bool = false # targets an ally instead of an enemy
 @export var button_info: String = 'button info' # hover over button
 
