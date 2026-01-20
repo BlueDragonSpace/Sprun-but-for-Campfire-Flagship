@@ -237,13 +237,18 @@ func add_turn_order_point(point) -> void:
 	now_mark.add_child(new_turn_order_point)
 	#temp_turn_order_point = new_turn_order_point
 
-func select_enemy(index : int) -> void:
+func select_enemy(index : int, is_quick : bool = false) -> void:
 	
 	current_player.action_victim = Enemies.get_child(index)
 	
 	# removes all enemy selector children (as they are always last
 	for enemy in Enemies.get_children():
 		enemy.get_child(-1).queue_free()
+	
+	# calls the function, then tells the turn queue that the next action by character does nothing
+	if is_quick:
+		current_player.intended_action.call()
+		current_player.intended_action = Global.empty_function
 	
 	player_pass_turn()
 
@@ -445,7 +450,7 @@ func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, df
 		DFDStatLabel.visible = true
 		DFDStatLabel.text = str(int(dfd_value * current_player.defend_stat))
 
-func initiate_select_enemy() -> void:
+func initiate_select_enemy(is_quick : bool = false) -> void:
 	
 	if Enemies.get_child_count() > 1:
 		for enemy in Enemies.get_children():
@@ -455,7 +460,7 @@ func initiate_select_enemy() -> void:
 			selector.text = ''
 			selector.info = enemy.name
 			#selector.connect("pressed", select_enemy, index)
-			selector.pressed.connect(select_enemy.bind(index))
+			selector.pressed.connect(select_enemy.bind(index, is_quick))
 			
 			#if index == 0:
 				#selector.call_deferred("grab_focus")
@@ -463,6 +468,8 @@ func initiate_select_enemy() -> void:
 			  
 			#current_enemy = Enemies.get_child(0)
 			enemy.add_child(selector)
+		
+		Actions.get_child(0).visible = true # sets the action tab visible to be set to back
 		turn = TURN_TYPE.SELECT_ENEMY
 	else:
 		current_player.action_victim = current_enemy
@@ -631,24 +638,7 @@ func _on_flash_evily_pressed() -> void:
 	current_enemy.current_hp -= 10
 func _on_auto_sprun_pressed() -> void:
 	current_player.set_sprun(current_player.sprun_active + 1)
-	check_cost_all_actions(current_player.sprun_active) #HERE CHECK THIS
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	check_cost_all_actions(current_player.sprun_active) 
 func _on_auto_heal_pressed() -> void:
 	current_player.current_hp += 10
 

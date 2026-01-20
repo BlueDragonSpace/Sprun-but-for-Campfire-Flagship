@@ -63,9 +63,17 @@ func add_actions(custom_actions : Array) -> void:
 		var lambda = func() : null
 		match(this_action.action_type):
 			0: ## ATTACK
-				lambda = func(): 
-					intended_action = Callable(self, this_action.func_name).bind(this_action.atk_mult, this_action.sprun_loss)
-					OneDRoot.initiate_select_enemy()
+				
+				var action = Callable(self, this_action.func_name).bind(this_action.atk_mult, this_action.sprun_loss)
+				
+				if not this_action.is_quick:
+					lambda = func(): 
+						intended_action = action
+						OneDRoot.initiate_select_enemy()
+				else:
+					lambda = func():
+						intended_action = action
+						OneDRoot.initiate_select_enemy(true)
 			1: ## DEFEND
 				print('no lamda set for custom defend actions in player.gd')
 			#2: ## SPRUN

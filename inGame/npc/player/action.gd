@@ -24,6 +24,7 @@ const PLAYER_TYPE = 'All, Basic, Wizerd, Kitty, Rodent Lord, Rat, Mouse, Hamster
 @export var dfd_mult : float = 0.0 # must be set to above 0 to appear on infoBar
 @export var prep_disable: bool = false # disables upon prep rounds (seems to not work, but also not necessary anymore to prevent errors)
 @export var ally_target: bool = false # targets an ally instead of an enemy
+@export var is_quick: bool = false # goes instantly, doesn't kill
 @export var button_info: String = 'button info' # hover over button
 
 # also note that adding anything to here requires interpretation within player (and likely in the future enemy)

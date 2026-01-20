@@ -5,11 +5,12 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_cky2r")
-name = "Heal"
-func_name = "heal"
-action_type = 3
-player_type = 4
-sprun_necessary = 5
-sprun_loss = 3
-atk_mult = 0.5
-button_info = "Heals for half of your damage"
+name = "Sneak Attack"
+func_name = "empty_function"
+player_type = 4096
+sprun_necessary = 1
+sprun_loss = 1
+atk_mult = 0.7
+prep_disable = true
+is_quick = true
+button_info = "Attacks instantly. Cannot kill."

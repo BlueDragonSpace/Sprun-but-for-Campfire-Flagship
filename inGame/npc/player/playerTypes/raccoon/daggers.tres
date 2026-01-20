@@ -3,13 +3,12 @@
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="1_0g0tm"]
 
 [resource]
-resource_local_to_scene = true
 script = ExtResource("1_0g0tm")
 name = "Daggers"
 func_name = "daggers"
 player_type = 4096
 sprun_necessary = 1
 sprun_loss = 1
-atk_mult = 0.8
+atk_mult = 0.6
 prep_disable = true
 button_info = "Attacks all enemies."

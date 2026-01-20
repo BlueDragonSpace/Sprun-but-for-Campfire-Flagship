@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://c7jivkc0dwrjl"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="1_x8b2e"]
+
+[resource]
+script = ExtResource("1_x8b2e")
+name = "Sneak Attack"
+func_name = "sneak_attack"
+player_type = 4096
+sprun_necessary = 1
+sprun_loss = 1
+atk_mult = 0.8
+prep_disable = true
+is_quick = true
+button_info = "Attacks instantly. Cannot kill. Ignores shields."

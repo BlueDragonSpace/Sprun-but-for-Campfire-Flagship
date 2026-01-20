@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://d3wbwxma2hkqm"]
+[gd_scene load_steps=56 format=3 uid="uid://d3wbwxma2hkqm"]
 
 [ext_resource type="Theme" uid="uid://cyy1ccrel07nx" path="res://root/root.tres" id="1_nt0n7"]
 [ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/one_d/one_d_root.gd" id="2_vitat"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://c3a14axpyy1n0" path="res://inGame/npc/player/playerTypes/wizerd/mega_lazer.tres" id="7_b1nt6"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="8_20myc"]
+[ext_resource type="Resource" uid="uid://2e2way0p32mh" path="res://inGame/npc/player/playerTypes/wizerd/heal.tres" id="8_b1nt6"]
 [ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/npc/enemy/enemy.tscn" id="9_r1xw6"]
 [ext_resource type="Texture2D" uid="uid://bpyet5t7bpkww" path="res://placeholderArt/myPixelArt/BiggBlue-1.png.png" id="10_fshsv"]
 [ext_resource type="Texture2D" uid="uid://dtkrx4fskgr5r" path="res://placeholderArt/myPixelArt/littleBlue-1.png.png" id="11_qswi8"]
@@ -52,17 +53,30 @@ noise = SubResource("FastNoiseLite_ovlcs")
 color_ramp = SubResource("Gradient_ovlcs")
 in_3d_space = true
 
+[sub_resource type="Resource" id="Resource_20myc"]
+resource_local_to_scene = true
+script = ExtResource("8_20myc")
+name = "Daggers"
+func_name = "daggers"
+player_type = 4096
+sprun_necessary = 1
+sprun_loss = 1
+atk_mult = 0.8
+prep_disable = true
+button_info = "Attacks all enemies."
+
 [sub_resource type="Resource" id="Resource_05ql3"]
 resource_local_to_scene = true
 script = ExtResource("8_20myc")
-name = "Heal"
-func_name = "heal"
-action_type = 3
-player_type = 4
-sprun_necessary = 4
-sprun_loss = 2
-ally_target = true
-button_info = "Heals 10 damage. Takes away 2 sprun."
+name = "Sneak Attack"
+func_name = "sneak_attack"
+player_type = 4096
+sprun_necessary = 1
+sprun_loss = 1
+atk_mult = 0.5
+prep_disable = true
+is_quick = true
+button_info = "Attacks instantly. Cannot kill. Ignores shields."
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gj8ci"]
 shader = ExtResource("24_a1wwb")
@@ -1116,9 +1130,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
 layout_mode = 2
 
+[node name="Raccoon" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_b1nt6")]
+layout_mode = 2
+new_action = Array[Resource]([SubResource("Resource_20myc"), SubResource("Resource_05ql3")])
+
 [node name="Wizerd" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_ih4ah")]
 layout_mode = 2
-new_action = Array[Resource]([ExtResource("7_b1nt6"), SubResource("Resource_05ql3")])
+new_action = Array[Resource]([ExtResource("7_b1nt6"), ExtResource("8_b1nt6")])
 
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)

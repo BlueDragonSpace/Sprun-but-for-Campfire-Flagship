@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbku30glrarxd"]
+[gd_scene load_steps=6 format=3 uid="uid://bbku30glrarxd"]
 
 [ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/npc/player/player.tscn" id="1_m5oq8"]
 [ext_resource type="Script" uid="uid://ce6ywj1ahln6d" path="res://inGame/npc/player/playerTypes/raccoon/raccoon.gd" id="2_w3pjq"]
 [ext_resource type="Resource" uid="uid://ch56xq26ov4yl" path="res://inGame/npc/player/playerTypes/raccoon/daggers.tres" id="3_gqmbh"]
 [ext_resource type="Texture2D" uid="uid://7eya5knr354s" path="res://placeholderArt/raccoonFiller.png" id="4_gqmbh"]
+[ext_resource type="Resource" uid="uid://c7jivkc0dwrjl" path="res://inGame/npc/player/playerTypes/raccoon/sneak_attack.tres" id="4_ne3ci"]
 
 [node name="Raccoon" instance=ExtResource("1_m5oq8")]
 script = ExtResource("2_w3pjq")
 sprun_slots = 1
-new_action = Array[Resource]([ExtResource("3_gqmbh")])
+new_action = Array[Resource]([ExtResource("3_gqmbh"), ExtResource("4_ne3ci")])
 player_type = 4098
 icon = ExtResource("4_gqmbh")
-speed_stat = 3
 max_hp = 32
-attack_stat = 4
+attack_stat = 5
 defend_stat = 6
+
+[node name="HP" parent="VBoxContainer/LowerBar" index="1"]
+allow_greater = false

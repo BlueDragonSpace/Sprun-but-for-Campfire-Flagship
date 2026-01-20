@@ -2,6 +2,7 @@ extends Button
 
 # surprisingly, this thing isn't directly correlated in code with the 
 # -Action class or Resource
+# (probably should be)
 
 # info for the info bar
 @onready var OneDRoot = get_tree().get_current_scene().get_child(0)
