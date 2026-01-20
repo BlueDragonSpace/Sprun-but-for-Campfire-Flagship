@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhkrj58td4ng7"]
+[gd_scene load_steps=9 format=3 uid="uid://bhkrj58td4ng7"]
 
 [ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/npc/player/player.tscn" id="1_ra5ly"]
 [ext_resource type="Script" uid="uid://c2yhgf20ky871" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.gd" id="2_8x0pt"]
 [ext_resource type="Resource" uid="uid://d2ing130rolfl" path="res://inGame/npc/player/playerTypes/ratface/RAT.tres" id="3_jl2p5"]
+[ext_resource type="Resource" uid="uid://qt4lsl84qfnm" path="res://inGame/npc/player/playerTypes/ratface/MOUSE.tres" id="4_lnvgy"]
 [ext_resource type="Texture2D" uid="uid://bs2vr1mqvjcph" path="res://placeholderArt/myPixelArt/RodentLordRn-1.png.png" id="4_wjvg3"]
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="5_5hico"]
 [ext_resource type="AudioStream" uid="uid://dhbp5gli5socg" path="res://placeholderArt/sfx/ratNoise.wav" id="6_m8o4b"]
@@ -11,7 +12,7 @@
 
 [node name="Rodent Lord" instance=ExtResource("1_ra5ly")]
 script = ExtResource("2_8x0pt")
-new_action = Array[Resource]([ExtResource("3_jl2p5")])
+new_action = Array[Resource]([ExtResource("3_jl2p5"), ExtResource("4_lnvgy")])
 player_type = 18
 icon = ExtResource("4_wjvg3")
 speed_stat = 8

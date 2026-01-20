@@ -3,14 +3,12 @@
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="1_cky2r"]
 
 [resource]
-resource_local_to_scene = true
 script = ExtResource("1_cky2r")
-name = "Sneak Attack"
-func_name = "empty_function"
-player_type = 4096
+name = "MOUSE"
+func_name = "call_mouse"
+action_type = 3
+player_type = 16
 sprun_necessary = 1
 sprun_loss = 1
-atk_mult = 0.7
 prep_disable = true
-is_quick = true
-button_info = "Attacks instantly. Cannot kill."
+button_info = "Spawns a mouse, which has 0 ATK damage."

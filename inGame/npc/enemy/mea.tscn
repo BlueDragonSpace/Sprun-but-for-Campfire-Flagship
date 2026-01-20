@@ -4,5 +4,5 @@
 
 [node name="Mea" instance=ExtResource("1_rk0pp")]
 attack_range = 4
-max_hp = 25
+max_hp = 18
 attack_stat = 7

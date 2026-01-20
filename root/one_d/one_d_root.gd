@@ -44,6 +44,7 @@ const ENEMY_SELECTION = preload("uid://c6hsrr8o4xvi3")
 ## ENEMIES
 const BIGG = preload("uid://bs8426h8sndoy")
 const LITTLES = preload("uid://b6qpplfncfiyr")
+const MEA = preload("uid://d2nk51jmcg81m")
 
 @export var started : bool = false
 # how many characters can you start with
@@ -57,7 +58,7 @@ var turn_order_data = [] # speed_stat, icon, node_path, action
 var current_turn = 0
 var current_wave = 0
 ## prep section
-var in_prep_round = false
+@export var in_prep_round = false
 var prep_rounds_remaining = 3
 
 ## In-Battle
@@ -124,7 +125,7 @@ var current_round = 0:
 # the player types, for use within the root, as an array rather than one string
 var root_player_type_array = Action.PLAYER_TYPE.split(', ')
 
-const to_player_text = ['Continue.', 'Escape.', 'Worth.', 'Catastrophe.', 'Perpetual.', 'Cycles.', 'The Hazy Abyss. They are there.']
+const to_player_text = ['Continue.', 'Escape.', 'Worth.', 'Catastrophe.', 'Perpetual.', 'Cycles.', 'The Hazy Abyss. They are there.', 'Enemies will always target the last character to attack them. Or defend.', 'Rounds end immediately once the last enemy is felled. All actions after that are cancelled.', 'Tabs on the Action bar can be dragged and dropped.', 'There is a minimum of 2 prep rounds, because I don\'t want to add an "s".']
 const player_pass_text = [' looks a little agitated', ' probably needs some coffee', ' wonders why they are in the abyss', ' whistles', ' is quite tired of this nonsense', '.', ' doesn\'t really like all the rats']
 
 # Called when the node enters the scene tree for the first time.
@@ -267,13 +268,7 @@ func add_enemy_wave() -> void:
 	current_wave += 1
 	$RootGame/TopBar/HBoxContainer/WaveNum.text = str(current_wave)
 	
-	
-	
-	
-	########################### AAAAAAAAAAAAAAAAAAAAAAAAA
-	
-	
-	match(randi_range(0, 1)):
+	match(randi_range(0, 2)):
 		0:
 			# one big 
 			var big_boi = BIGG.instantiate()
@@ -293,8 +288,13 @@ func add_enemy_wave() -> void:
 				
 				Enemies.columns = 2
 		2:
-			# many littles
-			pass
+			# mea (always 2)
+			for i in 2:
+				var mea = MEA.instantiate()
+				mea.name = "Mea " + str(i)
+				Enemies.add_child(mea)
+				
+				mea.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # makes each enemy darker
 		_:
 			print('unknown enemy wave value')
 	
