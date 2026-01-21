@@ -25,17 +25,25 @@ func _unhandled_input(event: InputEvent) -> void:
 		# click and release sound effect (Kinito.PET !!)
 	if not event is InputEventMouseButton and not event is InputEventMouseMotion:
 		if event and not event.is_echo() and not event.is_released():
-			KeyClick.pitch_scale = event.keycode / 100.0
+			if not event.keycode > 200:
+				KeyClick.pitch_scale = event.keycode / 100.0
+			else:
+				KeyClick.pitch_scale = 1.0
 			KeyClick.play()
 		elif event.is_released():
-			KeyRelease.pitch_scale = (event.keycode + 25.0) / 100.0
+			if not event.keycode > 200:
+				KeyRelease.pitch_scale = (event.keycode + 25.0) / 100.0
+			else:
+				KeyRelease.pitch_scale = 1.0
 			KeyRelease.play()
 
 # close eye animation needed upon 3D Ortho to/from Perspective
 # 1 <-> 3 / 2: Background / Environment fades, character sprites *tween* to new position
 # 2 <-> 3: Ortho screws everything up... needs pre
 
-func dimension_shift(new_dimension : int) -> void:
+func dimension_shift() -> void:
+	
+	#new_dimension : int
 	
 	# turn off previous dimension
 	match(dimension):
@@ -50,4 +58,4 @@ func dimension_shift(new_dimension : int) -> void:
 		_:
 			print('illegal dimension entered, what did you do')
 	
-	dimension = new_dimension
+	#dimension = new_dimension

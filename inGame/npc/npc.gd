@@ -134,7 +134,7 @@ func add_take_damage(_attacker): # additional stuff I add to take_damage() in ot
 func defend():
 	self.current_defense += defend_stat
 	Animate.play("defend")
-	$DoDefend.play()
+	$DoDefend.play() 
 
 func attack() -> void:
 	if action_victim:

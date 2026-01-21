@@ -21,18 +21,20 @@
 	
 	
 1.5 (BUGGS THAT ARE REALLY BAD AND GAME BREAKING):
-	Double pressing character select button adds duplicate charaters
 	
 1.75 (not Connecting or bug, ver importan):
 	
 2 (more mechanics):
+	Player Intents
 	More enemy intents (debuff, buff, charge up, unknown)
 	Different kinds of Sprun (Red used on ATK, so on)
 	add_lambda() -> Notif, subtracting sprun_cost
 	Speed is currently an invisible statistic... (make art, add to infoBar)
+	
 3:
 	Poison Debuff (for Rat and beyond) (Slay the Spire like)
 	Fire DeBuff (set amount of damage, doesn't go down)
+	Stone DeBuff (wow Mario + Rabbids)
 	Sprun Movement Shifting depending on size (too far when small, too close when big)
 	Name of attack upon using it (like the notifs from Cascade) + Damage (StS)
 	Show Player Intent Upon choosing their action
@@ -54,6 +56,8 @@
 	Settings
 	Credits:
 		My personal touch (not some boring - ahh rolling text)
+	
+	Auto-count / add green text for when sprun is met (Draven playtest, the two separate corners of the screen where you have the sprun on left, and the total cost on the right)
 4: 
 	Death saves? (Deltarune, DnD, revival at all?)
 	Kitty's 6 Lives (the 7th I don't talk about) [wait was it 9 actually]
@@ -71,11 +75,18 @@
 		Enemies
 		Progression(?) / Scaling
 	
+	Tutorial (make it good gosh darn it):
+		Turn Queue!!!!!!!! (top to bottom)
+		Taking away sprun vs Sprun needed to use
+		What character's turn it is
 5:
 	Distributing...:
 		Steam, Itch, so on
 	Outreaching:
 		Shovel: Showcase Saturday on Discord (find the emails of content creators and so on) 
+	Hi_Pirates.txt
+6 (almost definitely never gonna happen):
+	Finish the round when final enemy dies
 
 Quirks:
 	Balance the funny and serious (makes both more meaningful)
@@ -105,6 +116,7 @@ Tips for players:
 
 Bugs:
 	On the animation to the first player (after a round), last player's actions show up (but aren't clickable, thankfully)
+	After Bunnell playtested, immediate next turn was an error where all enemies' last child (an audio node) was deleted, and I have no idea why that happened
 
 Noot noot
 Holy carp the game works on mobile by accident!!!!
@@ -117,6 +129,7 @@ Rodent Lord Rodents:
 	Porkypine (thorns)
 	Flying Squirels, chipmunks, beavers, capybaras, gopher, base squirel
 
+
+
 Currently finished:
-	Added better intents to Berserk
-	Uhhhh Imma make another build lol
+	Added key sounds for keys with keycodes over 200

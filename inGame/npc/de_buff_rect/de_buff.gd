@@ -23,9 +23,10 @@ enum DEBUFF {
 @export var debuff_type = DEBUFF.STRENGTH
 
 @export var display_name = 'base'
-@export var info = 'what do debuff do'
+@export var info = 'what da debuff do'
 @export var icon = Texture2D
 
+@export var is_bad = false # bad as in you want to remove it
 # expiration in turns
 @export var time_til_expiration = 1
 

@@ -130,7 +130,7 @@ var current_round = 0:
 # the player types, for use within the root, as an array rather than one string
 var root_player_type_array = Action.PLAYER_TYPE.split(', ')
 
-const to_player_text = ['Continue.', 'Escape.', 'Worth.', 'Catastrophe.', 'Perpetual.', 'Cycles.', 'The Hazy Abyss. They are there.', 'Enemies will always target the last character to attack them. Or defend.', 'Rounds end immediately once the last enemy is felled. All actions after that are cancelled.', 'Tabs on the Action bar can be dragged and dropped.', 'There is a minimum of 2 prep rounds, because I don\'t want to add an "s".']
+const to_player_text = ['Continue.', 'Escape.', 'Worth.', 'Catastrophe.', 'Perpetual.', 'Cycles.', 'The Hazy Abyss. They are there.', 'Enemies will always target the last character to attack them. Or defend.', 'Rounds end immediately once the last enemy is felled. All actions after that are cancelled.', 'Tabs on the Action bar can be dragged and dropped.']
 const player_pass_text = [' looks a little agitated', ' probably needs some coffee', ' wonders why they are in the abyss', ' whistles', ' is quite tired of this nonsense', '.', ' doesn\'t really like all the rats']
 
 # Called when the node enters the scene tree for the first time.
