@@ -45,7 +45,7 @@ const BIGG = preload("uid://bs8426h8sndoy")
 const LITTLES = preload("uid://b6qpplfncfiyr")
 const MEA = preload("uid://d2nk51jmcg81m")
 const BERSERK = preload("uid://do18m24rjb481")
-
+const CHARGE_UP = preload("uid://d3n5wkylral0k") 
 
 @export var started : bool = false
 # how many characters can you start with
@@ -166,7 +166,7 @@ func initialize_game() -> void:
 	
 	BAK.disabled = true
 	
-	NoiseBackground.texture.noise.seed = randi()
+	#NoiseBackground.texture.noise.seed = randi()
 	
 	#IncreaseSprunSlots.sprun_cost = current_player.sprun_slots
 	check_upgrade_cost_actions(current_player)
@@ -271,7 +271,7 @@ func add_enemy_wave() -> void:
 	current_wave += 1
 	$RootGame/TopBar/HBoxContainer/WaveNum.text = str(current_wave)
 	
-	match(randi_range(0, 3)):
+	match(randi_range(0, 4)):
 		0:
 			# one big 
 			var big_boi = BIGG.instantiate()
@@ -289,19 +289,32 @@ func add_enemy_wave() -> void:
 				
 				little.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # makes each enemy darker
 				
-				Enemies.columns = 2
+			Enemies.columns = 2
 		2:
-			# mea (always 2)
-			for i in 2:
+			# mea (always 3)
+			for i in 3:
 				var mea = MEA.instantiate()
 				mea.name = "Mea " + str(i + 1)
 				Enemies.add_child(mea)
 				
 				mea.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # makes each enemy darker
-		3:
+		3: # 2 Berserks
 			var unpredictable = BERSERK.instantiate()
 			Enemies.add_child(unpredictable)
 			Enemies.columns = 1
+		4: # 2 littles and charge_up
+			# charge_up
+			var charger = CHARGE_UP.instantiate()
+			Enemies.add_child(charger)
+			
+			# littles
+			for i in 2:
+				var little = LITTLES.instantiate()
+				little.name = "Lytle " + str(i + 1)
+				Enemies.add_child(little)
+				little.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # makes each enemy darker
+				
+			Enemies.columns = 3
 		_:
 			print('unknown enemy wave value')
 	

@@ -549,36 +549,24 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/3/type = "value"
+tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("NoiseBackground:texture:color_ramp:colors")
+tracks/3/path = NodePath("CharacterSelect:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [PackedColorArray(1.4920532e-06, 0.5304824, 0.2201744, 1, 0.72519064, 0.00041941137, 0.7291304, 1), PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)]
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CharacterSelect:modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 2),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.33333334, 0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 2)
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CharacterSelect:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterSelect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 2.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -957,7 +945,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_nt0n7")
 script = ExtResource("2_vitat")
-started = true
 
 [node name="NoiseBackground" type="TextureRect" parent="."]
 layout_mode = 1
@@ -1108,20 +1095,7 @@ size_flags_stretch_ratio = 0.14
 [node name="Charas" type="GridContainer" parent="RootGame/BattleScreen"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
-layout_mode = 2
-
-[node name="Raccoon" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_b1nt6")]
-layout_mode = 2
-
-[node name="Wizerd" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_ih4ah")]
-layout_mode = 2
-
-[node name="Rodent Lord" parent="RootGame/BattleScreen/Charas" instance=ExtResource("7_p81qd")]
-layout_mode = 2
 
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)
@@ -1343,21 +1317,21 @@ info = "Increase your max Sprun storage. Costs the max amount of sprun you can h
 layout_mode = 2
 text = "ATK Upgrade"
 info = "Multiply current ATK by 1.5. Costs 2 more sprun for each use."
-sprun_cost = 1
+sprun_cost = 3
 atk_mult = 1.0
 
 [node name="DFDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "DFD Upgrade"
 info = "Multiply current DFD by 1.5. Costs 2 more sprun for each use."
-sprun_cost = 1
+sprun_cost = 3
 dfd_mult = 1.0
 
 [node name="SPDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "SPD Upgrade"
 info = "Multiply current SPD by 1.5. Costs 2 more sprun for each use."
-sprun_cost = 1
+sprun_cost = 3
 
 [node name="Other" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
 visible = false
@@ -1449,13 +1423,13 @@ stretch_mode = 5
 [node name="Info" type="Label" parent="CharacterSelect/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Wow awesome text here"
+text = "Select 3 characters."
 horizontal_alignment = 1
 
 [node name="SubInfo" type="Label" parent="CharacterSelect/VBoxContainer"]
 modulate = Color(0.68307734, 0.6830774, 0.68307734, 1)
 layout_mode = 2
-text = "Wow awesome text here"
+text = "Fall into the Longest Dream."
 horizontal_alignment = 1
 
 [node name="VSeparator3" type="HSeparator" parent="CharacterSelect/VBoxContainer"]
@@ -1473,7 +1447,7 @@ layout_mode = 2
 text = "Wizard"
 icon = ExtResource("23_8iljn")
 info = "Magics"
-sub_info = "Powerful attacks, little HP"
+sub_info = "Powerful attacks, and healing, but little HP."
 info_icon = ExtResource("23_8iljn")
 linked_character = ExtResource("5_ih4ah")
 
@@ -1481,7 +1455,7 @@ linked_character = ExtResource("5_ih4ah")
 layout_mode = 2
 text = "Kitty"
 icon = ExtResource("24_yxtmk")
-info = "Is Kitty"
+info = "Cat, no Kitten"
 sub_info = "The Chosen."
 info_icon = ExtResource("24_yxtmk")
 linked_character = ExtResource("6_ajhc2")
@@ -1491,7 +1465,7 @@ layout_mode = 2
 text = "Rodent Lord"
 icon = ExtResource("25_b1nt6")
 info = "Summoner (of Rats)"
-sub_info = "Like a Necromancer. But cooler."
+sub_info = "Like a Necromancer. But cooler. Spawns rats and mice."
 info_icon = ExtResource("25_b1nt6")
 linked_character = ExtResource("7_p81qd")
 
@@ -1501,8 +1475,8 @@ text = "Raccoon"
 icon = ExtResource("25_8iljn")
 icon_alignment = 1
 expand_icon = true
-info = "Racooooooon"
-sub_info = "Has group damage lol"
+info = "Quite the Bandit"
+sub_info = "Does group damage, and can skip the turn queue."
 info_icon = ExtResource("25_8iljn")
 linked_character = ExtResource("5_b1nt6")
 

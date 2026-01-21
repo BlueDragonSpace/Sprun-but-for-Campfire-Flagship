@@ -15,9 +15,9 @@ const SPRUN = preload("uid://b6wgjet502thq")
 const ACTION_BUTTON = preload("uid://drtw4kuprkapi")
  
 # costs are listed in Sprun USD all purchases sold separately
-var atk_upgrade_cost = 1
-var dfd_upgrade_cost = 1
-var spd_upgrade_cost = 1
+var atk_upgrade_cost = 3
+var dfd_upgrade_cost = 3
+var spd_upgrade_cost = 3
 
 
 func add_ready() -> void:

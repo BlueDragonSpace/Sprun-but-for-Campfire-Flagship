@@ -117,7 +117,7 @@ new_action = Array[Resource]([ExtResource("3_i643x"), ExtResource("4_wqnb0")])
 player_type = 6
 icon = ExtResource("2_whysk")
 speed_stat = 6
-max_hp = 29
+max_hp = 22
 
 [node name="WizerdAnimate" type="AnimationPlayer" parent="." index="2"]
 libraries = {

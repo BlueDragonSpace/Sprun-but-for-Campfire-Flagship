@@ -1,1 +1,2 @@
 Make sure started is false
+Make sure there are no characters, and the Gate and Keykeeper as the only enemies

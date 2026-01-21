@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/npc/enemy/enemy.tscn" id="1_rk0pp"]
 
 [node name="Mea" instance=ExtResource("1_rk0pp")]
+hp_range = 4
 attack_range = 4
-max_hp = 18
+max_hp = 12
 attack_stat = 7

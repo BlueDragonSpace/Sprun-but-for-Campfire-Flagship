@@ -14,6 +14,7 @@ var last_attacker : Node = null # remembers the last player to attack it
 # intent textures
 const SWORD_ART = preload("uid://cl4v4yeo1gn2m")
 const SHIELD_ART = preload("uid://bvhkmrse4oqmm")
+const ATTENTIONS_ART = preload("uid://depk6jpfx32yl")
 
 # random other icons
 const BIGG_BLUE_1_PNG = preload("uid://bpyet5t7bpkww")
@@ -80,3 +81,8 @@ func set_intended_action(victim: Node) -> void:
 	IntendedTargetIcon.texture = victim.icon
 	action_victim = victim
 	
+	add_set_intended_action()
+
+func add_set_intended_action() -> void:
+	#intended to be abstract
+	pass

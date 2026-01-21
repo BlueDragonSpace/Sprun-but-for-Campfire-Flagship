@@ -16,7 +16,8 @@ new_action = Array[Resource]([ExtResource("3_jl2p5"), ExtResource("4_lnvgy")])
 player_type = 18
 icon = ExtResource("4_wjvg3")
 speed_stat = 8
-max_hp = 38
+max_hp = 28
+attack_stat = 4
 
 [node name="CurrentHP" parent="VBoxContainer/LowerBar/HP/HPBar" index="0"]
 label_settings = SubResource("LabelSettings_bleps")
