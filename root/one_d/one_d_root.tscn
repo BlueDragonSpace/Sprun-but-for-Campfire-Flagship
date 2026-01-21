@@ -34,7 +34,7 @@
 [ext_resource type="Shader" uid="uid://bo0lvrtc1mrha" path="res://shaders/rainbows.gdshader" id="26_v6bl5"]
 
 [sub_resource type="Gradient" id="Gradient_ovlcs"]
-colors = PackedColorArray(1.4920532e-06, 0.5304824, 0.2201744, 1, 0.72519064, 0.00041941137, 0.7291304, 1)
+colors = PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ovlcs"]
 offset = Vector3(0, 0, 313.73)
@@ -304,7 +304,7 @@ tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedColorArray(1.4920532e-06, 0.5304824, 0.2201744, 1, 0.72519064, 0.00041941137, 0.7291304, 1)]
+"values": [PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)]
 }
 tracks/21/type = "bezier"
 tracks/21/imported = false
@@ -832,6 +832,18 @@ tracks/12/keys = {
 "method": &"restart_tree"
 }]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("NoiseBackground:texture:color_ramp:colors")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(2.6, 2.9333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedColorArray(1.4920532e-06, 0.5304824, 0.2201744, 1, 0.72519064, 0.00041941137, 0.7291304, 1), PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_x1xj5"]
 resource_name = "start"
@@ -1093,10 +1105,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
 
-[node name="Charas" type="VBoxContainer" parent="RootGame/BattleScreen"]
+[node name="Charas" type="GridContainer" parent="RootGame/BattleScreen"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
+columns = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
@@ -1131,26 +1143,18 @@ attack_range = 2
 icon = ExtResource("11_qswi8")
 max_hp = 8
 
+[node name="Gatekeeper" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
+layout_mode = 2
+speed_range = 5
+attack_range = 2
+icon = ExtResource("10_fshsv")
+max_hp = 8
+
 [node name="VSeparator" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
-
-[node name="Gatekeeper" parent="RootGame/BattleScreen/VSeparator" instance=ExtResource("9_r1xw6")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -200.0
-offset_right = -4.0
-offset_bottom = 392.0
-grow_horizontal = 1
-grow_vertical = 1
-speed_range = 5
-attack_range = 2
-icon = ExtResource("10_fshsv")
-max_hp = 8
 
 [node name="TurnOrder" type="TextureRect" parent="RootGame/BattleScreen"]
 self_modulate = Color(0.4249623, 0.4249623, 0.4249623, 1)
@@ -1269,7 +1273,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 tab_alignment = 1
-current_tab = 1
+current_tab = 5
 drag_to_rearrange_enabled = true
 
 [node name="BackButton" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
@@ -1284,6 +1288,7 @@ info = "Rechoose last action. (currently only works for attacking)"
 usable_on_player = 1
 
 [node name="Attack" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -1364,6 +1369,7 @@ visible = false
 layout_mode = 2
 text = "ITM"
 info = "not implemented yet lol"
+usable_on_player = 0
 
 [node name="PASS" parent="RootGame/LowerBar/VBoxContainer/Actions/Other" instance=ExtResource("17_32om6")]
 layout_mode = 2
@@ -1372,7 +1378,6 @@ info = "Pass this character's turn."
 usable_on_player = 1
 
 [node name="DevTools" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 5
 

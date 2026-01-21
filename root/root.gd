@@ -6,10 +6,30 @@ var dimension = 1
 # @onready var ThreeDRoot: Node3D = $ThreeDRoot
 
 @onready var Animate: AnimationPlayer = $Animate
+@onready var MouseClick: AudioStreamPlayer = $MouseClick
+@onready var MouseRelease: AudioStreamPlayer = $MouseRelease
+@onready var KeyClick: AudioStreamPlayer = $KeyClick
+@onready var KeyRelease: AudioStreamPlayer = $KeyRelease
 
-func _unhandled_input(_event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			MouseClick.play()
+		elif event.is_released():
+			MouseRelease.play()
+
+func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("dimension_shift"):
 		Animate.play("dimension_shift_in")
+	
+		# click and release sound effect (Kinito.PET !!)
+	if not event is InputEventMouseButton and not event is InputEventMouseMotion:
+		if event and not event.is_echo() and not event.is_released():
+			KeyClick.pitch_scale = event.keycode / 100.0
+			KeyClick.play()
+		elif event.is_released():
+			KeyRelease.pitch_scale = (event.keycode + 25.0) / 100.0
+			KeyRelease.play()
 
 # close eye animation needed upon 3D Ortho to/from Perspective
 # 1 <-> 3 / 2: Background / Environment fades, character sprites *tween* to new position

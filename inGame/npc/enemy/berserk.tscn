@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://do18m24rjb481"]
+
+[ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/npc/enemy/enemy.tscn" id="1_02r81"]
+[ext_resource type="Texture2D" uid="uid://bnvnxoddtaevo" path="res://placeholderArt/squeezeRat-removebg-preview.png" id="2_kw8ps"]
+
+[node name="Berserk" instance=ExtResource("1_02r81")]
+hp_range = 12
+speed_range = 5
+attack_range = 4
+defend_range = 2
+icon = ExtResource("2_kw8ps")
+max_hp = 30
+defend_stat = 4
+
+[node name="IntentBar" parent="VBoxContainer" index="1"]
+visible = false

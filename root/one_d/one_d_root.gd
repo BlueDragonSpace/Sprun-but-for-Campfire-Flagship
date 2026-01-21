@@ -3,7 +3,7 @@ extends Control
 # NodePathssssss
 @onready var NoiseBackground: TextureRect = $NoiseBackground
 
-@onready var Charas: VBoxContainer = $RootGame/BattleScreen/Charas
+@onready var Charas: GridContainer = $RootGame/BattleScreen/Charas
 @onready var Enemies: GridContainer = $RootGame/BattleScreen/Enemies
 @onready var TurnOrder: VBoxContainer = $RootGame/BattleScreen/TurnOrder/TurnOrder
 
@@ -23,7 +23,6 @@ extends Control
 @onready var ATKStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/ATKStatLabel
 @onready var DFDStatIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/DFDStatIcon
 @onready var DFDStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/DFDStatLabel
-
 
 @onready var TWKPrepRoundsLabel: Label = $TWK/Labels/VBoxContainer/Num
 @onready var TopBarPrepRoundsLabel: Label = $RootGame/TopBar/HBoxContainer/TextureRect/PrepRoundsLabel
@@ -45,6 +44,8 @@ const ENEMY_SELECTION = preload("uid://c6hsrr8o4xvi3")
 const BIGG = preload("uid://bs8426h8sndoy")
 const LITTLES = preload("uid://b6qpplfncfiyr")
 const MEA = preload("uid://d2nk51jmcg81m")
+const BERSERK = preload("uid://do18m24rjb481")
+
 
 @export var started : bool = false
 # how many characters can you start with
@@ -57,6 +58,7 @@ var mid_animation_action = func() : pass
 var turn_order_data = [] # speed_stat, icon, node_path, action
 var current_turn = 0
 var current_wave = 0
+var last_tab = 0 # when going from attack to selection, switches you to BAK, which is kinda annoying, so now it goes back to ATK 
 ## prep section
 @export var in_prep_round = false
 var prep_rounds_remaining = 3
@@ -87,7 +89,7 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 					for enemy in Enemies.get_children():
 						enemy.get_child(-1).queue_free()
 					BAK.disabled = true
-					# may be worth turning the back_action to be the empty function
+					Actions.find_child("Attack").visible = true # makes the attack tab visible again after backing out
 			TURN_TYPE.SELECT_ALLY:
 				disable_all_actions(true)
 				BAK.disabled = false
@@ -251,6 +253,7 @@ func select_enemy(index : int, is_quick : bool = false) -> void:
 		current_player.intended_action.call()
 		current_player.intended_action = Global.empty_function
 	
+	Actions.find_child("Attack").visible = true # found it annoying to attack twice in a row, it goes to BAK and you have to go back to the Attack tab manually. No more!
 	player_pass_turn()
 
 func select_ally(index : int) -> void:
@@ -268,11 +271,11 @@ func add_enemy_wave() -> void:
 	current_wave += 1
 	$RootGame/TopBar/HBoxContainer/WaveNum.text = str(current_wave)
 	
-	match(randi_range(0, 2)):
+	match(randi_range(0, 3)):
 		0:
 			# one big 
 			var big_boi = BIGG.instantiate()
-			big_boi.name = 'BIGG'
+			#big_boi.name = 'BIGG'
 			Enemies.add_child(big_boi)
 			Enemies.columns = 1
 		1:
@@ -291,10 +294,14 @@ func add_enemy_wave() -> void:
 			# mea (always 2)
 			for i in 2:
 				var mea = MEA.instantiate()
-				mea.name = "Mea " + str(i)
+				mea.name = "Mea " + str(i + 1)
 				Enemies.add_child(mea)
 				
 				mea.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # makes each enemy darker
+		3:
+			var unpredictable = BERSERK.instantiate()
+			Enemies.add_child(unpredictable)
+			Enemies.columns = 1
 		_:
 			print('unknown enemy wave value')
 	
@@ -469,7 +476,7 @@ func initiate_select_enemy(is_quick : bool = false) -> void:
 			#current_enemy = Enemies.get_child(0)
 			enemy.add_child(selector)
 		
-		Actions.get_child(0).visible = true # sets the action tab visible to be set to back
+		Actions.find_child("BackButton").visible = true # sets the action tab visible to be set to back
 		turn = TURN_TYPE.SELECT_ENEMY
 	else:
 		current_player.action_victim = current_enemy

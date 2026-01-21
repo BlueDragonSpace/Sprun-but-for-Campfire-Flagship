@@ -42,10 +42,6 @@
 	MegaLazer VFX! (Screenshake, line connecting player and enemy, enemy color changing)
 	Right-click to tab (when in mouse mode)
 	Litle dialogue things (but even more, like character-to-character interaction, and in the middle of battle...)
-	Full-screen
-	Attack all enemies attack (bandit blade guy) - note that attacks make you select an enemy
-		-by default in player.gd. To reset, make sure to configure requires_target for all actions,
-		-then change select_enemy to be conditional upon requires_target
 	Final hit on enemy grants a sprun?
 	Cat Battle! (don't actually hit the cat, or bad stuff happens)
 	Turn Limit til next wave (prevent hold onto one enemy to increase Sprun stats)
@@ -128,7 +124,6 @@ Rodent Lord Rodents:
 	Flying Squirels, chipmunks, beavers, capybaras, gopher, base squirel
 
 Currently finished:
-	Player tips on every new round
-	Rodent Lord spawns mice
-	Spawning Mea
-	Fixed the TWK Animation doing weird things on different resolution sizes
+	silly little sounds when keys and mouse are pressed and released
+	Added enemy where you can't see their intent
+	Fixed background not restarting to proper color after restart

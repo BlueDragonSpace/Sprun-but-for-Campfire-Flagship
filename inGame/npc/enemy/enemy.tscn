@@ -53,7 +53,7 @@ texture = ExtResource("5_ocmfa")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="VSeparator4" type="VSeparator" parent="VBoxContainer" index="2"]
+[node name="VSeparator489" type="VSeparator" parent="VBoxContainer" index="2"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -62,5 +62,5 @@ size_flags_stretch_ratio = 0.1
 [node name="Icon" parent="VBoxContainer" index="3"]
 expand_mode = 2
 
-[node name="LowerBar" parent="VBoxContainer" index="5"]
+[node name="LowerBar" parent="VBoxContainer" index="7"]
 layout_direction = 3

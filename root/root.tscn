@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bv0n51038h5c7"]
+[gd_scene load_steps=9 format=3 uid="uid://bv0n51038h5c7"]
 
 [ext_resource type="PackedScene" uid="uid://d3wbwxma2hkqm" path="res://root/one_d/one_d_root.tscn" id="1_1xv2g"]
 [ext_resource type="Script" uid="uid://clibohg1fjvmb" path="res://root/root.gd" id="2_jnlp7"]
+[ext_resource type="AudioStream" uid="uid://c46ekwwfk3ei2" path="res://placeholderArt/sfx/focus.wav" id="3_js5vo"]
 
 [sub_resource type="Animation" id="Animation_js5vo"]
 length = 0.001
@@ -145,3 +146,23 @@ texture = SubResource("PlaceholderTexture2D_e2nrw")
 [node name="Characters" type="Node" parent="CrossingObjects"]
 
 [node name="Enemies" type="Node" parent="CrossingObjects"]
+
+[node name="MouseClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_js5vo")
+pitch_scale = 1.65
+bus = &"SFX"
+
+[node name="MouseRelease" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_js5vo")
+pitch_scale = 0.66
+bus = &"SFX"
+
+[node name="KeyClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_js5vo")
+pitch_scale = 2.14
+bus = &"SFX"
+
+[node name="KeyRelease" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_js5vo")
+pitch_scale = 1.87
+bus = &"SFX"
