@@ -24,6 +24,9 @@ extends Control
 @onready var DFDStatIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/DFDStatIcon
 @onready var DFDStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/DFDStatLabel
 
+@onready var EndCharacterSelect: Button = $CharacterSelect/VBoxContainer/EndCharacterSelect
+
+
 @onready var TWKPrepRoundsLabel: Label = $TWK/Labels/VBoxContainer/Num
 @onready var TopBarPrepRoundsLabel: Label = $RootGame/TopBar/HBoxContainer/TextureRect/PrepRoundsLabel
 
@@ -164,6 +167,7 @@ func initialize_game() -> void:
 	current_player = Charas.get_child(0)
 	current_enemy = Enemies.get_child(0)
 	
+	EndCharacterSelect.disabled = true #prevents adding duplicate characters
 	BAK.disabled = true
 	
 	#NoiseBackground.texture.noise.seed = randi()
