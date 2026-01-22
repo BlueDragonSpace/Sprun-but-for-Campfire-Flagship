@@ -12,4 +12,4 @@ sprun_loss = 1
 atk_mult = 0.8
 prep_disable = true
 is_quick = true
-button_info = "Attacks instantly. Cannot kill. Ignores shields."
+button_info = "Attacks instantly. Ignores shields."

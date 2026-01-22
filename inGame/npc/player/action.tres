@@ -4,12 +4,9 @@
 
 [resource]
 script = ExtResource("1_cky2r")
-name = "Fireball"
-func_name = "fireball"
-player_type = 4
-sprun_necessary = 2
-sprun_loss = 2
-atk_mult = 1.5
+name = "Bite"
+func_name = "bite"
+player_type = 32
+atk_mult = 0.4
 prep_disable = true
-ally_target = true
-button_info = "Also adds Fire debuff. Fire starts slow, but does more damage over time."
+button_info = "Adds 3 Poison"

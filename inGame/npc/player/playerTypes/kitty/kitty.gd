@@ -19,12 +19,15 @@ const HIDE = preload("uid://24y2bom7sjw5")
 
 func hideAction(_sprun_cost) -> void:
 	
-	var debuff_child = check_debuff(DeBuff.DEBUFF.HIDE) #finds the HIDE
+	# kitty debuffs themselves
+	take_debuff(HIDE, 2)
 	
-	if debuff_child:
-		print('found the hide, added 2')
-		debuff_child.expiration += 2
-	else:
-		var child = DE_BUFF_RECT.instantiate()
-		child.debuff = HIDE
-		DeBuffs.add_child(child)
+	#var debuff_child = check_debuff(DeBuff.DEBUFF.HIDE) #finds the HIDE
+	
+	#if debuff_child:
+		#print('found the hide, added 2')
+		#debuff_child.expiration += 2
+	#else:
+		#var child = DE_BUFF_RECT.instantiate()
+		#child.debuff = HIDE
+		#DeBuffs.add_child(child)

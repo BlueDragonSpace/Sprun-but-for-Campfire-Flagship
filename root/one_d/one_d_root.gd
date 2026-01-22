@@ -640,10 +640,12 @@ func final_pass_turn() -> void:
 func final_pass_debuff_check(npc: Node) -> void: 
 	for debuff_child in npc.DeBuffs.get_children():
 		
-		var fire = npc.check_debuff(DeBuff.DEBUFF.FIRE)
-		if fire:
-			npc.take_damage(debuff_child.expiration)
-			debuff_child.expiration += 2 # effectively increases it by 1 each turn
+		match debuff_child.debuff.debuff_type:
+			DeBuff.DEBUFF.FIRE:
+				npc.take_damage(debuff_child.expiration)
+				debuff_child.expiration += 2 # effectively increases it by 1 each turn
+			DeBuff.DEBUFF.POISON:
+				npc.take_damage(debuff_child.expiration, null, true) # ignores shields
 		
 		debuff_child.expiration -= 1
 
@@ -684,6 +686,7 @@ func _on_big_atk_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "big_attack")
 	initiate_select_enemy()
 func _on_pass_pressed() -> void:
+	current_player.intended_action = Callable(Global, "empty_function")
 	player_pass_turn()
 func _on_masochism_pressed() -> void:
 	current_player.current_hp -= 10

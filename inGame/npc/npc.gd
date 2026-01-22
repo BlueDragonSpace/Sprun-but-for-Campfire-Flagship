@@ -108,28 +108,44 @@ func do_intended_action() -> void:
 	
 	intended_action.call()
  
-func take_damage(damage, attacker = null) -> void:
-	if current_defense > 0:
-		var undefended_damage = damage - current_defense
-		current_defense = clamp(current_defense - damage, 0, INF)
-		
-		if undefended_damage > 0:
-			current_hp -= undefended_damage
-			Animate.play("take_hit")
-		else:
-			$DefendAttack.play()
-	else:
+func take_damage(damage, attacker = null, ignore_shield = false) -> void:
+	
+	if ignore_shield:
 		current_hp -= damage
-		
+		Animate.play("take_hit")
+	else:
+		if current_defense > 0:
+			var undefended_damage = damage - current_defense
+			current_defense = clamp(current_defense - damage, 0, INF)
+			
+			if undefended_damage > 0:
+				current_hp -= undefended_damage
+				Animate.play("take_hit")
+			else:
+				$DefendAttack.play()
+		else:
+			current_hp -= damage
+			
 	if current_hp <= 0:
 		die()
-	Animate.play("take_hit")
-	
+		
 	if attacker != null:
 		add_take_damage(attacker)
 
 func add_take_damage(_attacker): # additional stuff I add to take_damage() in other classes (like enemy)
 	pass
+
+func take_debuff(debuff_resource, add_expiration):
+	var node_with_debuff = check_debuff(debuff_resource.debuff_type)
+	
+	if node_with_debuff:
+		node_with_debuff.expiration += add_expiration
+	else:
+		var child = DE_BUFF_RECT.instantiate()
+		child.debuff = debuff_resource
+		DeBuffs.add_child(child)
+		child.expiration = add_expiration
+	
 
 func defend():
 	self.current_defense += defend_stat
