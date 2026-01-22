@@ -17,7 +17,8 @@ enum DEBUFF {
 	VULNERABLE, # take more attack damage
 	WEAK, # do less attack damage
 	FRAIL, # do less defense
-	POISON, # damage over time
+	POISON, # less damage over time
+	FIRE, # more damage over time
 	# prevent next buff debuff (haha kinda nuts there)
 }
 @export var debuff_type = DEBUFF.STRENGTH
@@ -28,7 +29,7 @@ enum DEBUFF {
 
 @export var is_bad = false # bad as in you want to remove it
 # expiration in turns
-@export var time_til_expiration = 1
+@export var expiration = 1
 
 enum EXPIRATION_TIME {
 	NONE,

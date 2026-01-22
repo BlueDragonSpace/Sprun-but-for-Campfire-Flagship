@@ -19,11 +19,17 @@ max_hp = 12
 attack_stat = 2
 defend_stat = 4
 
+[node name="VSeparator" parent="VBoxContainer" index="2"]
+visible = true
+
 [node name="VSeparator4" type="VSeparator" parent="VBoxContainer" index="4"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.06
+
+[node name="VSeparator456" parent="VBoxContainer" index="5"]
+visible = true
 
 [node name="Reflecting" parent="." index="7" instance=ExtResource("5_kmnnf")]
 stream = ExtResource("6_s8276")

@@ -4,11 +4,12 @@
 
 [resource]
 script = ExtResource("1_cky2r")
-name = "MOUSE"
-func_name = "call_mouse"
-action_type = 3
-player_type = 16
-sprun_necessary = 1
-sprun_loss = 1
+name = "Fireball"
+func_name = "fireball"
+player_type = 4
+sprun_necessary = 2
+sprun_loss = 2
+atk_mult = 1.5
 prep_disable = true
-button_info = "Spawns a mouse, which has 0 ATK damage."
+ally_target = true
+button_info = "Also adds Fire debuff. Fire starts slow, but does more damage over time."

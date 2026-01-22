@@ -421,6 +421,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_dkh77")
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -433,6 +434,7 @@ size_flags_stretch_ratio = 0.15
 alignment = 1
 
 [node name="VSeparator456" type="VSeparator" parent="VBoxContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3

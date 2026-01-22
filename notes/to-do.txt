@@ -26,14 +26,11 @@
 	
 2 (more mechanics):
 	Player Intents
-	More enemy intents (debuff, buff, charge up, unknown)
-	Different kinds of Sprun (Red used on ATK, so on)
 	add_lambda() -> Notif, subtracting sprun_cost
-	Speed is currently an invisible statistic... (make art, add to infoBar)
-	
+	Slay the Spire / Balatro hover over meaning of (thing) to get a definition
 3:
 	Poison Debuff (for Rat and beyond) (Slay the Spire like)
-	Fire DeBuff (set amount of damage, doesn't go down)
+	Fire DeBuff (like poison, but goes upward, and hits shield)
 	Stone DeBuff (wow Mario + Rabbids)
 	Sprun Movement Shifting depending on size (too far when small, too close when big)
 	Name of attack upon using it (like the notifs from Cascade) + Damage (StS)
@@ -87,11 +84,13 @@
 	Hi_Pirates.txt
 6 (almost definitely never gonna happen):
 	Finish the round when final enemy dies
+	Different kinds of sprun (red for ATK, blue for DFD, and so on)
 
 Quirks:
 	Balance the funny and serious (makes both more meaningful)
 	2...3...4! (Tangled Up)
 	Looking up Camera Angle (size up)
+	Kitty needs 9 slots for their 9 lives! I did that on accident
 
 Turn sections:
 	Player Input
@@ -129,7 +128,9 @@ Rodent Lord Rodents:
 	Porkypine (thorns)
 	Flying Squirels, chipmunks, beavers, capybaras, gopher, base squirel
 
-
+Art needed:
+	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, 
 
 Currently finished:
-	Added key sounds for keys with keycodes over 200
+	Higher number means faster speed (used to be reversed)
+	Speed Stat now visible on attack actions

@@ -24,7 +24,7 @@ const NOTIF = preload("uid://ccl3stwaax0r3")
 
 func _ready() -> void:
 	texture = debuff.icon
-	expiration = debuff.time_til_expiration
+	expiration = debuff.expiration
 
 func debuff_info(main, sub):
 	var notif = NOTIF.instantiate()

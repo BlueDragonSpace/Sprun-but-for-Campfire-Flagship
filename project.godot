@@ -16,7 +16,7 @@ warnings/check_invalid_track_paths=false
 
 config/name="Sprun but Campfire Flagship"
 config/description="Third iteration of Sprun. Chronologically a little bit after the First Mathew Playtest"
-config/version="0.0.3"
+config/version="0.0.4"
 run/main_scene="uid://bv0n51038h5c7"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0.267473, 0.33037242, 1)

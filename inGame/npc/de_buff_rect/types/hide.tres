@@ -9,4 +9,4 @@ debuff_type = 2
 display_name = "Hide"
 info = "Prevents being directly targeted by enemies. Ineffective while alone."
 icon = ExtResource("1_20sdb")
-time_til_expiration = 2
+expiration = 2

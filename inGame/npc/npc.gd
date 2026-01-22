@@ -92,15 +92,15 @@ func set_max_hp(new_hp : int) -> void:
 	HP.max_value = new_hp
 	MaxHp.text = str(new_hp)
 
-func check_debuff(debuff_in_question) -> bool:
-	var boolean = false
+func check_debuff(debuff_in_question) -> Node: # returns if the debuff exists, and the Node connected to it
+	var node = null
 	
 	for debuff_child in DeBuffs.get_children():
 		if debuff_child.debuff.debuff_type == debuff_in_question:
-			boolean = true
+			node = debuff_child
 			break
 	
-	return boolean
+	return node
 
 #for some reason, if you call a Callable as a Callable, the function doesn't go through
 func do_intended_action() -> void:

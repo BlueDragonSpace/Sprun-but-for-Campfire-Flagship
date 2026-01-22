@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://cwkvw576dxppf"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="1_sykun"]
+
+[resource]
+script = ExtResource("1_sykun")
+name = "Fireball"
+func_name = "fireball"
+player_type = 4
+sprun_necessary = 1
+sprun_loss = 1
+atk_mult = 1.5
+prep_disable = true
+ally_target = true
+button_info = "Also adds Fire debuff. Fire starts slow, but does more damage over time."

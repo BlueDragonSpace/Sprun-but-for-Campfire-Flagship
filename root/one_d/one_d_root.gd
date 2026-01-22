@@ -23,6 +23,9 @@ extends Control
 @onready var ATKStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/ATKStatLabel
 @onready var DFDStatIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/DFDStatIcon
 @onready var DFDStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/DFDStatLabel
+@onready var SPDStatIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/SPDStatIcon
+@onready var SPDStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/SPDStatLabel
+
 
 @onready var EndCharacterSelect: Button = $CharacterSelect/VBoxContainer/EndCharacterSelect
 
@@ -231,6 +234,10 @@ func set_turn_order() -> void:
 	#as it turns out, Godot's sort method will sort by the first element of each array in a nested array
 	# which makes life a whole lot easier than doing custom_sort()
 	turn_order_data.sort()
+	# however! this makes the speeds in reverse order that I want them
+	# currently, 1 would be fastest, but that's wrong. I want the higher number to be faster
+	# which luckly Godot can also do easily
+	turn_order_data.reverse()
 	
 	for body in turn_order_data:
 		var marker = TURN_ORDER_MARKER.instantiate()
@@ -442,7 +449,7 @@ func remove_dead_actions(dead: Node) -> void:
 				$TPK/Soundd.play()
 
 # technically a signal function... to change the info when for focus and mouse_entering
-func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, dfd_value: float = 0) -> void:
+func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, dfd_value: float = 0, display_speed: bool = false) -> void:
 	ActionInfo.text = new_info
 	
 	# probably a better way to do this... but double nodes? and this many values?
@@ -473,6 +480,15 @@ func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, df
 		DFDStatIcon.visible = true
 		DFDStatLabel.visible = true
 		DFDStatLabel.text = str(int(dfd_value * current_player.defend_stat))
+	
+	## SPD (speed)
+	if display_speed == false:
+		SPDStatIcon.visible = false
+		SPDStatLabel.visible = false
+	else:
+		SPDStatIcon.visible = true
+		SPDStatLabel.visible = true
+		SPDStatLabel.text = str(current_player.speed_stat)
 
 func initiate_select_enemy(is_quick : bool = false) -> void:
 	
@@ -604,12 +620,14 @@ func final_pass_turn() -> void:
 	set_turn_order()
 	Animate.play("to_player")
 	
+	## DEBUFF HANDLING
 	for player in Charas.get_children():
 		player.intended_action = Callable(Global, "empty_function")
 		
-		# ticks down all debuffs
-		for debuff_child in player.DeBuffs.get_children():
-			debuff_child.expiration -= 1
+		final_pass_debuff_check(player)
+	
+	for enemy in Enemies.get_children():
+		final_pass_debuff_check(enemy)
 	
 	$RootGame/NextRound.play()
 	
@@ -617,6 +635,17 @@ func final_pass_turn() -> void:
 	
 	current_turn = 0
 	current_round += 1
+
+# ticks down / enacts debuff effects
+func final_pass_debuff_check(npc: Node) -> void: 
+	for debuff_child in npc.DeBuffs.get_children():
+		
+		var fire = npc.check_debuff(DeBuff.DEBUFF.FIRE)
+		if fire:
+			npc.take_damage(debuff_child.expiration)
+			debuff_child.expiration += 2 # effectively increases it by 1 each turn
+		
+		debuff_child.expiration -= 1
 
 ## signal functions
 # battle-game-turn-based stuff

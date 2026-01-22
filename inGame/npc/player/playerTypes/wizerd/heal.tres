@@ -11,4 +11,4 @@ player_type = 4
 sprun_necessary = 4
 sprun_loss = 2
 ally_target = true
-button_info = "Heals 10 damage. Only takes away 2 sprun."
+button_info = "Heals 10 damage.  Only takes away 2 sprun."

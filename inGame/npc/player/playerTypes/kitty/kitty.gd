@@ -19,11 +19,11 @@ const HIDE = preload("uid://24y2bom7sjw5")
 
 func hideAction(_sprun_cost) -> void:
 	
-	if check_debuff(DeBuff.DEBUFF.HIDE):
-		for debuff_child in DeBuffs.get_children():
-			if debuff_child.debuff.debuff_type == DeBuff.DEBUFF.HIDE:
-				debuff_child.expiration += 2
-				break
+	var debuff_child = check_debuff(DeBuff.DEBUFF.HIDE) #finds the HIDE
+	
+	if debuff_child:
+		print('found the hide, added 2')
+		debuff_child.expiration += 2
 	else:
 		var child = DE_BUFF_RECT.instantiate()
 		child.debuff = HIDE
