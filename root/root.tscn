@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv0n51038h5c7"]
+[gd_scene load_steps=10 format=3 uid="uid://bv0n51038h5c7"]
 
 [ext_resource type="PackedScene" uid="uid://d3wbwxma2hkqm" path="res://root/one_d/one_d_root.tscn" id="1_1xv2g"]
 [ext_resource type="Script" uid="uid://clibohg1fjvmb" path="res://root/root.gd" id="2_jnlp7"]
 [ext_resource type="AudioStream" uid="uid://c46ekwwfk3ei2" path="res://placeholderArt/sfx/focus.wav" id="3_js5vo"]
+[ext_resource type="PackedScene" uid="uid://cu1ueum56s1rl" path="res://root/three_d/three_d_root.tscn" id="3_ovlcs"]
 
 [sub_resource type="Animation" id="Animation_js5vo"]
 length = 0.001
@@ -108,19 +109,21 @@ script = ExtResource("2_jnlp7")
 
 [node name="OneDRoot" parent="." instance=ExtResource("1_1xv2g")]
 
+[node name="ThreeDRoot" parent="." instance=ExtResource("3_ovlcs")]
+
 [node name="Animate" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_y5gj7")
 }
 
 [node name="DimensionShiftBoxes" type="Control" parent="Animate"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Animate/DimensionShiftBoxes"]
 layout_mode = 1

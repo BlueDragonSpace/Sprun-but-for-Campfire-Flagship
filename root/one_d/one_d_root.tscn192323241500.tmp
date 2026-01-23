@@ -53,7 +53,7 @@ in_3d_space = true
 
 [sub_resource type="Animation" id="Animation_yxtmk"]
 resource_name = "hide_top_bar"
-length = 1.5
+length = 2.0
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,7 +63,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.016666668, 0, 0, 0, -0.16666667, 0.016666668, 0, 0, 0.03, -0.021111112, -0.005, 0, 0),
-"times": PackedFloat32Array(0.033333335, 0.96666664, 1, 1.4)
+"times": PackedFloat32Array(0.033333335, 0.96666664, 1, 1.0666667)
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -72,10 +72,10 @@ tracks/1/path = NodePath("ShowTopBar:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.98, 1.01),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.01),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, false, true]
+"values": [false, true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -84,10 +84,10 @@ tracks/2/path = NodePath("HBoxContainer:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.98, 0.99),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.99),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, true, false]
+"values": [true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -96,10 +96,10 @@ tracks/3/path = NodePath("HideTopBar:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.98, 0.99),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.99),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, true, false]
+"values": [true, false]
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -1303,6 +1303,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 metadata/_edit_use_anchors_ = true
 
+[node name="Raccoon" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_b1nt6")]
+layout_mode = 2
+
+[node name="Wizerd" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_ih4ah")]
+layout_mode = 2
+sprun_active = 5
+
 [node name="Rat" parent="RootGame/BattleScreen/Charas" instance=ExtResource("7_yxtmk")]
 layout_mode = 2
 
@@ -1897,7 +1904,6 @@ libraries = {
 
 [connection signal="value_changed" from="RootGame/TopBar/HBoxContainer/PlaySpeedSlider" to="." method="_on_play_speed_slider_value_changed"]
 [connection signal="pressed" from="RootGame/TopBar/HideTopBar" to="." method="_on_hide_top_bar_pressed"]
-[connection signal="pressed" from="RootGame/TopBar/ShowTopBar" to="." method="_on_show_top_bar_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/BackButton/BAK" to="." method="_on_bak_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Attack/ATK" to="." method="_on_atk_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Attack/BigATK" to="." method="_on_big_atk_pressed"]

@@ -15,6 +15,11 @@
 			Movement Distance,
 			Position shifting (from/to 1D, 2D from / to 3D is already covered)
 			Beep-O Camera (Rabbids)
+			Default Camera is set to be centered around a specific point, rather than a player
+			2D and 3D grid
+			Pathfinding (ooohhhh 3D pathfinding!!) (plus Manhattan Distance rather than Euclidian)
+			"Move" Tab (how is jumping implemented)
+			Sight lines and area of range for attacks (ranged vs melee)
 		
 		Transitioning: find position on 2D screen of a 3D character (local)
 		Move camera script to not be apart of just one player (but the average position of each of them)
@@ -22,9 +27,10 @@
 	
 1.5 (BUGGS THAT ARE REALLY BAD AND GAME BREAKING):
 	
-1.75 (not Connecting or bug, ver importan):
+	Strange rounding error, difference between shown stat bar damage and actual inflicted damage
+	(need a specific case, forgot where to find one and too annoyed to bother)
 	
-	make the poison take away health inside of one_d_root
+1.75 (not Connecting or bug, ver importan):
 	
 2 (more mechanics):
 	Player Intents
@@ -133,4 +139,4 @@ Art needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, 
 
 Currently finished:
-	
+	Hide and pull the Top Bar

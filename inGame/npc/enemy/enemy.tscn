@@ -64,3 +64,6 @@ expand_mode = 2
 
 [node name="LowerBar" parent="VBoxContainer" index="7"]
 layout_direction = 3
+
+[connection signal="mouse_entered" from="VBoxContainer/IntentBar/Intent" to="." method="_on_intent_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/IntentBar/Intent" to="." method="_on_intent_mouse_exited"]

@@ -738,3 +738,9 @@ func _on_end_character_select_pressed() -> void:
 			%CharacterSelect.nice_try_buddy()
 	else:
 		%CharacterSelect.too_many_characters()
+
+func _on_hide_top_bar_pressed() -> void:
+	$RootGame/TopBar/AnimateTopBar.play("hide_top_bar")
+
+func _on_show_top_bar_pressed() -> void:
+	$RootGame/TopBar/AnimateTopBar.play_backwards("hide_top_bar")
