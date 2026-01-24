@@ -111,7 +111,6 @@ script = ExtResource("2_jnlp7")
 started = false
 
 [node name="ThreeDRoot" parent="." instance=ExtResource("3_ovlcs")]
-visible = false
 
 [node name="Animate" type="AnimationPlayer" parent="."]
 libraries = {

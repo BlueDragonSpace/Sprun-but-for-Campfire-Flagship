@@ -1,6 +1,10 @@
 extends Node3D
 
 @export var camera_speed = 5
+var camera_zoom = 10.0:
+	set(new):
+		camera_zoom = new
+		CurrentCamera.size = camera_zoom
 
 @onready var Cameras: Node = $Cameras
 @onready var InBetweenPath: Path3D = $InBetweenPath
@@ -24,17 +28,17 @@ enum CAMERA_DIRECTIONS {
 }
 @export var camera_direction = CAMERA_DIRECTIONS.OVERHEAD
 
-signal camera_view_changing
-signal camera_view_changed
+signal camera_view_changing(direction, prev_direction)
+signal camera_view_changed(direction)
 
 func _ready() -> void:
 	CurrentCamera = Cameras.get_child(camera_type)
 	CurrentCamera.current = true
+	CurrentCamera.size = camera_zoom
 	invisible_direction = find_camera_direction(CurrentCamera.name) as DIR
 	
 	# prevents the pathFollow from rotating the cammera unnessesarily
 	InBetweenPathFollow.rotation_mode = PathFollow3D.ROTATION_NONE 
-
 
 func _process(delta: float) -> void:
 	
@@ -55,15 +59,22 @@ func _process(delta: float) -> void:
 	
 	position += Vector3(input_dir.x, input_dir.y, 0.0) * camera_dir * camera_speed * delta
 	
+	## Zooming the camera
+	if Input.is_action_pressed("3DZoomIn"):
+		camera_zoom -= delta * 3
+	elif Input.is_action_pressed("3DZoomOut"):
+		camera_zoom += delta * 3
 
 func _unhandled_input(_event: InputEvent) -> void:
 	
+	# Switch the Camera
 	if Input.is_action_just_pressed("CameraSwitch") and InBetweenCamera.current == false:
 		camera_switch(null)
 
 func camera_switch(_new_camera):
 	
 	InBetweenCamera.current = true
+	InBetweenCamera.size = camera_zoom
 	
 	InBetweenCamera.rotation = CurrentCamera.rotation
 	InBetweenPath.curve.clear_points()
@@ -78,6 +89,7 @@ func camera_switch(_new_camera):
 		camera_type = 0
 	
 	CurrentCamera = Cameras.get_child(camera_type) # this is the next camera, now we have to switch to it
+	CurrentCamera.size = camera_zoom
 	
 	InBetweenPath.curve.add_point(CurrentCamera.position)
 	
@@ -100,7 +112,7 @@ func finish_camera_switch():
 	CurrentCamera.rotation = InBetweenCamera.rotation
 	
 	invisible_direction = find_camera_direction(CurrentCamera.name) as DIR
-	camera_view_changed.emit()
+	camera_view_changed.emit(invisible_direction)
 
 func find_camera_direction(camera_name) -> int:
 	

@@ -27,6 +27,8 @@
 	
 1.5 (BUGGS THAT ARE REALLY BAD AND GAME BREAKING):
 	
+	Charge-Up intent Error
+	
 	Strange rounding error, difference between shown stat bar damage and actual inflicted damage
 	(need a specific case, forgot where to find one and too annoyed to bother)
 	

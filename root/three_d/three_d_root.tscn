@@ -1,8 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu1ueum56s1rl"]
+[gd_scene load_steps=13 format=3 uid="uid://cu1ueum56s1rl"]
 
 [ext_resource type="Script" uid="uid://52o3wyv2lrgw" path="res://root/three_d/three_d_root.gd" id="1_0xdj7"]
 [ext_resource type="PackedScene" uid="uid://crwqeuod3418" path="res://root/three_d/Entities/Players/3d_player.tscn" id="1_84ns2"]
 [ext_resource type="PackedScene" uid="uid://bshvwfyo68bjf" path="res://root/three_d/camera_handler.tscn" id="3_qgbu4"]
+[ext_resource type="PackedScene" uid="uid://dehg5ipwadmh2" path="res://root/three_d/Environment/basic_block/basic_block.tscn" id="4_vmnxw"]
+[ext_resource type="PackedScene" uid="uid://gev2dyw1rchd" path="res://root/three_d/Environment/basic_block/one_way_platform/one_way_platform.tscn" id="5_pqooo"]
+[ext_resource type="PackedScene" uid="uid://dbxw2lsx4tatu" path="res://root/three_d/Environment/basic_block/one_way_platform/fez_block/fez_block.tscn" id="6_xck48"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_j4b2l"]
 
@@ -21,11 +24,8 @@ background_mode = 2
 sky = SubResource("Sky_js5vo")
 tonemap_mode = 2
 
-[sub_resource type="BoxMesh" id="BoxMesh_qgbu4"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_vmnxw"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_pqooo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xck48"]
+viewport_path = NodePath("CanvasLayer/TextureRect")
 
 [node name="ThreeDRoot" type="Node3D" groups=["ThreeDRoot"]]
 script = ExtResource("1_0xdj7")
@@ -48,19 +48,46 @@ environment = SubResource("Environment_ovlcs")
 
 [node name="3DPlayer" parent="." instance=ExtResource("1_84ns2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4674301, 1, -0.84338164)
+collision_layer = 2
+collision_mask = 3
 
-[node name="CameraHandler" parent="." instance=ExtResource("3_qgbu4")]
+[node name="CameraHandler" parent="." groups=["CameraHandler"] instance=ExtResource("3_qgbu4")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48531, 2.4378443)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31947327, 1.9229474, -5.133964)
-mesh = SubResource("BoxMesh_qgbu4")
+[node name="BasicBlock" parent="." instance=ExtResource("4_vmnxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1020086, 0.5, -3.7528114)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7674394, 1.2842698, -3.0032082)
-mesh = SubResource("TorusMesh_vmnxw")
+[node name="BasicBlock2" parent="." instance=ExtResource("4_vmnxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4350643, 0.5, 1.1652467)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7742743, 1.7738008, 4.0445976)
-mesh = SubResource("SphereMesh_pqooo")
+[node name="BasicBlock3" parent="." instance=ExtResource("4_vmnxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5993638, 0.5000005, -1.2377086)
+
+[node name="BasicBlock4" parent="." instance=ExtResource("4_vmnxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.056065, 1.4183221, -2.4036336)
+
+[node name="OneWayPlatform" parent="." instance=ExtResource("5_pqooo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8049953, 1.301082, 0.42613196)
+collision_mask = 1
+
+[node name="OneWayPlatform2" parent="." instance=ExtResource("5_pqooo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3996508, 1.301082, -1.4311748)
+collision_mask = 1
+
+[node name="CanvasLayer" type="TextureRect" parent="."]
+offset_right = 512.0
+offset_bottom = 512.0
+texture = SubResource("ViewportTexture_xck48")
+
+[node name="TextureRect" type="SubViewport" parent="CanvasLayer"]
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/TextureRect"]
+transform = Transform3D(0.73848057, -0.4546462, 0.49793905, 0, 0.73848087, 0.67427444, -0.67427474, -0.49793854, 0.54535383, 5.563778, 7.5180726, 6.137896)
+
+[node name="FezBlock" parent="." instance=ExtResource("6_xck48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4940014, 0.65519714, 2.9823966)
+
+[node name="FezBlock2" parent="." instance=ExtResource("6_xck48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0683827, 0.3089819, 1.7042096)
+disable_one_way = true

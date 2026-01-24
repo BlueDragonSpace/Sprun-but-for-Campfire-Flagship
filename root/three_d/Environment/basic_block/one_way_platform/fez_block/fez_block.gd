@@ -2,18 +2,18 @@ extends "res://root/three_d/Environment/basic_block/one_way_platform/one_way_pla
 
 var defaultSz = null
 var defaultPos = null
-const player_y_safety = 0.601
+const player_y_safety = 1.601
 
-@onready var Player = get_tree().get_first_node_in_group("Player")
+@onready var CameraHandler = get_tree().get_first_node_in_group("CameraHandler")
 @onready var area_collider: CollisionShape3D = $Area3D/CollisionShape3D
 
 func _ready() -> void:
 	defaultSz = sz
 	defaultPos = position
-	Player.connect("camera_view_changing", camera_change)
-	Player.connect("camera_view_changed", camera_change_after)
+	CameraHandler.connect("camera_view_changing", camera_change)
+	CameraHandler.connect("camera_view_changed", camera_change_after)
 	
-	if Player.CurrentCamera.name == "Bird":
+	if %CameraHandler.CurrentCamera.name == "Bird":
 		position.y = 0 # Fez Blocks aren't real
 
 func camera_change(direction, previous_direction) -> void:
@@ -22,7 +22,7 @@ func camera_change(direction, previous_direction) -> void:
 	sz = defaultSz
 	position = defaultPos
 	match(direction):
-		"x":
+		CameraHandler.DIR.X:
 			
 			# reset position of rays
 			$Rays/XRay.target_position.x = 0.6
@@ -36,10 +36,10 @@ func camera_change(direction, previous_direction) -> void:
 				$Rays/XnRay.force_raycast_update()
 				
 				sz.x += 1
-		"y":
+		CameraHandler.DIR.Y:
 			sz.y = 0.1
 			#position.y = 0.0 # after camera moves change position
-		"z":
+		CameraHandler.DIR.Z:
 			$Rays/ZRay.target_position.z = .6
 			$Rays/ZnRay.target_position.z = -.6
 			while $Rays/ZRay.is_colliding() == false and $Rays/ZnRay.is_colliding() == false and sz.z < 100:
@@ -56,7 +56,7 @@ func camera_change(direction, previous_direction) -> void:
 	# only moves in the direction the camera can't see currently
 	
 	# I'm pretty sure this is related to the order of the cameras, (the previous direction, rather than the current one)
-	if player_on_block:
+	if body_on_block:
 		match (previous_direction):
 		#match(direction):
 			#"x":
@@ -66,26 +66,25 @@ func camera_change(direction, previous_direction) -> void:
 			#"z":
 				#pass
 		#Player.position.y = global_position.y + player_y_safety #makes sure player lands on top of platform
-			"x":
-				Player.position.x = global_position.x
-			"y":
+			CameraHandler.DIR.Y:
+				body_on_block.position.x = global_position.x
+			CameraHandler.DIR.Y:
 				#Player.position.z = global_position.z
 				pass
-			"z":
-				Player.position.z = global_position.z
+			CameraHandler.DIR.Z:
+				body_on_block.position.z = global_position.z
 				
 			## Bird direction is y (previous was Head90 -> X)
 			## Head dir -> Z (Previous was Bird -> y)
 			## Head 90 -> X
-		Player.position.y = global_position.y + player_y_safety #makes sure player lands on top of platform
-	if player_inside_block and previous_direction == "y":
-		Player.position.y = global_position.y + player_y_safety #makes sure player lands on top of platform
-	
+		body_on_block.position.y = global_position.y + player_y_safety #makes sure player lands on top of platform
+	if player_inside_block and previous_direction == CameraHandler.DIR.Y:
+		body_on_block.position.y = global_position.y + player_y_safety #makes sure player lands on top of platform
 
 func camera_change_after(direction) -> void:
 	
 	#gets restarted at the start(ing function)
 	
-	if direction == "y":
-		Player.global_position.y = 0.5
+	if direction == CameraHandler.DIR.Y and body_on_block:
+		body_on_block.global_position.y = 0.5
 		position.y = 0

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://c0pex3eotlc6u" path="res://root/three_d/Environment/basic_block/one_way_platform/one_way_platform.gd" id="2_ujs73"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b24ii"]
-resource_local_to_scene = true
 size = Vector3(1, 0.2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ujs73"]
@@ -16,6 +15,7 @@ size = Vector3(1.01, 0.22, 1.01)
 
 [node name="OneWayPlatform" instance=ExtResource("1_b24ii")]
 script = ExtResource("2_ujs73")
+disable_one_way = false
 area_margin = 0.01
 sz = Vector3(1, 0.2, 1)
 
@@ -27,6 +27,8 @@ disabled = true
 mesh = SubResource("BoxMesh_ujs73")
 
 [node name="Area3D" type="Area3D" parent="." index="2"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("BoxShape3D_lwaqd")

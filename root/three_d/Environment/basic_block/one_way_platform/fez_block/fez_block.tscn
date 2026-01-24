@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://0g2yn83het4y" path="res://root/three_d/Environment/basic_block/one_way_platform/fez_block/fez_block.gd" id="2_ivcdx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lexno"]
-resource_local_to_scene = true
 size = Vector3(1, 0.2, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lexno"]
@@ -16,7 +15,6 @@ material = SubResource("StandardMaterial3D_lexno")
 size = Vector3(1, 0.2, 1)
 
 [node name="FezBlock" instance=ExtResource("1_lexno")]
-collision_mask = 0
 script = ExtResource("2_ivcdx")
 
 [node name="CollisionShape3D" parent="." index="0"]

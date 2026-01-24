@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://dr1vefqxtsukd" path="res://root/three_d/Environment/basic_block/basic_block.gd" id="1_23648"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dte5p"]
-resource_local_to_scene = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_aee6g"]
 resource_local_to_scene = true
 
 [node name="BasicBlock" type="StaticBody3D"]
+collision_mask = 0
 script = ExtResource("1_23648")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
