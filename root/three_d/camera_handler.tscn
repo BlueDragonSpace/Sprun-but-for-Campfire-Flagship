@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://bshvwfyo68bjf"]
+
+[ext_resource type="Script" uid="uid://b6n5hb1lim3xr" path="res://root/three_d/camera_handler.gd" id="1_31vqs"]
+
+[sub_resource type="Curve3D" id="Curve3D_31vqs"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_pe2er"]
+resource_name = "InBetweenCamera"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InBetweenPath/PathFollow3D/InBetweenCamera:current")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01, 0.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InBetweenPath/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.99)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish_camera_switch"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mqa25"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InBetweenPath/PathFollow3D/InBetweenCamera:current")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InBetweenPath/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rai8y"]
+_data = {
+&"InBetweenCamera": SubResource("Animation_pe2er"),
+&"RESET": SubResource("Animation_mqa25")
+}
+
+[node name="CameraHandler" type="Node3D"]
+script = ExtResource("1_31vqs")
+
+[node name="Cameras" type="Node" parent="."]
+
+[node name="Head" type="Camera3D" parent="Cameras"]
+projection = 1
+current = true
+size = 5.0
+
+[node name="Head90" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 0, 0)
+projection = 1
+size = 5.0
+
+[node name="Bird" type="Camera3D" parent="Cameras"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
+projection = 1
+size = 5.0
+
+[node name="InBetweenPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_31vqs")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="InBetweenPath"]
+
+[node name="InBetweenCamera" type="Camera3D" parent="InBetweenPath/PathFollow3D"]
+projection = 1
+size = 5.0
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rai8y")
+}

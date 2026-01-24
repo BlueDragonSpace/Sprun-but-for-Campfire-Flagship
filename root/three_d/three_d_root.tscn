@@ -1,13 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu1ueum56s1rl"]
+[gd_scene load_steps=9 format=3 uid="uid://cu1ueum56s1rl"]
 
+[ext_resource type="Script" uid="uid://52o3wyv2lrgw" path="res://root/three_d/three_d_root.gd" id="1_0xdj7"]
 [ext_resource type="PackedScene" uid="uid://crwqeuod3418" path="res://root/three_d/Entities/Players/3d_player.tscn" id="1_84ns2"]
+[ext_resource type="PackedScene" uid="uid://bshvwfyo68bjf" path="res://root/three_d/camera_handler.tscn" id="3_qgbu4"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_j4b2l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_js5vo"]
 size = Vector2(10, 10)
-
-[sub_resource type="BoxMesh" id="BoxMesh_j4b2l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j4b2l"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -21,7 +21,8 @@ background_mode = 2
 sky = SubResource("Sky_js5vo")
 tonemap_mode = 2
 
-[node name="ThreeDRoot" type="Node3D"]
+[node name="ThreeDRoot" type="Node3D" groups=["ThreeDRoot"]]
+script = ExtResource("1_0xdj7")
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
@@ -30,24 +31,6 @@ shape = SubResource("WorldBoundaryShape3D_j4b2l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 mesh = SubResource("PlaneMesh_js5vo")
-skeleton = NodePath("../..")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.95664597, 0.29125324, 0, -0.29125324, 0.95664597, 0, 0.6758058, 0.8455131)
-current = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
-mesh = SubResource("BoxMesh_j4b2l")
-skeleton = NodePath("../..")
-
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(-0.31321353, -0.27659816, 0.9085102, -1.7763568e-15, 0.95664597, 0.2912532, -0.94968265, 0.09122445, -0.29963446, 2.382008, 0.6758058, -1.1333528)
-current = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D2"]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
-mesh = SubResource("BoxMesh_j4b2l")
 skeleton = NodePath("../..")
 
 [node name="GreatGloriousSun" type="DirectionalLight3D" parent="."]
@@ -59,3 +42,7 @@ environment = SubResource("Environment_ovlcs")
 
 [node name="3DPlayer" parent="." instance=ExtResource("1_84ns2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4674301, 1, -0.84338164)
+
+[node name="CameraHandler" parent="." instance=ExtResource("3_qgbu4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48531, 2.4378443)

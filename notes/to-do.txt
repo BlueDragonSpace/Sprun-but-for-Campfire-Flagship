@@ -139,4 +139,3 @@ Art needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, 
 
 Currently finished:
-	Hide and pull the Top Bar
