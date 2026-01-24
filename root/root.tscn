@@ -108,8 +108,10 @@ _data = {
 script = ExtResource("2_jnlp7")
 
 [node name="OneDRoot" parent="." instance=ExtResource("1_1xv2g")]
+started = false
 
 [node name="ThreeDRoot" parent="." instance=ExtResource("3_ovlcs")]
+visible = false
 
 [node name="Animate" type="AnimationPlayer" parent="."]
 libraries = {
@@ -117,6 +119,7 @@ libraries = {
 }
 
 [node name="DimensionShiftBoxes" type="Control" parent="Animate"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

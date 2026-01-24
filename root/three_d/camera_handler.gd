@@ -1,11 +1,16 @@
 extends Node3D
 
+@export var camera_speed = 5
+
 @onready var Cameras: Node = $Cameras
 @onready var InBetweenPath: Path3D = $InBetweenPath
 @onready var InBetweenPathFollow: PathFollow3D = $InBetweenPath/PathFollow3D
 @onready var InBetweenCamera: Camera3D = $InBetweenPath/PathFollow3D/InBetweenCamera
 @onready var Animate: AnimationPlayer = $Animate
 
+# short for direciton
+enum DIR {X, Y, Z, NONE}
+var invisible_direction = DIR.NONE
 
 var CurrentCamera: Camera3D = null
 
@@ -24,12 +29,39 @@ signal camera_view_changed
 
 func _ready() -> void:
 	CurrentCamera = Cameras.get_child(camera_type)
+	CurrentCamera.current = true
+	invisible_direction = find_camera_direction(CurrentCamera.name) as DIR
+	
+	# prevents the pathFollow from rotating the cammera unnessesarily
+	InBetweenPathFollow.rotation_mode = PathFollow3D.ROTATION_NONE 
+
+
+func _process(delta: float) -> void:
+	
+	# Moving the Camera!!!!
+	var input_dir = Input.get_vector("3DLeft", "3DRight", "3DBackward", "3DForward")
+	var camera_dir = CurrentCamera.global_basis
+	
+	# looking down, UP/DOWN is wrong
+	# looking forward, both are correct
+	# looking right, LEFT/RIGHT is wrong
+	
+	match(invisible_direction):
+		DIR.X:
+			input_dir.x = -input_dir.x
+		DIR.Y:
+			input_dir.y = -input_dir.y
+		# no case for Z-axis, since I can't really move the camera like dat
+	
+	position += Vector3(input_dir.x, input_dir.y, 0.0) * camera_dir * camera_speed * delta
+	
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("CameraSwitch"):
+	
+	if Input.is_action_just_pressed("CameraSwitch") and InBetweenCamera.current == false:
 		camera_switch(null)
 
-func camera_switch(new_camera):
+func camera_switch(_new_camera):
 	
 	InBetweenCamera.current = true
 	
@@ -44,6 +76,7 @@ func camera_switch(new_camera):
 	camera_type += 1
 	if camera_type > Cameras.get_child_count() - 1:
 		camera_type = 0
+	
 	CurrentCamera = Cameras.get_child(camera_type) # this is the next camera, now we have to switch to it
 	
 	InBetweenPath.curve.add_point(CurrentCamera.position)
@@ -55,30 +88,35 @@ func camera_switch(new_camera):
 	
 	# makes sure that the path follow doesn't curve in the direction of the path the inbetween camera takes
 	InBetweenPathFollow.set_deferred("rotation", Vector3.ZERO)
+	InBetweenPathFollow.rotation = Vector3.ZERO
 	
 	var tween = create_tween()
 	tween.tween_property(InBetweenCamera, "rotation", CurrentCamera.rotation, 1.0)
 	Animate.play("InBetweenCamera")
-	
 
 func finish_camera_switch():
 	
 	CurrentCamera.current = true
 	CurrentCamera.rotation = InBetweenCamera.rotation
 	
+	invisible_direction = find_camera_direction(CurrentCamera.name) as DIR
 	camera_view_changed.emit()
 
-func find_camera_direction(camera_name) -> String:
+func find_camera_direction(camera_name) -> int:
+	
+	# in relation to fez blocks, these are the three fez cameras
+	
 	var non_existant_direction_in_relation_to_the_camera = null
+	
 	match(camera_name):
 		"Bird":
-			non_existant_direction_in_relation_to_the_camera = "y"
+			non_existant_direction_in_relation_to_the_camera = DIR.Y
 		"Head":
-			non_existant_direction_in_relation_to_the_camera = "z"
+			non_existant_direction_in_relation_to_the_camera = DIR.Z
 		"Head90":
-			non_existant_direction_in_relation_to_the_camera = "x"
+			non_existant_direction_in_relation_to_the_camera = DIR.X
 		_:
-			non_existant_direction_in_relation_to_the_camera = "none"
+			non_existant_direction_in_relation_to_the_camera = DIR.NONE
 	return non_existant_direction_in_relation_to_the_camera
 
 ##region AMALGAMATE CODE REFERENCE

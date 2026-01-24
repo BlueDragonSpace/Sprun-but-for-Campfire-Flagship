@@ -18,7 +18,7 @@ tracks/0/path = NodePath("InBetweenPath/PathFollow3D/InBetweenCamera:current")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.01, 0.99),
+"times": PackedFloat32Array(0.01, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -31,7 +31,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 1, 0, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.99)
 }
 tracks/2/type = "method"
@@ -84,11 +84,15 @@ _data = {
 [node name="CameraHandler" type="Node3D"]
 script = ExtResource("1_31vqs")
 
-[node name="Cameras" type="Node" parent="."]
+[node name="Cameras" type="Node3D" parent="."]
+
+[node name="Bird" type="Camera3D" parent="Cameras"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
+projection = 1
+size = 5.0
 
 [node name="Head" type="Camera3D" parent="Cameras"]
 projection = 1
-current = true
 size = 5.0
 
 [node name="Head90" type="Camera3D" parent="Cameras"]
@@ -96,15 +100,11 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 0
 projection = 1
 size = 5.0
 
-[node name="Bird" type="Camera3D" parent="Cameras"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
-projection = 1
-size = 5.0
-
 [node name="InBetweenPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_31vqs")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="InBetweenPath"]
+tilt_enabled = false
 
 [node name="InBetweenCamera" type="Camera3D" parent="InBetweenPath/PathFollow3D"]
 projection = 1
@@ -114,3 +114,5 @@ size = 5.0
 libraries = {
 &"": SubResource("AnimationLibrary_rai8y")
 }
+
+[node name="UnusedCameras" type="Node" parent="."]

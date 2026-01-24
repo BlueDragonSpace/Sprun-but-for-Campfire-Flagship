@@ -1,5 +1,7 @@
 extends Node
 
+@export var three_d_enabled = false
+
 var dimension = 1
 
 @onready var OneDRoot: Control = $OneDRoot
@@ -19,7 +21,7 @@ func _input(event: InputEvent) -> void:
 			MouseRelease.play()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("dimension_shift"):
+	if Input.is_action_just_pressed("dimension_shift") and three_d_enabled:
 		Animate.play("dimension_shift_in")
 	
 		# click and release sound effect (Kinito.PET !!)

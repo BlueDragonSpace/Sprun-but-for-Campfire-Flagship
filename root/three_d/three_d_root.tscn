@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu1ueum56s1rl"]
+[gd_scene load_steps=12 format=3 uid="uid://cu1ueum56s1rl"]
 
 [ext_resource type="Script" uid="uid://52o3wyv2lrgw" path="res://root/three_d/three_d_root.gd" id="1_0xdj7"]
 [ext_resource type="PackedScene" uid="uid://crwqeuod3418" path="res://root/three_d/Entities/Players/3d_player.tscn" id="1_84ns2"]
@@ -20,6 +20,12 @@ sky_material = SubResource("ProceduralSkyMaterial_j4b2l")
 background_mode = 2
 sky = SubResource("Sky_js5vo")
 tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_qgbu4"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_vmnxw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pqooo"]
 
 [node name="ThreeDRoot" type="Node3D" groups=["ThreeDRoot"]]
 script = ExtResource("1_0xdj7")
@@ -46,3 +52,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4674301, 1, -0.84338164)
 [node name="CameraHandler" parent="." instance=ExtResource("3_qgbu4")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48531, 2.4378443)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31947327, 1.9229474, -5.133964)
+mesh = SubResource("BoxMesh_qgbu4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7674394, 1.2842698, -3.0032082)
+mesh = SubResource("TorusMesh_vmnxw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7742743, 1.7738008, 4.0445976)
+mesh = SubResource("SphereMesh_pqooo")
