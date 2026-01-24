@@ -50,68 +50,6 @@ noise = SubResource("FastNoiseLite_ovlcs")
 color_ramp = SubResource("Gradient_ovlcs")
 in_3d_space = true
 
-[sub_resource type="Animation" id="Animation_yxtmk"]
-resource_name = "hide_top_bar"
-length = 1.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:size_flags_stretch_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.016666668, 0, 0, 0, -0.16666667, 0.016666668, 0, 0, 0.03, -0.021111112, -0.005, 0, 0),
-"times": PackedFloat32Array(0.033333335, 0.96666664, 1, 1.4)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ShowTopBar:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.98, 1.01),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HBoxContainer:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.98, 0.99),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HideTopBar:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.98, 0.99),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:self_modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16333334, 0.16666667, 0, 0),
-"times": PackedFloat32Array(0, 0.98)
-}
-
 [sub_resource type="Animation" id="Animation_b1nt6"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -183,6 +121,68 @@ tracks/5/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_yxtmk"]
+resource_name = "hide_top_bar"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.016666668, 0, 0, 0, -0.16666667, 0.016666668, 0, 0, 0.03, -0.021111112, -0.005, 0, 0),
+"times": PackedFloat32Array(0.033333335, 0.96666664, 1, 1.4)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShowTopBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.98, 1.01),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.98, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HideTopBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.98, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:self_modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16333334, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.98)
 }
 
 [sub_resource type="Animation" id="Animation_20myc"]
@@ -544,6 +544,17 @@ tracks/26/keys = {
 "points": PackedFloat32Array(2, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/27/type = "bezier"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("RootGame/BattleScreen:modulate:a")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_ep6pg"]
 resource_name = "TPK"
@@ -767,6 +778,17 @@ tracks/0/path = NodePath("NoiseBackground:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootGame/BattleScreen:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 2),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 1)
@@ -1241,6 +1263,7 @@ value = 1.0
 
 [node name="MuteButton" parent="RootGame/TopBar/HBoxContainer" instance=ExtResource("4_wohbx")]
 layout_mode = 2
+tooltip_text = "why hello there"
 toggle_mode = true
 
 [node name="VSeparator" type="VSeparator" parent="RootGame/TopBar/HBoxContainer"]
@@ -1290,6 +1313,7 @@ size_flags_stretch_ratio = 0.06
 [node name="BattleScreen" type="HBoxContainer" parent="RootGame"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="VSeparator3" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)
@@ -1464,8 +1488,7 @@ layout_mode = 2
 [node name="Actions" type="TabContainer" parent="RootGame/LowerBar/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-tab_alignment = 1
-current_tab = 1
+current_tab = 6
 drag_to_rearrange_enabled = true
 
 [node name="BackButton" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
@@ -1480,6 +1503,7 @@ info = "Rechoose last action. (currently only works for attacking)"
 usable_on_player = 1
 
 [node name="Attack" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -1597,6 +1621,11 @@ layout_mode = 2
 text = "HealThySelf"
 info = "Heal self for 10... cheater"
 usable_on_player = 1
+
+[node name="MOVE" type="ColorRect" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+layout_mode = 2
+color = Color(0.7137255, 0.49019608, 0.8117647, 1)
+metadata/_tab_index = 6
 
 [node name="NextRound" parent="RootGame" instance=ExtResource("19_skhea")]
 stream = ExtResource("20_ndqky")
@@ -1907,6 +1936,7 @@ libraries = {
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/DevTools/FlashEvily" to="." method="_on_flash_evily_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/DevTools/AutoSprun" to="." method="_on_auto_sprun_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/DevTools/AutoHeal" to="." method="_on_auto_heal_pressed"]
+[connection signal="mouse_entered" from="RootGame/LowerBar/VBoxContainer/Actions/MOVE" to="." method="_on_move_mouse_entered"]
 [connection signal="pressed" from="CharacterSelect/VBoxContainer/EndCharacterSelect" to="." method="_on_end_character_select_pressed"]
 [connection signal="pressed" from="TPK/CenterBox/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="IntroSequence/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

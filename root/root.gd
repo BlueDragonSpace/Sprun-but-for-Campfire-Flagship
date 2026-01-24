@@ -1,8 +1,14 @@
 extends Node
 
-@export var three_d_enabled = false
 
-var dimension = 1
+enum DIMENSION {
+	ZERO, # an infinite possibility
+	ONE, # UI focus
+	TWO, # can be bird-eye or head-on
+	THREE, # a wild time
+	FOUR, # an Angel's Wrath
+}
+var dimension = DIMENSION.ONE
 
 @onready var OneDRoot: Control = $OneDRoot
 # @onready var ThreeDRoot: Node3D = $ThreeDRoot
@@ -21,10 +27,10 @@ func _input(event: InputEvent) -> void:
 			MouseRelease.play()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("dimension_shift") and three_d_enabled:
-		Animate.play("dimension_shift_in")
+	if Input.is_action_just_pressed("dimension_shift"):
+		dimension_shift(dimension, DIMENSION.TWO)
 	
-		# click and release sound effect (Kinito.PET !!)
+		# silly little click and release sound effects (Kinito.PET !!)
 	if not event is InputEventMouseButton and not event is InputEventMouseMotion:
 		if event and not event.is_echo() and not event.is_released():
 			if not event.keycode > 200:
@@ -43,16 +49,16 @@ func _unhandled_input(event: InputEvent) -> void:
 # 1 <-> 3 / 2: Background / Environment fades, character sprites *tween* to new position
 # 2 <-> 3: Ortho screws everything up... needs pre
 
-func dimension_shift() -> void:
+func dimension_shift(_from, to) -> void:
 	
 	#new_dimension : int
 	
 	# turn off previous dimension
-	match(dimension):
-		1:
-			OneDRoot.Animate.play('global_transition_out')
-		2:
+	match(to):
+		DIMENSION.ONE:
 			pass
+		DIMENSION.TWO:
+			OneDRoot.Animate.play('global_transition_out')
 		3:
 			pass
 		4:

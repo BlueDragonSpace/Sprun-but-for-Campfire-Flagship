@@ -649,6 +649,8 @@ func final_pass_debuff_check(npc: Node) -> void:
 		
 		debuff_child.expiration -= 1
 
+## Transitioning between dimensions
+
 ## signal functions
 # battle-game-turn-based stuff
 func _on_bak_pressed() -> void:
@@ -744,3 +746,8 @@ func _on_hide_top_bar_pressed() -> void:
 
 func _on_show_top_bar_pressed() -> void:
 	$RootGame/TopBar/AnimateTopBar.play_backwards("hide_top_bar")
+
+
+func _on_move_mouse_entered() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

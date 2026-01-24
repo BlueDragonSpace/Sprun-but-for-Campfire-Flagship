@@ -66,7 +66,7 @@ func camera_change(direction, previous_direction) -> void:
 			#"z":
 				#pass
 		#Player.position.y = global_position.y + player_y_safety #makes sure player lands on top of platform
-			CameraHandler.DIR.Y:
+			CameraHandler.DIR.X:
 				body_on_block.position.x = global_position.x
 			CameraHandler.DIR.Y:
 				#Player.position.z = global_position.z

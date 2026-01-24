@@ -76,9 +76,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3996508, 1.301082, -1.4311
 collision_mask = 1
 
 [node name="CanvasLayer" type="TextureRect" parent="."]
-offset_right = 512.0
-offset_bottom = 512.0
+visible = false
+offset_right = 461.0
+offset_bottom = 412.0
 texture = SubResource("ViewportTexture_xck48")
+expand_mode = 1
 
 [node name="TextureRect" type="SubViewport" parent="CanvasLayer"]
 
@@ -90,4 +92,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4940014, 0.65519714, 2.982
 
 [node name="FezBlock2" parent="." instance=ExtResource("6_xck48")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0683827, 0.3089819, 1.7042096)
-disable_one_way = true

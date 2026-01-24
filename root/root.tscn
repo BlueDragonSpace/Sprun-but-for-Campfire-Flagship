@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bv0n51038h5c7"]
+[gd_scene load_steps=9 format=3 uid="uid://bv0n51038h5c7"]
 
 [ext_resource type="PackedScene" uid="uid://d3wbwxma2hkqm" path="res://root/one_d/one_d_root.tscn" id="1_1xv2g"]
 [ext_resource type="Script" uid="uid://clibohg1fjvmb" path="res://root/root.gd" id="2_jnlp7"]
@@ -29,6 +29,18 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animate/DimensionShiftBoxes:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ovlcs"]
 resource_name = "dimension_shift_in"
@@ -40,9 +52,9 @@ tracks/0/path = NodePath("Animate/DimensionShiftBoxes/TextureRect2:anchor_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 2, 0, 0),
+"handle_modes": PackedInt32Array(0, 2, 0, 0),
 "points": PackedFloat32Array(1, 0, 0, 0.16666667, 0, 0.5, -0.16666667, 0.083333336, 0, 0, 0.5, -0.16666667, 0.083333336, 0, 0, 1, 0, 0, 0.16666667, 0),
-"times": PackedFloat32Array(0, 1, 1.05, 2.01)
+"times": PackedFloat32Array(0.033333335, 1, 1.05, 1.9666667)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -53,7 +65,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 2, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.5, -0.16666667, -0.083333336, 0, 0, 0.5, -0.16666667, -0.083333336, 0, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1, 1.05, 2.01)
+"times": PackedFloat32Array(0.033333335, 1, 1.05, 1.9666667)
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -69,37 +81,23 @@ tracks/2/keys = {
 "method": &"dimension_shift"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_b33ej"]
-resource_name = "dimension_shift_out"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animate/DimensionShiftBoxes/TextureRect2:anchor_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.5, -0.16666667, 0.083333336, 0, 0, 1, 0, 0, 0.16666667, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Animate/DimensionShiftBoxes/TextureRect:anchor_bottom")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.5, -0.16666667, -0.083333336, 0, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Animate/DimensionShiftBoxes:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y5gj7"]
 _data = {
 &"RESET": SubResource("Animation_js5vo"),
-&"dimension_shift_in": SubResource("Animation_ovlcs"),
-&"dimension_shift_out": SubResource("Animation_b33ej")
+&"dimension_shift_in": SubResource("Animation_ovlcs")
 }
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_e2nrw"]
@@ -155,19 +153,23 @@ texture = SubResource("PlaceholderTexture2D_e2nrw")
 [node name="MouseClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_js5vo")
 pitch_scale = 1.65
+max_polyphony = 10
 bus = &"SFX"
 
 [node name="MouseRelease" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_js5vo")
 pitch_scale = 0.66
+max_polyphony = 10
 bus = &"SFX"
 
 [node name="KeyClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_js5vo")
 pitch_scale = 2.14
+max_polyphony = 10
 bus = &"SFX"
 
 [node name="KeyRelease" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_js5vo")
 pitch_scale = 1.87
+max_polyphony = 10
 bus = &"SFX"
