@@ -3,6 +3,12 @@
 	Connecting:
 		Move characters to be outside of one_d_root (for all dimensions)
 		
+		Pathfinding: change algorithm for current direction:
+			y-Axis is free,
+			z-Axis is free, (and so on)
+			Manhattan Distance for a grid based system
+		Make the Grid-Based System...
+		
 		Attacks:
 			Hitboxes
 			Env. Blocking

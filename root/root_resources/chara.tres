@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://pour76yy1ong"]
+
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/chara.gd" id="1_tk763"]
+
+[resource]
+script = ExtResource("1_tk763")
+metadata/_custom_type_script = "uid://dtp8vsnd01bt8"

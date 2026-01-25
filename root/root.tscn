@@ -143,12 +143,6 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("PlaceholderTexture2D_e2nrw")
 
-[node name="CrossingObjects" type="Node" parent="."]
-
-[node name="Characters" type="Node" parent="CrossingObjects"]
-
-[node name="Enemies" type="Node" parent="CrossingObjects"]
-
 [node name="MouseClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_js5vo")
 pitch_scale = 1.65

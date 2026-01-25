@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="NPC" load_steps=2 format=3 uid="uid://b2udd7be0j1p"]
+
+[ext_resource type="Script" uid="uid://dtp8vsnd01bt8" path="res://root/root_resources/npc.gd" id="1_kmacc"]
+
+[resource]
+script = ExtResource("1_kmacc")

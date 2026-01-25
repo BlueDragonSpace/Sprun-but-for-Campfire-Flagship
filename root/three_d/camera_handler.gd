@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var camera_speed = 5
+@export var camera_speed = 20
 var camera_zoom = 10.0:
 	set(new):
 		camera_zoom = new
