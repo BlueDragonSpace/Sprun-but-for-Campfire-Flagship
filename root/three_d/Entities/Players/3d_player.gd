@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 3.0
+const SPEED = 20.0
 const JUMP_VELOCITY = 4.5
 
 #@onready var Animate: AnimationPlayer = $Animate

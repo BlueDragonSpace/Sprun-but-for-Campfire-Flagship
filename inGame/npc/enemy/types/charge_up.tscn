@@ -6,6 +6,7 @@
 
 [node name="ChargeUp" instance=ExtResource("1_ehdvl")]
 script = ExtResource("2_2od7p")
+intent = 2
 hp_range = 3
 attack_middle_value = 25
 attack_range = 3

@@ -86,6 +86,9 @@ script = ExtResource("1_31vqs")
 
 [node name="Cameras" type="Node3D" parent="."]
 
+[node name="testingPathfinding" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.54314375, -0.5157533, 0.66256577, 0, 0.7891072, 0.6142555, -0.8396398, 0.333629, -0.42859864, 3.5930717, 4.212239, -2.3488688)
+
 [node name="Bird" type="Camera3D" parent="Cameras"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
 projection = 1

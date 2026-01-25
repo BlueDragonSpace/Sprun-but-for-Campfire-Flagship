@@ -25,6 +25,5 @@ func add_set_intended_action() -> void:
 			Intent.self_modulate = Color(1.0, 0.0, 0.0, 1.0)
 		else:
 			Intent.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
-		intent = Action.ACTION_TYPE.OTHER
 		IntentLabel.text = ''
 		turns_charging += 1

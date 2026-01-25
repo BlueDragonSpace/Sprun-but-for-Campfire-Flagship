@@ -25,6 +25,9 @@ func _input(event: InputEvent) -> void:
 			MouseClick.play()
 		elif event.is_released():
 			MouseRelease.play()
+	
+	if Input.is_action_just_pressed("disable_mouse_capture"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("dimension_shift"):
