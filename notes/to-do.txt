@@ -6,7 +6,11 @@
 		Pathfinding: change algorithm for current direction:
 			y-Axis is free,
 			z-Axis is free, (and so on)
-			Manhattan Distance for a grid based system
+			x-Axis is free 
+			Manhattan Distance for a grid based system:
+				GDextension??? Might need to reask on Discord...
+			
+			
 		Make the Grid-Based System...
 		
 		Attacks:
@@ -35,13 +39,24 @@
 	
 	Strange rounding error, difference between shown stat bar damage and actual inflicted damage
 	(need a specific case, forgot where to find one and too annoyed to bother)
+	For now, it's me not paying attension to damage
 	
 1.75 (not Connecting or bug, ver importan):
+	
+	Bigger @export text field (sub_info / button_info)
+	
+	Define all Action intents:
+		Intent uses Name as Main, Button Info as Sub...
+	
+	Structure Players and Enemies so that they share each other's things:
+		Player: Show Intents, but one at a time
+		Enemy: Have attacks be structured as Actions (like the class_name), maybe add sprun for charge attacks?
+			Makes it so that Enemies can be reused as Charas down the line
 	
 2 (more mechanics):
 	Player Intents
 	add_lambda() -> Notif, subtracting sprun_cost
-	Slay the Spire / Balatro hover over meaning of (thing) to get a definition
+	Say move name upon using it (all actions should have names by Action class_name)
 3:
 	Poison Debuff (for Rat and beyond) (Slay the Spire like)
 	Stone DeBuff (wow Mario + Rabbids)

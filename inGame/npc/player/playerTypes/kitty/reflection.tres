@@ -7,6 +7,7 @@ script = ExtResource("1_kijxa")
 name = "Reflection"
 func_name = "reflection"
 action_type = 3
+intent_type = 5
 player_type = 8
 sprun_necessary = 9
 sprun_loss = 9

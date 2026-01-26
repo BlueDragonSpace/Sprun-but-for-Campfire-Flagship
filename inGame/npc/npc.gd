@@ -3,6 +3,10 @@ extends Control
 
 @onready var OneDRoot = get_tree().get_current_scene().get_child(0)
 
+@onready var Intent: TextureRect = $VBoxContainer/IntentBar/Intent
+@onready var IntentLabel: Label = $VBoxContainer/IntentBar/Intent/IntentLabel
+@onready var IntendedTargetIcon: TextureRect = $VBoxContainer/IntentBar/IntendedTargetIcon
+
 @onready var Icon: TextureRect = $VBoxContainer/Icon
 @onready var HP: TextureProgressBar = $VBoxContainer/LowerBar/HP
 @onready var CurrentHp: Label = $VBoxContainer/LowerBar/HP/HPBar/CurrentHP
@@ -29,6 +33,15 @@ var current_hp: int = max_hp:
 
 @export var attack_stat : int = 3
 @export var defend_stat : int = 5
+
+@export var current_intent = Action.INTENT.ATTACK
+var intent_notif_info = ['None', 'No intent has been set yet.']
+const NOTIF = preload("uid://ccl3stwaax0r3")
+
+# intent textures
+#const SWORD_ART = preload("uid://cl4v4yeo1gn2m")
+#const SHIELD_ART = preload("uid://bvhkmrse4oqmm")
+#const ATTENTIONS_ART = preload("uid://depk6jpfx32yl")
 
 
 # bad code: is it Npc or Character!
@@ -102,6 +115,11 @@ func check_debuff(debuff_in_question) -> Node: # returns if the debuff exists, a
 	
 	return node
 
+func set_intended_action(action: Action) -> void:
+	intended_action = Callable(self, action.func_name)
+	
+	set_intent(action)
+
 #for some reason, if you call a Callable as a Callable, the function doesn't go through
 func do_intended_action() -> void:
 	current_defense = 0
@@ -170,3 +188,50 @@ func die() -> void:
 		Animate.call_deferred("play", "die")
 	
 	$Death.play()
+
+# this function hasn't been inputted anywhere... yet!!
+func set_intent(action: Action) -> void:
+	
+	match(action.intent_type):
+		Action.INTENT.ATTACK:
+			IntentLabel.text = str(attack_stat * action.atk_mult)
+		Action.INTENT.DEFEND:
+			IntentLabel.text = str(defend_stat * action.dfd_mult)
+		Action.INTENT.HEAL:
+			IntentLabel.text = str(action.other_num)
+		_:
+			IntentLabel.text = '' # by default, there is no text on the Intent
+	
+	IntendedTargetIcon.visible = action.show_target_intent 
+	Intent.texture = action.icon
+	intent_notif_info = [action.name, action.button_info]
+
+func intent_info(main, sub):
+	var notif = NOTIF.instantiate()
+	notif.main_text = main
+	notif.sub_text = sub
+	Intent.add_child(notif)
+
+# utilizing about the same code for DeBuffRect for displaying a Notif for intents
+func _on_intent_mouse_entered() -> void:
+	#match intent:
+		#Action.INTENT.ATTACK:
+			#intent_info('Attack', 'This character intends to attack.')
+		#Action.INTENT.DEFEND:
+			#intent_info('Defend', 'This character intends to defend from damage.')
+		#Action.INTENT.SPRUN:
+			#intent_info('Sprun', 'Preparing for a bigger move.')
+		#Action.INTENT.HEAL:
+			#intent_info('Heal', 'Character intends to heal DMG.')
+		#Action.INTENT.BUFF:
+			#intent_info('Buff', 'Character intends to increase stats.')
+		#_:
+			#intent_info('Unknown Intent', 'Please report this as a bug! This is an error safety case!')
+	intent_info(intent_notif_info[0], intent_notif_info[1])
+
+func _on_intent_mouse_exited() -> void:
+	for child in Intent.get_children():
+		if child.name == 'IntentLabel':
+			pass
+		else:
+			child.Animate.play('fade_up')

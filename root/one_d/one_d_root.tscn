@@ -1330,6 +1330,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
 layout_mode = 2
 
+[node name="Wizerd" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_ih4ah")]
+layout_mode = 2
+
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
@@ -1359,6 +1362,7 @@ max_hp = 8
 
 [node name="ChargeUp" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_yxtmk")]
 layout_mode = 2
+current_intent = null
 
 [node name="VSeparator" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)
@@ -1495,7 +1499,7 @@ layout_mode = 2
 [node name="Actions" type="TabContainer" parent="RootGame/LowerBar/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 6
+current_tab = 1
 drag_to_rearrange_enabled = true
 
 [node name="BackButton" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
@@ -1510,7 +1514,6 @@ info = "Rechoose last action. (currently only works for attacking)"
 usable_on_player = 1
 
 [node name="Attack" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -1630,6 +1633,7 @@ info = "Heal self for 10... cheater"
 usable_on_player = 1
 
 [node name="MOVE" type="ColorRect" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+visible = false
 layout_mode = 2
 color = Color(0.7137255, 0.49019608, 0.8117647, 1)
 metadata/_tab_index = 6

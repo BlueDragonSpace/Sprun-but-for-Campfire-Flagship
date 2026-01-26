@@ -12,7 +12,7 @@ func add_set_intended_action() -> void:
 		intended_action = Callable(self, "attack")
 		IntendedTargetIcon.visible = true
 		Intent.texture = SWORD_ART
-		intent = INTENT.ATTACK
+		intent = Action.INTENT.ATTACK
 		attack_stat = randi_range(attack_middle_value - attack_range, attack_middle_value + attack_range)
 		IntentLabel.text = str(attack_stat)
 		turns_charging = 0
@@ -20,7 +20,7 @@ func add_set_intended_action() -> void:
 		intended_action = Callable(Global, "empty_function")
 		IntendedTargetIcon.visible = false
 		Intent.texture = ATTENTIONS_ART
-		intent = INTENT.CHARGING
+		intent = Action.INTENT.SPRUN
 		if turns_charging == 1:
 			Intent.self_modulate = Color(1.0, 0.0, 0.0, 1.0)
 		else:

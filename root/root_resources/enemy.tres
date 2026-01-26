@@ -1,12 +1,7 @@
 [gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://c5hmf5r6i3e87"]
 
-[sub_resource type="GDScript" id="GDScript_6dd1h"]
-script/source = "class_name Enemy
-extends NPC
-
-@export var evil_growl_sound = 'grhhrhrug'
-"
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/enemy.gd" id="1_d2lyb"]
 
 [resource]
-script = SubResource("GDScript_6dd1h")
+script = ExtResource("1_d2lyb")
 metadata/_custom_type_script = "uid://dtp8vsnd01bt8"

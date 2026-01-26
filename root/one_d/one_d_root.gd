@@ -192,7 +192,7 @@ func restart_tree() -> void:
 func set_enemies_intents() -> void:
 	for enemy in Enemies.get_children():
 		if enemy.is_dead == false:
-			enemy.intent = randi_range(0,0) #currently only sets to attack
+			
 			var tween = create_tween()
 			# makes the Intent visible again
 			# it's worth noting that "Intent" and "intent" are two completely separate things

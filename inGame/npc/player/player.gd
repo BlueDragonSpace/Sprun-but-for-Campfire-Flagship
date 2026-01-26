@@ -33,14 +33,6 @@ func double_add_ready() -> void:
 	# at this point we may as well make this a running joke
 	pass
 
-func set_action_ui() -> void:
-	# for every individual character, their individual actions need to be shown by the UI
-	# Back Button will always remain the same, and the actions contained inside of 
-	# - this script are available to every character
-	# Once we figure out what every action needed for the UI is, we need to add them to UI,
-	# then add the signals and connections for them, as if manually, but through code (duh)
-	pass
-
 func add_actions(custom_actions : Array) -> void:
 	# every player has basics:
 			# attack, defend, focus, pass
@@ -64,27 +56,35 @@ func add_actions(custom_actions : Array) -> void:
 		match(this_action.action_type):
 			0: ## ATTACK
 				
-				var action = Callable(self, this_action.func_name).bind(this_action.atk_mult, this_action.sprun_loss)
+				#var action = Callable(self, this_action.func_name).bind(this_action.atk_mult, this_action.sprun_loss)
 				
 				if not this_action.is_quick:
 					lambda = func(): 
-						intended_action = action
+						#intended_action = action
+						set_intended_action(this_action)
 						OneDRoot.initiate_select_enemy()
 				else:
 					lambda = func():
-						intended_action = action
+						#intended_action = 
+						set_intended_action(this_action)
 						OneDRoot.initiate_select_enemy(true)
 			1: ## DEFEND
-				print('no lamda set for custom defend actions in player.gd')
+				print('no lambda set for custom defend actions in player.gd')
 			#2: ## SPRUN
 				#lambda = func():
 					#intended_action = Callable(self, this_action.func_name)
 					#OneDRoot.player_pass_turn()
 			_:
 				lambda = func():
-					intended_action = Callable(self, this_action.func_name).bind(this_action.sprun_loss)
-					if this_action.ally_target:
-						OneDRoot.initiate_select_ally()
+					
+					set_intended_action(this_action)
+					
+					#intended_action = Callable(self, this_action.func_name).bind(this_action.sprun_loss)
+					if this_action.needs_target:
+						if this_action.ally_target:
+							OneDRoot.initiate_select_ally()
+						else:
+							OneDRoot.initiate_select_enemy()
 					else:
 						OneDRoot.player_pass_turn()
 				
@@ -123,8 +123,8 @@ func set_sprun_slots(slots) -> void:
 		
 		
 		SprunContainer.add_child(sprun)
-		sprun.pivot_offset.y += sprun_distance
-		sprun.position.y -= sprun_distance
+		sprun.pivot_offset.y -= sprun_distance
+		sprun.position.y += sprun_distance
 		@warning_ignore("integer_division")
 		#sprun.position -= Vector2(128 / 2, 128 / 2) # 128 comes from the Godot Sprite's original dimensions
 		
@@ -139,10 +139,11 @@ func set_sprun_slots(slots) -> void:
 	set_sprun(sprun_active)
 # player has it's intended actions set by the OneDRoot (because it's from input from the UI)
 
-func initiate_attack(action_name: String):
-	
-	self.intended_action = Callable(self, action_name)
-	OneDRoot.initiate_select_enemy()
+#func initiate_attack(action_name: String):
+	#
+	##self.intended_action = Callable(self, action_name)
+	##set_intended_action()
+	#OneDRoot.initiate_select_enemy()
 
 func big_attack():
 	set_sprun(sprun_active - 1)
