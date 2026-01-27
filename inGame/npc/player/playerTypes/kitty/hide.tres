@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://cu7gb1lix0hyn"]
 
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/player/action.gd" id="1_0kngo"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="1_0kngo"]
 
 [resource]
 script = ExtResource("1_0kngo")

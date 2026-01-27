@@ -202,7 +202,7 @@ func set_enemies_intents() -> void:
 			## choose a target
 			
 			if Charas.get_children().size() == 1:
-				enemy.set_intended_action(Charas.get_child(0))
+				enemy.action_victim = Charas.get_child(0)
 			else:
 				# first, figure out if any are unavailable (hiding)
 				var all_charas = Charas.get_children()
@@ -212,7 +212,8 @@ func set_enemies_intents() -> void:
 						all_charas.remove_at(chara_num)
 				
 				# now direct an attack towards a randomly chosen target (overridden by aggro)
-				enemy.set_intended_action(all_charas[randi_range(0, all_charas.size() - 1)])
+				enemy.set_intended_action(null, true)
+				enemy.action_victim = all_charas[randi_range(0, all_charas.size() - 1)]
 
 func set_turn_order() -> void:
 	## sorts the Turn Order

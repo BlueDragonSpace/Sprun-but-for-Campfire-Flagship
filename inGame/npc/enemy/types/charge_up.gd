@@ -10,20 +10,23 @@ func add_set_intended_action() -> void:
 	
 	if turns_charging >= 2: #charged long enough, time to fire
 		intended_action = Callable(self, "attack")
-		IntendedTargetIcon.visible = true
-		Intent.texture = SWORD_ART
-		intent = Action.INTENT.ATTACK
-		attack_stat = randi_range(attack_middle_value - attack_range, attack_middle_value + attack_range)
-		IntentLabel.text = str(attack_stat)
-		turns_charging = 0
+		intent_info('Attack', 'Chargeup doing big damage and game not finished so sue me')
+		#intended_action = Callable(self, "attack")
+		#IntendedTargetIcon.visible = true
+		#Intent.texture = SWORD_ART
+		#intent = Action.INTENT.ATTACK
+		#attack_stat = randi_range(attack_middle_value - attack_range, attack_middle_value + attack_range)
+		#IntentLabel.text = str(attack_stat)
+		#turns_charging = 0
 	else:
 		intended_action = Callable(Global, "empty_function")
-		IntendedTargetIcon.visible = false
-		Intent.texture = ATTENTIONS_ART
-		intent = Action.INTENT.SPRUN
+		intent_info('Charging', 'something big is coming for some reason bad proBABLY')
+		#IntendedTargetIcon.visible = false
+		#Intent.texture = ATTENTIONS_ART
+		#intent = Action.INTENT.SPRUN
 		if turns_charging == 1:
 			Intent.self_modulate = Color(1.0, 0.0, 0.0, 1.0)
 		else:
 			Intent.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
-		IntentLabel.text = ''
+		#IntentLabel.text = ''
 		turns_charging += 1

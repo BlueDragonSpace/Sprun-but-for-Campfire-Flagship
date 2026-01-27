@@ -1,10 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://ctlnpeebeoqgd"]
+[gd_scene load_steps=30 format=3 uid="uid://ctlnpeebeoqgd"]
 
 [ext_resource type="Texture2D" uid="uid://c3p85tdu00duw" path="res://placeholderArt/icon.svg" id="1_2jrf3"]
 [ext_resource type="Script" uid="uid://cdbuic4bcd67n" path="res://inGame/npc/npc.gd" id="1_3atjd"]
 [ext_resource type="Texture2D" uid="uid://cl4v4yeo1gn2m" path="res://placeholderArt/myPixelArt/SwordCarrot-1.png.png" id="3_3c5kl"]
 [ext_resource type="Texture2D" uid="uid://skl6oj4btwmf" path="res://placeholderArt/myPixelArt/HPBar (1)/hp2.png" id="3_bj2b7"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="3_dkh77"]
 [ext_resource type="Texture2D" uid="uid://c8n0k3x2k67si" path="res://placeholderArt/myPixelArt/NewSprun-1.png.png" id="3_hhgrb"]
+[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/npc/actions/test_attack.tres" id="4_7qu08"]
 [ext_resource type="Texture2D" uid="uid://cvggsr6dniihs" path="res://placeholderArt/myPixelArt/wizerdhat-1.png (1).png" id="4_dkh77"]
 [ext_resource type="Texture2D" uid="uid://cfkr8gbn4j4sj" path="res://placeholderArt/myPixelArt/HPBar (1)/hp0.png" id="4_hhgrb"]
 [ext_resource type="Texture2D" uid="uid://bvhkmrse4oqmm" path="res://placeholderArt/myPixelArt/ShieldBadArt-1.png.png" id="4_wk2dw"]
@@ -381,6 +383,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_3atjd")
 icon = ExtResource("1_2jrf3")
+actions = Array[ExtResource("3_dkh77")]([ExtResource("4_7qu08")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

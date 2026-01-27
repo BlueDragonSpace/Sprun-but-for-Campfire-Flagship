@@ -1362,6 +1362,7 @@ max_hp = 8
 
 [node name="ChargeUp" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_yxtmk")]
 layout_mode = 2
+current_intent = null
 
 [node name="VSeparator" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)

@@ -43,7 +43,16 @@
 	
 1.75 (not Connecting or bug, ver importan):
 	
+	Complete Revamping of Action system:
+		Applicable to Enemies
+		All Actions through default UI should be Actions
+		Players have intent
+	
+	Update to Godot 4.6!!!1!!!!11!!!!1111! (make sure the game works first tho)
+	
+	@export action_script (so every npc can do the action!!!!)
 	Bigger @export text field (sub_info / button_info)
+	
 	
 	Define all Action intents:
 		Intent uses Name as Main, Button Info as Sub...

@@ -38,6 +38,8 @@ var current_hp: int = max_hp:
 var intent_notif_info = ['None', 'No intent has been set yet.']
 const NOTIF = preload("uid://ccl3stwaax0r3")
 
+@export var actions : Array[Action]
+
 # intent textures
 #const SWORD_ART = preload("uid://cl4v4yeo1gn2m")
 #const SHIELD_ART = preload("uid://bvhkmrse4oqmm")
@@ -115,10 +117,24 @@ func check_debuff(debuff_in_question) -> Node: # returns if the debuff exists, a
 	
 	return node
 
-func set_intended_action(action: Action) -> void:
-	intended_action = Callable(self, action.func_name)
+func set_intended_action(action: Action, random: bool = false) -> void:
 	
-	set_intent(action)
+	# this has nothing to do with the action_victim,
+	# that must be set by other means (selction scene for charas, mostly randomly for enemies)
+	
+	if random:
+		var random_action = actions[randi_range(0, actions.size() - 1)]
+		
+		intended_action = Callable(self, random_action.func_name)
+		set_intent(random_action)
+	else:
+		intended_action = Callable(self, action.func_name)
+		set_intent(action)
+	
+	add_set_intended_action()
+
+func add_set_intended_action() -> void: # virtual function, though actual virtual functions don't work the way I like...
+	pass
 
 #for some reason, if you call a Callable as a Callable, the function doesn't go through
 func do_intended_action() -> void:
@@ -194,11 +210,11 @@ func set_intent(action: Action) -> void:
 	
 	match(action.intent_type):
 		Action.INTENT.ATTACK:
-			IntentLabel.text = str(attack_stat * action.atk_mult)
+			IntentLabel.text = str(int(attack_stat * action.atk_mult))
 		Action.INTENT.DEFEND:
-			IntentLabel.text = str(defend_stat * action.dfd_mult)
+			IntentLabel.text = str(int(defend_stat * action.dfd_mult))
 		Action.INTENT.HEAL:
-			IntentLabel.text = str(action.other_num)
+			IntentLabel.text = str(int(action.other_num))
 		_:
 			IntentLabel.text = '' # by default, there is no text on the Intent
 	
