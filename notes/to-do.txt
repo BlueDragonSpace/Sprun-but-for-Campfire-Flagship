@@ -41,18 +41,16 @@
 	(need a specific case, forgot where to find one and too annoyed to bother)
 	For now, it's me not paying attension to damage
 	
+1.6 (yeah these are bugs):
+	
+	Player visibling notif upon getting to their turn
+	
 1.75 (not Connecting or bug, ver importan):
 	
 	Complete Revamping of Action system:
-		Applicable to Enemies
 		All Actions through default UI should be Actions
-		Players have intent
 		
-			Actions still currently work as expected
-			Target Intent does not update
-			Charge-Up's notifs pop-up without hover
-			Player Enemy Intent updates upon selection
-			Player Intent Dissappears upon new round
+		Go through all previous actions and add new info (mostly the lowest new booleans in Action)
 		
 		Run the "add_new_actions" function over the actions array in npc, stop using new_actions
 	

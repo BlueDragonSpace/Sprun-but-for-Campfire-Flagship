@@ -31,6 +31,17 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0, -0.15, 0, 0.15, 0, 0.28, -0.050000004, -0.046666667, 0, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0, 1, -0.050000004, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
 
 [sub_resource type="Animation" id="Animation_xn3ah"]
 resource_name = "hide_intent"
@@ -46,6 +57,17 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0.28, -0.15, 0, 0.15, 0, 0, -0.050000004, 0.046666667, 0, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0, 0, -0.050000004, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
 
 [sub_resource type="Animation" id="Animation_x86hb"]
 length = 0.001
@@ -56,6 +78,17 @@ tracks/0/path = NodePath(".:size_flags_stretch_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0)
@@ -456,8 +489,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.34
 
 [node name="IntentBar" type="HBoxContainer" parent="VBoxContainer"]
-self_modulate = Color(1, 0, 0, 1)
-clip_contents = true
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0

@@ -233,6 +233,7 @@ func set_intent(action: Action) -> void:
 func intent_info(main, sub):
 	var notif = NOTIF.instantiate()
 	notif.main_text = main
+	print(sub)
 	notif.sub_text = sub
 	Intent.add_child(notif)
 
@@ -241,19 +242,6 @@ func hide_intent() -> void:
 
 # utilizing about the same code for DeBuffRect for displaying a Notif for intents
 func _on_intent_mouse_entered() -> void:
-	#match intent:
-		#Action.INTENT.ATTACK:
-			#intent_info('Attack', 'This character intends to attack.')
-		#Action.INTENT.DEFEND:
-			#intent_info('Defend', 'This character intends to defend from damage.')
-		#Action.INTENT.SPRUN:
-			#intent_info('Sprun', 'Preparing for a bigger move.')
-		#Action.INTENT.HEAL:
-			#intent_info('Heal', 'Character intends to heal DMG.')
-		#Action.INTENT.BUFF:
-			#intent_info('Buff', 'Character intends to increase stats.')
-		#_:
-			#intent_info('Unknown Intent', 'Please report this as a bug! This is an error safety case!')
 	intent_info(intent_notif_info[0], intent_notif_info[1])
 
 func _on_intent_mouse_exited() -> void:
