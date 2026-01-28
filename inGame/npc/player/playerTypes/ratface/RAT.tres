@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://d2ing130rolfl"]
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://d2ing130rolfl"]
 
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="1_qbmnl"]
+[ext_resource type="Texture2D" uid="uid://bnvnxoddtaevo" path="res://placeholderArt/squeezeRat-removebg-preview.png" id="1_e8gnp"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="1_qbmnl"]
 
 [resource]
 script = ExtResource("1_qbmnl")
 name = "RAT"
 func_name = "call_rat"
+icon = ExtResource("1_e8gnp")
 action_type = 3
 player_type = 16
 sprun_necessary = 2

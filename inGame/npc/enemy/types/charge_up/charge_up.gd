@@ -9,8 +9,8 @@ func add_set_intended_action() -> void:
 	# basically overrules everything set previously
 	
 	if turns_charging >= 2: #charged long enough, time to fire
-		intended_action = Callable(self, "test_attack")
-		set_intent(actions[0])
+		intended_action = Callable(self, "attack")
+		set_intent(actions[0], true)
 		# intent_info('Attack', 'Chargeup doing big damage and game not finished so sue me')
 		#intended_action = Callable(self, "attack")
 		#IntendedTargetIcon.visible = true
@@ -18,7 +18,7 @@ func add_set_intended_action() -> void:
 		#intent = Action.INTENT.ATTACK
 		#attack_stat = randi_range(attack_middle_value - attack_range, attack_middle_value + attack_range)
 		#IntentLabel.text = str(attack_stat)
-		#turns_charging = 0
+		turns_charging = 0
 	else:
 		intended_action = Callable(Global, "empty_function")
 		set_intent(actions[1])

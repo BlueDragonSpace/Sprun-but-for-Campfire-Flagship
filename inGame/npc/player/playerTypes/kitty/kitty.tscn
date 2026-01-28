@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d25w6c0hemmxn"]
+[gd_scene format=3 uid="uid://d25w6c0hemmxn"]
 
 [ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/npc/player/player.tscn" id="1_ceooe"]
 [ext_resource type="Script" uid="uid://dxc2eww7oejej" path="res://inGame/npc/player/playerTypes/kitty/kitty.gd" id="2_u7gom"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="5_kmnnf"]
 [ext_resource type="AudioStream" uid="uid://bqjos10bo5lsn" path="res://placeholderArt/sfx/reflection.wav" id="6_s8276"]
 
-[node name="Kitty" instance=ExtResource("1_ceooe")]
+[node name="Kitty" unique_id=1295881673 instance=ExtResource("1_ceooe")]
 script = ExtResource("2_u7gom")
 sprun_slots = 9
 new_action = Array[Resource]([ExtResource("3_ceooe"), ExtResource("4_duq3w")])
@@ -19,17 +19,20 @@ max_hp = 12
 attack_stat = 2
 defend_stat = 4
 
-[node name="VSeparator4" type="VSeparator" parent="VBoxContainer" index="4"]
+[node name="IntendedTargetIcon" parent="VBoxContainer/IntentBar" parent_id_path=PackedInt32Array(1183420490) index="1" unique_id=394397062]
+texture = null
+
+[node name="VSeparator4" type="VSeparator" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="4" unique_id=1060736784]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.06
 
-[node name="VSeparator" parent="VBoxContainer" index="5"]
+[node name="VSeparator" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="5" unique_id=1343814083]
 visible = true
 
-[node name="VSeparator456" parent="VBoxContainer" index="7"]
+[node name="VSeparator456" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="7" unique_id=911066530]
 visible = true
 
-[node name="Reflecting" parent="." index="7" instance=ExtResource("5_kmnnf")]
+[node name="Reflecting" parent="." index="7" unique_id=747243810 instance=ExtResource("5_kmnnf")]
 stream = ExtResource("6_s8276")

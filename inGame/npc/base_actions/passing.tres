@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://ckrxohf0inp4t"]
+
+[ext_resource type="Texture2D" uid="uid://bdb2ui47063yf" path="res://placeholderArt/rightwardArrow.webp" id="1_ktj8e"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="2_o5oqb"]
+
+[resource]
+script = ExtResource("2_o5oqb")
+name = "Pass"
+func_name = "passing"
+icon = ExtResource("1_ktj8e")
+action_type = 3
+intent_type = 7
+button_info = "Doing nothing good for nothing bowling"
+metadata/_custom_type_script = "uid://diifqu7v6338q"

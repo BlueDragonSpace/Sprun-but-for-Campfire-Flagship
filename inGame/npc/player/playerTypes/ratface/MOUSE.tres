@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://qt4lsl84qfnm"]
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://qt4lsl84qfnm"]
 
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="1_rvtb4"]
+[ext_resource type="Texture2D" uid="uid://c3lfkqfcsjsc4" path="res://placeholderArt/mouseOrRat.png" id="1_kdno3"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="1_rvtb4"]
 
 [resource]
 script = ExtResource("1_rvtb4")
 name = "MOUSE"
 func_name = "call_mouse"
+icon = ExtResource("1_kdno3")
 action_type = 3
 player_type = 16
 sprun_necessary = 1

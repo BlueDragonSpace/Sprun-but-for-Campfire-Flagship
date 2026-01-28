@@ -151,6 +151,7 @@ func set_sprun_slots(slots) -> void:
 	#OneDRoot.initiate_select_enemy()
 
 func set_intent_target(image: Texture) -> void:
+	IntendedTargetIcon.visible = true
 	IntendedTargetIcon.texture = image
 
 func big_attack():

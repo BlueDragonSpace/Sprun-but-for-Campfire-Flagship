@@ -86,12 +86,12 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 					disable_all_attacks(true)
 				# visible (-ing)
 				check_actions_visible(current_player.player_type)
-				current_player.hide_intent()
 			TURN_TYPE.SELECT_ENEMY:
 				disable_all_actions(true)
 				BAK.disabled = false
 				back_action = func(): 
 					turn = TURN_TYPE.PLAYER
+					current_player.hide_intent()
 					# removes all enemy selector children, since they're the last to be added
 					for enemy in Enemies.get_children():
 						enemy.get_child(-1).queue_free()
@@ -402,7 +402,6 @@ func remove_dead_actions(dead: Node) -> void:
 			turn_order_data.remove_at(num)
 			continue # if we remove the action at this point in the array, we need to re-read what this current action is, since all items forward are pushed back one, menaing the current action is new in this current index
 			
-		#print(turn_order_data[num][2].name + " is targeting " + turn_order_data[num][2].action_victim.name)
 		if turn_order_data[num][2].action_victim == dead:
 			if turn_order_data[num][2].action_victim is Node:
 				turn_order_data.remove_at(num)
@@ -418,6 +417,7 @@ func remove_dead_actions(dead: Node) -> void:
 		
 	
 	match(dead.npc_type):
+		
 		dead.CHARACTER_TYPE.ENEMY:
 			enemies_slain += 1
 			$RootGame/TopBar/HBoxContainer/EnemiesSlainNum.text = str(enemies_slain)
@@ -604,7 +604,7 @@ func final_pass_turn() -> void:
 	
 	for num in range(0, Charas.get_child_count()):
 		if Charas.get_child(num).is_dead == false:
-			current_player = Charas.get_child(num) # sets the current_player to be not dead
+			current_player = Charas.get_child(num) # sets the current_player to one that's not dead
 		break
 	
 	if in_prep_round:
@@ -628,6 +628,7 @@ func final_pass_turn() -> void:
 	## DEBUFF HANDLING
 	for player in Charas.get_children():
 		player.intended_action = Callable(Global, "empty_function")
+		player.IntendedTargetIcon.visible = false
 		
 		final_pass_debuff_check(player)
 	
@@ -661,39 +662,44 @@ func final_pass_debuff_check(npc: Node) -> void:
 func _on_bak_pressed() -> void:
 	back_action.call()
 func _on_atk_pressed() -> void:
-	
-	# the player's action is attack
-	# if there's only one enemy, it just sets the victim to be that enemy
-	# otherwise we need to select an enemy
-	
 	current_player.intended_action = Callable(current_player, "attack")
+	current_player.set_intent(current_player.actions[0])
 	initiate_select_enemy()
 func _on_dfd_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "defend")
+	current_player.set_intent(current_player.actions[1])
 	player_pass_turn()
 func _on_focus_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "focus")
+	
+	current_player.set_intent(current_player.actions[3])
+	
 	player_pass_turn()
 func _on_increase_sprun_slots_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "increase_sprun_slots")
+	current_player.set_intent(current_player.actions[4])
 	player_pass_turn()
 func _on_atk_up_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "upgrade_atk")
+	current_player.set_intent(current_player.actions[4])
 	player_pass_turn()
 func _on_dfd_up_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "upgrade_dfd")
+	current_player.set_intent(current_player.actions[4])
 	player_pass_turn()
 func _on_spd_up_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "upgrade_spd")
+	current_player.set_intent(current_player.actions[4])
 	player_pass_turn()
-
 func _on_itm_pressed() -> void:
 	print("haven't set this up yet")
 func _on_big_atk_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "big_attack")
+	current_player.set_intent(current_player.actions[5])
 	initiate_select_enemy()
 func _on_pass_pressed() -> void:
 	current_player.intended_action = Callable(Global, "empty_function")
+	current_player.set_intent(current_player.actions[2])
 	player_pass_turn()
 func _on_masochism_pressed() -> void:
 	current_player.current_hp -= 10

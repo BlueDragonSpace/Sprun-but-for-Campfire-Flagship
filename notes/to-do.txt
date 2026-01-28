@@ -41,6 +41,11 @@
 	(need a specific case, forgot where to find one and too annoyed to bother)
 	For now, it's me not paying attension to damage
 	
+	Killing via a debuff (poison, fire) causes error
+		Won't break the game on the player's end( I think), but poses significant risk
+	
+	All default action buttons need to link (set_intended_action)
+	
 1.6 (yeah these are bugs):
 	
 	Player visibling notif upon getting to their turn

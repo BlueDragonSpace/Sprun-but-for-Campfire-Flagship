@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://2e2way0p32mh"]
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://2e2way0p32mh"]
 
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="1_3pv3v"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="1_3pv3v"]
 [ext_resource type="Texture2D" uid="uid://dkwgqscbsik62" path="res://placeholderArt/TurnOrderPoint.png" id="1_gw2i4"]
 
 [resource]

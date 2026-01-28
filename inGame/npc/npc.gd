@@ -62,7 +62,10 @@ var current_defense : int = 0:
 		current_defense = new
 
 var intended_action = Callable(Global, "empty_function")
-var action_victim : Node
+var action_victim : Node = null:
+	set(new):
+		action_victim = new
+		IntendedTargetIcon.texture = action_victim.icon
 
 var is_dead = false
 var size_transition = 0.0:
@@ -128,10 +131,12 @@ func set_intended_action(action: Action, callable : Callable, random: bool = fal
 	# that must be set by other means (selction scene for charas, mostly randomly for enemies)
 	
 	if random:
+		# generally, random is used for enemies. 
+		# certain enemies have more complex attack patterns, but this is generally their code only
 		var random_action = actions[randi_range(0, actions.size() - 1)]
 		
 		intended_action = Callable(self, random_action.func_name)
-		set_intent(random_action)
+		set_intent(random_action, random_action.show_target_intent)
 	else:
 		intended_action = callable
 		set_intent(action)
@@ -198,10 +203,10 @@ func attack() -> void:
 		Animate.play("attack")
 		$Attack.play()
 
+func passing() -> void:
+	Global.empty_function()
 
 func die() -> void:
-	# lol keep in mind the wizard's death is unique
-	# just because I wanted to add a dumb sound
 	
 	# you can only die once
 	if is_dead == false:
@@ -212,7 +217,8 @@ func die() -> void:
 	$Death.play()
 
 # this function hasn't been inputted anywhere... yet!!
-func set_intent(action: Action) -> void:
+func set_intent(action: Action, target_visible : bool = false) -> void:
+	
 	
 	IntentAnimate.play("show_intent")
 	
@@ -226,14 +232,16 @@ func set_intent(action: Action) -> void:
 		_:
 			IntentLabel.text = '' # by default, there is no text on the Intent
 	
-	IntendedTargetIcon.visible = action.show_target_intent 
+	if target_visible:
+		IntendedTargetIcon.visible = target_visible
+	else:
+		IntendedTargetIcon.visible = action.show_target_intent
 	Intent.texture = action.icon
 	intent_notif_info = [action.name, action.button_info]
-
+	
 func intent_info(main, sub):
 	var notif = NOTIF.instantiate()
 	notif.main_text = main
-	print(sub)
 	notif.sub_text = sub
 	Intent.add_child(notif)
 

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://ds1u2a18cppdb"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="1_1eqhq"]
+[ext_resource type="Texture2D" uid="uid://dw8l5oeyu0us6" path="res://placeholderArt/upArrow.webp" id="1_skwj8"]
+
+[resource]
+script = ExtResource("1_1eqhq")
+name = "Buff"
+func_name = "nope, should be unnecessary"
+icon = ExtResource("1_skwj8")
+action_type = 3
+intent_type = 5
+button_info = "Increasing stats"
+metadata/_custom_type_script = "uid://diifqu7v6338q"

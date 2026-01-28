@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://d3wbwxma2hkqm"]
+[gd_scene format=3 uid="uid://d3wbwxma2hkqm"]
 
 [ext_resource type="Theme" uid="uid://cyy1ccrel07nx" path="res://root/root.tres" id="1_nt0n7"]
 [ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/one_d/one_d_root.gd" id="2_vitat"]
@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://c8l8w4n02trfl" path="res://inGame/sound/mute_button.tscn" id="4_wohbx"]
 [ext_resource type="PackedScene" uid="uid://bbku30glrarxd" path="res://inGame/npc/player/playerTypes/raccoon/raccoon.tscn" id="5_b1nt6"]
 [ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="6_20myc"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="6_20myc"]
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
-[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/npc/actions/test_attack.tres" id="7_05ql3"]
+[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/npc/base_actions/attack.tres" id="7_05ql3"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
 [ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/npc/enemy/enemy.tscn" id="9_r1xw6"]
 [ext_resource type="PackedScene" uid="uid://d3n5wkylral0k" path="res://inGame/npc/enemy/types/charge_up/charge_up.tscn" id="9_yxtmk"]
 [ext_resource type="Texture2D" uid="uid://bpyet5t7bpkww" path="res://placeholderArt/myPixelArt/BiggBlue-1.png.png" id="10_fshsv"]
+[ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/npc/base_actions/defend.tres" id="11_05ql3"]
 [ext_resource type="Texture2D" uid="uid://dtkrx4fskgr5r" path="res://placeholderArt/myPixelArt/littleBlue-1.png.png" id="11_qswi8"]
 [ext_resource type="Texture2D" uid="uid://docng28uw84fm" path="res://placeholderArt/myPixelArt/Ooohhhhhhh-1.png.png" id="12_5g6ql"]
 [ext_resource type="Texture2D" uid="uid://co7fnqru8dy5r" path="res://placeholderArt/Xi.png" id="13_b8b7t"]
@@ -1131,7 +1132,7 @@ _data = {
 &"to_player": SubResource("Animation_0n2s5")
 }
 
-[node name="OneDRoot" type="Control" groups=["OneDRoot"]]
+[node name="OneDRoot" type="Control" unique_id=1893301946 groups=["OneDRoot"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1142,7 +1143,7 @@ theme = ExtResource("1_nt0n7")
 script = ExtResource("2_vitat")
 started = true
 
-[node name="NoiseBackground" type="TextureRect" parent="."]
+[node name="NoiseBackground" type="TextureRect" parent="." unique_id=191933669]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1152,7 +1153,7 @@ grow_vertical = 2
 texture = SubResource("NoiseTexture2D_b33ej")
 stretch_mode = 6
 
-[node name="RootGame" type="VBoxContainer" parent="."]
+[node name="RootGame" type="VBoxContainer" parent="." unique_id=1340053205]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1160,13 +1161,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopBar" type="Panel" parent="RootGame"]
+[node name="TopBar" type="Panel" parent="RootGame" unique_id=212074059]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RootGame/TopBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RootGame/TopBar" unique_id=298723457]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1174,12 +1175,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VSeparator2" type="VSeparator" parent="RootGame/TopBar/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="RootGame/TopBar/HBoxContainer" unique_id=882388458]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Round" type="Label" parent="RootGame/TopBar/HBoxContainer"]
+[node name="Round" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=1674054066]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1187,52 +1188,52 @@ text = "Total Rounds:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="RoundNum" type="Label" parent="RootGame/TopBar/HBoxContainer"]
+[node name="RoundNum" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=227741453]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
 vertical_alignment = 1
 
-[node name="EnemiesSlain" type="Label" parent="RootGame/TopBar/HBoxContainer"]
+[node name="EnemiesSlain" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=804958548]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Enemies Slain: "
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="EnemiesSlainNum" type="Label" parent="RootGame/TopBar/HBoxContainer"]
+[node name="EnemiesSlainNum" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=684000560]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
 vertical_alignment = 1
 
-[node name="Wave" type="Label" parent="RootGame/TopBar/HBoxContainer"]
+[node name="Wave" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=826290597]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Waves Cleared:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="WaveNum" type="Label" parent="RootGame/TopBar/HBoxContainer"]
+[node name="WaveNum" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=620911838]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
 vertical_alignment = 1
 
-[node name="PrepRoundsRemaining" type="Label" parent="RootGame/TopBar/HBoxContainer"]
+[node name="PrepRoundsRemaining" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=291105139]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Prep Rounds Remaining:"
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="RootGame/TopBar/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="RootGame/TopBar/HBoxContainer" unique_id=755385751]
 layout_mode = 2
 texture = ExtResource("3_o1hsu")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="PrepRoundsLabel" type="Label" parent="RootGame/TopBar/HBoxContainer/TextureRect"]
+[node name="PrepRoundsLabel" type="Label" parent="RootGame/TopBar/HBoxContainer/TextureRect" unique_id=1258517914]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1244,18 +1245,18 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator3" type="VSeparator" parent="RootGame/TopBar/HBoxContainer"]
+[node name="VSeparator3" type="VSeparator" parent="RootGame/TopBar/HBoxContainer" unique_id=1945323063]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlaySpeedLabel" type="Label" parent="RootGame/TopBar/HBoxContainer"]
+[node name="PlaySpeedLabel" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=1356462290]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Speed of Play:"
 vertical_alignment = 1
 
-[node name="PlaySpeedSlider" type="HSlider" parent="RootGame/TopBar/HBoxContainer"]
+[node name="PlaySpeedSlider" type="HSlider" parent="RootGame/TopBar/HBoxContainer" unique_id=1269754996]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -1264,17 +1265,17 @@ max_value = 5.0
 step = 0.1
 value = 1.0
 
-[node name="MuteButton" parent="RootGame/TopBar/HBoxContainer" instance=ExtResource("4_wohbx")]
+[node name="MuteButton" parent="RootGame/TopBar/HBoxContainer" unique_id=125002870 instance=ExtResource("4_wohbx")]
 layout_mode = 2
 tooltip_text = "why hello there"
 toggle_mode = true
 
-[node name="VSeparator" type="VSeparator" parent="RootGame/TopBar/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="RootGame/TopBar/HBoxContainer" unique_id=132278779]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HideTopBar" type="Button" parent="RootGame/TopBar"]
+[node name="HideTopBar" type="Button" parent="RootGame/TopBar" unique_id=331415324]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1287,7 +1288,7 @@ offset_right = 4.0
 grow_horizontal = 2
 text = "^"
 
-[node name="ShowTopBar" type="Button" parent="RootGame/TopBar"]
+[node name="ShowTopBar" type="Button" parent="RootGame/TopBar" unique_id=111089925]
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -1302,87 +1303,83 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "v"
 
-[node name="AnimateTopBar" type="AnimationPlayer" parent="RootGame/TopBar"]
-libraries = {
-&"": SubResource("AnimationLibrary_05ql3")
-}
+[node name="AnimateTopBar" type="AnimationPlayer" parent="RootGame/TopBar" unique_id=2048444089]
+libraries/ = SubResource("AnimationLibrary_05ql3")
 
-[node name="HSeparator2" type="HSeparator" parent="RootGame"]
+[node name="HSeparator2" type="HSeparator" parent="RootGame" unique_id=291360227]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.06
 
-[node name="BattleScreen" type="HBoxContainer" parent="RootGame"]
+[node name="BattleScreen" type="HBoxContainer" parent="RootGame" unique_id=595883786]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="VSeparator3" type="VSeparator" parent="RootGame/BattleScreen"]
+[node name="VSeparator3" type="VSeparator" parent="RootGame/BattleScreen" unique_id=1818382558]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
 
-[node name="Charas" type="GridContainer" parent="RootGame/BattleScreen"]
+[node name="Charas" type="GridContainer" parent="RootGame/BattleScreen" unique_id=1276795124]
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
+[node name="Kitty" parent="RootGame/BattleScreen/Charas" unique_id=1407366372 instance=ExtResource("6_ajhc2")]
 layout_mode = 2
-actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3")])
 
-[node name="Wizerd" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_ih4ah")]
+[node name="Wizerd" parent="RootGame/BattleScreen/Charas" unique_id=1474276988 instance=ExtResource("5_ih4ah")]
 layout_mode = 2
-actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3")])
 
-[node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen"]
+[node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen" unique_id=1211869950]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="Enemies" type="GridContainer" parent="RootGame/BattleScreen"]
+[node name="Enemies" type="GridContainer" parent="RootGame/BattleScreen" unique_id=2075127647]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Keykeeper" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
+[node name="Keykeeper" parent="RootGame/BattleScreen/Enemies" unique_id=1958369422 instance=ExtResource("9_r1xw6")]
 layout_mode = 2
 speed_middle_value = 4
 speed_range = 3
 attack_range = 2
 icon = ExtResource("11_qswi8")
 max_hp = 8
-actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3")])
+actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3"), ExtResource("11_05ql3")])
 
-[node name="Gatekeeper" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
+[node name="Gatekeeper" parent="RootGame/BattleScreen/Enemies" unique_id=910531624 instance=ExtResource("9_r1xw6")]
 layout_mode = 2
 speed_range = 5
 attack_range = 2
 icon = ExtResource("10_fshsv")
 max_hp = 8
-actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3")])
+actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3"), ExtResource("11_05ql3")])
 
-[node name="ChargeUp" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_yxtmk")]
+[node name="ChargeUp" parent="RootGame/BattleScreen/Enemies" unique_id=1336049394 instance=ExtResource("9_yxtmk")]
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="RootGame/BattleScreen"]
+[node name="VSeparator" type="VSeparator" parent="RootGame/BattleScreen" unique_id=303485800]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
 
-[node name="TurnOrder" type="TextureRect" parent="RootGame/BattleScreen"]
+[node name="TurnOrder" type="TextureRect" parent="RootGame/BattleScreen" unique_id=1651286724]
 self_modulate = Color(0.4249623, 0.4249623, 0.4249623, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.24
 texture = ExtResource("12_5g6ql")
 
-[node name="TurnOrder" type="VBoxContainer" parent="RootGame/BattleScreen/TurnOrder"]
+[node name="TurnOrder" type="VBoxContainer" parent="RootGame/BattleScreen/TurnOrder" unique_id=214178436]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1390,25 +1387,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VSeparator4" type="VSeparator" parent="RootGame/BattleScreen"]
+[node name="VSeparator4" type="VSeparator" parent="RootGame/BattleScreen" unique_id=1607990216]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
 
-[node name="HSeparator" type="HSeparator" parent="RootGame"]
+[node name="HSeparator" type="HSeparator" parent="RootGame" unique_id=644086572]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.08
 
-[node name="LowerBar" type="Panel" parent="RootGame"]
+[node name="LowerBar" type="Panel" parent="RootGame" unique_id=497759838]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RootGame/LowerBar"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RootGame/LowerBar" unique_id=910823248]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1417,16 +1414,16 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="InfoBar" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer"]
+[node name="InfoBar" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer" unique_id=514195438]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LittlePlayerIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="LittlePlayerIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1084462069]
 layout_mode = 2
 texture = ExtResource("13_b8b7t")
 expand_mode = 2
 
-[node name="ActionInfo" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="ActionInfo" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1320868774]
 custom_minimum_size = Vector2(100, 10)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1435,94 +1432,94 @@ text = "swonchy"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="VSeparator" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1857683216]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.04
 
-[node name="ATKStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="ATKStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1113195234]
 layout_mode = 2
 texture = ExtResource("14_cngxt")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="ATKStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="ATKStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1985444733]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator3" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="VSeparator3" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=603229772]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="DFDStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="DFDStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1173811552]
 layout_mode = 2
 texture = ExtResource("15_ggsxi")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="DFDStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="DFDStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=406621369]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SPDStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="SPDStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1246272604]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_8iljn")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="SPDStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="SPDStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1310815714]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SprunCostIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="SprunCostIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1182136919]
 layout_mode = 2
 texture = ExtResource("16_x4h2s")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="SprunCostLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="SprunCostLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=880071380]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator2" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar"]
+[node name="VSeparator2" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=868944184]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Actions" type="TabContainer" parent="RootGame/LowerBar/VBoxContainer"]
+[node name="Actions" type="TabContainer" parent="RootGame/LowerBar/VBoxContainer" unique_id=169339694]
 layout_mode = 2
 size_flags_vertical = 3
 current_tab = 1
 drag_to_rearrange_enabled = true
 
-[node name="BackButton" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+[node name="BackButton" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=1779824555]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="BAK" parent="RootGame/LowerBar/VBoxContainer/Actions/BackButton" instance=ExtResource("17_32om6")]
+[node name="BAK" parent="RootGame/LowerBar/VBoxContainer/Actions/BackButton" unique_id=1569889013 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "BAK"
 info = "Rechoose last action. (currently only works for attacking)"
 usable_on_player = 1
 
-[node name="Attack" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+[node name="Attack" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=578126803]
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="ATK" parent="RootGame/LowerBar/VBoxContainer/Actions/Attack" instance=ExtResource("17_32om6")]
+[node name="ATK" parent="RootGame/LowerBar/VBoxContainer/Actions/Attack" unique_id=851158670 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "ATK"
 icon = ExtResource("14_cngxt")
@@ -1531,19 +1528,19 @@ info = "Deal damage to enemy."
 atk_mult = 1.0
 usable_on_player = 34
 
-[node name="BigATK" parent="RootGame/LowerBar/VBoxContainer/Actions/Attack" instance=ExtResource("17_32om6")]
+[node name="BigATK" parent="RootGame/LowerBar/VBoxContainer/Actions/Attack" unique_id=2043494808 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "ATK+"
 info = "Deal 2.5x damage to enemy."
 sprun_cost = 1
 atk_mult = 2.5
 
-[node name="Defend" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+[node name="Defend" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=957053461]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="DFD" parent="RootGame/LowerBar/VBoxContainer/Actions/Defend" instance=ExtResource("17_32om6")]
+[node name="DFD" parent="RootGame/LowerBar/VBoxContainer/Actions/Defend" unique_id=558543872 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "DFD"
 icon = ExtResource("15_ggsxi")
@@ -1552,102 +1549,102 @@ info = "Defend against enemy attacks."
 dfd_mult = 1.0
 usable_on_player = 98
 
-[node name="Sprun" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+[node name="Sprun" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=1972192148]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="FOCUS" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("17_32om6")]
+[node name="FOCUS" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=1724643732 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "FOCUS"
 icon = ExtResource("18_ye5o8")
 expand_icon = true
 info = "Create 1 Sprun."
 
-[node name="IncreaseSprunSlots" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("17_32om6")]
+[node name="IncreaseSprunSlots" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=750807723 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "Increase Sprun Slots"
 info = "Increase your max Sprun storage. Costs the max amount of sprun you can hold."
 
-[node name="ATKUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("17_32om6")]
+[node name="ATKUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=915772057 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "ATK Upgrade"
 info = "Multiply current ATK by 1.5. Costs 2 more sprun for each use."
 sprun_cost = 3
 atk_mult = 1.0
 
-[node name="DFDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("17_32om6")]
+[node name="DFDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=688805653 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "DFD Upgrade"
 info = "Multiply current DFD by 1.5. Costs 2 more sprun for each use."
 sprun_cost = 3
 dfd_mult = 1.0
 
-[node name="SPDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" instance=ExtResource("17_32om6")]
+[node name="SPDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=1774202845 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "SPD Upgrade"
 info = "Multiply current SPD by 1.5. Costs 2 more sprun for each use."
 sprun_cost = 3
 display_speed = true
 
-[node name="Other" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+[node name="Other" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=528564938]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
-[node name="ITM" parent="RootGame/LowerBar/VBoxContainer/Actions/Other" instance=ExtResource("17_32om6")]
+[node name="ITM" parent="RootGame/LowerBar/VBoxContainer/Actions/Other" unique_id=631729216 instance=ExtResource("17_32om6")]
 visible = false
 layout_mode = 2
 text = "ITM"
 info = "not implemented yet lol"
 usable_on_player = 0
 
-[node name="PASS" parent="RootGame/LowerBar/VBoxContainer/Actions/Other" instance=ExtResource("17_32om6")]
+[node name="PASS" parent="RootGame/LowerBar/VBoxContainer/Actions/Other" unique_id=106260482 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "PASS"
 info = "Pass this character's turn."
 usable_on_player = 1
 
-[node name="DevTools" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+[node name="DevTools" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=318212625]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 5
 
-[node name="Masochism" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" instance=ExtResource("17_32om6")]
+[node name="Masochism" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" unique_id=1632796884 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "Masochism"
 info = "damage self for 10"
 usable_on_player = 1
 
-[node name="FlashEvily" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" instance=ExtResource("17_32om6")]
+[node name="FlashEvily" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" unique_id=132361556 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "Evil Flash"
 info = "immediately damage current_enemy for 10 (doesn't kill)"
 usable_on_player = 1
 
-[node name="AutoSprun" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" instance=ExtResource("17_32om6")]
+[node name="AutoSprun" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" unique_id=162793068 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "wow free sprun cheater"
 info = "give urself a free sprun"
 usable_on_player = 1
 
-[node name="AutoHeal" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" instance=ExtResource("17_32om6")]
+[node name="AutoHeal" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" unique_id=1042760795 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "HealThySelf"
 info = "Heal self for 10... cheater"
 usable_on_player = 1
 
-[node name="MOVE" type="ColorRect" parent="RootGame/LowerBar/VBoxContainer/Actions"]
+[node name="MOVE" type="ColorRect" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=1076119879]
 visible = false
 layout_mode = 2
 color = Color(0.7137255, 0.49019608, 0.8117647, 1)
 metadata/_tab_index = 6
 
-[node name="NextRound" parent="RootGame" instance=ExtResource("19_skhea")]
+[node name="NextRound" parent="RootGame" unique_id=1433081728 instance=ExtResource("19_skhea")]
 stream = ExtResource("20_ndqky")
 volume_db = -3.714
 
-[node name="CharacterSelect" type="HBoxContainer" parent="."]
+[node name="CharacterSelect" type="HBoxContainer" parent="." unique_id=276507729]
 unique_name_in_owner = true
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -1659,24 +1656,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("21_h6p17")
 
-[node name="VSeparator2" type="VSeparator" parent="CharacterSelect"]
+[node name="VSeparator2" type="VSeparator" parent="CharacterSelect" unique_id=698417762]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.17
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelect" unique_id=974324766]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="VSeparator2" type="HSeparator" parent="CharacterSelect/VBoxContainer"]
+[node name="VSeparator2" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=520469728]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.17
 
-[node name="BigIcon" type="TextureRect" parent="CharacterSelect/VBoxContainer"]
+[node name="BigIcon" type="TextureRect" parent="CharacterSelect/VBoxContainer" unique_id=1441798769]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
@@ -1684,29 +1681,29 @@ texture = ExtResource("16_x4h2s")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Info" type="Label" parent="CharacterSelect/VBoxContainer"]
+[node name="Info" type="Label" parent="CharacterSelect/VBoxContainer" unique_id=1653835721]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Select 3 characters."
 horizontal_alignment = 1
 
-[node name="SubInfo" type="Label" parent="CharacterSelect/VBoxContainer"]
+[node name="SubInfo" type="Label" parent="CharacterSelect/VBoxContainer" unique_id=1331170081]
 modulate = Color(0.68307734, 0.6830774, 0.68307734, 1)
 layout_mode = 2
 text = "Fall into the Longest Dream."
 horizontal_alignment = 1
 
-[node name="VSeparator3" type="HSeparator" parent="CharacterSelect/VBoxContainer"]
+[node name="VSeparator3" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=212944283]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.17
 
-[node name="CharacterChoosing" type="GridContainer" parent="CharacterSelect/VBoxContainer"]
+[node name="CharacterChoosing" type="GridContainer" parent="CharacterSelect/VBoxContainer" unique_id=1381028855]
 layout_mode = 2
 columns = 2
 
-[node name="Wizard" parent="CharacterSelect/VBoxContainer/CharacterChoosing" instance=ExtResource("22_akxu1")]
+[node name="Wizard" parent="CharacterSelect/VBoxContainer/CharacterChoosing" unique_id=954473165 instance=ExtResource("22_akxu1")]
 layout_mode = 2
 text = "Wizard"
 icon = ExtResource("23_8iljn")
@@ -1715,7 +1712,7 @@ sub_info = "Powerful attacks, and healing, but little HP."
 info_icon = ExtResource("23_8iljn")
 linked_character = ExtResource("5_ih4ah")
 
-[node name="Kitty" parent="CharacterSelect/VBoxContainer/CharacterChoosing" instance=ExtResource("22_akxu1")]
+[node name="Kitty" parent="CharacterSelect/VBoxContainer/CharacterChoosing" unique_id=1220673595 instance=ExtResource("22_akxu1")]
 layout_mode = 2
 text = "Kitty"
 icon = ExtResource("24_yxtmk")
@@ -1724,7 +1721,7 @@ sub_info = "The Chosen."
 info_icon = ExtResource("24_yxtmk")
 linked_character = ExtResource("6_ajhc2")
 
-[node name="RodentLord" parent="CharacterSelect/VBoxContainer/CharacterChoosing" instance=ExtResource("22_akxu1")]
+[node name="RodentLord" parent="CharacterSelect/VBoxContainer/CharacterChoosing" unique_id=421680870 instance=ExtResource("22_akxu1")]
 layout_mode = 2
 text = "Rodent Lord"
 icon = ExtResource("25_b1nt6")
@@ -1733,7 +1730,7 @@ sub_info = "Like a Necromancer. But cooler. Spawns rats and mice."
 info_icon = ExtResource("25_b1nt6")
 linked_character = ExtResource("7_p81qd")
 
-[node name="Raccoon" parent="CharacterSelect/VBoxContainer/CharacterChoosing" instance=ExtResource("22_akxu1")]
+[node name="Raccoon" parent="CharacterSelect/VBoxContainer/CharacterChoosing" unique_id=1908107024 instance=ExtResource("22_akxu1")]
 layout_mode = 2
 text = "Raccoon"
 icon = ExtResource("25_8iljn")
@@ -1744,23 +1741,23 @@ sub_info = "Does group damage, and can skip the turn queue."
 info_icon = ExtResource("25_8iljn")
 linked_character = ExtResource("5_b1nt6")
 
-[node name="EndCharacterSelect" type="Button" parent="CharacterSelect/VBoxContainer"]
+[node name="EndCharacterSelect" type="Button" parent="CharacterSelect/VBoxContainer" unique_id=1363648875]
 layout_mode = 2
 text = "3 shall enter."
 
-[node name="VSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer"]
+[node name="VSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=1609887138]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.17
 
-[node name="VSeparator" type="VSeparator" parent="CharacterSelect"]
+[node name="VSeparator" type="VSeparator" parent="CharacterSelect" unique_id=2016774106]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.17
 
-[node name="TPK" type="ColorRect" parent="."]
+[node name="TPK" type="ColorRect" parent="." unique_id=1500180873]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1771,7 +1768,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CenterBox" type="VBoxContainer" parent="TPK"]
+[node name="CenterBox" type="VBoxContainer" parent="TPK" unique_id=1565901561]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1782,23 +1779,23 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="YouDead" type="Label" parent="TPK/CenterBox"]
+[node name="YouDead" type="Label" parent="TPK/CenterBox" unique_id=1446930112]
 layout_mode = 2
 text = "You dead."
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="TPK/CenterBox"]
+[node name="HSeparator" type="HSeparator" parent="TPK/CenterBox" unique_id=695491643]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Retry" parent="TPK/CenterBox" instance=ExtResource("17_32om6")]
+[node name="Retry" parent="TPK/CenterBox" unique_id=625706184 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "Git gud"
 
-[node name="Soundd" parent="TPK" instance=ExtResource("19_skhea")]
+[node name="Soundd" parent="TPK" unique_id=1111977443 instance=ExtResource("19_skhea")]
 stream = ExtResource("21_obdg4")
 
-[node name="TWK" type="ColorRect" parent="."]
+[node name="TWK" type="ColorRect" parent="." unique_id=1542534198]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.0
@@ -1810,7 +1807,7 @@ grow_horizontal = 0
 grow_vertical = 0
 color = Color(0.2, 0.2, 0.2, 0.42745098)
 
-[node name="Labels" type="VBoxContainer" parent="TWK"]
+[node name="Labels" type="VBoxContainer" parent="TWK" unique_id=318451602]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1825,30 +1822,30 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="WaveCleared" type="Label" parent="TWK/Labels"]
+[node name="WaveCleared" type="Label" parent="TWK/Labels" unique_id=375314306]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "WAVE CLEARED"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="HBoxContainer" parent="TWK/Labels"]
+[node name="VBoxContainer" type="HBoxContainer" parent="TWK/Labels" unique_id=28759950]
 layout_mode = 2
 alignment = 1
 
-[node name="Num" type="Label" parent="TWK/Labels/VBoxContainer"]
+[node name="Num" type="Label" parent="TWK/Labels/VBoxContainer" unique_id=89018081]
 layout_mode = 2
 text = "(num)"
 horizontal_alignment = 1
 
-[node name="PrepRounds" type="Label" parent="TWK/Labels/VBoxContainer"]
+[node name="PrepRounds" type="Label" parent="TWK/Labels/VBoxContainer" unique_id=1177121487]
 layout_mode = 2
 text = "rounds to prepare"
 horizontal_alignment = 1
 
-[node name="Sounddddd" parent="TWK" instance=ExtResource("19_skhea")]
+[node name="Sounddddd" parent="TWK" unique_id=1176354279 instance=ExtResource("19_skhea")]
 stream = ExtResource("22_kypvo")
 
-[node name="IntroSequence" type="ColorRect" parent="."]
+[node name="IntroSequence" type="ColorRect" parent="." unique_id=128724174]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1858,7 +1855,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.39215687)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="IntroSequence"]
+[node name="VBoxContainer" type="VBoxContainer" parent="IntroSequence" unique_id=1116633345]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1873,23 +1870,23 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="IntroSequence/VBoxContainer"]
+[node name="Label" type="Label" parent="IntroSequence/VBoxContainer" unique_id=749104222]
 layout_mode = 2
 text = "Art Thou Prepst?"
 
-[node name="HSeparator" type="HSeparator" parent="IntroSequence/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="IntroSequence/VBoxContainer" unique_id=1808986072]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="IntroSequence/VBoxContainer"]
+[node name="StartButton" type="Button" parent="IntroSequence/VBoxContainer" unique_id=796370445]
 layout_mode = 2
 text = "Bring it on."
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="IntroSequence"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="IntroSequence" unique_id=2024725065]
 stream = ExtResource("23_8xuts")
 bus = &"SFX"
 
-[node name="Shaders" type="Control" parent="."]
+[node name="Shaders" type="Control" parent="." unique_id=1623808779]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1898,7 +1895,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ChromaticAberation" type="ColorRect" parent="Shaders"]
+[node name="ChromaticAberation" type="ColorRect" parent="Shaders" unique_id=604647060]
 material = SubResource("ShaderMaterial_gj8ci")
 layout_mode = 1
 anchors_preset = 15
@@ -1907,9 +1904,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="Shaders/ChromaticAberation"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Shaders/ChromaticAberation" unique_id=563513852]
 
-[node name="Pixelizer" type="ColorRect" parent="Shaders"]
+[node name="Pixelizer" type="ColorRect" parent="Shaders" unique_id=531248629]
 visible = false
 material = SubResource("ShaderMaterial_5jge4")
 layout_mode = 1
@@ -1919,7 +1916,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Rainbows" type="ColorRect" parent="Shaders"]
+[node name="Rainbows" type="ColorRect" parent="Shaders" unique_id=1084323550]
 visible = false
 material = SubResource("ShaderMaterial_th5d7")
 layout_mode = 1
@@ -1929,10 +1926,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Animate" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_y3dhr")
-}
+[node name="Animate" type="AnimationPlayer" parent="." unique_id=227358949]
+libraries/ = SubResource("AnimationLibrary_y3dhr")
 
 [connection signal="value_changed" from="RootGame/TopBar/HBoxContainer/PlaySpeedSlider" to="." method="_on_play_speed_slider_value_changed"]
 [connection signal="pressed" from="RootGame/TopBar/HideTopBar" to="." method="_on_hide_top_bar_pressed"]

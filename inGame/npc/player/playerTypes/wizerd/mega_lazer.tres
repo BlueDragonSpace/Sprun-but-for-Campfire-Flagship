@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://c3a14axpyy1n0"]
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://c3a14axpyy1n0"]
 
 [ext_resource type="Texture2D" uid="uid://depk6jpfx32yl" path="res://placeholderArt/myPixelArt/Attentions-1.png.png" id="1_ah07b"]
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="1_wcvlx"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="1_wcvlx"]
 
 [resource]
 script = ExtResource("1_wcvlx")

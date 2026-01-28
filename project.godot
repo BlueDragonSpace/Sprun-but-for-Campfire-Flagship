@@ -11,6 +11,7 @@ config_version=5
 [animation]
 
 warnings/check_invalid_track_paths=false
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
@@ -18,11 +19,15 @@ config/name="Sprun but Campfire Flagship"
 config/description="Third iteration of Sprun. Chronologically a little bit after the First Mathew Playtest"
 config/version="0.0.4"
 run/main_scene="uid://bv0n51038h5c7"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0.267473, 0.33037242, 1)
 boot_splash/image="uid://dbpy4cytd2toj"
 config/icon="uid://vn78vumn6uw7"
 boot_splash/icon="uid://vn78vumn6uw7"
+
+[audio]
+
+buses/default_bus_layout="uid://ctva0ivyiktb"
 
 [autoload]
 
@@ -142,5 +147,7 @@ disable_mouse_capture={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+gl_compatibility/driver="opengl3_angle"
+gl_compatibility/fallback_to_angle=false
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
