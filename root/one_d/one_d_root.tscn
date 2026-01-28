@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://d3wbwxma2hkqm"]
+[gd_scene load_steps=59 format=3 uid="uid://d3wbwxma2hkqm"]
 
 [ext_resource type="Theme" uid="uid://cyy1ccrel07nx" path="res://root/root.tres" id="1_nt0n7"]
 [ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/one_d/one_d_root.gd" id="2_vitat"]
@@ -6,10 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://c8l8w4n02trfl" path="res://inGame/sound/mute_button.tscn" id="4_wohbx"]
 [ext_resource type="PackedScene" uid="uid://bbku30glrarxd" path="res://inGame/npc/player/playerTypes/raccoon/raccoon.tscn" id="5_b1nt6"]
 [ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="6_20myc"]
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
+[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/npc/actions/test_attack.tres" id="7_05ql3"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
 [ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/npc/enemy/enemy.tscn" id="9_r1xw6"]
-[ext_resource type="PackedScene" uid="uid://d3n5wkylral0k" path="res://inGame/npc/enemy/types/charge_up.tscn" id="9_yxtmk"]
+[ext_resource type="PackedScene" uid="uid://d3n5wkylral0k" path="res://inGame/npc/enemy/types/charge_up/charge_up.tscn" id="9_yxtmk"]
 [ext_resource type="Texture2D" uid="uid://bpyet5t7bpkww" path="res://placeholderArt/myPixelArt/BiggBlue-1.png.png" id="10_fshsv"]
 [ext_resource type="Texture2D" uid="uid://dtkrx4fskgr5r" path="res://placeholderArt/myPixelArt/littleBlue-1.png.png" id="11_qswi8"]
 [ext_resource type="Texture2D" uid="uid://docng28uw84fm" path="res://placeholderArt/myPixelArt/Ooohhhhhhh-1.png.png" id="12_5g6ql"]
@@ -1329,9 +1331,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Kitty" parent="RootGame/BattleScreen/Charas" instance=ExtResource("6_ajhc2")]
 layout_mode = 2
+actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3")])
 
 [node name="Wizerd" parent="RootGame/BattleScreen/Charas" instance=ExtResource("5_ih4ah")]
 layout_mode = 2
+actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3")])
 
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen"]
 modulate = Color(1, 1, 1, 0)
@@ -1352,6 +1356,7 @@ speed_range = 3
 attack_range = 2
 icon = ExtResource("11_qswi8")
 max_hp = 8
+actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3")])
 
 [node name="Gatekeeper" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_r1xw6")]
 layout_mode = 2
@@ -1359,6 +1364,7 @@ speed_range = 5
 attack_range = 2
 icon = ExtResource("10_fshsv")
 max_hp = 8
+actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3")])
 
 [node name="ChargeUp" parent="RootGame/BattleScreen/Enemies" instance=ExtResource("9_yxtmk")]
 layout_mode = 2

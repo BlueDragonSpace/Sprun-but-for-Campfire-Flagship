@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://bfl5bur20t3il"]
+
+[ext_resource type="Texture2D" uid="uid://bvhkmrse4oqmm" path="res://placeholderArt/myPixelArt/ShieldBadArt-1.png.png" id="1_7s0rw"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="1_r615f"]
+
+[resource]
+script = ExtResource("1_r615f")
+name = "test_defend"
+func_name = "defend"
+icon = ExtResource("1_7s0rw")
+action_type = 1
+intent_type = 1
+player_type = 2
+dfd_mult = 1.0
+button_info = "defend button info rights"
+metadata/_custom_type_script = "uid://diifqu7v6338q"

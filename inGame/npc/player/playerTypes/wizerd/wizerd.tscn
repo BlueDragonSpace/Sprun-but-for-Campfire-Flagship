@@ -120,10 +120,10 @@ icon = ExtResource("2_whysk")
 speed_stat = 6
 max_hp = 22
 
-[node name="VSeparator" parent="VBoxContainer" index="2"]
+[node name="VSeparator" parent="VBoxContainer" index="4"]
 visible = true
 
-[node name="VSeparator456" parent="VBoxContainer" index="4"]
+[node name="VSeparator456" parent="VBoxContainer" index="6"]
 visible = true
 
 [node name="WizerdAnimate" type="AnimationPlayer" parent="." index="2"]

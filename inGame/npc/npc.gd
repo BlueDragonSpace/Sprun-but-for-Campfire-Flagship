@@ -6,6 +6,7 @@ extends Control
 @onready var Intent: TextureRect = $VBoxContainer/IntentBar/Intent
 @onready var IntentLabel: Label = $VBoxContainer/IntentBar/Intent/IntentLabel
 @onready var IntendedTargetIcon: TextureRect = $VBoxContainer/IntentBar/IntendedTargetIcon
+@onready var IntentAnimate: AnimationPlayer = $VBoxContainer/IntentBar/IntentAnimate
 
 @onready var Icon: TextureRect = $VBoxContainer/Icon
 @onready var HP: TextureProgressBar = $VBoxContainer/LowerBar/HP
@@ -117,7 +118,11 @@ func check_debuff(debuff_in_question) -> Node: # returns if the debuff exists, a
 	
 	return node
 
-func set_intended_action(action: Action, random: bool = false) -> void:
+func set_intended_action(action: Action, callable : Callable, random: bool = false) -> void:
+	
+	# callable is passed in separately to action in case I need to .bind() something to the Callable
+	# Keep in mind that Action is just a resource; a sheet of data
+	# Callables are the actual functions that do the thing
 	
 	# this has nothing to do with the action_victim,
 	# that must be set by other means (selction scene for charas, mostly randomly for enemies)
@@ -128,7 +133,7 @@ func set_intended_action(action: Action, random: bool = false) -> void:
 		intended_action = Callable(self, random_action.func_name)
 		set_intent(random_action)
 	else:
-		intended_action = Callable(self, action.func_name)
+		intended_action = callable
 		set_intent(action)
 	
 	add_set_intended_action()
@@ -139,6 +144,7 @@ func add_set_intended_action() -> void: # virtual function, though actual virtua
 #for some reason, if you call a Callable as a Callable, the function doesn't go through
 func do_intended_action() -> void:
 	current_defense = 0
+	hide_intent()
 	
 	intended_action.call()
  
@@ -208,6 +214,8 @@ func die() -> void:
 # this function hasn't been inputted anywhere... yet!!
 func set_intent(action: Action) -> void:
 	
+	IntentAnimate.play("show_intent")
+	
 	match(action.intent_type):
 		Action.INTENT.ATTACK:
 			IntentLabel.text = str(int(attack_stat * action.atk_mult))
@@ -227,6 +235,9 @@ func intent_info(main, sub):
 	notif.main_text = main
 	notif.sub_text = sub
 	Intent.add_child(notif)
+
+func hide_intent() -> void:
+	IntentAnimate.play("hide_intent")
 
 # utilizing about the same code for DeBuffRect for displaying a Notif for intents
 func _on_intent_mouse_entered() -> void:

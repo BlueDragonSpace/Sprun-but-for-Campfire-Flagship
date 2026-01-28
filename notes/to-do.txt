@@ -47,6 +47,19 @@
 		Applicable to Enemies
 		All Actions through default UI should be Actions
 		Players have intent
+		
+			Actions still currently work as expected
+			Target Intent does not update
+			Charge-Up's notifs pop-up without hover
+			Player Enemy Intent updates upon selection
+			Player Intent Dissappears upon new round
+		
+		Run the "add_new_actions" function over the actions array in npc, stop using new_actions
+	
+	Actions array can't handle new values, needs to be added in code,
+	i.e., add them to the array, from a different array (new_actions)
+	Possibly have new_actions inside of NPC's script though
+	
 	
 	Update to Godot 4.6!!!1!!!!11!!!!1111! (make sure the game works first tho)
 	
@@ -166,7 +179,7 @@ Rodent Lord Rodents:
 	Flying Squirels, chipmunks, beavers, capybaras, gopher, base squirel
 
 Art needed:
-	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, 
+	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, Fireball, Megalazer
 
 Currently finished:
 	Fixed charge_up intent error

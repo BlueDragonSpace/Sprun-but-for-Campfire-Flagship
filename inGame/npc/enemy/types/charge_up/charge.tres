@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://46w2r3n41yw6"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="1_7ynry"]
+[ext_resource type="Texture2D" uid="uid://cqmahlm6jr7w8" path="res://placeholderArt/Sprun.png" id="1_il0wg"]
+
+[resource]
+script = ExtResource("1_7ynry")
+name = "Charging"
+func_name = "empty_function"
+icon = ExtResource("1_il0wg")
+action_type = 2
+intent_type = 7
+button_info = "Preparing for a large attack..."
+metadata/_custom_type_script = "uid://diifqu7v6338q"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ctlnpeebeoqgd"]
+[gd_scene load_steps=35 format=3 uid="uid://ctlnpeebeoqgd"]
 
 [ext_resource type="Texture2D" uid="uid://c3p85tdu00duw" path="res://placeholderArt/icon.svg" id="1_2jrf3"]
 [ext_resource type="Script" uid="uid://cdbuic4bcd67n" path="res://inGame/npc/npc.gd" id="1_3atjd"]
@@ -7,15 +7,66 @@
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="3_dkh77"]
 [ext_resource type="Texture2D" uid="uid://c8n0k3x2k67si" path="res://placeholderArt/myPixelArt/NewSprun-1.png.png" id="3_hhgrb"]
 [ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/npc/actions/test_attack.tres" id="4_7qu08"]
-[ext_resource type="Texture2D" uid="uid://cvggsr6dniihs" path="res://placeholderArt/myPixelArt/wizerdhat-1.png (1).png" id="4_dkh77"]
 [ext_resource type="Texture2D" uid="uid://cfkr8gbn4j4sj" path="res://placeholderArt/myPixelArt/HPBar (1)/hp0.png" id="4_hhgrb"]
 [ext_resource type="Texture2D" uid="uid://bvhkmrse4oqmm" path="res://placeholderArt/myPixelArt/ShieldBadArt-1.png.png" id="4_wk2dw"]
+[ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/npc/actions/test_defend.tres" id="5_0gqpt"]
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="5_dvc8s"]
 [ext_resource type="Texture2D" uid="uid://pdjsmweiu7br" path="res://placeholderArt/myPixelArt/HPBar (1)/hp1.png" id="5_fq4yk"]
 [ext_resource type="AudioStream" uid="uid://bgm5xr0twjahx" path="res://placeholderArt/sfx/attack.wav" id="5_np5c4"]
 [ext_resource type="AudioStream" uid="uid://qwvtdoovi5il" path="res://placeholderArt/sfx/shieldMaybeCloth.wav" id="6_dvc8s"]
 [ext_resource type="AudioStream" uid="uid://cvxoanu0qn6i8" path="res://placeholderArt/sfx/shieldBetter.wav" id="7_7swic"]
 [ext_resource type="AudioStream" uid="uid://c6a7y511mjrn3" path="res://placeholderArt/sfx/death.wav" id="8_yjg3n"]
+
+[sub_resource type="Animation" id="Animation_n5yxs"]
+resource_name = "show_intent"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0, 0.28, -0.050000004, -0.046666667, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_xn3ah"]
+resource_name = "hide_intent"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.28, -0.15, 0, 0.15, 0, 0, -0.050000004, 0.046666667, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_x86hb"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wlo4d"]
+_data = {
+&"RESET": SubResource("Animation_x86hb"),
+&"hide_intent": SubResource("Animation_xn3ah"),
+&"show_intent": SubResource("Animation_n5yxs")
+}
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hhgrb"]
 
@@ -362,6 +413,10 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4, 1)
 }
 
+[sub_resource type="Animation" id="Animation_1xeja"]
+resource_name = "show_intent"
+length = 0.3
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eymni"]
 _data = {
 &"RESET": SubResource("Animation_v55o0"),
@@ -370,6 +425,7 @@ _data = {
 &"defend": SubResource("Animation_eymni"),
 &"die": SubResource("Animation_wk2dw"),
 &"pop_in": SubResource("Animation_np5c4"),
+&"show_intent": SubResource("Animation_1xeja"),
 &"take_hit": SubResource("Animation_a1cnd")
 }
 
@@ -383,7 +439,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_3atjd")
 icon = ExtResource("1_2jrf3")
-actions = Array[ExtResource("3_dkh77")]([ExtResource("4_7qu08")])
+actions = Array[ExtResource("3_dkh77")]([ExtResource("4_7qu08"), ExtResource("5_0gqpt")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -401,9 +457,10 @@ size_flags_stretch_ratio = 0.34
 
 [node name="IntentBar" type="HBoxContainer" parent="VBoxContainer"]
 self_modulate = Color(1, 0, 0, 1)
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.28
+size_flags_stretch_ratio = 0.0
 alignment = 1
 
 [node name="Intent" type="TextureRect" parent="VBoxContainer/IntentBar"]
@@ -431,9 +488,13 @@ vertical_alignment = 1
 
 [node name="IntendedTargetIcon" type="TextureRect" parent="VBoxContainer/IntentBar"]
 layout_mode = 2
-texture = ExtResource("4_dkh77")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="IntentAnimate" type="AnimationPlayer" parent="VBoxContainer/IntentBar"]
+libraries = {
+&"": SubResource("AnimationLibrary_wlo4d")
+}
 
 [node name="VSeparator489" type="VSeparator" parent="VBoxContainer"]
 modulate = Color(1, 1, 1, 0)

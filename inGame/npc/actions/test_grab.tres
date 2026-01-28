@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://cv00id505e0b8"]
+
+[ext_resource type="Texture2D" uid="uid://cud2twh7olt08" path="res://placeholderArt/snakeBox.png" id="1_2imk8"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="1_56g13"]
+
+[resource]
+script = ExtResource("1_56g13")
+name = "Grab"
+func_name = "visual_hp"
+icon = ExtResource("1_2imk8")
+action_type = 3
+intent_type = 8
+button_info = "no of course this is not real"
+metadata/_custom_type_script = "uid://diifqu7v6338q"

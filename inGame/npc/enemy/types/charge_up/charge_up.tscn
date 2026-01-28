@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3n5wkylral0k"]
+
+[ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/npc/enemy/enemy.tscn" id="1_ehdvl"]
+[ext_resource type="Script" uid="uid://t57hm3eeuoec" path="res://inGame/npc/enemy/types/charge_up/charge_up.gd" id="2_2od7p"]
+[ext_resource type="Texture2D" uid="uid://co7fnqru8dy5r" path="res://placeholderArt/Xi.png" id="3_wrh05"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="4_itkt3"]
+[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/npc/actions/test_attack.tres" id="5_2ba5a"]
+[ext_resource type="Resource" uid="uid://46w2r3n41yw6" path="res://inGame/npc/enemy/types/charge_up/charge.tres" id="6_jc18l"]
+
+[node name="ChargeUp" instance=ExtResource("1_ehdvl")]
+script = ExtResource("2_2od7p")
+hp_range = 3
+attack_middle_value = 25
+attack_range = 3
+defend_middle_value = 0
+defend_range = 0
+icon = ExtResource("3_wrh05")
+speed_stat = 1
+max_hp = 15
+attack_stat = 25
+defend_stat = 0
+actions = Array[ExtResource("4_itkt3")]([ExtResource("5_2ba5a"), ExtResource("6_jc18l")])

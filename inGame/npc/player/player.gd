@@ -53,20 +53,19 @@ func add_actions(custom_actions : Array) -> void:
 		
 		@warning_ignore("standalone_expression")
 		var lambda = func() : null
+		
 		match(this_action.action_type):
 			0: ## ATTACK
 				
-				#var action = Callable(self, this_action.func_name).bind(this_action.atk_mult, this_action.sprun_loss)
+				var callable = Callable(self, this_action.func_name).bind(this_action.atk_mult, this_action.sprun_loss)
 				
 				if not this_action.is_quick:
 					lambda = func(): 
-						#intended_action = action
-						set_intended_action(this_action)
+						add_lambda(this_action, callable)
 						OneDRoot.initiate_select_enemy()
 				else:
 					lambda = func():
-						#intended_action = 
-						set_intended_action(this_action)
+						add_lambda(this_action, callable)
 						OneDRoot.initiate_select_enemy(true)
 			1: ## DEFEND
 				print('no lambda set for custom defend actions in player.gd')
@@ -77,9 +76,10 @@ func add_actions(custom_actions : Array) -> void:
 			_:
 				lambda = func():
 					
-					set_intended_action(this_action)
+					var callable = Callable(self, this_action.func_name).bind(this_action.sprun_loss)
 					
-					#intended_action = Callable(self, this_action.func_name).bind(this_action.sprun_loss)
+					add_lambda(this_action, callable)
+					
 					if this_action.needs_target:
 						if this_action.ally_target:
 							OneDRoot.initiate_select_ally()
@@ -92,6 +92,11 @@ func add_actions(custom_actions : Array) -> void:
 		
 		# 0 is Back Button, so everything past that is fair game
 		OneDRoot.Actions.get_child(this_action.action_type + 1).add_child(new_button)
+
+# additional things I call on *every* action
+func add_lambda(func_action: Action, callable: Callable) -> void:
+	set_intended_action(func_action, callable)
+	set_intent(func_action)
 
 func set_sprun(new_sprun_count):
 	## I *would* set this as the set(new) method for active_sprun, but then it calls before ready and gives me an error
@@ -144,6 +149,9 @@ func set_sprun_slots(slots) -> void:
 	##self.intended_action = Callable(self, action_name)
 	##set_intended_action()
 	#OneDRoot.initiate_select_enemy()
+
+func set_intent_target(image: Texture) -> void:
+	IntendedTargetIcon.texture = image
 
 func big_attack():
 	set_sprun(sprun_active - 1)

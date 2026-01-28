@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://c0f7kbcssl6jc"]
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://c0f7kbcssl6jc"]
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/actions/action.gd" id="1_cky2r"]
+[ext_resource type="Texture2D" uid="uid://c3p85tdu00duw" path="res://placeholderArt/icon.svg" id="1_n246w"]
 
 [resource]
 script = ExtResource("1_cky2r")
 name = "Bite"
 func_name = "bite"
+icon = ExtResource("1_n246w")
 player_type = 32
 atk_mult = 0.4
 prep_disable = true

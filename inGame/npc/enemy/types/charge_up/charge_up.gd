@@ -9,8 +9,9 @@ func add_set_intended_action() -> void:
 	# basically overrules everything set previously
 	
 	if turns_charging >= 2: #charged long enough, time to fire
-		intended_action = Callable(self, "attack")
-		intent_info('Attack', 'Chargeup doing big damage and game not finished so sue me')
+		intended_action = Callable(self, "test_attack")
+		set_intent(actions[0])
+		# intent_info('Attack', 'Chargeup doing big damage and game not finished so sue me')
 		#intended_action = Callable(self, "attack")
 		#IntendedTargetIcon.visible = true
 		#Intent.texture = SWORD_ART
@@ -20,7 +21,9 @@ func add_set_intended_action() -> void:
 		#turns_charging = 0
 	else:
 		intended_action = Callable(Global, "empty_function")
-		intent_info('Charging', 'something big is coming for some reason bad proBABLY')
+		set_intent(actions[1])
+		# intended_action = Callable(Global, "empty_function")
+		# intent_info('Charging', 'something big is coming for some reason bad proBABLY')
 		#IntendedTargetIcon.visible = false
 		#Intent.texture = ATTENTIONS_ART
 		#intent = Action.INTENT.SPRUN
