@@ -32,7 +32,7 @@ const PLAYER_TYPE = 'All, Basic, Wizerd, Kitty, Rodent Lord, Rat, Mouse, Hamster
 @export var is_quick: bool = false ## goes instantly, doesn't kill
 
 # make this a far bigger text field...
-@export var button_info: String = 'sub info words about the action' ## hover over button
+@export_multiline var button_info: String = 'sub info words about the action' ## hover over button
 
 
 # also note that adding anything to here requires interpretation within player (and likely in the future enemy)

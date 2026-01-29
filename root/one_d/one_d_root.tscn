@@ -6,14 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://c8l8w4n02trfl" path="res://inGame/sound/mute_button.tscn" id="4_wohbx"]
 [ext_resource type="PackedScene" uid="uid://bbku30glrarxd" path="res://inGame/npc/player/playerTypes/raccoon/raccoon.tscn" id="5_b1nt6"]
 [ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="6_20myc"]
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
-[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/npc/base_actions/attack.tres" id="7_05ql3"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
 [ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/npc/enemy/enemy.tscn" id="9_r1xw6"]
 [ext_resource type="PackedScene" uid="uid://d3n5wkylral0k" path="res://inGame/npc/enemy/types/charge_up/charge_up.tscn" id="9_yxtmk"]
 [ext_resource type="Texture2D" uid="uid://bpyet5t7bpkww" path="res://placeholderArt/myPixelArt/BiggBlue-1.png.png" id="10_fshsv"]
-[ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/npc/base_actions/defend.tres" id="11_05ql3"]
 [ext_resource type="Texture2D" uid="uid://dtkrx4fskgr5r" path="res://placeholderArt/myPixelArt/littleBlue-1.png.png" id="11_qswi8"]
 [ext_resource type="Texture2D" uid="uid://docng28uw84fm" path="res://placeholderArt/myPixelArt/Ooohhhhhhh-1.png.png" id="12_5g6ql"]
 [ext_resource type="Texture2D" uid="uid://co7fnqru8dy5r" path="res://placeholderArt/Xi.png" id="13_b8b7t"]
@@ -1328,9 +1325,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Kitty" parent="RootGame/BattleScreen/Charas" unique_id=1407366372 instance=ExtResource("6_ajhc2")]
-layout_mode = 2
-
 [node name="Wizerd" parent="RootGame/BattleScreen/Charas" unique_id=1474276988 instance=ExtResource("5_ih4ah")]
 layout_mode = 2
 
@@ -1353,15 +1347,13 @@ speed_range = 3
 attack_range = 2
 icon = ExtResource("11_qswi8")
 max_hp = 8
-actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3"), ExtResource("11_05ql3")])
 
 [node name="Gatekeeper" parent="RootGame/BattleScreen/Enemies" unique_id=910531624 instance=ExtResource("9_r1xw6")]
 layout_mode = 2
 speed_range = 5
 attack_range = 2
 icon = ExtResource("10_fshsv")
-max_hp = 8
-actions = Array[ExtResource("6_20myc")]([ExtResource("7_05ql3"), ExtResource("11_05ql3")])
+max_hp = 13
 
 [node name="ChargeUp" parent="RootGame/BattleScreen/Enemies" unique_id=1336049394 instance=ExtResource("9_yxtmk")]
 layout_mode = 2

@@ -41,6 +41,8 @@ anchor_right = 0.75
 anchor_bottom = 0.75
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="VSeparator" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="4" unique_id=1343814083]

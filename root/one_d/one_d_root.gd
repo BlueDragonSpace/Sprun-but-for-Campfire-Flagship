@@ -191,6 +191,7 @@ func restart_tree() -> void:
 
 # real-deal deez nuts
 func set_enemies_intents() -> void:
+	
 	for enemy in Enemies.get_children():
 		if enemy.is_dead == false:
 			
@@ -212,9 +213,10 @@ func set_enemies_intents() -> void:
 					if all_charas[chara_num].check_debuff(DeBuff.DEBUFF.HIDE):
 						all_charas.remove_at(chara_num)
 				
-				# now direct a random attack towards a randomly chosen target (overridden by aggro)
-				enemy.set_intended_action(null, Callable(Global, "empty_function"), true)
 				enemy.action_victim = all_charas[randi_range(0, all_charas.size() - 1)]
+			# now direct a random attack towards a randomly chosen target (overridden by aggro)
+			enemy.set_intended_action(null, Callable(Global, "empty_function"), true)
+			
 
 func set_turn_order() -> void:
 	## sorts the Turn Order
@@ -390,10 +392,18 @@ func check_actions_visible(player_type_bitwise: int) -> void:
 				continue
 
 func remove_dead_actions(dead: Node) -> void:
+	
 	# gets called by npc whenever it dies
 	# for reference of turn_order_data: speed_stat, icon, node_path, action
 	
 	var num = current_turn
+	
+	# normally, setting num to current_turn allows future actions to happen
+	# however, if it's on the last turn in queue, something probably died from debuffs
+	# now we need to look at the entire array from the start, since it got reset before the animation could finish
+	
+	if current_turn >= turn_order_data.size() - 1:
+		num = 0
 	
 	# evaluated inside of a while loop so it dynamically changes the length of the loop while inside of it
 	while num < turn_order_data.size():
@@ -568,8 +578,6 @@ func middle_animation_constant() -> void:
 	#intended for use with lambda functions, in the middle of an animation
 
 func middle_round_loop() -> void:
-	
-	
 	
 	if current_turn < turn_order_data.size():
 		

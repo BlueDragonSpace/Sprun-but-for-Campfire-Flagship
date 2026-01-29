@@ -4,6 +4,10 @@
 		Move characters to be outside of one_d_root (for all dimensions)
 		
 		Pathfinding: change algorithm for current direction:
+			
+			Create a new node that inherits from 3DPathfind, replace it's algorithm like you would a virtual func
+				
+			
 			y-Axis is free,
 			z-Axis is free, (and so on)
 			x-Axis is free 
@@ -41,50 +45,19 @@
 	(need a specific case, forgot where to find one and too annoyed to bother)
 	For now, it's me not paying attension to damage
 	
-	Killing via a debuff (poison, fire) causes error
-		Won't break the game on the player's end( I think), but poses significant risk
-	
-	All default action buttons need to link (set_intended_action)
-	
 1.6 (yeah these are bugs):
 	
-	Player visibling notif upon getting to their turn
+	Intent shows random target sometimes, but still directs actual action correctly
 	
 1.75 (not Connecting or bug, ver importan):
 	
-	Complete Revamping of Action system:
-		All Actions through default UI should be Actions
-		
-		Go through all previous actions and add new info (mostly the lowest new booleans in Action)
-		
-		Run the "add_new_actions" function over the actions array in npc, stop using new_actions
-	
-	Actions array can't handle new values, needs to be added in code,
-	i.e., add them to the array, from a different array (new_actions)
-	Possibly have new_actions inside of NPC's script though
-	
-	
-	Update to Godot 4.6!!!1!!!!11!!!!1111! (make sure the game works first tho)
-	
-	@export action_script (so every npc can do the action!!!!)
-	Bigger @export text field (sub_info / button_info)
-	
-	
-	Define all Action intents:
-		Intent uses Name as Main, Button Info as Sub...
-	
-	Structure Players and Enemies so that they share each other's things:
-		Player: Show Intents, but one at a time
 		Enemy: Have attacks be structured as Actions (like the class_name), maybe add sprun for charge attacks?
 			Makes it so that Enemies can be reused as Charas down the line
 	
 2 (more mechanics):
-	Player Intents
-	add_lambda() -> Notif, subtracting sprun_cost
-	Say move name upon using it (all actions should have names by Action class_name)
+	
 3:
-	Poison Debuff (for Rat and beyond) (Slay the Spire like)
-	Stone DeBuff (wow Mario + Rabbids)
+	Stone / Stun DeBuff (wow Mario + Rabbids)
 	Sprun Movement Shifting depending on size (too far when small, too close when big)
 	Name of attack upon using it (like the notifs from Cascade) + Damage (StS)
 	Show Player Intent Upon choosing their action
@@ -99,7 +72,7 @@
 	(Kitty, the Sun Robot thing) Gaining new attacks in new form
 		Resizing Actions Tabs (think about when I played my own game on mobile) - Only changed by font_size, or perhaps add code..?
 	Having [Character] gives [Other Character] a new Action
-	
+	Resize Entire Screen (any idea how truly useful this thing is on my weird -ahhh TV resolution settings???)
 3.5?:
 	All characters get a certain attack if there is a certain character in scene
 	DFD and ATK action (at same time)
@@ -144,6 +117,9 @@ Quirks:
 	2...3...4! (Tangled Up)
 	Looking up Camera Angle (size up)
 	Kitty needs 9 slots for their 9 lives! I did that on accident
+	
+	Putting an enemy inside of the player section makes the game freak out because it doesn't have set sprun slots
+		However, they can still defend perfectly fine! Most stuff still works hahaha
 
 Turn sections:
 	Player Input
@@ -185,4 +161,7 @@ Art needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, Fireball, Megalazer
 
 Currently finished:
-	Fixed charge_up intent error
+	export_multiline
+	fixed error when killing with debuff
+	fixed bug where sprun was blocking mouse from hovering over intents
+	name of move upon using it (really basic AutoFadeNotif)

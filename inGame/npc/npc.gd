@@ -38,6 +38,7 @@ var current_hp: int = max_hp:
 @export var current_intent = Action.INTENT.ATTACK
 var intent_notif_info = ['None', 'No intent has been set yet.']
 const NOTIF = preload("uid://ccl3stwaax0r3")
+const AUTO_FADE_NOTIF = preload("uid://dr7fpgloton5f")
 
 @export var actions : Array[Action]
 
@@ -148,8 +149,14 @@ func add_set_intended_action() -> void: # virtual function, though actual virtua
 
 #for some reason, if you call a Callable as a Callable, the function doesn't go through
 func do_intended_action() -> void:
+	
 	current_defense = 0
 	hide_intent()
+	
+	var notif = AUTO_FADE_NOTIF.instantiate()
+	# displays name of move and it's number
+	notif.text = intent_notif_info[0] # + "\n" + IntentLabel.text
+	add_child(notif)
 	
 	intended_action.call()
  
@@ -216,7 +223,6 @@ func die() -> void:
 	
 	$Death.play()
 
-# this function hasn't been inputted anywhere... yet!!
 func set_intent(action: Action, target_visible : bool = false) -> void:
 	
 	

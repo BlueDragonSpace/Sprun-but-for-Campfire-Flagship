@@ -5,7 +5,7 @@ func _ready() -> void:
 	pass
 
 func empty_function() -> void:
-	print('called the empty function')
+	print('empty')
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("restart"):
