@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cu1ueum56s1rl"]
+[gd_scene format=3 uid="uid://cu1ueum56s1rl"]
 
 [ext_resource type="Script" uid="uid://52o3wyv2lrgw" path="res://root/three_d/three_d_root.gd" id="1_0xdj7"]
 [ext_resource type="PackedScene" uid="uid://crwqeuod3418" path="res://root/three_d/Entities/Players/3d_player.tscn" id="1_84ns2"]
@@ -58,130 +58,156 @@ size = Vector3(10, 1, 10)
 vertices = PackedVector3Array(-5, 0.5, 5, 5, 0.5, -5, 5, 0.5, 5, -5, 0.5, -5, -5, -0.5, 5, 5, -0.5, -5, 5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, 0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, -5, -5, -0.5, 5, 5, 0.5, 5, -5, -0.5, 5, -5, 0.5, 5, 5, -0.5, 5, 5, 0.5, -5, -5, -0.5, -5, -5, 0.5, -5, 5, -0.5, -5)
 polygons = [PackedInt32Array(0, 2, 4), PackedInt32Array(2, 6, 4), PackedInt32Array(1, 3, 5), PackedInt32Array(3, 7, 5), PackedInt32Array(8, 10, 12), PackedInt32Array(10, 14, 12), PackedInt32Array(9, 11, 13), PackedInt32Array(11, 15, 13), PackedInt32Array(16, 18, 20), PackedInt32Array(18, 22, 20), PackedInt32Array(17, 19, 21), PackedInt32Array(19, 23, 21)]
 
-[node name="ThreeDRoot" type="Node3D" groups=["ThreeDRoot"]]
+[node name="ThreeDRoot" type="Node3D" unique_id=2098707386 groups=["ThreeDRoot"]]
 script = ExtResource("1_0xdj7")
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=568085515]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1093737202]
 shape = SubResource("WorldBoundaryShape3D_j4b2l")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1531429954]
 mesh = SubResource("PlaneMesh_js5vo")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor" unique_id=1504968032]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.116015, 0, 0)
 mesh = SubResource("PlaneMesh_js5vo")
 skeleton = NodePath("../..")
 
-[node name="GreatGloriousSun" type="DirectionalLight3D" parent="."]
+[node name="GreatGloriousSun" type="DirectionalLight3D" parent="." unique_id=643355562]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1465283584]
 environment = SubResource("Environment_ovlcs")
 
-[node name="Player3D" parent="." instance=ExtResource("1_84ns2")]
+[node name="Player3D" parent="." unique_id=175508574 instance=ExtResource("1_84ns2")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.14126, 1.2341652, -7.4265976)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CameraHandler" parent="Player3D" groups=["CameraHandler"] instance=ExtResource("3_qgbu4")]
+[node name="CameraHandler" parent="Player3D" unique_id=2016663377 groups=["CameraHandler"] instance=ExtResource("3_qgbu4")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4674301, 2.48531, 3.281226)
 
-[node name="BasicBlock" parent="." instance=ExtResource("4_vmnxw")]
+[node name="BasicBlock" parent="." unique_id=881250340 instance=ExtResource("4_vmnxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1020086, 0.5, -3.7528114)
 
-[node name="BasicBlock2" parent="." instance=ExtResource("4_vmnxw")]
+[node name="BasicBlock2" parent="." unique_id=790126648 instance=ExtResource("4_vmnxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4350643, 0.5, 1.1652467)
 
-[node name="BasicBlock3" parent="." instance=ExtResource("4_vmnxw")]
+[node name="BasicBlock3" parent="." unique_id=1166264509 instance=ExtResource("4_vmnxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5993638, 0.5000005, -1.2377086)
 
-[node name="BasicBlock4" parent="." instance=ExtResource("4_vmnxw")]
+[node name="BasicBlock4" parent="." unique_id=838664201 instance=ExtResource("4_vmnxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.056065, 1.4183221, -2.4036336)
 
-[node name="OneWayPlatform" parent="." instance=ExtResource("5_pqooo")]
+[node name="OneWayPlatform" parent="." unique_id=67774931 instance=ExtResource("5_pqooo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8049953, 1.301082, 0.42613196)
 collision_mask = 1
 
-[node name="OneWayPlatform2" parent="." instance=ExtResource("5_pqooo")]
+[node name="OneWayPlatform2" parent="." unique_id=1150120183 instance=ExtResource("5_pqooo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3996508, 1.301082, -1.4311748)
 collision_mask = 1
 
-[node name="CanvasLayer" type="TextureRect" parent="."]
+[node name="CanvasLayer" type="TextureRect" parent="." unique_id=517642816]
 visible = false
 offset_right = 461.0
 offset_bottom = 412.0
 texture = SubResource("ViewportTexture_xck48")
 expand_mode = 1
 
-[node name="TextureRect" type="SubViewport" parent="CanvasLayer"]
+[node name="TextureRect" type="SubViewport" parent="CanvasLayer" unique_id=2127515155]
 
-[node name="Camera3D" type="Camera3D" parent="CanvasLayer/TextureRect"]
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/TextureRect" unique_id=694659397]
 transform = Transform3D(0.73848057, -0.4546462, 0.49793905, 0, 0.73848087, 0.67427444, -0.67427474, -0.49793854, 0.54535383, 5.563778, 7.5180726, 6.137896)
 
-[node name="FezBlock" parent="." instance=ExtResource("6_xck48")]
+[node name="FezBlock" parent="." unique_id=490146893 instance=ExtResource("6_xck48")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4940014, 0.65519714, 2.9823966)
 
-[node name="FezBlock2" parent="." instance=ExtResource("6_xck48")]
+[node name="FezBlock2" parent="." unique_id=1330989040 instance=ExtResource("6_xck48")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0683827, 0.3089819, 1.7042096)
 
-[node name="MovingTest" type="CharacterBody3D" parent="."]
+[node name="MovingTest" type="CharacterBody3D" parent="." unique_id=623927151]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.60767, 0.75674486, 0)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("7_8yykx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingTest"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingTest" unique_id=1930042785]
 shape = SubResource("CapsuleShape3D_gb3qa")
 metadata/_edit_lock_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingTest"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingTest" unique_id=182002567]
 mesh = SubResource("CapsuleMesh_8ycqa")
 metadata/_edit_lock_ = true
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="MovingTest"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="MovingTest" unique_id=973572199]
 path_postprocessing = 1
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
-[node name="Timer" type="Timer" parent="MovingTest/NavigationAgent3D"]
+[node name="Timer" type="Timer" parent="MovingTest/NavigationAgent3D" unique_id=69447877]
 wait_time = 0.1
 autostart = true
 
-[node name="naviga" type="StaticBody3D" parent="."]
+[node name="MovingTest2" type="CharacterBody3D" parent="." unique_id=1841737549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.60767, 0.75674486, 0)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("7_8yykx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingTest2" unique_id=611537941]
+shape = SubResource("CapsuleShape3D_gb3qa")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingTest2" unique_id=6888979]
+mesh = SubResource("CapsuleMesh_8ycqa")
+metadata/_edit_lock_ = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="MovingTest2" unique_id=178580144]
+path_postprocessing = 1
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="MovingTest2/NavigationAgent3D" unique_id=215820786]
+wait_time = 0.1
+autostart = true
+
+[node name="naviga" type="StaticBody3D" parent="." unique_id=989479625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, -5, -7)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="naviga"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="naviga" unique_id=112340488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 4, 7)
 mesh = SubResource("CylinderMesh_8yykx")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="naviga/MeshInstance3D"]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="naviga/MeshInstance3D" unique_id=443140298]
 navigation_mesh = SubResource("NavigationMesh_8yykx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="naviga"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="naviga" unique_id=1673234755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 4, 7)
 shape = SubResource("ConcavePolygonShape3D_lejm7")
 
-[node name="flat" type="Node3D" parent="."]
+[node name="flat" type="Node3D" parent="." unique_id=489932790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.074013, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="flat"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="flat" unique_id=1749254860]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82334137, 0)
 mesh = SubResource("BoxMesh_8yykx")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="flat/MeshInstance3D"]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="flat/MeshInstance3D" unique_id=1614736839]
 navigation_mesh = SubResource("NavigationMesh_lejm7")
 metadata/_edit_group_ = true
 
-[node name="NavigationLink3D" type="NavigationLink3D" parent="."]
+[node name="NavigationLink3D" type="NavigationLink3D" parent="." unique_id=1223061208]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 0)
 start_position = Vector3(6, -2, -2)
 
 [connection signal="velocity_computed" from="MovingTest/NavigationAgent3D" to="MovingTest" method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="MovingTest/NavigationAgent3D/Timer" to="MovingTest" method="_on_timer_timeout"]
+[connection signal="velocity_computed" from="MovingTest2/NavigationAgent3D" to="MovingTest2" method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="MovingTest2/NavigationAgent3D/Timer" to="MovingTest2" method="_on_timer_timeout"]

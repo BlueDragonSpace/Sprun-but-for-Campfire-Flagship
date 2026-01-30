@@ -1,4 +1,11 @@
 
+0.9: 
+	Adding in pathfinding myself, since I need a little more control over pathfinding than Godot has
+		Pass in array of all blocks to ThreeDRoot
+		Finish pathfind function, link it to a node
+			(what I'm currently on) make sure the path works I guess...
+		Decide when to use the path_find function, and display it
+
 1 (Connections):
 	Connecting:
 		Move characters to be outside of one_d_root (for all dimensions)
@@ -38,6 +45,7 @@
 		Transitioning: find position on 2D screen of a 3D character (local)
 		Move camera script to not be apart of just one player (but the average position of each of them)
 	
+	haha sry nevermind lol
 	
 1.5 (BUGGS THAT ARE REALLY BAD AND GAME BREAKING):
 	
@@ -59,19 +67,15 @@
 3:
 	Stone / Stun DeBuff (wow Mario + Rabbids)
 	Sprun Movement Shifting depending on size (too far when small, too close when big)
-	Name of attack upon using it (like the notifs from Cascade) + Damage (StS)
-	Show Player Intent Upon choosing their action
 	Go backward in players choosing actions with Back Button
 	MegaLazer VFX! (Screenshake, line connecting player and enemy, enemy color changing)
 	Litle dialogue things (but even more, like character-to-character interaction, and in the middle of battle...)
-	Final hit on enemy grants a sprun?
 	Cat Battle! (don't actually hit the cat, or bad stuff happens)
 	Turn Limit til next wave (prevent hold onto one enemy to increase Sprun stats)
 	Create Custom Theme (buttons, sliders, the whole shebang)
 	Differentiate between similar enemies and rats
 	(Kitty, the Sun Robot thing) Gaining new attacks in new form
 		Resizing Actions Tabs (think about when I played my own game on mobile) - Only changed by font_size, or perhaps add code..?
-	Having [Character] gives [Other Character] a new Action
 	Resize Entire Screen (any idea how truly useful this thing is on my weird -ahhh TV resolution settings???)
 3.5?:
 	All characters get a certain attack if there is a certain character in scene
@@ -161,7 +165,4 @@ Art needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, Fireball, Megalazer
 
 Currently finished:
-	export_multiline
-	fixed error when killing with debuff
-	fixed bug where sprun was blocking mouse from hovering over intents
-	name of move upon using it (really basic AutoFadeNotif)
+	

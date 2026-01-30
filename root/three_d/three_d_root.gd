@@ -1,5 +1,9 @@
 extends Node3D
 
+# all blocks send their deepest regards to the root
+# in which the sorrowfully declare;
+# no pathfinding nor movement shall occur here
+var block_indexes : Array[Vector3i] = [] 
 
 ##region AMALGAMATE CODE REFERENCE
 #
