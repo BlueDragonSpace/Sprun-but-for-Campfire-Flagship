@@ -1,6 +1,6 @@
 # Sprun but Campfire Flagship
 
-A dimension-switching turn-based tactical game built with Godot 4.6, where players switch between 2D and 3D combat to gain tactical advantages.
+**A dimension-switching turn-based tactical game** built with Godot 4.6, where players alternate between 2D and 3D combat to gain strategic advantages.
 
 ## About
 
