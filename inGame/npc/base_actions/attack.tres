@@ -9,6 +9,7 @@ name = "Attack"
 func_name = "attack"
 icon = ExtResource("1_lvrfn")
 atk_mult = 1.0
+prep_disable = true
 needs_target = true
 show_target_intent = true
 button_info = "this is button info"

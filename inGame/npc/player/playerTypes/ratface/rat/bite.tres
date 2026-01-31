@@ -9,4 +9,6 @@ func_name = "bite"
 player_type = 32
 atk_mult = 0.3
 prep_disable = true
+needs_target = true
+show_target_intent = true
 button_info = "Add 2 Poison."

@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("1_17ghn")
 name = "ATK+"
-func_name = "N/A"
+func_name = "big_attack"
 icon = ExtResource("1_24jvq")
 atk_mult = 2.5
+prep_disable = true
 needs_target = true
 show_target_intent = true
 button_info = "Attack, but better."

@@ -165,4 +165,8 @@ Art needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, Fireball, Megalazer
 
 Currently finished:
+	(worked on) 3Dpathfinding implementation
+		A few problems: takes too long, doesn't navigate well around obstacles (the entire point of pathfinding), ughghghghghhgghgh
 	
+	Blizzard (make attack all Action bool work and skip the turn queue)
+	Freeze debuff and Chill move (make freeze put last in turn order)

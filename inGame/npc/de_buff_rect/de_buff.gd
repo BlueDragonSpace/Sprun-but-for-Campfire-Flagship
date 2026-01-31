@@ -19,6 +19,7 @@ enum DEBUFF {
 	FRAIL, # do less defense
 	POISON, # less damage over time
 	FIRE, # more damage over time
+	FREEZE, # last in turn queue
 	# prevent next buff debuff (haha kinda nuts there)
 }
 @export var debuff_type = DEBUFF.STRENGTH

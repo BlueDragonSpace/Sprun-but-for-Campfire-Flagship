@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://c0k0uy8vxyrir"]
+
+[ext_resource type="Texture2D" uid="uid://6ql2qxwtj83" path="res://placeholderArt/blizzard.webp" id="1_1wtic"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="2_xdxfm"]
+
+[resource]
+script = ExtResource("2_xdxfm")
+name = "Blizzard"
+func_name = "chill"
+icon = ExtResource("1_1wtic")
+player_type = 4
+sprun_necessary = 3
+sprun_loss = 2
+atk_mult = 1.5
+prep_disable = true
+attack_all = true
+button_info = "Attacks and freezes all enemies."
+metadata/_custom_type_script = "uid://diifqu7v6338q"

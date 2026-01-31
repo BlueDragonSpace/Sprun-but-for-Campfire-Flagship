@@ -3,12 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/npc/player/player.tscn" id="1_n4oco"]
 [ext_resource type="Script" uid="uid://c22h5dc4inak1" path="res://inGame/npc/player/playerTypes/wizerd/wizerd.gd" id="2_n4oco"]
 [ext_resource type="Texture2D" uid="uid://cvggsr6dniihs" path="res://placeholderArt/myPixelArt/wizerdhat-1.png (1).png" id="2_whysk"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="3_cwjng"]
 [ext_resource type="Resource" uid="uid://c3a14axpyy1n0" path="res://inGame/npc/player/playerTypes/wizerd/mega_lazer.tres" id="3_i643x"]
 [ext_resource type="Resource" uid="uid://2e2way0p32mh" path="res://inGame/npc/player/playerTypes/wizerd/heal.tres" id="4_wqnb0"]
 [ext_resource type="Resource" uid="uid://cwkvw576dxppf" path="res://inGame/npc/player/playerTypes/wizerd/fireball.tres" id="5_e58jv"]
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="5_qfx5e"]
 [ext_resource type="AudioStream" uid="uid://cnevvu2dnjofy" path="res://placeholderArt/sfx/mega_lazer.wav" id="6_k0qa8"]
+[ext_resource type="Resource" uid="uid://crwrne4qrwn6y" path="res://inGame/npc/player/playerTypes/wizerd/chill.tres" id="7_4lrnk"]
 [ext_resource type="AudioStream" uid="uid://ks16o6i7ojav" path="res://placeholderArt/sfx/wawawawawaCondescending.wav" id="7_k0qa8"]
+[ext_resource type="Resource" uid="uid://c0k0uy8vxyrir" path="res://inGame/npc/player/playerTypes/wizerd/blizzard.tres" id="8_4lrnk"]
 
 [sub_resource type="Animation" id="Animation_i643x"]
 length = 0.001
@@ -114,7 +117,7 @@ _data = {
 script = ExtResource("2_n4oco")
 sprun_slots = 5
 sprun_active = 1
-new_action = Array[Resource]([ExtResource("3_i643x"), ExtResource("4_wqnb0"), ExtResource("5_e58jv")])
+new_action = Array[ExtResource("3_cwjng")]([ExtResource("3_i643x"), ExtResource("4_wqnb0"), ExtResource("5_e58jv"), ExtResource("7_4lrnk"), ExtResource("8_4lrnk")])
 player_type = 6
 icon = ExtResource("2_whysk")
 speed_stat = 6

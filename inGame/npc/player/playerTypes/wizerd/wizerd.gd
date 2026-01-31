@@ -27,3 +27,11 @@ func fireball(atk_mult, sprun_loss : int) -> void:
 	action_victim.take_debuff(FIRE, 2)
 	
 	set_sprun(sprun_active - sprun_loss)
+
+const FREEZE = preload("uid://bl67tpbwsavb3")
+
+func chill(atk_mult, sprun_loss : int) -> void:
+	action_victim.take_damage(attack_stat * atk_mult)
+	action_victim.take_debuff(FREEZE, 2)
+	set_sprun(sprun_active - sprun_loss)
+# the move "Blizzard" uses the exact same code as the action for "Chill"

@@ -83,7 +83,7 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 				check_upgrade_cost_actions(current_player)
 				check_cost_all_actions(current_player.sprun_active)
 				if in_prep_round:
-					disable_all_attacks(true)
+					disable_all_non_prep_moves(true)
 				# visible (-ing)
 				check_actions_visible(current_player.player_type)
 			TURN_TYPE.SELECT_ENEMY:
@@ -229,11 +229,23 @@ func set_turn_order() -> void:
 	
 	for enemy in Enemies.get_children():
 		if enemy.is_dead == false:
-			turn_order_data.push_back([enemy.speed_stat, enemy.Icon.texture, enemy, Callable(enemy, "do_intended_action")])
+			
+			var speed = enemy.speed_stat 
+			if enemy.check_debuff(DeBuff.DEBUFF.FREEZE): # makes enemy last in turn queue is freeze"d"
+				speed = 1
+			
+			turn_order_data.push_back([speed, enemy.Icon.texture, enemy, Callable(enemy, "do_intended_action")])
 	# wonder if there is a such thing as a shared for loop..?
 	for character in Charas.get_children():
 		if character.is_dead == false:
-			turn_order_data.push_back([character.speed_stat, character.Icon.texture,character, Callable(character, "do_intended_action")])
+			
+			var speed = character.speed_stat
+			if character.check_debuff(DeBuff.DEBUFF.FREEZE):
+				speed = 1
+			
+			turn_order_data.push_back([speed, character.Icon.texture,character, Callable(character, "do_intended_action")])
+	
+	
 	
 	#as it turns out, Godot's sort method will sort by the first element of each array in a nested array
 	# which makes life a whole lot easier than doing custom_sort()
@@ -352,7 +364,7 @@ func disable_all_actions(boolean: bool) -> void:
 		for action in container.get_children():
 			action.disabled = boolean
 
-func disable_all_attacks(boolean: bool) -> void:
+func disable_all_non_prep_moves(boolean: bool) -> void:
 	for container in Actions.get_children():
 		for action in container.get_children():
 			if action.prep_disable:
@@ -623,7 +635,7 @@ func final_pass_turn() -> void:
 			in_prep_round = false
 			
 			TopBarPrepRoundsLabel.text = 'X'
-			disable_all_attacks(false)
+			disable_all_non_prep_moves(false)
 			add_enemy_wave()
 			current_enemy = Enemies.get_child(0)
 			prep_rounds_remaining = randi_range(3, 4) # 2 or 3 prep rounds
@@ -671,43 +683,41 @@ func _on_bak_pressed() -> void:
 	back_action.call()
 func _on_atk_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "attack")
-	current_player.set_intent(current_player.actions[0])
+	current_player.set_intended_action(current_player.actions[0])
 	initiate_select_enemy()
 func _on_dfd_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "defend")
-	current_player.set_intent(current_player.actions[1])
+	current_player.set_intended_action(current_player.actions[1])
 	player_pass_turn()
 func _on_focus_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "focus")
-	
-	current_player.set_intent(current_player.actions[3])
-	
+	current_player.set_intended_action(current_player.actions[3])
 	player_pass_turn()
 func _on_increase_sprun_slots_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "increase_sprun_slots")
-	current_player.set_intent(current_player.actions[4])
+	current_player.set_intended_action(current_player.actions[4])
 	player_pass_turn()
 func _on_atk_up_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "upgrade_atk")
-	current_player.set_intent(current_player.actions[4])
+	current_player.set_intended_action(current_player.actions[4])
 	player_pass_turn()
 func _on_dfd_up_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "upgrade_dfd")
-	current_player.set_intent(current_player.actions[4])
+	current_player.set_intended_action(current_player.actions[4])
 	player_pass_turn()
 func _on_spd_up_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "upgrade_spd")
-	current_player.set_intent(current_player.actions[4])
+	current_player.set_intended_action(current_player.actions[4])
 	player_pass_turn()
 func _on_itm_pressed() -> void:
 	print("haven't set this up yet")
 func _on_big_atk_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "big_attack")
-	current_player.set_intent(current_player.actions[5])
+	current_player.set_intended_action(current_player.actions[5])
 	initiate_select_enemy()
 func _on_pass_pressed() -> void:
 	current_player.intended_action = Callable(Global, "empty_function")
-	current_player.set_intent(current_player.actions[2])
+	current_player.set_intended_action(current_player.actions[2])
 	player_pass_turn()
 func _on_masochism_pressed() -> void:
 	current_player.current_hp -= 10

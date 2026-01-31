@@ -9,7 +9,7 @@ const SPRUN = preload("uid://b6wgjet502thq")
 @export var sprun_active: int = 0 # ONLY CHANGE WITH set_sprun(new_sprun_count)!!!!!!!!!! 
 # they would be an automatically set method in code but Godot throws errors on ready
 
-@export var new_action: Array[Resource]
+@export var new_action: Array[Action]
 @export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var player_type : int = 0
 
 const ACTION_BUTTON = preload("uid://drtw4kuprkapi")
@@ -51,22 +51,32 @@ func add_actions(custom_actions : Array) -> void:
 		new_button.dfd_mult = this_action.dfd_mult
 		new_button.ally_target = this_action.ally_target
 		
+		# why I didn't just link the resource? I have no idea
+		# probably gonna end up refactoring this down the line cuz this is pretty awful
+		
 		@warning_ignore("standalone_expression")
 		var lambda = func() : null
 		
 		match(this_action.action_type):
 			0: ## ATTACK
-				
 				var callable = Callable(self, this_action.func_name).bind(this_action.atk_mult, this_action.sprun_loss)
 				
 				if not this_action.is_quick:
 					lambda = func(): 
 						add_lambda(this_action, callable)
-						OneDRoot.initiate_select_enemy()
+						
+						if this_action.needs_target:
+							OneDRoot.initiate_select_enemy()
+						else:
+							OneDRoot.player_pass_turn()
 				else:
 					lambda = func():
 						add_lambda(this_action, callable)
-						OneDRoot.initiate_select_enemy(true)
+						
+						if this_action.needs_target:
+							OneDRoot.initiate_select_enemy(true)
+						else:
+							OneDRoot.player_pass_turn()
 			1: ## DEFEND
 				print('no lambda set for custom defend actions in player.gd')
 			#2: ## SPRUN
@@ -93,7 +103,7 @@ func add_actions(custom_actions : Array) -> void:
 		# 0 is Back Button, so everything past that is fair game
 		OneDRoot.Actions.get_child(this_action.action_type + 1).add_child(new_button)
 
-# additional things I call on *every* action
+# additional things I call on *every* action getting call
 func add_lambda(func_action: Action, callable: Callable) -> void:
 	set_intended_action(func_action, callable)
 	set_intent(func_action)

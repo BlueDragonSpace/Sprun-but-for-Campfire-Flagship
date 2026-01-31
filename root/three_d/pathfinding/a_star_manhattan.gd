@@ -25,6 +25,8 @@ func _estimate_cost(u, v):
 	##var path = get_point_path(0, 
 
 func find_path(center: Vector3i, end: Vector3i, blocks: Array[Vector3i]) -> Array:
+	clear()
+	
 	add_point(0, center)
 	add_point(1, end)
 	
@@ -34,8 +36,6 @@ func find_path(center: Vector3i, end: Vector3i, blocks: Array[Vector3i]) -> Arra
 	var z_dist = abs(center.z - end.z) * z_weight
 	var cube_size = max(x_dist, y_dist, z_dist) # takes the furthest distance along any axis
 	
-	var point_index = 2
-	
 	# plot points in a cube shape through the entire thing
 	for x in range(-cube_size, cube_size + 1):
 		for y in range(-cube_size, cube_size + 1):
@@ -43,12 +43,19 @@ func find_path(center: Vector3i, end: Vector3i, blocks: Array[Vector3i]) -> Arra
 				
 				for block in blocks:
 					if Vector3i(x,y,z) == block:
-						continue
+						continue # skips this iteration
 				
-				add_point(point_index, Vector3i(x, y, z))
-				connect_points(point_index, get_closest_point(Vector3(x, y, z)))
+				var prev_point = get_closest_point(Vector3(x, y, z))
 				
-				point_index += 1
+				var id = get_available_point_id()
+				add_point(id, Vector3i(x, y, z))
+				
+				# connect current point to the points that are next to it in one axis, find id for it
+				connect_points(id, prev_point)
+				
+				# hopefully, just hopefully, it will automatically and deterministically connect to each of
+					# the 6 cardinal directions
+				## ISSUE: Blocking any point will cause it to connect incorrectly, and make false pathfinding decisions
 	
 	var path = get_point_path(0, 1)
 	return path

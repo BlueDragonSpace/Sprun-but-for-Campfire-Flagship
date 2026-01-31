@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://crwrne4qrwn6y"]
+
+[ext_resource type="Texture2D" uid="uid://dxbabyo5o8fvk" path="res://placeholderArt/snowflake.webp" id="1_oak1t"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="2_lhtoe"]
+
+[resource]
+script = ExtResource("2_lhtoe")
+name = "Chill"
+func_name = "chill"
+icon = ExtResource("1_oak1t")
+player_type = 4
+atk_mult = 0.3
+prep_disable = true
+needs_target = true
+show_target_intent = true
+button_info = "Freezes enemy, making them last in the turn queue."
+metadata/_custom_type_script = "uid://diifqu7v6338q"

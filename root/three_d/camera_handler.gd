@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var camera_speed = 20
-var camera_zoom = 10.0:
+var camera_zoom = 30.0:
 	set(new):
 		camera_zoom = new
 		CurrentCamera.size = camera_zoom

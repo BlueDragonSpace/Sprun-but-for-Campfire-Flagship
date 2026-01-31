@@ -20,11 +20,12 @@ sprun_slots = 3
 sprun_container_angle = 135
 sprun_distance = 60
 sprun_active = 0
-new_action = Array[Resource]([])
+new_action = Array[ExtResource("3_4d70r")]([])
 player_type = 2
 icon = null
 speed_stat = 5
 attack_stat = 6
+is_player = true
 actions = Array[ExtResource("3_4d70r")]([ExtResource("4_uclv0"), ExtResource("5_55gq4"), ExtResource("6_2f4im"), ExtResource("7_4fnqf"), ExtResource("8_uclv0"), ExtResource("9_55gq4")])
 
 [node name="VSeparator2" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="0" unique_id=645862984]

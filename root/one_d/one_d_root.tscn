@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
 [ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/npc/enemy/enemy.tscn" id="9_r1xw6"]
-[ext_resource type="PackedScene" uid="uid://d3n5wkylral0k" path="res://inGame/npc/enemy/types/charge_up/charge_up.tscn" id="9_yxtmk"]
 [ext_resource type="Texture2D" uid="uid://bpyet5t7bpkww" path="res://placeholderArt/myPixelArt/BiggBlue-1.png.png" id="10_fshsv"]
 [ext_resource type="Texture2D" uid="uid://dtkrx4fskgr5r" path="res://placeholderArt/myPixelArt/littleBlue-1.png.png" id="11_qswi8"]
 [ext_resource type="Texture2D" uid="uid://docng28uw84fm" path="res://placeholderArt/myPixelArt/Ooohhhhhhh-1.png.png" id="12_5g6ql"]
@@ -1328,6 +1327,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Wizerd" parent="RootGame/BattleScreen/Charas" unique_id=1474276988 instance=ExtResource("5_ih4ah")]
 layout_mode = 2
 
+[node name="Rodent Lord" parent="RootGame/BattleScreen/Charas" unique_id=2064751948 instance=ExtResource("7_p81qd")]
+layout_mode = 2
+
+[node name="Raccoon" parent="RootGame/BattleScreen/Charas" unique_id=2080388202 instance=ExtResource("5_b1nt6")]
+layout_mode = 2
+
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen" unique_id=1211869950]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
@@ -1354,9 +1359,6 @@ speed_range = 5
 attack_range = 2
 icon = ExtResource("10_fshsv")
 max_hp = 13
-
-[node name="ChargeUp" parent="RootGame/BattleScreen/Enemies" unique_id=1336049394 instance=ExtResource("9_yxtmk")]
-layout_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="RootGame/BattleScreen" unique_id=303485800]
 modulate = Color(1, 1, 1, 0)
@@ -1519,6 +1521,7 @@ expand_icon = true
 info = "Deal damage to enemy."
 atk_mult = 1.0
 usable_on_player = 34
+prep_disable = true
 
 [node name="BigATK" parent="RootGame/LowerBar/VBoxContainer/Actions/Attack" unique_id=2043494808 instance=ExtResource("17_32om6")]
 layout_mode = 2
@@ -1526,6 +1529,7 @@ text = "ATK+"
 info = "Deal 2.5x damage to enemy."
 sprun_cost = 1
 atk_mult = 2.5
+prep_disable = true
 
 [node name="Defend" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=957053461]
 visible = false

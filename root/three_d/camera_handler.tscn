@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bshvwfyo68bjf"]
+[gd_scene format=3 uid="uid://bshvwfyo68bjf"]
 
 [ext_resource type="Script" uid="uid://b6n5hb1lim3xr" path="res://root/three_d/camera_handler.gd" id="1_31vqs"]
 
@@ -81,41 +81,36 @@ _data = {
 &"RESET": SubResource("Animation_mqa25")
 }
 
-[node name="CameraHandler" type="Node3D"]
+[node name="CameraHandler" type="Node3D" unique_id=1678149194]
 script = ExtResource("1_31vqs")
 
-[node name="Cameras" type="Node3D" parent="."]
+[node name="Cameras" type="Node3D" parent="." unique_id=740424600]
 
-[node name="testingPathfinding" type="Camera3D" parent="Cameras"]
-transform = Transform3D(-0.54314375, -0.5157533, 0.66256577, 0, 0.7891072, 0.6142555, -0.8396398, 0.333629, -0.42859864, 3.5930717, 4.212239, -2.3488688)
-
-[node name="Bird" type="Camera3D" parent="Cameras"]
+[node name="Bird" type="Camera3D" parent="Cameras" unique_id=1669506355]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
 projection = 1
 size = 5.0
 
-[node name="Head" type="Camera3D" parent="Cameras"]
+[node name="Head" type="Camera3D" parent="Cameras" unique_id=1435797553]
 projection = 1
 size = 5.0
 
-[node name="Head90" type="Camera3D" parent="Cameras"]
+[node name="Head90" type="Camera3D" parent="Cameras" unique_id=1126403852]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 0, 0)
 projection = 1
 size = 5.0
 
-[node name="InBetweenPath" type="Path3D" parent="."]
+[node name="InBetweenPath" type="Path3D" parent="." unique_id=436427413]
 curve = SubResource("Curve3D_31vqs")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="InBetweenPath"]
+[node name="PathFollow3D" type="PathFollow3D" parent="InBetweenPath" unique_id=1880302355]
 tilt_enabled = false
 
-[node name="InBetweenCamera" type="Camera3D" parent="InBetweenPath/PathFollow3D"]
+[node name="InBetweenCamera" type="Camera3D" parent="InBetweenPath/PathFollow3D" unique_id=1065031782]
 projection = 1
 size = 5.0
 
-[node name="Animate" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_rai8y")
-}
+[node name="Animate" type="AnimationPlayer" parent="." unique_id=1187030974]
+libraries/ = SubResource("AnimationLibrary_rai8y")
 
-[node name="UnusedCameras" type="Node" parent="."]
+[node name="UnusedCameras" type="Node" parent="." unique_id=447146880]

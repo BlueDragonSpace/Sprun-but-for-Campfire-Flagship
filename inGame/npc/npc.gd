@@ -40,6 +40,8 @@ var intent_notif_info = ['None', 'No intent has been set yet.']
 const NOTIF = preload("uid://ccl3stwaax0r3")
 const AUTO_FADE_NOTIF = preload("uid://dr7fpgloton5f")
 
+@export var is_player : bool = false
+
 @export var actions : Array[Action]
 
 # intent textures
@@ -63,6 +65,7 @@ var current_defense : int = 0:
 		current_defense = new
 
 var intended_action = Callable(Global, "empty_function")
+var intended_action_resource : Action
 var action_victim : Node = null:
 	set(new):
 		action_victim = new
@@ -122,7 +125,7 @@ func check_debuff(debuff_in_question) -> Node: # returns if the debuff exists, a
 	
 	return node
 
-func set_intended_action(action: Action, callable : Callable, random: bool = false) -> void:
+func set_intended_action(action: Action, callable : Callable = Callable(self, action.func_name), random: bool = false) -> void:
 	
 	# callable is passed in separately to action in case I need to .bind() something to the Callable
 	# Keep in mind that Action is just a resource; a sheet of data
@@ -138,9 +141,11 @@ func set_intended_action(action: Action, callable : Callable, random: bool = fal
 		
 		intended_action = Callable(self, random_action.func_name)
 		set_intent(random_action, random_action.show_target_intent)
+		intended_action_resource = random_action
 	else:
 		intended_action = callable
 		set_intent(action)
+		intended_action_resource = action
 	
 	add_set_intended_action()
 
@@ -158,7 +163,18 @@ func do_intended_action() -> void:
 	notif.text = intent_notif_info[0] # + "\n" + IntentLabel.text
 	add_child(notif)
 	
-	intended_action.call()
+	if intended_action_resource.attack_all: 
+		# is it a player or an enemy?
+		if is_player:
+			for enemy in OneDRoot.Enemies.get_children():
+				action_victim = enemy
+				intended_action.call()
+		else:
+			for chara in OneDRoot.Charas.get_children():
+				action_victim = chara
+				intended_action.call()
+	else:
+		intended_action.call()
  
 func take_damage(damage, attacker = null, ignore_shield = false) -> void:
 	
@@ -207,6 +223,12 @@ func defend():
 func attack() -> void:
 	if action_victim:
 		action_victim.take_damage(attack_stat, self)
+		Animate.play("attack")
+		$Attack.play()
+
+func big_attack():
+	if action_victim:
+		action_victim.take_damage(attack_stat * 2.5, self)
 		Animate.play("attack")
 		$Attack.play()
 

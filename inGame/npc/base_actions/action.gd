@@ -29,6 +29,7 @@ const PLAYER_TYPE = 'All, Basic, Wizerd, Kitty, Rodent Lord, Rat, Mouse, Hamster
 @export var needs_target: bool = false ## goes to the target_selection scene
 @export var ally_target: bool = false ## targets an ally instead of an enemy
 @export var show_target_intent: bool = false ## shows the targeted victim
+@export var attack_all: bool = false ## attacks all enemies on screen (and skip the choose target phase)
 @export var is_quick: bool = false ## goes instantly, doesn't kill
 
 # make this a far bigger text field...
