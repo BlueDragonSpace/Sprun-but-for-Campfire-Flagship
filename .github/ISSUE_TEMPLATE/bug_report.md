@@ -40,6 +40,6 @@ assignees: ''
 <!-- Anything else that might help debug the issue -->
 
 ## Checklist
-- [ ] I have checked [FEATURES.md](../FEATURES.md) to see if this is a known bug
+- [ ] I have checked [FEATURES.md](../../FEATURES.md) to see if this is a known bug
 - [ ] I have provided steps to reproduce
 - [ ] I have included relevant screenshots or logs

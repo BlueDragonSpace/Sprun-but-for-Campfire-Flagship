@@ -56,6 +56,6 @@ As a [type of user], I want [goal] so that [benefit].
 <!-- Any other information that might be helpful -->
 
 ## Checklist
-- [ ] I have checked [FEATURES.md](../FEATURES.md) to see if this is already planned
-- [ ] I have read [CONTRIBUTING.md](../CONTRIBUTING.md)
+- [ ] I have checked [FEATURES.md](../../FEATURES.md) to see if this is already planned
+- [ ] I have read [CONTRIBUTING.md](../../CONTRIBUTING.md)
 - [ ] I have provided clear requirements above
