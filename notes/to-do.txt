@@ -63,11 +63,9 @@
 			Makes it so that Enemies can be reused as Charas down the line
 	
 2 (more mechanics):
-	BACK BUTTON!!!!!!
+	
 3:
-	Stone / Stun DeBuff (wow Mario + Rabbids)
 	Sprun Movement Shifting depending on size (too far when small, too close when big)
-	Go backward in players choosing actions with Back Button
 	MegaLazer VFX! (Screenshake, line connecting player and enemy, enemy color changing)
 	Litle dialogue things (but even more, like character-to-character interaction, and in the middle of battle...)
 	Cat Battle! (don't actually hit the cat, or bad stuff happens)
@@ -87,7 +85,6 @@
 	Auto-count / add green text for when sprun is met (Draven playtest, the two separate corners of the screen where you have the sprun on left, and the total cost on the right)
 4: 
 	Death saves? (Deltarune, DnD, revival at all?)
-	Kitty's 6 Lives (the 7th I don't talk about) [wait was it 9 actually]
 	Hide unnecessary tabs (rat cannot defend)
 	Every time an enemy dies, the TurnOrderPoint is off on which turn it really is
 	
@@ -165,4 +162,6 @@ Art needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, Fireball, Megalazer
 
 Currently finished:
-	
+	Flashbang + Stun DeBuff
+	Fixed turn order marker skipping at certain points to account for the dead
+	All player intents are hidden at the end of round, for debug purposes

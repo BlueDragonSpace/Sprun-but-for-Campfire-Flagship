@@ -1,21 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbku30glrarxd"]
+[gd_scene format=3 uid="uid://bbku30glrarxd"]
 
 [ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/npc/player/player.tscn" id="1_m5oq8"]
 [ext_resource type="Script" uid="uid://ce6ywj1ahln6d" path="res://inGame/npc/player/playerTypes/raccoon/raccoon.gd" id="2_w3pjq"]
 [ext_resource type="Resource" uid="uid://ch56xq26ov4yl" path="res://inGame/npc/player/playerTypes/raccoon/daggers.tres" id="3_gqmbh"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="3_q3srw"]
 [ext_resource type="Texture2D" uid="uid://7eya5knr354s" path="res://placeholderArt/raccoonFiller.png" id="4_gqmbh"]
 [ext_resource type="Resource" uid="uid://c7jivkc0dwrjl" path="res://inGame/npc/player/playerTypes/raccoon/sneak_attack.tres" id="4_ne3ci"]
 [ext_resource type="Resource" uid="uid://dnetxknb0osum" path="res://inGame/npc/player/playerTypes/raccoon/inject.tres" id="5_knys8"]
+[ext_resource type="Resource" uid="uid://crk1pkslwu51l" path="res://inGame/npc/player/playerTypes/raccoon/flashbang.tres" id="7_q3srw"]
 
-[node name="Raccoon" instance=ExtResource("1_m5oq8")]
+[node name="Raccoon" unique_id=1902990169 instance=ExtResource("1_m5oq8")]
 script = ExtResource("2_w3pjq")
 sprun_slots = 1
-new_action = Array[Resource]([ExtResource("3_gqmbh"), ExtResource("4_ne3ci"), ExtResource("5_knys8")])
+new_action = Array[ExtResource("3_q3srw")]([ExtResource("3_gqmbh"), ExtResource("4_ne3ci"), ExtResource("5_knys8"), ExtResource("7_q3srw")])
 player_type = 4098
 icon = ExtResource("4_gqmbh")
 max_hp = 32
 attack_stat = 5
 defend_stat = 6
 
-[node name="HP" parent="VBoxContainer/LowerBar" index="1"]
+[node name="HP" parent="VBoxContainer/LowerBar" parent_id_path=PackedInt32Array(997484585) index="1" unique_id=2009507824]
 allow_greater = false

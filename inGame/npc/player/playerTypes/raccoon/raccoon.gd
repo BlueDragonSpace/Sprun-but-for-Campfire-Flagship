@@ -32,3 +32,12 @@ func inject_poison(atk_mult, sprun_loss) -> void:
 	# should theoretically be free, butttttt
 	set_sprun(sprun_active - sprun_loss)
 	Animate.play("attack")
+
+const STUN = preload("uid://bqtkaq1hjyf3q")
+
+func flashbang(_atk_mult, sprun_loss) -> void:
+	# doesn't deal damage
+	
+	action_victim.take_debuff(STUN, 1)
+	
+	set_sprun(sprun_active - sprun_loss)

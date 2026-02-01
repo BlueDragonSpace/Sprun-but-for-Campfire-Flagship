@@ -44,11 +44,8 @@ const AUTO_FADE_NOTIF = preload("uid://dr7fpgloton5f")
 
 @export var actions : Array[Action]
 
-# intent textures
-#const SWORD_ART = preload("uid://cl4v4yeo1gn2m")
-#const SHIELD_ART = preload("uid://bvhkmrse4oqmm")
-#const ATTENTIONS_ART = preload("uid://depk6jpfx32yl")
-
+# preload actions
+const STUNNED = preload("uid://dsldqq7ppqvn6")
 
 # bad code: is it Npc or Character!
 # and worst of all: Characters are contolled by Player, meaning that they are literal PCs instead of NPCs
@@ -146,6 +143,12 @@ func set_intended_action(action: Action, callable : Callable = Callable(self, ac
 		intended_action = callable
 		set_intent(action)
 		intended_action_resource = action
+	
+	# if stunned, just overrule all of this junk
+	if check_debuff(DeBuff.DEBUFF.STUN):
+		set_intent(STUNNED)
+		intended_action = Callable(Global, "empty_function")
+		intended_action_resource = STUNNED
 	
 	add_set_intended_action()
 

@@ -418,16 +418,22 @@ func remove_dead_actions(dead: Node) -> void:
 		num = 0
 	
 	# evaluated inside of a while loop so it dynamically changes the length of the loop while inside of it
+	# makes sure that any actions targeting the dead or are from the dead are cancelled
 	while num < turn_order_data.size():
 		
+		# speed stat, icon, NodePath, Action
+		
 		if turn_order_data[num][2] == dead:
-			turn_order_data.remove_at(num)
-			continue # if we remove the action at this point in the array, we need to re-read what this current action is, since all items forward are pushed back one, menaing the current action is new in this current index
-			
+			#turn_order_data.remove_at(num)
+			#continue # if we remove the action at this point in the array, we need to re-read what this current action is, since all items forward are pushed back one, menaing the current action is new in this current index
+			turn_order_data[num] = [null, null, null, Callable(Global, "empty_function")] # makes the action do nothing
+			num += 1
+			continue
+		
 		if turn_order_data[num][2].action_victim == dead:
 			if turn_order_data[num][2].action_victim is Node:
-				turn_order_data.remove_at(num)
-				continue
+				#turn_order_data.remove_at(num)
+				turn_order_data[num] = [null, null, null, Callable(Global, "empty_function")]
 			elif turn_order_data[num][2].action_victim is Array:
 				print('action_victim is array but I havent done that yet')
 			else:
@@ -617,7 +623,7 @@ func middle_round_loop() -> void:
 		current_turn += 1
 		
 		if current_turn < turn_order_data.size() + 1:
-			var prev_mark = TurnOrder.get_child(current_turn - 2)
+			var prev_mark = TurnOrder.get_child(current_turn - 2 )
 			
 			if current_turn != 0:
 				if prev_mark.get_child_count() > 0:
@@ -642,6 +648,10 @@ func final_pass_turn() -> void:
 		if Charas.get_child(num).is_dead == false:
 			current_player = Charas.get_child(num) # sets the current_player to one that's not dead
 		break
+	
+	for chara in Charas.get_children():
+		if chara.is_dead == false:
+			chara.hide_intent()
 	
 	if in_prep_round:
 		prep_rounds_remaining -= 1

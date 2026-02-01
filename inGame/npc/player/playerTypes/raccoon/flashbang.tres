@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://crk1pkslwu51l"]
+
+[ext_resource type="Texture2D" uid="uid://depk6jpfx32yl" path="res://placeholderArt/myPixelArt/Attentions-1.png.png" id="1_p8r32"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="2_gkqrx"]
+
+[resource]
+script = ExtResource("2_gkqrx")
+name = "Flashbang"
+func_name = "flashbang"
+icon = ExtResource("1_p8r32")
+intent_type = 6
+player_type = 4096
+sprun_necessary = 1
+sprun_loss = 1
+prep_disable = true
+needs_target = true
+show_target_intent = true
+button_info = "THE LIGHT"
+metadata/_custom_type_script = "uid://diifqu7v6338q"

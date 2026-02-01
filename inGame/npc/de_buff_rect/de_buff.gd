@@ -20,6 +20,7 @@ enum DEBUFF {
 	POISON, # less damage over time
 	FIRE, # more damage over time
 	FREEZE, # last in turn queue
+	STUN, # action is disabled and / or switched with a "Pass"
 	# prevent next buff debuff (haha kinda nuts there)
 }
 @export var debuff_type = DEBUFF.STRENGTH

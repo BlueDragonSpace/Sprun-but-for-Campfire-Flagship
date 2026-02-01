@@ -12,5 +12,5 @@ atk_mult = 1.0
 prep_disable = true
 needs_target = true
 show_target_intent = true
-button_info = "this is button info"
+button_info = "Deal damage to target."
 metadata/_custom_type_script = "uid://diifqu7v6338q"
