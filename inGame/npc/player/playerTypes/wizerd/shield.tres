@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://du80vrilqbd6t"]
+
+[ext_resource type="Texture2D" uid="uid://bvhkmrse4oqmm" path="res://placeholderArt/myPixelArt/ShieldBadArt-1.png.png" id="1_3rgbu"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="2_gr3iq"]
+
+[resource]
+script = ExtResource("2_gr3iq")
+name = "Shield"
+func_name = "shield"
+icon = ExtResource("1_3rgbu")
+action_type = 1
+intent_type = 1
+player_type = 4
+sprun_necessary = 1
+sprun_loss = 1
+dfd_mult = 1.8
+needs_target = true
+ally_target = true
+show_target_intent = true
+button_info = "Defends an ally."
+metadata/_custom_type_script = "uid://diifqu7v6338q"

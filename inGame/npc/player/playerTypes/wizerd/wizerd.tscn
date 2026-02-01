@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://crwrne4qrwn6y" path="res://inGame/npc/player/playerTypes/wizerd/chill.tres" id="7_4lrnk"]
 [ext_resource type="AudioStream" uid="uid://ks16o6i7ojav" path="res://placeholderArt/sfx/wawawawawaCondescending.wav" id="7_k0qa8"]
 [ext_resource type="Resource" uid="uid://c0k0uy8vxyrir" path="res://inGame/npc/player/playerTypes/wizerd/blizzard.tres" id="8_4lrnk"]
+[ext_resource type="Resource" uid="uid://du80vrilqbd6t" path="res://inGame/npc/player/playerTypes/wizerd/shield.tres" id="9_7cya4"]
 
 [sub_resource type="Animation" id="Animation_i643x"]
 length = 0.001
@@ -117,7 +118,7 @@ _data = {
 script = ExtResource("2_n4oco")
 sprun_slots = 5
 sprun_active = 1
-new_action = Array[ExtResource("3_cwjng")]([ExtResource("3_i643x"), ExtResource("4_wqnb0"), ExtResource("5_e58jv"), ExtResource("7_4lrnk"), ExtResource("8_4lrnk")])
+new_action = Array[ExtResource("3_cwjng")]([ExtResource("3_i643x"), ExtResource("4_wqnb0"), ExtResource("5_e58jv"), ExtResource("7_4lrnk"), ExtResource("8_4lrnk"), ExtResource("9_7cya4")])
 player_type = 6
 icon = ExtResource("2_whysk")
 speed_stat = 6

@@ -8,13 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
-[ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/npc/enemy/enemy.tscn" id="9_r1xw6"]
-[ext_resource type="PackedScene" uid="uid://b6qpplfncfiyr" path="res://inGame/npc/enemy/types/littles.tscn" id="10_20myc"]
-[ext_resource type="Texture2D" uid="uid://bpyet5t7bpkww" path="res://placeholderArt/myPixelArt/BiggBlue-1.png.png" id="10_fshsv"]
-[ext_resource type="PackedScene" uid="uid://bs8426h8sndoy" path="res://inGame/npc/enemy/types/bigg.tscn" id="11_05ql3"]
-[ext_resource type="Texture2D" uid="uid://dtkrx4fskgr5r" path="res://placeholderArt/myPixelArt/littleBlue-1.png.png" id="11_qswi8"]
+[ext_resource type="PackedScene" uid="uid://yb81wdv11231" path="res://inGame/npc/enemy/types/rat_king/evil_rat.tscn" id="9_8iljn"]
 [ext_resource type="Texture2D" uid="uid://docng28uw84fm" path="res://placeholderArt/myPixelArt/Ooohhhhhhh-1.png.png" id="12_5g6ql"]
-[ext_resource type="PackedScene" uid="uid://do18m24rjb481" path="res://inGame/npc/enemy/types/berserk.tscn" id="12_gba7a"]
 [ext_resource type="Texture2D" uid="uid://co7fnqru8dy5r" path="res://placeholderArt/Xi.png" id="13_b8b7t"]
 [ext_resource type="Texture2D" uid="uid://cl4v4yeo1gn2m" path="res://placeholderArt/myPixelArt/SwordCarrot-1.png.png" id="14_cngxt"]
 [ext_resource type="Texture2D" uid="uid://bvhkmrse4oqmm" path="res://placeholderArt/myPixelArt/ShieldBadArt-1.png.png" id="15_ggsxi"]
@@ -1115,6 +1110,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [3, 3]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [6174],
+"method": &"check_actions_visible"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y3dhr"]
 _data = {
@@ -1346,32 +1355,8 @@ size_flags_horizontal = 3
 columns = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Keykeeper" parent="RootGame/BattleScreen/Enemies" unique_id=1958369422 instance=ExtResource("9_r1xw6")]
+[node name="EVIL Rat" parent="RootGame/BattleScreen/Enemies" unique_id=1401321464 instance=ExtResource("9_8iljn")]
 layout_mode = 2
-speed_middle_value = 4
-speed_range = 3
-attack_range = 2
-icon = ExtResource("11_qswi8")
-max_hp = 8
-
-[node name="Gatekeeper" parent="RootGame/BattleScreen/Enemies" unique_id=910531624 instance=ExtResource("9_r1xw6")]
-layout_mode = 2
-speed_range = 5
-attack_range = 2
-icon = ExtResource("10_fshsv")
-max_hp = 13
-
-[node name="Littles" parent="RootGame/BattleScreen/Enemies" unique_id=230195790 instance=ExtResource("10_20myc")]
-layout_mode = 2
-speed_stat = 11
-
-[node name="BIGG" parent="RootGame/BattleScreen/Enemies" unique_id=1518810252 instance=ExtResource("11_05ql3")]
-layout_mode = 2
-speed_stat = 16
-
-[node name="Berserk" parent="RootGame/BattleScreen/Enemies" unique_id=1797589978 instance=ExtResource("12_gba7a")]
-layout_mode = 2
-speed_stat = 1
 
 [node name="VSeparator" type="VSeparator" parent="RootGame/BattleScreen" unique_id=303485800]
 modulate = Color(1, 1, 1, 0)

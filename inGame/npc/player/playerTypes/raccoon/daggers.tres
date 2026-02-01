@@ -15,4 +15,4 @@ atk_mult = 0.6
 prep_disable = true
 needs_target = true
 show_target_intent = true
-button_info = "Attacks all enemies."
+button_info = "Attacks all enemies. Selected enemy is dealt double damage."

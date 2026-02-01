@@ -52,6 +52,9 @@ const LITTLES = preload("uid://b6qpplfncfiyr")
 const MEA = preload("uid://d2nk51jmcg81m")
 const BERSERK = preload("uid://do18m24rjb481")
 const CHARGE_UP = preload("uid://d3n5wkylral0k") 
+const RAT_KING = preload("uid://bxwa3escjv8kc")
+const EVIL_RAT = preload("uid://yb81wdv11231")
+
 
 @export var started : bool = false
 # how many characters can you start with
@@ -61,7 +64,7 @@ const CHARGE_UP = preload("uid://d3n5wkylral0k")
 var player_actions = []
 ## mid section
 var mid_animation_action = func() : pass
-var turn_order_data = [] # speed_stat, icon, node_path, action
+var turn_order_data = [] # speed_stat, icon, node_path, action, is_dead
 var current_turn = 0
 var current_wave = 0
 var last_tab = 0 # when going from attack to selection, switches you to BAK, which is kinda annoying, so now it goes back to ATK 
@@ -180,9 +183,7 @@ func initialize_game() -> void:
 	check_upgrade_cost_actions(current_player)
 	
 	call_deferred("set_turn_order")
-	#check_cost_all_actions(current_player.sprun_active)
 	call_deferred("check_cost_all_actions", current_player.sprun_active)
-	#check_actions_visible(current_player.player_type)
 	call_deferred("check_actions_visible", current_player.player_type)
 	set_enemies_intents()
 
@@ -234,7 +235,7 @@ func set_turn_order() -> void:
 			if enemy.check_debuff(DeBuff.DEBUFF.FREEZE): # makes enemy last in turn queue is freeze"d"
 				speed = 1
 			
-			turn_order_data.push_back([speed, enemy.Icon.texture, enemy, Callable(enemy, "do_intended_action")])
+			turn_order_data.push_back([speed, enemy.Icon.texture, enemy, Callable(enemy, "do_intended_action"), false])
 	# wonder if there is a such thing as a shared for loop..?
 	for character in Charas.get_children():
 		if character.is_dead == false:
@@ -243,7 +244,7 @@ func set_turn_order() -> void:
 			if character.check_debuff(DeBuff.DEBUFF.FREEZE):
 				speed = 1
 			
-			turn_order_data.push_back([speed, character.Icon.texture,character, Callable(character, "do_intended_action")])
+			turn_order_data.push_back([speed, character.Icon.texture,character, Callable(character, "do_intended_action"), false])
 	
 	
 	
@@ -301,7 +302,8 @@ func add_enemy_wave() -> void:
 	current_wave += 1
 	$RootGame/TopBar/HBoxContainer/WaveNum.text = str(current_wave)
 	
-	match(randi_range(0, 4)):
+	# from 0 - 5
+	match(randi_range(5, 5)):
 		0:
 			# one big 
 			var big_boi = BIGG.instantiate()
@@ -313,7 +315,7 @@ func add_enemy_wave() -> void:
 			for i in randi_range(4, 6):
 				
 				var little = LITTLES.instantiate()
-				little.name = "Lytle " + str(i)
+				little.name = "Lytle " + str(i + 1)
 				# randomized stats are handled it its ready
 				Enemies.add_child(little)
 				
@@ -344,6 +346,23 @@ func add_enemy_wave() -> void:
 				Enemies.add_child(little)
 				little.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # makes each enemy darker
 				
+			Enemies.columns = 3
+		5: # Rat King (basically Evil Rodent Lord) [starts with two extra rats]
+			
+			for i in 4:
+				match(i):
+					1:
+						var rat = EVIL_RAT.instantiate()
+						rat.name = "Sinister"
+						Enemies.add_child(rat)
+					2:
+						var rat_king = RAT_KING.instantiate()
+						Enemies.add_child(rat_king)
+					3:
+						var rat = EVIL_RAT.instantiate()
+						rat.name = "Right-handed rat"
+						Enemies.add_child(rat)
+					
 			Enemies.columns = 3
 		_:
 			print('unknown enemy wave value')
@@ -383,7 +402,15 @@ func check_cost_all_actions(sprun: int) -> void:
 		for action in container.get_children():
 			action.check_cost(sprun)
 
-func check_actions_visible(player_type_bitwise: int) -> void:
+func check_actions_visible(player_type_bitwise: int = current_player.player_type) -> void:
+	
+	 # this number is a case for the animation track to tell it to use the current_player
+	# 6174 has intresting properties, best left to a google search
+	# this thing makes the Animation back to player show the actions of the current player
+	# without this, it would show the last player's actions for a split second
+	if player_type_bitwise == 6174:
+		player_type_bitwise = current_player.player_type
+	
 	# now, for every action, check if it is available to the character
 	for tab in Actions.get_children():
 		for action in tab.get_children():
@@ -421,25 +448,27 @@ func remove_dead_actions(dead: Node) -> void:
 	# makes sure that any actions targeting the dead or are from the dead are cancelled
 	while num < turn_order_data.size():
 		
-		# speed stat, icon, NodePath, Action
+		# speed stat, icon, NodePath, Action, is_dead
 		
-		if turn_order_data[num][2] == dead:
-			#turn_order_data.remove_at(num)
-			#continue # if we remove the action at this point in the array, we need to re-read what this current action is, since all items forward are pushed back one, menaing the current action is new in this current index
-			turn_order_data[num] = [null, null, null, Callable(Global, "empty_function")] # makes the action do nothing
-			num += 1
-			continue
-		
-		if turn_order_data[num][2].action_victim == dead:
-			if turn_order_data[num][2].action_victim is Node:
+		# makes sure the action isn't already noted as dead
+		if turn_order_data[num][4] == false:
+			if turn_order_data[num][2] == dead:
 				#turn_order_data.remove_at(num)
-				turn_order_data[num] = [null, null, null, Callable(Global, "empty_function")]
-			elif turn_order_data[num][2].action_victim is Array:
-				print('action_victim is array but I havent done that yet')
-			else:
-				print('what the hell')
-				print('action victim is dead, but container is not a Node or Array')
+				#continue # if we remove the action at this point in the array, we need to re-read what this current action is, since all items forward are pushed back one, menaing the current action is new in this current index
+				turn_order_data[num] = [null, null, turn_order_data[num][2], Callable(Global, "empty_function"), true] # makes the action do nothing (has properties only for bug safety purposes), and kills the action with a true at index 4
+				num += 1
+				continue
 				
+			if turn_order_data[num][2].action_victim == dead:
+				if turn_order_data[num][2].action_victim is Node:
+					#turn_order_data.remove_at(num)
+					turn_order_data[num] = [null, null, null, Callable(Global, "empty_function")]
+				elif turn_order_data[num][2].action_victim is Array:
+					print('action_victim is array but I havent done that yet')
+				else:
+					print('what the hell')
+					print('action victim is dead, but container is not a Node or Array')
+					
 		
 		num += 1 # progress the loop
 		
@@ -720,20 +749,20 @@ func _on_focus_pressed() -> void:
 	current_player.set_intended_action(current_player.actions[3])
 	player_pass_turn()
 func _on_increase_sprun_slots_pressed() -> void:
-	current_player.intended_action = Callable(current_player, "increase_sprun_slots")
-	current_player.set_intended_action(current_player.actions[4])
+	var action = Callable(current_player, "increase_sprun_slots")
+	current_player.set_intended_action(current_player.actions[4], action)
 	player_pass_turn()
 func _on_atk_up_pressed() -> void:
-	current_player.intended_action = Callable(current_player, "upgrade_atk")
-	current_player.set_intended_action(current_player.actions[4])
+	var action = Callable(current_player, "upgrade_atk")
+	current_player.set_intended_action(current_player.actions[4], action)
 	player_pass_turn()
 func _on_dfd_up_pressed() -> void:
-	current_player.intended_action = Callable(current_player, "upgrade_dfd")
-	current_player.set_intended_action(current_player.actions[4])
+	var action = Callable(current_player, "upgrade_dfd")
+	current_player.set_intended_action(current_player.actions[4], action)
 	player_pass_turn()
 func _on_spd_up_pressed() -> void:
-	current_player.intended_action = Callable(current_player, "upgrade_spd")
-	current_player.set_intended_action(current_player.actions[4])
+	var action = Callable(current_player, "upgrade_spd")
+	current_player.set_intended_action(current_player.actions[4], action)
 	player_pass_turn()
 func _on_itm_pressed() -> void:
 	print("haven't set this up yet")

@@ -61,6 +61,8 @@ func add_actions(custom_actions : Array) -> void:
 			0: ## ATTACK
 				var callable = Callable(self, this_action.func_name).bind(this_action.atk_mult, this_action.sprun_loss)
 				
+				 
+				# hmmmmmmmm... refactor
 				if not this_action.is_quick:
 					lambda = func(): 
 						add_lambda(this_action, callable)
@@ -77,8 +79,21 @@ func add_actions(custom_actions : Array) -> void:
 							OneDRoot.initiate_select_enemy(true)
 						else:
 							OneDRoot.player_pass_turn()
+							
+				
 			1: ## DEFEND
-				print('no lambda set for custom defend actions in player.gd')
+				lambda = func():
+					var callable = Callable(self, this_action.func_name).bind(this_action.dfd_mult, this_action.sprun_loss)
+					
+					add_lambda(this_action, callable)
+					
+					if this_action.needs_target:
+						if this_action.ally_target:
+							OneDRoot.initiate_select_ally()
+						else:
+							OneDRoot.initiate_select_enemy()
+					else:
+						OneDRoot.player_pass_turn()
 			#2: ## SPRUN
 				#lambda = func():
 					#intended_action = Callable(self, this_action.func_name)

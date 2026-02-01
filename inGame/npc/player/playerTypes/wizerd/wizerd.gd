@@ -19,6 +19,11 @@ func heal(sprun_loss : int) -> void:
 	
 	set_sprun(sprun_active - sprun_loss)
 
+func shield(defend_mult, sprun_loss : int) -> void:
+	action_victim.current_defense += defend_stat * defend_mult
+	
+	set_sprun(sprun_active - sprun_loss)
+
 const FIRE = preload("uid://ddyfivxukty2j")
 
 func fireball(atk_mult, sprun_loss : int) -> void:
