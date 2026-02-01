@@ -12,6 +12,5 @@ player_type = 4096
 atk_mult = 0.4
 prep_disable = true
 needs_target = true
-ally_target = true
 show_target_intent = true
 button_info = "Add 3 Poison."

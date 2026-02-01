@@ -1327,9 +1327,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Wizerd" parent="RootGame/BattleScreen/Charas" unique_id=1474276988 instance=ExtResource("5_ih4ah")]
 layout_mode = 2
 
-[node name="Rodent Lord" parent="RootGame/BattleScreen/Charas" unique_id=2064751948 instance=ExtResource("7_p81qd")]
-layout_mode = 2
-
 [node name="Raccoon" parent="RootGame/BattleScreen/Charas" unique_id=2080388202 instance=ExtResource("5_b1nt6")]
 layout_mode = 2
 
@@ -1506,7 +1503,7 @@ metadata/_tab_index = 0
 [node name="BAK" parent="RootGame/LowerBar/VBoxContainer/Actions/BackButton" unique_id=1569889013 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "BAK"
-info = "Rechoose last action. (currently only works for attacking)"
+info = "Rechoose last action."
 usable_on_player = 1
 
 [node name="Attack" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=578126803]

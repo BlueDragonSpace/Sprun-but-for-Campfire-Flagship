@@ -63,7 +63,7 @@
 			Makes it so that Enemies can be reused as Charas down the line
 	
 2 (more mechanics):
-	
+	BACK BUTTON!!!!!!
 3:
 	Stone / Stun DeBuff (wow Mario + Rabbids)
 	Sprun Movement Shifting depending on size (too far when small, too close when big)
@@ -165,8 +165,4 @@ Art needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, Fireball, Megalazer
 
 Currently finished:
-	(worked on) 3Dpathfinding implementation
-		A few problems: takes too long, doesn't navigate well around obstacles (the entire point of pathfinding), ughghghghghhgghgh
 	
-	Blizzard (make attack all Action bool work and skip the turn queue)
-	Freeze debuff and Chill move (make freeze put last in turn order)

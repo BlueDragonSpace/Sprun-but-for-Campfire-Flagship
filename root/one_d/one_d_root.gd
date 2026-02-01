@@ -580,7 +580,23 @@ func player_pass_turn() -> void:
 		
 		# chooses a random text from all player_pass_text's, and puts the current player's name in front of it
 		button_info(current_player.name + player_pass_text[randi_range(0, player_pass_text.size() - 1)])
+		BAK.disabled = false
+		back_action = Callable(self, "player_reverse_pass_turn")
+
+func player_reverse_pass_turn() -> void:
+	# going back in turn order
+	
+	# going back to previous player
+	if current_player.get_index() == 0:
+		print("tried to BAK on the first player")
 		BAK.disabled = true
+	else:
+		current_player = Charas.get_child(current_player.get_index() - 1)
+		current_player.intended_action = Callable(Global, "empty_function")
+		current_player.hide_intent()
+	
+	button_info(current_player.name + player_pass_text[randi_range(0, player_pass_text.size() - 1)])
+	turn = TURN_TYPE.PLAYER
 
 ## turn focussed functions
 func middle_animation_constant() -> void:
