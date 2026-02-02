@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dehg5ipwadmh2"]
+[gd_scene format=3 uid="uid://dehg5ipwadmh2"]
 
 [ext_resource type="Script" uid="uid://dr1vefqxtsukd" path="res://root/three_d/Environment/basic_block/basic_block.gd" id="1_23648"]
 
@@ -7,12 +7,18 @@
 [sub_resource type="BoxMesh" id="BoxMesh_aee6g"]
 resource_local_to_scene = true
 
-[node name="BasicBlock" type="StaticBody3D"]
+[node name="BasicBlock" type="StaticBody3D" unique_id=255348179]
 collision_mask = 0
 script = ExtResource("1_23648")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=927228731]
 shape = SubResource("BoxShape3D_dte5p")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1914773129]
 mesh = SubResource("BoxMesh_aee6g")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=2105129951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+height = 0.9
+vertices = PackedVector3Array(0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5)
+affect_navigation_mesh = true

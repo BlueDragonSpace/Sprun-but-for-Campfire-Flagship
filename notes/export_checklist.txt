@@ -1,3 +1,4 @@
 Make sure started is false
 Make sure there are no characters, and the Gate and Keykeeper as the only enemies (and check their stats, hp = 8)
 ditto     attack is the first tab players see
+Make sure the current dimension is 1

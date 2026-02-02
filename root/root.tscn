@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv0n51038h5c7"]
+[gd_scene format=3 uid="uid://bv0n51038h5c7"]
 
 [ext_resource type="PackedScene" uid="uid://d3wbwxma2hkqm" path="res://root/one_d/one_d_root.tscn" id="1_1xv2g"]
 [ext_resource type="Script" uid="uid://clibohg1fjvmb" path="res://root/root.gd" id="2_jnlp7"]
@@ -102,19 +102,17 @@ _data = {
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_e2nrw"]
 
-[node name="Root" type="Node"]
+[node name="Root" type="Node" unique_id=923175965]
 script = ExtResource("2_jnlp7")
 
-[node name="OneDRoot" parent="." instance=ExtResource("1_1xv2g")]
+[node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]
 
-[node name="ThreeDRoot" parent="." instance=ExtResource("3_ovlcs")]
+[node name="ThreeDRoot" parent="." unique_id=1187355930 instance=ExtResource("3_ovlcs")]
 
-[node name="Animate" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_y5gj7")
-}
+[node name="Animate" type="AnimationPlayer" parent="." unique_id=1105804438]
+libraries/ = SubResource("AnimationLibrary_y5gj7")
 
-[node name="DimensionShiftBoxes" type="Control" parent="Animate"]
+[node name="DimensionShiftBoxes" type="Control" parent="Animate" unique_id=1212385478]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -124,7 +122,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="Animate/DimensionShiftBoxes"]
+[node name="TextureRect" type="TextureRect" parent="Animate/DimensionShiftBoxes" unique_id=189013850]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -132,7 +130,7 @@ offset_bottom = 1.0
 grow_horizontal = 2
 texture = SubResource("PlaceholderTexture2D_e2nrw")
 
-[node name="TextureRect2" type="TextureRect" parent="Animate/DimensionShiftBoxes"]
+[node name="TextureRect2" type="TextureRect" parent="Animate/DimensionShiftBoxes" unique_id=883630182]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -143,25 +141,25 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("PlaceholderTexture2D_e2nrw")
 
-[node name="MouseClick" type="AudioStreamPlayer" parent="."]
+[node name="MouseClick" type="AudioStreamPlayer" parent="." unique_id=1077194230]
 stream = ExtResource("3_js5vo")
 pitch_scale = 1.65
 max_polyphony = 10
 bus = &"SFX"
 
-[node name="MouseRelease" type="AudioStreamPlayer" parent="."]
+[node name="MouseRelease" type="AudioStreamPlayer" parent="." unique_id=1844624780]
 stream = ExtResource("3_js5vo")
 pitch_scale = 0.66
 max_polyphony = 10
 bus = &"SFX"
 
-[node name="KeyClick" type="AudioStreamPlayer" parent="."]
+[node name="KeyClick" type="AudioStreamPlayer" parent="." unique_id=953384036]
 stream = ExtResource("3_js5vo")
 pitch_scale = 2.14
 max_polyphony = 10
 bus = &"SFX"
 
-[node name="KeyRelease" type="AudioStreamPlayer" parent="."]
+[node name="KeyRelease" type="AudioStreamPlayer" parent="." unique_id=1307945067]
 stream = ExtResource("3_js5vo")
 pitch_scale = 1.87
 max_polyphony = 10

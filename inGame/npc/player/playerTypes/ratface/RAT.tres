@@ -13,4 +13,4 @@ intent_type = 4
 player_type = 16
 sprun_necessary = 2
 sprun_loss = 2
-button_info = "Costs 2 sprun. Calls a rat."
+button_info = "Calls a rat. Can deal poison damage, with the Raccoon's aid."

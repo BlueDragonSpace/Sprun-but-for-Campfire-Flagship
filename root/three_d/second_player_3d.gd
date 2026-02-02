@@ -5,6 +5,9 @@ extends CharacterBody3D
 const AStarManhattanScript = preload("uid://tgfyjj5ftu2k")
 @onready var AStarManhattanAccess = AStarManhattanScript.new()
 
+@onready var Nav: NavigationAgent3D = $Nav
+
+
 const GREEN_CIRCLE = preload("uid://dco50bis2p58v")
 const YELLOW_LINE = preload("uid://cjpw7x1tm1uou")
 
@@ -41,3 +44,8 @@ func _input(_event: InputEvent) -> void:
 				line.curve.add_point(point)
 				line.curve.add_point(prev_point)
 				add_child(line)
+
+
+func _on_timer_timeout() -> void:
+	Nav.target_position = %Player3D.position
+	Nav.get_final_position()

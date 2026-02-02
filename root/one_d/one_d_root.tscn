@@ -1343,6 +1343,9 @@ speed_stat = 20
 [node name="Raccoon" parent="RootGame/BattleScreen/Charas" unique_id=2080388202 instance=ExtResource("5_b1nt6")]
 layout_mode = 2
 
+[node name="Rodent Lord" parent="RootGame/BattleScreen/Charas" unique_id=1741435990 instance=ExtResource("7_p81qd")]
+layout_mode = 2
+
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen" unique_id=1211869950]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2

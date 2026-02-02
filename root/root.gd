@@ -22,6 +22,7 @@ var dimension = DIMENSION.ONE
 @onready var KeyClick: AudioStreamPlayer = $KeyClick
 @onready var KeyRelease: AudioStreamPlayer = $KeyRelease
 
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():

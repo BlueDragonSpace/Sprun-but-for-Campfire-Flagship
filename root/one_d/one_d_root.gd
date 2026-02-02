@@ -57,6 +57,7 @@ const EVIL_RAT = preload("uid://yb81wdv11231")
 
 
 @export var started : bool = false
+@export var current_dimension = false
 # how many characters can you start with
 @export var init_chara_num = 3
 
@@ -160,8 +161,11 @@ func _ready() -> void:
 		$RootGame.modulate.a = 0.0
 		$IntroSequence.visible = true
 		$IntroSequence.modulate.a = 1.0
-		
-
+	
+	if current_dimension:
+		pass
+	else:
+		Animate.play("global_transition_out", -1, 99)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
