@@ -1,7 +1,7 @@
 extends Node
 
-@export var Charas : Array[Resource]
-@export var Enemies : Array[Resource]
+@export var Charas : Array[Chara]
+@export var Enemies : Array[Enemy]
 @export var Stats : Array[Resource]
 
 enum DIMENSION {

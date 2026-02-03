@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://crwqeuod3418"]
+[gd_scene format=3 uid="uid://crwqeuod3418"]
 
 [ext_resource type="Script" uid="uid://eyb3pe84a1bj" path="res://root/three_d/Entities/Players/3d_player.gd" id="1_wh8uw"]
+[ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="2_o1s4l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o1s4l"]
 
@@ -9,15 +10,23 @@
 [sub_resource type="BoxMesh" id="BoxMesh_l74qy"]
 size = Vector3(0.5, 0.2, 1)
 
-[node name="3DPlayer" type="CharacterBody3D"]
+[node name="3DPlayer" type="CharacterBody3D" unique_id=766144830]
 script = ExtResource("1_wh8uw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=70762315]
 shape = SubResource("CapsuleShape3D_o1s4l")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2051082244]
 mesh = SubResource("CapsuleMesh_wxss3")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=51288023]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58521104, -0.4612341)
 mesh = SubResource("BoxMesh_l74qy")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=276990640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pixel_size = 0.06
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("2_o1s4l")

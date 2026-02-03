@@ -200,4 +200,4 @@ Art + SFX needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, Fireball, Megalazer... everything lol
 
 Currently finished:
-	Rodents now also get names
+	

@@ -41,7 +41,6 @@ material = SubResource("StandardMaterial3D_8yykx")
 [sub_resource type="NavigationMesh" id="NavigationMesh_gb3qa"]
 vertices = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, -5)
 polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 3, 2)]
-vertices_per_polygon = 8.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xck48"]
 viewport_path = NodePath("CanvasLayer/TextureRect")
@@ -63,8 +62,20 @@ albedo_texture = ExtResource("9_npujm")
 [sub_resource type="BoxMesh" id="BoxMesh_ieyh0"]
 material = SubResource("ORMMaterial3D_bpsfw")
 
+[sub_resource type="BoxMesh" id="BoxMesh_lejm7"]
+
 [node name="ThreeDRoot" type="Node3D" unique_id=2098707386 groups=["ThreeDRoot"]]
 script = ExtResource("1_0xdj7")
+
+[node name="Charas" type="Node3D" parent="." unique_id=2095355200]
+
+[node name="Player3D" parent="Charas" unique_id=175508574 instance=ExtResource("1_84ns2")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1412582, 10.234165, -11.426598)
+collision_layer = 2
+collision_mask = 3
+
+[node name="Enemies" type="Node3D" parent="." unique_id=1569463232]
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=568085515]
 
@@ -89,36 +100,39 @@ environment = SubResource("Environment_ovlcs")
 
 [node name="CameraHandler" parent="." unique_id=2016663377 groups=["CameraHandler"] instance=ExtResource("3_qgbu4")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 13, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 13, -2)
 
-[node name="Player3D" parent="." unique_id=175508574 instance=ExtResource("1_84ns2")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.14126, 1.2341652, -7.4265976)
-collision_layer = 2
-collision_mask = 3
-
-[node name="SecondPlayer3D" type="CharacterBody3D" parent="." unique_id=249238832]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 1, 2)
+[node name="PathfindBot" type="CharacterBody3D" parent="." unique_id=249238832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 11, -2)
 script = ExtResource("4_8yykx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SecondPlayer3D" unique_id=761787664]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathfindBot" unique_id=761787664]
 mesh = SubResource("CapsuleMesh_lejm7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SecondPlayer3D" unique_id=1564560983]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathfindBot" unique_id=1564560983]
 shape = SubResource("CapsuleShape3D_gb3qa")
 
-[node name="Nav" type="NavigationAgent3D" parent="SecondPlayer3D" unique_id=1642987077]
+[node name="Nav" type="NavigationAgent3D" parent="PathfindBot" unique_id=1642987077]
 path_postprocessing = 1
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
-[node name="Timer" type="Timer" parent="SecondPlayer3D/Nav" unique_id=566615681]
+[node name="Timer" type="Timer" parent="PathfindBot/Nav" unique_id=566615681]
 wait_time = 0.1
 autostart = true
 
+[node name="LineOfSight" type="RayCast3D" parent="PathfindBot" unique_id=84181992]
+target_position = Vector3(0, 2, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 4
+
 [node name="BasicBlock" parent="." unique_id=881250340 instance=ExtResource("4_vmnxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1020086, 0.5, -3.7528114)
+
+[node name="BasicBlock5" parent="." unique_id=255348179 instance=ExtResource("4_vmnxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, -11)
+sz = Vector3(2, 1, 10)
 
 [node name="BasicBlock2" parent="." unique_id=790126648 instance=ExtResource("4_vmnxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4350643, 0.5, 1.1652467)
@@ -137,12 +151,16 @@ collision_mask = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3996508, 1.301082, -1.4311748)
 collision_mask = 1
 
+[node name="OneWayPlatform3" parent="." unique_id=921339329 instance=ExtResource("5_pqooo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3996508, 1.301082, -1.4311748)
+collision_mask = 1
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1664086793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -1, 0)
 navigation_mesh = SubResource("NavigationMesh_gb3qa")
 
 [node name="NavigationRegion3D2" type="NavigationRegion3D" parent="." unique_id=1547013694]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -1, -1)
+transform = Transform3D(0.9238793, -0.3826834, 0, 0.3826834, 0.9238793, 0, 0, 0, 1, 26.75, 1, 1)
 navigation_mesh = SubResource("NavigationMesh_gb3qa")
 
 [node name="NavigationRegion3D3" type="NavigationRegion3D" parent="." unique_id=1660671043]
@@ -159,10 +177,7 @@ expand_mode = 1
 [node name="TextureRect" type="SubViewport" parent="CanvasLayer" unique_id=2127515155]
 
 [node name="Camera3D" type="Camera3D" parent="CanvasLayer/TextureRect" unique_id=694659397]
-transform = Transform3D(0.73848057, -0.4546462, 0.49793905, 0, 0.73848087, 0.67427444, -0.67427474, -0.49793854, 0.54535383, 5.563778, 7.5180726, 6.137896)
-
-[node name="FezBlock" parent="." unique_id=490146893 instance=ExtResource("6_xck48")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4940014, 0.65519714, 2.9823966)
+transform = Transform3D(0.8372885, -0.33439186, 0.4325853, 0, 0.7911776, 0.6115865, -0.54676133, -0.51207435, 0.6624439, 4.992119, -9.433121, -5.113243)
 
 [node name="FezBlock2" parent="." unique_id=1330989040 instance=ExtResource("6_xck48")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0683827, 0.3089819, 1.7042096)
@@ -185,4 +200,12 @@ shape = SubResource("ConcavePolygonShape3D_lejm7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 14)
 mesh = SubResource("BoxMesh_ieyh0")
 
-[connection signal="timeout" from="SecondPlayer3D/Nav/Timer" to="SecondPlayer3D" method="_on_timer_timeout"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=412770669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0)
+mesh = SubResource("BoxMesh_lejm7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1762655378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1, 0)
+mesh = SubResource("BoxMesh_lejm7")
+
+[connection signal="timeout" from="PathfindBot/Nav/Timer" to="PathfindBot" method="_on_timer_timeout"]

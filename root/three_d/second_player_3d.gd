@@ -6,10 +6,13 @@ const AStarManhattanScript = preload("uid://tgfyjj5ftu2k")
 @onready var AStarManhattanAccess = AStarManhattanScript.new()
 
 @onready var Nav: NavigationAgent3D = $Nav
+@onready var LineOfSight: RayCast3D = $LineOfSight
 
 
 const GREEN_CIRCLE = preload("uid://dco50bis2p58v")
 const YELLOW_LINE = preload("uid://cjpw7x1tm1uou")
+
+@export var use_auto_timer := true
 
 const SPEED = 20.0
 
@@ -24,6 +27,9 @@ func _physics_process(delta: float) -> void:
 	
 	if direction:
 		position += Vector3(input_dir.x, input_dir.y, 0.0) * %CameraHandler.CurrentCamera.global_basis * SPEED * delta
+	
+	if LineOfSight.is_colliding():
+		print('line of sight is colliding')
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("display_path"):
@@ -47,5 +53,13 @@ func _input(_event: InputEvent) -> void:
 
 
 func _on_timer_timeout() -> void:
-	Nav.target_position = %Player3D.position
-	Nav.get_final_position()
+	
+	if use_auto_timer:
+		# navigation + pathfinding
+		Nav.set_target_position(%Player3D.global_position)
+		Nav.get_final_position()
+		
+		# line of sight
+		LineOfSight.target_position = %Player3D.global_position - global_position
+		print(LineOfSight.position)
+		print(LineOfSight.target_position)

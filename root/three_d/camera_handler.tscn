@@ -100,6 +100,9 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 0
 projection = 1
 size = 5.0
 
+[node name="Camera3D" type="Camera3D" parent="Cameras" unique_id=339254909]
+transform = Transform3D(0.9245598, -0.22341798, 0.30866444, 0, 0.8100638, 0.5863418, -0.38103718, -0.54210794, 0.7489524, 1.6816024, 2.7946467, 2.5338278)
+
 [node name="InBetweenPath" type="Path3D" parent="." unique_id=436427413]
 curve = SubResource("Curve3D_31vqs")
 

@@ -1,9 +1,19 @@
 [gd_scene format=3 uid="uid://bv0n51038h5c7"]
 
 [ext_resource type="PackedScene" uid="uid://d3wbwxma2hkqm" path="res://root/one_d/one_d_root.tscn" id="1_1xv2g"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/chara.gd" id="2_b33ej"]
 [ext_resource type="Script" uid="uid://clibohg1fjvmb" path="res://root/root.gd" id="2_jnlp7"]
 [ext_resource type="AudioStream" uid="uid://c46ekwwfk3ei2" path="res://placeholderArt/sfx/focus.wav" id="3_js5vo"]
 [ext_resource type="PackedScene" uid="uid://cu1ueum56s1rl" path="res://root/three_d/three_d_root.tscn" id="3_ovlcs"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/enemy.gd" id="3_y5gj7"]
+
+[sub_resource type="Resource" id="Resource_b33ej"]
+script = ExtResource("2_b33ej")
+metadata/_custom_type_script = "uid://cx4piye3gqsc8"
+
+[sub_resource type="Resource" id="Resource_e2nrw"]
+script = ExtResource("3_y5gj7")
+metadata/_custom_type_script = "uid://3d1durpk8i24"
 
 [sub_resource type="Animation" id="Animation_js5vo"]
 length = 0.001
@@ -104,6 +114,8 @@ _data = {
 
 [node name="Root" type="Node" unique_id=923175965]
 script = ExtResource("2_jnlp7")
+Charas = Array[ExtResource("2_b33ej")]([SubResource("Resource_b33ej")])
+Enemies = Array[ExtResource("3_y5gj7")]([SubResource("Resource_e2nrw")])
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]
 
