@@ -35,7 +35,7 @@ var current_hp: int = max_hp:
 @export var attack_stat : int = 3
 @export var defend_stat : int = 5
 
-@export var current_intent = Action.INTENT.ATTACK
+var current_intent = Action.INTENT.ATTACK
 var intent_notif_info = ['None', 'No intent has been set yet.']
 const NOTIF = preload("uid://ccl3stwaax0r3")
 const AUTO_FADE_NOTIF = preload("uid://dr7fpgloton5f")

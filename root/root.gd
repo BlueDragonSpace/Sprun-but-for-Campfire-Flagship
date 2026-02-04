@@ -1,8 +1,8 @@
 extends Node
 
-@export var Charas : Array[Chara]
-@export var Enemies : Array[Enemy]
-@export var Stats : Array[Resource]
+@export var Charas : Array[GlobalChara]
+@export var Enemies : Array[GlobalEnemy]
+#@export var Stats : Array[Resource]
 
 enum DIMENSION {
 	ZERO, # an infinite possibility

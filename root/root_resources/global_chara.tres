@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://pour76yy1ong"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="1_3ch6a"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="1_tk763"]
+
+[resource]
+script = ExtResource("1_tk763")
+metadata/_custom_type_script = "uid://dtp8vsnd01bt8"

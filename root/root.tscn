@@ -1,18 +1,27 @@
 [gd_scene format=3 uid="uid://bv0n51038h5c7"]
 
 [ext_resource type="PackedScene" uid="uid://d3wbwxma2hkqm" path="res://root/one_d/one_d_root.tscn" id="1_1xv2g"]
-[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/chara.gd" id="2_b33ej"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="2_e2nrw"]
 [ext_resource type="Script" uid="uid://clibohg1fjvmb" path="res://root/root.gd" id="2_jnlp7"]
 [ext_resource type="AudioStream" uid="uid://c46ekwwfk3ei2" path="res://placeholderArt/sfx/focus.wav" id="3_js5vo"]
 [ext_resource type="PackedScene" uid="uid://cu1ueum56s1rl" path="res://root/three_d/three_d_root.tscn" id="3_ovlcs"]
-[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/enemy.gd" id="3_y5gj7"]
-
-[sub_resource type="Resource" id="Resource_b33ej"]
-script = ExtResource("2_b33ej")
-metadata/_custom_type_script = "uid://cx4piye3gqsc8"
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="4_5jge4"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="5_gj8ci"]
 
 [sub_resource type="Resource" id="Resource_e2nrw"]
-script = ExtResource("3_y5gj7")
+script = ExtResource("2_e2nrw")
+sprun_slots = 3
+sprun_active = 2
+new_actions = Array[ExtResource("5_gj8ci")]([null])
+metadata/_custom_type_script = "uid://cx4piye3gqsc8"
+
+[sub_resource type="Resource" id="Resource_5jge4"]
+script = ExtResource("5_gj8ci")
+metadata/_custom_type_script = "uid://diifqu7v6338q"
+
+[sub_resource type="Resource" id="Resource_y3dhr"]
+script = ExtResource("4_5jge4")
+actions = Array[ExtResource("5_gj8ci")]([SubResource("Resource_5jge4")])
 metadata/_custom_type_script = "uid://3d1durpk8i24"
 
 [sub_resource type="Animation" id="Animation_js5vo"]
@@ -114,8 +123,8 @@ _data = {
 
 [node name="Root" type="Node" unique_id=923175965]
 script = ExtResource("2_jnlp7")
-Charas = Array[ExtResource("2_b33ej")]([SubResource("Resource_b33ej")])
-Enemies = Array[ExtResource("3_y5gj7")]([SubResource("Resource_e2nrw")])
+Charas = Array[ExtResource("2_e2nrw")]([SubResource("Resource_e2nrw")])
+Enemies = Array[ExtResource("4_5jge4")]([SubResource("Resource_y3dhr")])
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]
 

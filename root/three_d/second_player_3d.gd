@@ -61,5 +61,3 @@ func _on_timer_timeout() -> void:
 		
 		# line of sight
 		LineOfSight.target_position = %Player3D.global_position - global_position
-		print(LineOfSight.position)
-		print(LineOfSight.target_position)

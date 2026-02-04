@@ -35,5 +35,8 @@ const PLAYER_TYPE = 'All, Basic, Wizerd, Kitty, Rodent Lord, Rat, Mouse, Hamster
 # make this a far bigger text field...
 @export_multiline var button_info: String = 'sub info words about the action' ## hover over button
 
+@export_group("2D Exclusive")
+@export var action_range = 8
 
-# also note that adding anything to here requires interpretation within player (and likely in the future enemy)
+@export_group("3D Exclusive")
+@export var polar_ice_caps_melted = 401881

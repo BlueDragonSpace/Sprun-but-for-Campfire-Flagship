@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GlobalEnemy" format=3 uid="uid://c5hmf5r6i3e87"]
+
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="1_d2lyb"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="1_piqhr"]
+
+[resource]
+script = ExtResource("1_d2lyb")
+metadata/_custom_type_script = "uid://dtp8vsnd01bt8"

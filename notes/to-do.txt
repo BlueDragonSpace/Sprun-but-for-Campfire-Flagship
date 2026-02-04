@@ -9,7 +9,7 @@
 1 (Connections):
 	Connecting:
 		
-		ACCEPT A* AS A VIABLE OPTION
+		ACCEPT A* AS A VIABLE OPTION (major issue, cannot ignore axises)
 		
 		Move characters to be outside of one_d_root (for all dimensions)
 		
@@ -49,7 +49,7 @@
 			Upon Kitty's Reflection, sees greater world, zoom into Kitty as through a 2D camera into single pixel of color
 		Move camera script to not be apart of just one player (but the average position of each of them)
 	
-	haha sry nevermind lol
+	Major issue: Connecting Global_Player stats to fit within 1D_Player stuff... needs a new script for every actio
 	
 	
 1.75 (not Connecting or bug, ver importan):
@@ -198,6 +198,7 @@ Rodent Lord Rodents:
 
 Art + SFX needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, Fireball, Megalazer... everything lol
+	Make a Sprun (pixel circle, or just circle) in Blender
 
 Currently finished:
 	
