@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://du3d1kcl32e4q"]
+
+[ext_resource type="Script" uid="uid://pjr2y6breart" path="res://placeholderArt/test_global_chara_inheritance.gd" id="1_a3p0w"]
+[ext_resource type="Resource" uid="uid://crwrne4qrwn6y" path="res://inGame/OneD/npc/player/playerTypes/wizerd/chill.tres" id="2_pf6lx"]
+
+[node name="TestGlobalCharaInheritance" type="Control" unique_id=1728673406]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a3p0w")
+CHILL = ExtResource("2_pf6lx")
+
+[node name="Button" type="Button" parent="." unique_id=656119689]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Change resource 1's Sprun Cost"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -4,23 +4,26 @@
 [ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/one_d/one_d_root.gd" id="2_vitat"]
 [ext_resource type="Texture2D" uid="uid://b535plvyviqhb" path="res://placeholderArt/ChoosyCorners-1.png (1).png" id="3_o1hsu"]
 [ext_resource type="PackedScene" uid="uid://c8l8w4n02trfl" path="res://inGame/sound/mute_button.tscn" id="4_wohbx"]
-[ext_resource type="PackedScene" uid="uid://bbku30glrarxd" path="res://inGame/npc/player/playerTypes/raccoon/raccoon.tscn" id="5_b1nt6"]
-[ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
-[ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
-[ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
-[ext_resource type="PackedScene" uid="uid://yb81wdv11231" path="res://inGame/npc/enemy/types/rat_king/evil_rat.tscn" id="9_8iljn"]
+[ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/OneD/npc/player/player.tscn" id="5_8iljn"]
+[ext_resource type="PackedScene" uid="uid://bbku30glrarxd" path="res://inGame/OneD/npc/player/playerTypes/raccoon/raccoon.tscn" id="5_b1nt6"]
+[ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/OneD/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
+[ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/OneD/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
+[ext_resource type="Resource" uid="uid://dauqe8st72135" path="res://root/root_resources/charas/red_panda.tres" id="6_yxtmk"]
+[ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/OneD/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
+[ext_resource type="Resource" uid="uid://ctkcu5th37ue1" path="res://root/root_resources/enemies/rat_placeholder.tres" id="8_yxtmk"]
+[ext_resource type="PackedScene" uid="uid://yb81wdv11231" path="res://inGame/OneD/npc/enemy/types/rat_king/evil_rat.tscn" id="9_8iljn"]
 [ext_resource type="Texture2D" uid="uid://docng28uw84fm" path="res://placeholderArt/myPixelArt/Ooohhhhhhh-1.png.png" id="12_5g6ql"]
 [ext_resource type="Texture2D" uid="uid://co7fnqru8dy5r" path="res://placeholderArt/Xi.png" id="13_b8b7t"]
 [ext_resource type="Texture2D" uid="uid://cl4v4yeo1gn2m" path="res://placeholderArt/myPixelArt/SwordCarrot-1.png.png" id="14_cngxt"]
 [ext_resource type="Texture2D" uid="uid://bvhkmrse4oqmm" path="res://placeholderArt/myPixelArt/ShieldBadArt-1.png.png" id="15_ggsxi"]
 [ext_resource type="Texture2D" uid="uid://dbpy4cytd2toj" path="res://placeholderArt/myPixelArt/HigherQualityNewSprun.png" id="16_x4h2s"]
-[ext_resource type="PackedScene" uid="uid://drtw4kuprkapi" path="res://inGame/battleUI/ActionButton/action_button.tscn" id="17_32om6"]
+[ext_resource type="PackedScene" uid="uid://drtw4kuprkapi" path="res://inGame/OneD/battleUI/ActionButton/action_button.tscn" id="17_32om6"]
 [ext_resource type="Texture2D" uid="uid://c8n0k3x2k67si" path="res://placeholderArt/myPixelArt/NewSprun-1.png.png" id="18_ye5o8"]
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="19_skhea"]
 [ext_resource type="AudioStream" uid="uid://cj7ql8evoa5yw" path="res://placeholderArt/sfx/nextRound.wav" id="20_ndqky"]
-[ext_resource type="Script" uid="uid://buik7chi8o4xo" path="res://inGame/characterSelect/character_select.gd" id="21_h6p17"]
+[ext_resource type="Script" uid="uid://buik7chi8o4xo" path="res://inGame/OneD/characterSelect/character_select.gd" id="21_h6p17"]
 [ext_resource type="AudioStream" uid="uid://brilchhialjul" path="res://placeholderArt/sfx/TPK.wav" id="21_obdg4"]
-[ext_resource type="PackedScene" uid="uid://c0jqgkvlg5u4e" path="res://inGame/characterSelect/characterSelector.tscn" id="22_akxu1"]
+[ext_resource type="PackedScene" uid="uid://c0jqgkvlg5u4e" path="res://inGame/OneD/characterSelect/characterSelector.tscn" id="22_akxu1"]
 [ext_resource type="AudioStream" uid="uid://c1hfdtenc3114" path="res://placeholderArt/sfx/TWK.wav" id="22_kypvo"]
 [ext_resource type="Texture2D" uid="uid://cvggsr6dniihs" path="res://placeholderArt/myPixelArt/wizerdhat-1.png (1).png" id="23_8iljn"]
 [ext_resource type="AudioStream" uid="uid://cnnno1v7nqa7f" path="res://placeholderArt/sfx/start.wav" id="23_8xuts"]
@@ -1336,15 +1339,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Wizerd" parent="RootGame/BattleScreen/Charas" unique_id=1474276988 instance=ExtResource("5_ih4ah")]
+[node name="RedPanda" parent="RootGame/BattleScreen/Charas" unique_id=191932641 instance=ExtResource("5_8iljn")]
 layout_mode = 2
-speed_stat = 20
-
-[node name="Raccoon" parent="RootGame/BattleScreen/Charas" unique_id=2080388202 instance=ExtResource("5_b1nt6")]
-layout_mode = 2
-
-[node name="Rodent Lord" parent="RootGame/BattleScreen/Charas" unique_id=1741435990 instance=ExtResource("7_p81qd")]
-layout_mode = 2
+NPC_resource = ExtResource("6_yxtmk")
 
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen" unique_id=1211869950]
 modulate = Color(1, 1, 1, 0)
@@ -1360,6 +1357,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="EVIL Rat" parent="RootGame/BattleScreen/Enemies" unique_id=1401321464 instance=ExtResource("9_8iljn")]
 layout_mode = 2
+NPC_resource = ExtResource("8_yxtmk")
 
 [node name="VSeparator" type="VSeparator" parent="RootGame/BattleScreen" unique_id=303485800]
 modulate = Color(1, 1, 1, 0)

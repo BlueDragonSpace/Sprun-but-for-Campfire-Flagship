@@ -1,8 +1,11 @@
 [gd_resource type="Resource" script_class="GlobalEnemy" format=3 uid="uid://c5hmf5r6i3e87"]
 
 [ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="1_d2lyb"]
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="1_piqhr"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_piqhr"]
+[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/OneD/npc/base_actions/attack.tres" id="2_hh0pt"]
+[ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/OneD/npc/base_actions/defend.tres" id="3_5wj60"]
 
 [resource]
 script = ExtResource("1_d2lyb")
+actions = Array[ExtResource("1_piqhr")]([ExtResource("2_hh0pt"), ExtResource("3_5wj60")])
 metadata/_custom_type_script = "uid://dtp8vsnd01bt8"

@@ -3,17 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://d3wbwxma2hkqm" path="res://root/one_d/one_d_root.tscn" id="1_1xv2g"]
 [ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="2_e2nrw"]
 [ext_resource type="Script" uid="uid://clibohg1fjvmb" path="res://root/root.gd" id="2_jnlp7"]
+[ext_resource type="Resource" uid="uid://dauqe8st72135" path="res://root/root_resources/charas/red_panda.tres" id="3_gj8ci"]
 [ext_resource type="AudioStream" uid="uid://c46ekwwfk3ei2" path="res://placeholderArt/sfx/focus.wav" id="3_js5vo"]
 [ext_resource type="PackedScene" uid="uid://cu1ueum56s1rl" path="res://root/three_d/three_d_root.tscn" id="3_ovlcs"]
 [ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="4_5jge4"]
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="5_gj8ci"]
-
-[sub_resource type="Resource" id="Resource_e2nrw"]
-script = ExtResource("2_e2nrw")
-sprun_slots = 3
-sprun_active = 2
-new_actions = Array[ExtResource("5_gj8ci")]([null])
-metadata/_custom_type_script = "uid://cx4piye3gqsc8"
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="5_gj8ci"]
 
 [sub_resource type="Resource" id="Resource_5jge4"]
 script = ExtResource("5_gj8ci")
@@ -123,10 +117,11 @@ _data = {
 
 [node name="Root" type="Node" unique_id=923175965]
 script = ExtResource("2_jnlp7")
-Charas = Array[ExtResource("2_e2nrw")]([SubResource("Resource_e2nrw")])
+Charas = Array[ExtResource("2_e2nrw")]([ExtResource("3_gj8ci")])
 Enemies = Array[ExtResource("4_5jge4")]([SubResource("Resource_y3dhr")])
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]
+current_dimension = true
 
 [node name="ThreeDRoot" parent="." unique_id=1187355930 instance=ExtResource("3_ovlcs")]
 

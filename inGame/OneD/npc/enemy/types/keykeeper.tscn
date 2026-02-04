@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b2fowcq76ry77"]
+
+[ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/OneD/npc/enemy/enemy.tscn" id="1_4y25q"]
+[ext_resource type="Texture2D" uid="uid://dtkrx4fskgr5r" path="res://placeholderArt/myPixelArt/littleBlue-1.png.png" id="2_5dges"]
+
+[node name="Keykeeper" unique_id=654357473 instance=ExtResource("1_4y25q")]
+icon = ExtResource("2_5dges")
+max_hp = 8
+attack_stat = 5

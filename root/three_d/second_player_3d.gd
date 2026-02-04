@@ -28,8 +28,8 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		position += Vector3(input_dir.x, input_dir.y, 0.0) * %CameraHandler.CurrentCamera.global_basis * SPEED * delta
 	
-	if LineOfSight.is_colliding():
-		print('line of sight is colliding')
+	#if LineOfSight.is_colliding():
+		#print('line of sight is colliding')
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("display_path"):

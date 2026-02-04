@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DeBuff" format=3 uid="uid://ddyfivxukty2j"]
+
+[ext_resource type="Texture2D" uid="uid://c8uv2nfqdwbch" path="res://placeholderArt/fire.webp" id="1_ueu1c"]
+[ext_resource type="Script" uid="uid://bwk8y3s88n6m6" path="res://inGame/OneD/npc/de_buff_rect/de_buff.gd" id="2_u04fb"]
+
+[resource]
+script = ExtResource("2_u04fb")
+debuff_type = 9
+display_name = "Enflamed"
+info = "Take fire damage. Increases over time. Hits shields first."
+icon = ExtResource("1_ueu1c")
+is_bad = true
+metadata/_custom_type_script = "uid://bwk8y3s88n6m6"

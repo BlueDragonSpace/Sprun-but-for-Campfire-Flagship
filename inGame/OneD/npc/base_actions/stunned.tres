@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://dsldqq7ppqvn6"]
+
+[ext_resource type="Texture2D" uid="uid://depk6jpfx32yl" path="res://placeholderArt/myPixelArt/Attentions-1.png.png" id="1_6ulh3"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_afutv"]
+
+[resource]
+script = ExtResource("1_afutv")
+name = "Stunned!"
+func_name = "empty_function"
+icon = ExtResource("1_6ulh3")
+action_type = 3
+intent_type = 7
+button_info = "Blinded by the light."
+metadata/_custom_type_script = "uid://diifqu7v6338q"

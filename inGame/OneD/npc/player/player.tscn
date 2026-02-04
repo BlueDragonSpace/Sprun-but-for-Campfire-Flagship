@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bd0auisdvfagw"]
+
+[ext_resource type="PackedScene" uid="uid://ctlnpeebeoqgd" path="res://inGame/OneD/npc/npc.tscn" id="1_kfrmh"]
+[ext_resource type="Script" uid="uid://sj0wnis8wnpb" path="res://inGame/OneD/npc/player/player.gd" id="2_v55o0"]
+[ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="3_eymni"]
+[ext_resource type="Resource" uid="uid://pour76yy1ong" path="res://root/root_resources/global_chara.tres" id="3_m2f48"]
+[ext_resource type="AudioStream" uid="uid://jxg26yncsnmv" path="res://placeholderArt/sfx/attackPlus.wav" id="4_gtbgf"]
+[ext_resource type="AudioStream" uid="uid://bug0c63f6jtmr" path="res://placeholderArt/sfx/sprun_get.wav" id="5_gtbgf"]
+
+[node name="Player" unique_id=191932641 instance=ExtResource("1_kfrmh")]
+size_flags_vertical = 3
+script = ExtResource("2_v55o0")
+sprun_container_angle = 135
+sprun_distance = 60
+NPC_resource = ExtResource("3_m2f48")
+
+[node name="VSeparator2" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="0" unique_id=645862984]
+size_flags_stretch_ratio = 0.16
+
+[node name="Icon" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="3" unique_id=1248940755]
+expand_mode = 2
+
+[node name="SprunContainer" type="Control" parent="VBoxContainer/Icon" index="0" unique_id=95595717]
+layout_mode = 1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VSeparator" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="4" unique_id=1343814083]
+size_flags_stretch_ratio = 0.13
+
+[node name="VSeparator3" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="8" unique_id=1046638672]
+size_flags_stretch_ratio = 0.05
+
+[node name="BigAttack" parent="." index="5" unique_id=2000103591 instance=ExtResource("3_eymni")]
+stream = ExtResource("4_gtbgf")
+
+[node name="SprunGet" parent="." index="6" unique_id=1104388188 instance=ExtResource("3_eymni")]
+stream = ExtResource("5_gtbgf")

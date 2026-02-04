@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="GlobalNPC" format=3 uid="uid://b2udd7be0j1p"]
 
 [ext_resource type="Script" uid="uid://dtp8vsnd01bt8" path="res://root/root_resources/global_npc.gd" id="1_kmacc"]
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="1_lewwc"]
-[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/npc/base_actions/attack.tres" id="2_7bus2"]
-[ext_resource type="Resource" uid="uid://ds1u2a18cppdb" path="res://inGame/npc/base_actions/buff.tres" id="3_b7yy2"]
-[ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/npc/base_actions/defend.tres" id="4_f6cd5"]
-[ext_resource type="Resource" uid="uid://ckrxohf0inp4t" path="res://inGame/npc/base_actions/passing.tres" id="5_hfruc"]
-[ext_resource type="Resource" uid="uid://46w2r3n41yw6" path="res://inGame/npc/base_actions/sprun.tres" id="6_qjykj"]
-[ext_resource type="Resource" uid="uid://dsldqq7ppqvn6" path="res://inGame/npc/base_actions/stunned.tres" id="7_gfv0u"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_lewwc"]
+[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/OneD/npc/base_actions/attack.tres" id="2_7bus2"]
+[ext_resource type="Resource" uid="uid://ds1u2a18cppdb" path="res://inGame/OneD/npc/base_actions/buff.tres" id="3_b7yy2"]
+[ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/OneD/npc/base_actions/defend.tres" id="4_f6cd5"]
+[ext_resource type="Resource" uid="uid://ckrxohf0inp4t" path="res://inGame/OneD/npc/base_actions/passing.tres" id="5_hfruc"]
+[ext_resource type="Resource" uid="uid://46w2r3n41yw6" path="res://inGame/OneD/npc/base_actions/sprun.tres" id="6_qjykj"]
+[ext_resource type="Resource" uid="uid://dsldqq7ppqvn6" path="res://inGame/OneD/npc/base_actions/stunned.tres" id="7_gfv0u"]
+[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://icon.svg" id="8_7bus2"]
 
 [resource]
 script = ExtResource("1_kmacc")
 actions = Array[ExtResource("1_lewwc")]([ExtResource("2_7bus2"), ExtResource("3_b7yy2"), ExtResource("4_f6cd5"), ExtResource("5_hfruc"), ExtResource("6_qjykj"), ExtResource("7_gfv0u")])
+icon = ExtResource("8_7bus2")

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://2e2way0p32mh"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_3pv3v"]
+[ext_resource type="Texture2D" uid="uid://dkwgqscbsik62" path="res://placeholderArt/TurnOrderPoint.png" id="1_gw2i4"]
+
+[resource]
+script = ExtResource("1_3pv3v")
+name = "Heal"
+func_name = "heal"
+icon = ExtResource("1_gw2i4")
+action_type = 3
+player_type = 4
+sprun_necessary = 4
+sprun_loss = 2
+needs_target = true
+ally_target = true
+show_target_intent = true
+button_info = "Heals 10 damage.  Only takes away 2 sprun."

@@ -39,7 +39,7 @@ extends Control
 
 var current_player = null:
 	set(new):
-		LittlePlayerIcon.texture = new.icon
+		LittlePlayerIcon.texture = new.NPC_instance.icon
 		current_player = new
 var current_enemy = null
 
@@ -85,11 +85,11 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 				disable_all_actions(false)
 				BAK.disabled = true
 				check_upgrade_cost_actions(current_player)
-				check_cost_all_actions(current_player.sprun_active)
+				check_cost_all_actions(current_player.NPC_instance.sprun_active)
 				if in_prep_round:
 					disable_all_non_prep_moves(true)
 				# visible (-ing)
-				check_actions_visible(current_player.player_type)
+				check_actions_visible(current_player.NPC_instance.player_type)
 			TURN_TYPE.SELECT_ENEMY:
 				disable_all_actions(true)
 				BAK.disabled = false
@@ -187,8 +187,8 @@ func initialize_game() -> void:
 	check_upgrade_cost_actions(current_player)
 	
 	call_deferred("set_turn_order")
-	call_deferred("check_cost_all_actions", current_player.sprun_active)
-	call_deferred("check_actions_visible", current_player.player_type)
+	call_deferred("check_cost_all_actions", current_player.NPC_instance.sprun_active)
+	call_deferred("check_actions_visible", current_player.NPC_instance.player_type)
 	set_enemies_intents()
 
 func restart_tree() -> void:
@@ -235,7 +235,7 @@ func set_turn_order() -> void:
 	for enemy in Enemies.get_children():
 		if enemy.is_dead == false:
 			
-			var speed = enemy.speed_stat 
+			var speed = enemy.NPC_instance.speed_stat 
 			if enemy.check_debuff(DeBuff.DEBUFF.FREEZE): # makes enemy last in turn queue is freeze"d"
 				speed = 1
 			
@@ -244,7 +244,7 @@ func set_turn_order() -> void:
 	for character in Charas.get_children():
 		if character.is_dead == false:
 			
-			var speed = character.speed_stat
+			var speed = character.NPC_instance.speed_stat
 			if character.check_debuff(DeBuff.DEBUFF.FREEZE):
 				speed = 1
 			
@@ -375,11 +375,11 @@ func add_enemy_wave() -> void:
 	for enemy in Enemies.get_children():
 		var mult = pow(1.3, current_wave - 1)
 		#enemy.max_hp *= mult
-		enemy.set_max_hp(enemy.max_hp * mult)
-		enemy.attack_middle_value *= mult
-		enemy.attack_stat *= mult
-		enemy.defend_middle_value *= mult
-		enemy.defend_stat *= mult
+		enemy.set_max_hp(enemy.NPC_instance.max_hp * mult)
+		#enemy.NPC_Resource.attack_middle_value *= mult
+		enemy.NPC_instance.attack_stat *= mult
+		#enemy.NPC_Resource.defend_middle_value *= mult
+		enemy.NPC_instance.defend_stat *= mult
 		
 
 func disable_all_actions(boolean: bool) -> void:
@@ -395,7 +395,7 @@ func disable_all_non_prep_moves(boolean: bool) -> void:
 
 func check_upgrade_cost_actions(character: Node) -> void:
 	# intended for player, changes the cost of upgrade actions to be specific to player
-	IncreaseSprunSlots.sprun_cost = character.sprun_slots
+	IncreaseSprunSlots.sprun_cost = character.NPC_instance.sprun_slots
 	ATKUp.sprun_cost = character.atk_upgrade_cost
 	DFDUp.sprun_cost = character.dfd_upgrade_cost
 	SPDUp.sprun_cost = character.spd_upgrade_cost
@@ -406,14 +406,14 @@ func check_cost_all_actions(sprun: int) -> void:
 		for action in container.get_children():
 			action.check_cost(sprun)
 
-func check_actions_visible(player_type_bitwise: int = current_player.player_type) -> void:
+func check_actions_visible(player_type_bitwise: int = current_player.NPC_instance.player_type) -> void:
 	
 	 # this number is a case for the animation track to tell it to use the current_player
 	# 6174 has intresting properties, best left to a google search
 	# this thing makes the Animation back to player show the actions of the current player
 	# without this, it would show the last player's actions for a split second
 	if player_type_bitwise == 6174:
-		player_type_bitwise = current_player.player_type
+		player_type_bitwise = current_player.NPC_instance.player_type
 	
 	# now, for every action, check if it is available to the character
 	for tab in Actions.get_children():
@@ -536,7 +536,7 @@ func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, df
 	else:
 		ATKStatIcon.visible = true
 		ATKStatLabel.visible = true
-		ATKStatLabel.text = str(int(atk_value * current_player.attack_stat))
+		ATKStatLabel.text = str(int(atk_value * current_player.NPC_instance.attack_stat))
 	
 	## DFD
 	if dfd_value == 0:
@@ -545,7 +545,7 @@ func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, df
 	else:
 		DFDStatIcon.visible = true
 		DFDStatLabel.visible = true
-		DFDStatLabel.text = str(int(dfd_value * current_player.defend_stat))
+		DFDStatLabel.text = str(int(dfd_value * current_player.NPC_instance.defend_stat))
 	
 	## SPD (speed)
 	if display_speed == false:
@@ -554,7 +554,7 @@ func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, df
 	else:
 		SPDStatIcon.visible = true
 		SPDStatLabel.visible = true
-		SPDStatLabel.text = str(current_player.speed_stat)
+		SPDStatLabel.text = str(current_player.NPC_instance.speed_stat)
 
 func initiate_select_enemy(is_quick : bool = false) -> void:
 	
@@ -618,7 +618,7 @@ func player_pass_turn() -> void:
 		turn = TURN_TYPE.PLAYER
 		
 		# chooses a random text from all player_pass_text's, and puts the current player's name in front of it
-		button_info(current_player.name + player_pass_text[randi_range(0, player_pass_text.size() - 1)])
+		button_info(current_player.NPC_instance.name + player_pass_text[randi_range(0, player_pass_text.size() - 1)])
 		BAK.disabled = false
 		back_action = Callable(self, "player_reverse_pass_turn")
 
@@ -634,7 +634,7 @@ func player_reverse_pass_turn() -> void:
 		current_player.intended_action = Callable(Global, "empty_function")
 		current_player.hide_intent()
 	
-	button_info(current_player.name + player_pass_text[randi_range(0, player_pass_text.size() - 1)])
+	button_info(current_player.NPC_instance.name + player_pass_text[randi_range(0, player_pass_text.size() - 1)])
 	turn = TURN_TYPE.PLAYER
 
 ## turn focussed functions
@@ -742,49 +742,49 @@ func _on_bak_pressed() -> void:
 	back_action.call()
 func _on_atk_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "attack")
-	current_player.set_intended_action(current_player.actions[0])
+	current_player.set_intended_action(current_player.NPC_instance.actions[0])
 	initiate_select_enemy()
 func _on_dfd_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "defend")
-	current_player.set_intended_action(current_player.actions[1])
+	current_player.set_intended_action(current_player.NPC_instance.actions[1])
 	player_pass_turn()
 func _on_focus_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "focus")
-	current_player.set_intended_action(current_player.actions[3])
+	current_player.set_intended_action(current_player.NPC_instance.actions[3])
 	player_pass_turn()
 func _on_increase_sprun_slots_pressed() -> void:
 	var action = Callable(current_player, "increase_sprun_slots")
-	current_player.set_intended_action(current_player.actions[4], action)
+	current_player.set_intended_action(current_player.NPC_instance.actions[4], action)
 	player_pass_turn()
 func _on_atk_up_pressed() -> void:
 	var action = Callable(current_player, "upgrade_atk")
-	current_player.set_intended_action(current_player.actions[4], action)
+	current_player.set_intended_action(current_player.NPC_instance.actions[4], action)
 	player_pass_turn()
 func _on_dfd_up_pressed() -> void:
 	var action = Callable(current_player, "upgrade_dfd")
-	current_player.set_intended_action(current_player.actions[4], action)
+	current_player.set_intended_action(current_player.NPC_instance.actions[4], action)
 	player_pass_turn()
 func _on_spd_up_pressed() -> void:
 	var action = Callable(current_player, "upgrade_spd")
-	current_player.set_intended_action(current_player.actions[4], action)
+	current_player.set_intended_action(current_player.NPC_instance.actions[4], action)
 	player_pass_turn()
 func _on_itm_pressed() -> void:
 	print("haven't set this up yet")
 func _on_big_atk_pressed() -> void:
 	current_player.intended_action = Callable(current_player, "big_attack")
-	current_player.set_intended_action(current_player.actions[5])
+	current_player.set_intended_action(current_player.NPC_instance.actions[5])
 	initiate_select_enemy()
 func _on_pass_pressed() -> void:
 	current_player.intended_action = Callable(Global, "empty_function")
-	current_player.set_intended_action(current_player.actions[2])
+	current_player.set_intended_action(current_player.NPC_instance.actions[2])
 	player_pass_turn()
 func _on_masochism_pressed() -> void:
 	current_player.current_hp -= 10
 func _on_flash_evily_pressed() -> void:
 	current_enemy.current_hp -= 10
 func _on_auto_sprun_pressed() -> void:
-	current_player.set_sprun(current_player.sprun_active + 1)
-	check_cost_all_actions(current_player.sprun_active) 
+	current_player.set_sprun(current_player.NPC_instance.sprun_active + 1)
+	check_cost_all_actions(current_player.NPC_instance.sprun_active) 
 func _on_auto_heal_pressed() -> void:
 	current_player.current_hp += 10
 

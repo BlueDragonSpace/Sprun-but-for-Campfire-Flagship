@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://ccl3stwaax0r3"]
+
+[ext_resource type="Script" uid="uid://c6rlpq23yp3y5" path="res://inGame/OneD/battleUI/notif.gd" id="1_qmarc"]
+
+[sub_resource type="Animation" id="Animation_qmarc"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_h4ija"]
+resource_name = "fade_up"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0, 0, -0.050000004, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.26666668)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_u5uem"]
+resource_name = "pop_up"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.1, 0, 0.1, 0, 1, -0.033333335, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5uem"]
+_data = {
+&"RESET": SubResource("Animation_qmarc"),
+&"fade_up": SubResource("Animation_h4ija"),
+&"pop_in": SubResource("Animation_u5uem")
+}
+
+[node name="Notif" type="ColorRect"]
+z_index = 99
+custom_minimum_size = Vector2(200, 75)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.5
+offset_right = 87.5
+offset_bottom = 75.0
+grow_horizontal = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+color = Color(0.93333334, 0.75686276, 0.6745098, 1)
+script = ExtResource("1_qmarc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="MainText" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+mouse_behavior_recursive = 1
+mouse_default_cursor_shape = 16
+text = "main"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubText" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "not main at all why would you think that
+not even close bro"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u5uem")
+}
+autoplay = "pop_in"

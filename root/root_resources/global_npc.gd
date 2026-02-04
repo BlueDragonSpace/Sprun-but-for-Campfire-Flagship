@@ -21,6 +21,7 @@ const DIMENSION = 'ZERO, ONE, TWO, THREE, FOUR'
 
 @export_subgroup("2D Exclusive")
 @export var move_distance = 8
+@export var size = Vector2(1, 1)
 
 @export_subgroup("3D Exclusive")
 @export var mesh : Mesh

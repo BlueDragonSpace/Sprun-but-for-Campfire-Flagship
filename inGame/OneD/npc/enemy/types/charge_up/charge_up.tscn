@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d3n5wkylral0k"]
+
+[ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/OneD/npc/enemy/enemy.tscn" id="1_ehdvl"]
+[ext_resource type="Script" uid="uid://t57hm3eeuoec" path="res://inGame/OneD/npc/enemy/types/charge_up/charge_up.gd" id="2_2od7p"]
+
+[node name="ChargeUp" unique_id=546262152 instance=ExtResource("1_ehdvl")]
+script = ExtResource("2_2od7p")
+hp_range = 3
+attack_middle_value = 25
+attack_range = 3
+defend_middle_value = 0
+defend_range = 0
+
+[node name="IntendedTargetIcon" parent="VBoxContainer/IntentBar" parent_id_path=PackedInt32Array(1183420490) index="1" unique_id=394397062]
+texture = null

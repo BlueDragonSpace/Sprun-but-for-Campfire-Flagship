@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GlobalEnemy" format=3 uid="uid://ctkcu5th37ue1"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_grypt"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="2_8i47s"]
+[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/OneD/npc/base_actions/attack.tres" id="2_smb05"]
+[ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/OneD/npc/base_actions/defend.tres" id="3_y25uy"]
+[ext_resource type="Texture2D" uid="uid://bsey7jstwivxa" path="res://placeholderArt/myPixelArt/EEVVILLLLRATT-1.png.png" id="4_y25uy"]
+
+[resource]
+script = ExtResource("2_8i47s")
+name = "Ratsworth"
+actions = Array[ExtResource("1_grypt")]([ExtResource("2_smb05"), ExtResource("3_y25uy")])
+dimension_exist = 2
+icon = ExtResource("4_y25uy")
+metadata/_custom_type_script = "uid://3d1durpk8i24"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DeBuff" format=3 uid="uid://cs3h8bsxt7jx4"]
+
+[ext_resource type="Script" uid="uid://bwk8y3s88n6m6" path="res://inGame/OneD/npc/de_buff_rect/de_buff.gd" id="1_epiky"]
+[ext_resource type="Texture2D" uid="uid://c7025ti1ik0ia" path="res://placeholderArt/poison.webp" id="1_orym1"]
+
+[resource]
+script = ExtResource("1_epiky")
+debuff_type = 8
+display_name = "Poison"
+info = "Take damage. Decreases over time. Ignores shields."
+icon = ExtResource("1_orym1")
+is_bad = true
+expiration = 3
+metadata/_custom_type_script = "uid://bwk8y3s88n6m6"

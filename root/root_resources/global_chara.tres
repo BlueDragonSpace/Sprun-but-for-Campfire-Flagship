@@ -1,8 +1,17 @@
 [gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://pour76yy1ong"]
 
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/npc/base_actions/action.gd" id="1_3ch6a"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_3ch6a"]
 [ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="1_tk763"]
+[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/OneD/npc/base_actions/attack.tres" id="2_a8vlu"]
+[ext_resource type="Resource" uid="uid://c0se36fsmgo7o" path="res://inGame/OneD/npc/base_actions/bigAtk.tres" id="3_o2yiv"]
+[ext_resource type="Resource" uid="uid://ds1u2a18cppdb" path="res://inGame/OneD/npc/base_actions/buff.tres" id="4_sceob"]
+[ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/OneD/npc/base_actions/defend.tres" id="5_070qt"]
+[ext_resource type="Resource" uid="uid://ckrxohf0inp4t" path="res://inGame/OneD/npc/base_actions/passing.tres" id="6_lg7m4"]
+[ext_resource type="Resource" uid="uid://46w2r3n41yw6" path="res://inGame/OneD/npc/base_actions/sprun.tres" id="7_mcrsi"]
+[ext_resource type="Resource" uid="uid://dsldqq7ppqvn6" path="res://inGame/OneD/npc/base_actions/stunned.tres" id="8_3w72g"]
 
 [resource]
 script = ExtResource("1_tk763")
+player_type = 2
+actions = Array[ExtResource("1_3ch6a")]([ExtResource("2_a8vlu"), ExtResource("5_070qt"), ExtResource("6_lg7m4"), ExtResource("7_mcrsi"), ExtResource("4_sceob"), ExtResource("3_o2yiv"), ExtResource("8_3w72g")])
 metadata/_custom_type_script = "uid://dtp8vsnd01bt8"

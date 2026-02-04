@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://fe6kckp853qt"]
+
+[ext_resource type="Texture2D" uid="uid://cl4v4yeo1gn2m" path="res://placeholderArt/myPixelArt/SwordCarrot-1.png.png" id="1_lvrfn"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_f88p2"]
+
+[resource]
+script = ExtResource("2_f88p2")
+name = "Attack"
+func_name = "attack"
+icon = ExtResource("1_lvrfn")
+atk_mult = 1.0
+prep_disable = true
+needs_target = true
+show_target_intent = true
+button_info = "Deal damage to target."
+metadata/_custom_type_script = "uid://diifqu7v6338q"

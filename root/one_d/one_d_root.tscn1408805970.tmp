@@ -1,0 +1,1948 @@
+[gd_scene format=3 uid="uid://d3wbwxma2hkqm"]
+
+[ext_resource type="Theme" uid="uid://cyy1ccrel07nx" path="res://root/root.tres" id="1_nt0n7"]
+[ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/one_d/one_d_root.gd" id="2_vitat"]
+[ext_resource type="Texture2D" uid="uid://b535plvyviqhb" path="res://placeholderArt/ChoosyCorners-1.png (1).png" id="3_o1hsu"]
+[ext_resource type="PackedScene" uid="uid://c8l8w4n02trfl" path="res://inGame/sound/mute_button.tscn" id="4_wohbx"]
+[ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/OneD/npc/player/player.tscn" id="5_8iljn"]
+[ext_resource type="PackedScene" uid="uid://bbku30glrarxd" path="res://inGame/OneD/npc/player/playerTypes/raccoon/raccoon.tscn" id="5_b1nt6"]
+[ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/OneD/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
+[ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/OneD/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
+[ext_resource type="Resource" uid="uid://dauqe8st72135" path="res://root/root_resources/charas/red_panda.tres" id="6_yxtmk"]
+[ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/OneD/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
+[ext_resource type="Resource" uid="uid://ctkcu5th37ue1" path="res://root/root_resources/enemies/rat_placeholder.tres" id="8_yxtmk"]
+[ext_resource type="PackedScene" uid="uid://yb81wdv11231" path="res://inGame/OneD/npc/enemy/types/rat_king/evil_rat.tscn" id="9_8iljn"]
+[ext_resource type="Texture2D" uid="uid://docng28uw84fm" path="res://placeholderArt/myPixelArt/Ooohhhhhhh-1.png.png" id="12_5g6ql"]
+[ext_resource type="Texture2D" uid="uid://co7fnqru8dy5r" path="res://placeholderArt/Xi.png" id="13_b8b7t"]
+[ext_resource type="Texture2D" uid="uid://cl4v4yeo1gn2m" path="res://placeholderArt/myPixelArt/SwordCarrot-1.png.png" id="14_cngxt"]
+[ext_resource type="Texture2D" uid="uid://bvhkmrse4oqmm" path="res://placeholderArt/myPixelArt/ShieldBadArt-1.png.png" id="15_ggsxi"]
+[ext_resource type="Texture2D" uid="uid://dbpy4cytd2toj" path="res://placeholderArt/myPixelArt/HigherQualityNewSprun.png" id="16_x4h2s"]
+[ext_resource type="PackedScene" uid="uid://drtw4kuprkapi" path="res://inGame/OneD/battleUI/ActionButton/action_button.tscn" id="17_32om6"]
+[ext_resource type="Texture2D" uid="uid://c8n0k3x2k67si" path="res://placeholderArt/myPixelArt/NewSprun-1.png.png" id="18_ye5o8"]
+[ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="19_skhea"]
+[ext_resource type="AudioStream" uid="uid://cj7ql8evoa5yw" path="res://placeholderArt/sfx/nextRound.wav" id="20_ndqky"]
+[ext_resource type="Script" uid="uid://buik7chi8o4xo" path="res://inGame/OneD/characterSelect/character_select.gd" id="21_h6p17"]
+[ext_resource type="AudioStream" uid="uid://brilchhialjul" path="res://placeholderArt/sfx/TPK.wav" id="21_obdg4"]
+[ext_resource type="PackedScene" uid="uid://c0jqgkvlg5u4e" path="res://inGame/OneD/characterSelect/characterSelector.tscn" id="22_akxu1"]
+[ext_resource type="AudioStream" uid="uid://c1hfdtenc3114" path="res://placeholderArt/sfx/TWK.wav" id="22_kypvo"]
+[ext_resource type="Texture2D" uid="uid://cvggsr6dniihs" path="res://placeholderArt/myPixelArt/wizerdhat-1.png (1).png" id="23_8iljn"]
+[ext_resource type="AudioStream" uid="uid://cnnno1v7nqa7f" path="res://placeholderArt/sfx/start.wav" id="23_8xuts"]
+[ext_resource type="Shader" uid="uid://ddycup0alwvnl" path="res://shaders/chromaticAberation.gdshader" id="24_a1wwb"]
+[ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="24_yxtmk"]
+[ext_resource type="Texture2D" uid="uid://7eya5knr354s" path="res://placeholderArt/raccoonFiller.png" id="25_8iljn"]
+[ext_resource type="Shader" uid="uid://dftiegl3xn8fh" path="res://shaders/pixelizer.gdshader" id="25_28rp8"]
+[ext_resource type="Texture2D" uid="uid://bs2vr1mqvjcph" path="res://placeholderArt/myPixelArt/RodentLordRn-1.png.png" id="25_b1nt6"]
+[ext_resource type="Shader" uid="uid://bo0lvrtc1mrha" path="res://shaders/rainbows.gdshader" id="26_v6bl5"]
+
+[sub_resource type="Gradient" id="Gradient_ovlcs"]
+colors = PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ovlcs"]
+offset = Vector3(0, 0, 313.73)
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 2
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b33ej"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_ovlcs")
+color_ramp = SubResource("Gradient_ovlcs")
+in_3d_space = true
+
+[sub_resource type="Animation" id="Animation_b1nt6"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShowTopBar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HideTopBar:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:self_modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_yxtmk"]
+resource_name = "hide_top_bar"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.016666668, 0, 0, 0, -0.16666667, 0.016666668, 0, 0, 0.03, -0.021111112, -0.005, 0, 0),
+"times": PackedFloat32Array(0.033333335, 0.96666664, 1, 1.4)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShowTopBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.98, 1.01),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.98, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HideTopBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.98, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:self_modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16333334, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.98)
+}
+
+[sub_resource type="Animation" id="Animation_20myc"]
+resource_name = "show_top_bar"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.1, -0.16666667, -0.016666668, 0, 0),
+"times": PackedFloat32Array(0.1, 0.9)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_05ql3"]
+_data = {
+&"RESET": SubResource("Animation_b1nt6"),
+&"hide_top_bar": SubResource("Animation_yxtmk"),
+&"show_top_bar": SubResource("Animation_20myc")
+}
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8iljn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gj8ci"]
+shader = ExtResource("24_a1wwb")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jge4"]
+shader = ExtResource("25_28rp8")
+shader_parameter/pixel_size = 4
+shader_parameter/screen_size = Vector2(1200, 600)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_th5d7"]
+shader = ExtResource("26_v6bl5")
+shader_parameter/strength = 1.0
+shader_parameter/speed = 1.3750000653125
+shader_parameter/angle = 45.0000021375
+
+[sub_resource type="Animation" id="Animation_5jge4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:turn")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootGame/LowerBar:size_flags_stretch_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RootGame/LowerBar:size_flags_vertical")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TPK:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TPK:modulate:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TPK:modulate:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TPK:modulate:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TPK:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TPK:color:r")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TPK:color:g")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TPK:color:b")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TPK:color:a")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TPK/CenterBox/Retry:modulate:r")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TPK/CenterBox/Retry:modulate:g")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TPK/CenterBox/Retry:modulate:b")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TPK/CenterBox/Retry:modulate:a")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("IntroSequence:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "bezier"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("IntroSequence:modulate:a")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("RootGame:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "bezier"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("RootGame:modulate:a")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("NoiseBackground:texture:color_ramp:colors")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)]
+}
+tracks/21/type = "bezier"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("NoiseBackground:modulate:a")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("CharacterSelect:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "bezier"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("CharacterSelect:modulate:a")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath(".:in_prep_round")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/25/type = "bezier"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("TWK:anchor_right")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/26/type = "bezier"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("TWK:anchor_left")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/27/type = "bezier"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("RootGame/BattleScreen:modulate:a")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ep6pg"]
+resource_name = "TPK"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NoiseBackground:texture:color_ramp:colors")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1), PackedColorArray(3.6098065e-08, 0.1630637, 0.214542, 1, 0.74932086, 0.002979101, 0.9906685, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TPK:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.48),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TPK:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.24166667, 0, 0, 0),
+"times": PackedFloat32Array(0.55, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TPK:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.24166667, 0, 0, 0),
+"times": PackedFloat32Array(0.55, 2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TPK:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.24166667, 0, 0, 0),
+"times": PackedFloat32Array(0.55, 2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TPK:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.47058824, -0.24166667, -0.07843137, 0, 0),
+"times": PackedFloat32Array(0.55, 2)
+}
+
+[sub_resource type="Animation" id="Animation_bbrdx"]
+resource_name = "TWK"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"final_pass_turn"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NoiseBackground:texture:color_ramp:colors")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.8333333, 3.9333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1), PackedColorArray(1.4920532e-06, 0.5304824, 0.2201744, 1, 0.72519064, 0.00041941137, 0.7291304, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:in_prep_round")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.9672),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TWK:anchor_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 0.7601433, -0.19567227, 0.20597082, 0.43766105, -0.46069586, 0.3, -0.07110678, 0.07474006, 0.36655426, -0.3852838, -2, -0.5834938, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0.20000005, 0.6333333, 2.7, 3.2666667)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TWK:anchor_left")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 0.7601433, -0.19567227, 0.20597082, 0.43766105, -0.46069586, 0.3, -0.07110678, 0.07474006, 0.36655426, -0.3852838, -2, -0.5834938, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0.20000005, 0.6333333, 2.7, 3.2666667)
+}
+
+[sub_resource type="Animation" id="Animation_akxu1"]
+resource_name = "chara_select_to_game"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootGame:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootGame:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.5833334, 0.16666669, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.2, 5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:started")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterSelect:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.33333334, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterSelect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_mg5wv"]
+resource_name = "exiting_TWK"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NoiseBackground:texture:color_ramp:colors")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedColorArray(1.4920532e-06, 0.5304824, 0.2201744, 1, 0.72519064, 0.00041941137, 0.7291304, 1), PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bhsci"]
+resource_name = "global_transition_out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NoiseBackground:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootGame/BattleScreen:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_y3dhr"]
+resource_name = "middle_round"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"middle_animation_constant"
+}, {
+"args": [],
+"method": &"middle_round_loop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gj8ci"]
+resource_name = "playerPassTurn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:turn")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 3]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootGame/LowerBar:size_flags_stretch_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.25, -0.25, 0, 0.25, 0, 0.01, -0.16666667, 0.04, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RootGame/LowerBar:size_flags_vertical")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 1]
+}
+
+[sub_resource type="Animation" id="Animation_m38np"]
+resource_name = "retry"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TPK:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TPK:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TPK:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TPK:color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TPK:modulate:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TPK:modulate:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TPK:modulate:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TPK:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.47058824, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.088235304, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TPK/CenterBox/Retry:modulate:r")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0, 0),
+"times": PackedFloat32Array(1.5, 3)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TPK/CenterBox/Retry:modulate:g")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0, 0),
+"times": PackedFloat32Array(1.5, 3)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TPK/CenterBox/Retry:modulate:b")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0, 0),
+"times": PackedFloat32Array(1.5, 3)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TPK/CenterBox/Retry:modulate:a")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0.16666667, 0, 0),
+"times": PackedFloat32Array(1.5, 3)
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart_tree"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("NoiseBackground:texture:color_ramp:colors")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(2.6, 2.9333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedColorArray(1.4920532e-06, 0.5304824, 0.2201744, 1, 0.72519064, 0.00041941137, 0.7291304, 1), PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x1xj5"]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroSequence:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroSequence:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSelect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterSelect:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16833334, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0.99, 2)
+}
+
+[sub_resource type="Animation" id="Animation_0n2s5"]
+resource_name = "to_player"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:turn")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 0]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootGame/LowerBar:size_flags_stretch_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.01, -0.25, 0, 0.25, 0, 0.25, -0.16666667, -0.04, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RootGame/LowerBar:size_flags_vertical")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 3]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [6174],
+"method": &"check_actions_visible"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3dhr"]
+_data = {
+&"RESET": SubResource("Animation_5jge4"),
+&"TPK": SubResource("Animation_ep6pg"),
+&"TWK": SubResource("Animation_bbrdx"),
+&"chara_select_to_game": SubResource("Animation_akxu1"),
+&"exiting_TWK": SubResource("Animation_mg5wv"),
+&"global_transition_out": SubResource("Animation_bhsci"),
+&"middle_round": SubResource("Animation_y3dhr"),
+&"playerPassTurn": SubResource("Animation_gj8ci"),
+&"retry": SubResource("Animation_m38np"),
+&"start": SubResource("Animation_x1xj5"),
+&"to_player": SubResource("Animation_0n2s5")
+}
+
+[node name="OneDRoot" type="Control" unique_id=1893301946 groups=["OneDRoot"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nt0n7")
+script = ExtResource("2_vitat")
+started = true
+
+[node name="NoiseBackground" type="TextureRect" parent="." unique_id=191933669]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_b33ej")
+stretch_mode = 6
+
+[node name="RootGame" type="VBoxContainer" parent="." unique_id=1340053205]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="Panel" parent="RootGame" unique_id=212074059]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RootGame/TopBar" unique_id=298723457]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator2" type="VSeparator" parent="RootGame/TopBar/HBoxContainer" unique_id=882388458]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Round" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=1674054066]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Rounds:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RoundNum" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=227741453]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+vertical_alignment = 1
+
+[node name="EnemiesSlain" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=804958548]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enemies Slain: "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="EnemiesSlainNum" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=684000560]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+vertical_alignment = 1
+
+[node name="Wave" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=826290597]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Waves Cleared:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="WaveNum" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=620911838]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+vertical_alignment = 1
+
+[node name="PrepRoundsRemaining" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=291105139]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Prep Rounds Remaining:"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="RootGame/TopBar/HBoxContainer" unique_id=755385751]
+layout_mode = 2
+texture = ExtResource("3_o1hsu")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PrepRoundsLabel" type="Label" parent="RootGame/TopBar/HBoxContainer/TextureRect" unique_id=1258517914]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator3" type="VSeparator" parent="RootGame/TopBar/HBoxContainer" unique_id=1945323063]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlaySpeedLabel" type="Label" parent="RootGame/TopBar/HBoxContainer" unique_id=1356462290]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed of Play:"
+vertical_alignment = 1
+
+[node name="PlaySpeedSlider" type="HSlider" parent="RootGame/TopBar/HBoxContainer" unique_id=1269754996]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.5
+max_value = 5.0
+step = 0.1
+value = 1.0
+
+[node name="MuteButton" parent="RootGame/TopBar/HBoxContainer" unique_id=125002870 instance=ExtResource("4_wohbx")]
+layout_mode = 2
+tooltip_text = "why hello there"
+toggle_mode = true
+
+[node name="VSeparator" type="VSeparator" parent="RootGame/TopBar/HBoxContainer" unique_id=132278779]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HideTopBar" type="Button" parent="RootGame/TopBar" unique_id=331415324]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+text = "^"
+
+[node name="ShowTopBar" type="Button" parent="RootGame/TopBar" unique_id=111089925]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -24.0
+offset_right = 11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "v"
+
+[node name="AnimateTopBar" type="AnimationPlayer" parent="RootGame/TopBar" unique_id=2048444089]
+libraries/ = SubResource("AnimationLibrary_05ql3")
+
+[node name="HSeparator2" type="HSeparator" parent="RootGame" unique_id=291360227]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.06
+
+[node name="BattleScreen" type="HBoxContainer" parent="RootGame" unique_id=595883786]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="VSeparator3" type="VSeparator" parent="RootGame/BattleScreen" unique_id=1818382558]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.14
+
+[node name="Charas" type="GridContainer" parent="RootGame/BattleScreen" unique_id=1276795124]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="RootGame/BattleScreen/Charas" unique_id=191932641 instance=ExtResource("5_8iljn")]
+layout_mode = 2
+NPC_resource = ExtResource("6_yxtmk")
+
+[node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen" unique_id=1211869950]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Enemies" type="GridContainer" parent="RootGame/BattleScreen" unique_id=2075127647]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="EVIL Rat" parent="RootGame/BattleScreen/Enemies" unique_id=1401321464 instance=ExtResource("9_8iljn")]
+layout_mode = 2
+NPC_resource = ExtResource("8_yxtmk")
+
+[node name="VSeparator" type="VSeparator" parent="RootGame/BattleScreen" unique_id=303485800]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.14
+
+[node name="TurnOrder" type="TextureRect" parent="RootGame/BattleScreen" unique_id=1651286724]
+self_modulate = Color(0.4249623, 0.4249623, 0.4249623, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.24
+texture = ExtResource("12_5g6ql")
+
+[node name="TurnOrder" type="VBoxContainer" parent="RootGame/BattleScreen/TurnOrder" unique_id=214178436]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator4" type="VSeparator" parent="RootGame/BattleScreen" unique_id=1607990216]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.14
+
+[node name="HSeparator" type="HSeparator" parent="RootGame" unique_id=644086572]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="LowerBar" type="Panel" parent="RootGame" unique_id=497759838]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RootGame/LowerBar" unique_id=910823248]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InfoBar" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer" unique_id=514195438]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LittlePlayerIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1084462069]
+layout_mode = 2
+texture = ExtResource("13_b8b7t")
+expand_mode = 2
+
+[node name="ActionInfo" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1320868774]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "swonchy"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1857683216]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.04
+
+[node name="ATKStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1113195234]
+layout_mode = 2
+texture = ExtResource("14_cngxt")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ATKStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1985444733]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator3" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=603229772]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="DFDStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1173811552]
+layout_mode = 2
+texture = ExtResource("15_ggsxi")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DFDStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=406621369]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SPDStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1246272604]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_8iljn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SPDStatLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1310815714]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SprunCostIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1182136919]
+layout_mode = 2
+texture = ExtResource("16_x4h2s")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SprunCostLabel" type="Label" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=880071380]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=868944184]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Actions" type="TabContainer" parent="RootGame/LowerBar/VBoxContainer" unique_id=169339694]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 1
+drag_to_rearrange_enabled = true
+
+[node name="BackButton" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=1779824555]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="BAK" parent="RootGame/LowerBar/VBoxContainer/Actions/BackButton" unique_id=1569889013 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "BAK"
+info = "Rechoose last action."
+usable_on_player = 1
+
+[node name="Attack" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=578126803]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ATK" parent="RootGame/LowerBar/VBoxContainer/Actions/Attack" unique_id=851158670 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "ATK"
+icon = ExtResource("14_cngxt")
+expand_icon = true
+info = "Deal damage to enemy."
+atk_mult = 1.0
+usable_on_player = 34
+prep_disable = true
+
+[node name="BigATK" parent="RootGame/LowerBar/VBoxContainer/Actions/Attack" unique_id=2043494808 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "ATK+"
+info = "Deal 2.5x damage to enemy."
+sprun_cost = 1
+atk_mult = 2.5
+prep_disable = true
+
+[node name="Defend" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=957053461]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="DFD" parent="RootGame/LowerBar/VBoxContainer/Actions/Defend" unique_id=558543872 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "DFD"
+icon = ExtResource("15_ggsxi")
+expand_icon = true
+info = "Defend against enemy attacks."
+dfd_mult = 1.0
+usable_on_player = 98
+
+[node name="Sprun" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=1972192148]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="FOCUS" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=1724643732 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "FOCUS"
+icon = ExtResource("18_ye5o8")
+expand_icon = true
+info = "Create 1 Sprun."
+
+[node name="IncreaseSprunSlots" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=750807723 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "Increase Sprun Slots"
+info = "Increase your max Sprun storage. Costs the max amount of sprun you can hold."
+
+[node name="ATKUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=915772057 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "ATK Upgrade"
+info = "Multiply current ATK by 1.5. Costs 2 more sprun for each use."
+sprun_cost = 3
+atk_mult = 1.0
+
+[node name="DFDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=688805653 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "DFD Upgrade"
+info = "Multiply current DFD by 1.5. Costs 2 more sprun for each use."
+sprun_cost = 3
+dfd_mult = 1.0
+
+[node name="SPDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=1774202845 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "SPD Upgrade"
+info = "Multiply current SPD by 1.5. Costs 2 more sprun for each use."
+sprun_cost = 3
+display_speed = true
+
+[node name="Other" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=528564938]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="ITM" parent="RootGame/LowerBar/VBoxContainer/Actions/Other" unique_id=631729216 instance=ExtResource("17_32om6")]
+visible = false
+layout_mode = 2
+text = "ITM"
+info = "not implemented yet lol"
+usable_on_player = 0
+
+[node name="PASS" parent="RootGame/LowerBar/VBoxContainer/Actions/Other" unique_id=106260482 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "PASS"
+info = "Pass this character's turn."
+usable_on_player = 1
+
+[node name="DevTools" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=318212625]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 5
+
+[node name="Masochism" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" unique_id=1632796884 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "Masochism"
+info = "damage self for 10"
+usable_on_player = 1
+
+[node name="FlashEvily" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" unique_id=132361556 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "Evil Flash"
+info = "immediately damage current_enemy for 10 (doesn't kill)"
+usable_on_player = 1
+
+[node name="AutoSprun" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" unique_id=162793068 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "wow free sprun cheater"
+info = "give urself a free sprun"
+usable_on_player = 1
+
+[node name="AutoHeal" parent="RootGame/LowerBar/VBoxContainer/Actions/DevTools" unique_id=1042760795 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "HealThySelf"
+info = "Heal self for 10... cheater"
+usable_on_player = 1
+
+[node name="MOVE" type="ColorRect" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=1076119879]
+visible = false
+layout_mode = 2
+color = Color(0.7137255, 0.49019608, 0.8117647, 1)
+metadata/_tab_index = 6
+
+[node name="NextRound" parent="RootGame" unique_id=1433081728 instance=ExtResource("19_skhea")]
+stream = ExtResource("20_ndqky")
+volume_db = -3.714
+
+[node name="CharacterSelect" type="HBoxContainer" parent="." unique_id=276507729]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("21_h6p17")
+
+[node name="VSeparator2" type="VSeparator" parent="CharacterSelect" unique_id=698417762]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.17
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelect" unique_id=974324766]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VSeparator2" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=520469728]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.17
+
+[node name="BigIcon" type="TextureRect" parent="CharacterSelect/VBoxContainer" unique_id=1441798769]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+texture = ExtResource("16_x4h2s")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Info" type="Label" parent="CharacterSelect/VBoxContainer" unique_id=1653835721]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Select 3 characters."
+horizontal_alignment = 1
+
+[node name="SubInfo" type="Label" parent="CharacterSelect/VBoxContainer" unique_id=1331170081]
+modulate = Color(0.68307734, 0.6830774, 0.68307734, 1)
+layout_mode = 2
+text = "Fall into the Longest Dream."
+horizontal_alignment = 1
+
+[node name="VSeparator3" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=212944283]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.17
+
+[node name="CharacterChoosing" type="GridContainer" parent="CharacterSelect/VBoxContainer" unique_id=1381028855]
+layout_mode = 2
+columns = 2
+
+[node name="Wizard" parent="CharacterSelect/VBoxContainer/CharacterChoosing" unique_id=954473165 instance=ExtResource("22_akxu1")]
+layout_mode = 2
+text = "Wizard"
+icon = ExtResource("23_8iljn")
+info = "Magics"
+sub_info = "Powerful attacks, and healing, but little HP."
+info_icon = ExtResource("23_8iljn")
+linked_character = ExtResource("5_ih4ah")
+
+[node name="Kitty" parent="CharacterSelect/VBoxContainer/CharacterChoosing" unique_id=1220673595 instance=ExtResource("22_akxu1")]
+layout_mode = 2
+text = "Kitty"
+icon = ExtResource("24_yxtmk")
+info = "Cat, no Kitten"
+sub_info = "The Chosen."
+info_icon = ExtResource("24_yxtmk")
+linked_character = ExtResource("6_ajhc2")
+
+[node name="RodentLord" parent="CharacterSelect/VBoxContainer/CharacterChoosing" unique_id=421680870 instance=ExtResource("22_akxu1")]
+layout_mode = 2
+text = "Rodent Lord"
+icon = ExtResource("25_b1nt6")
+info = "Summoner (of Rats)"
+sub_info = "Like a Necromancer. But cooler. Spawns rats and mice."
+info_icon = ExtResource("25_b1nt6")
+linked_character = ExtResource("7_p81qd")
+
+[node name="Raccoon" parent="CharacterSelect/VBoxContainer/CharacterChoosing" unique_id=1908107024 instance=ExtResource("22_akxu1")]
+layout_mode = 2
+text = "Raccoon"
+icon = ExtResource("25_8iljn")
+icon_alignment = 1
+expand_icon = true
+info = "Quite the Bandit"
+sub_info = "Does group damage, and can skip the turn queue."
+info_icon = ExtResource("25_8iljn")
+linked_character = ExtResource("5_b1nt6")
+
+[node name="EndCharacterSelect" type="Button" parent="CharacterSelect/VBoxContainer" unique_id=1363648875]
+layout_mode = 2
+text = "3 shall enter."
+
+[node name="VSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=1609887138]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.17
+
+[node name="VSeparator" type="VSeparator" parent="CharacterSelect" unique_id=2016774106]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.17
+
+[node name="TPK" type="ColorRect" parent="." unique_id=1500180873]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterBox" type="VBoxContainer" parent="TPK" unique_id=1565901561]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="YouDead" type="Label" parent="TPK/CenterBox" unique_id=1446930112]
+layout_mode = 2
+text = "You dead."
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TPK/CenterBox" unique_id=695491643]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Retry" parent="TPK/CenterBox" unique_id=625706184 instance=ExtResource("17_32om6")]
+layout_mode = 2
+text = "Git gud"
+
+[node name="Soundd" parent="TPK" unique_id=1111977443 instance=ExtResource("19_skhea")]
+stream = ExtResource("21_obdg4")
+
+[node name="TWK" type="ColorRect" parent="." unique_id=1542534198]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.0
+anchor_top = 0.5
+anchor_right = 2.0
+anchor_bottom = 0.5
+offset_bottom = 50.000366
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.2, 0.2, 0.2, 0.42745098)
+
+[node name="Labels" type="VBoxContainer" parent="TWK" unique_id=318451602]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="WaveCleared" type="Label" parent="TWK/Labels" unique_id=375314306]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "WAVE CLEARED"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="TWK/Labels" unique_id=28759950]
+layout_mode = 2
+alignment = 1
+
+[node name="Num" type="Label" parent="TWK/Labels/VBoxContainer" unique_id=89018081]
+layout_mode = 2
+text = "(num)"
+horizontal_alignment = 1
+
+[node name="PrepRounds" type="Label" parent="TWK/Labels/VBoxContainer" unique_id=1177121487]
+layout_mode = 2
+text = "rounds to prepare"
+horizontal_alignment = 1
+
+[node name="Sounddddd" parent="TWK" unique_id=1176354279 instance=ExtResource("19_skhea")]
+stream = ExtResource("22_kypvo")
+
+[node name="IntroSequence" type="ColorRect" parent="." unique_id=128724174]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="IntroSequence" unique_id=1116633345]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="IntroSequence/VBoxContainer" unique_id=749104222]
+layout_mode = 2
+text = "Art Thou Prepst?"
+
+[node name="HSeparator" type="HSeparator" parent="IntroSequence/VBoxContainer" unique_id=1808986072]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="IntroSequence/VBoxContainer" unique_id=796370445]
+layout_mode = 2
+text = "Bring it on."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="IntroSequence" unique_id=2024725065]
+stream = ExtResource("23_8xuts")
+bus = &"SFX"
+
+[node name="Shaders" type="Control" parent="." unique_id=1623808779]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChromaticAberation" type="ColorRect" parent="Shaders" unique_id=604647060]
+material = SubResource("ShaderMaterial_gj8ci")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Shaders/ChromaticAberation" unique_id=563513852]
+
+[node name="Pixelizer" type="ColorRect" parent="Shaders" unique_id=531248629]
+visible = false
+material = SubResource("ShaderMaterial_5jge4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rainbows" type="ColorRect" parent="Shaders" unique_id=1084323550]
+visible = false
+material = SubResource("ShaderMaterial_th5d7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Animate" type="AnimationPlayer" parent="." unique_id=227358949]
+libraries/ = SubResource("AnimationLibrary_y3dhr")
+
+[connection signal="value_changed" from="RootGame/TopBar/HBoxContainer/PlaySpeedSlider" to="." method="_on_play_speed_slider_value_changed"]
+[connection signal="pressed" from="RootGame/TopBar/HideTopBar" to="." method="_on_hide_top_bar_pressed"]
+[connection signal="pressed" from="RootGame/TopBar/ShowTopBar" to="." method="_on_show_top_bar_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/BackButton/BAK" to="." method="_on_bak_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Attack/ATK" to="." method="_on_atk_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Attack/BigATK" to="." method="_on_big_atk_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Defend/DFD" to="." method="_on_dfd_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/FOCUS" to="." method="_on_focus_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/IncreaseSprunSlots" to="." method="_on_increase_sprun_slots_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/ATKUp" to="." method="_on_atk_up_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/DFDUp" to="." method="_on_dfd_up_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/SPDUp" to="." method="_on_spd_up_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Other/ITM" to="." method="_on_itm_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Other/PASS" to="." method="_on_pass_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/DevTools/Masochism" to="." method="_on_masochism_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/DevTools/FlashEvily" to="." method="_on_flash_evily_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/DevTools/AutoSprun" to="." method="_on_auto_sprun_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/DevTools/AutoHeal" to="." method="_on_auto_heal_pressed"]
+[connection signal="mouse_entered" from="RootGame/LowerBar/VBoxContainer/Actions/MOVE" to="." method="_on_move_mouse_entered"]
+[connection signal="pressed" from="CharacterSelect/VBoxContainer/EndCharacterSelect" to="." method="_on_end_character_select_pressed"]
+[connection signal="pressed" from="TPK/CenterBox/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="IntroSequence/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
