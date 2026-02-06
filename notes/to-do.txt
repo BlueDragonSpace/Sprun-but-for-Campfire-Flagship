@@ -3,9 +3,7 @@
 	Make sure when updating any stat, overrides the instance, doesn't override the base
 	I'd presume you would need to put local to scene if this isn't automatic
 	i.e. : attack_stat is increased for the character for this run, doesn't increase attack_stat for every run
-	Kitty isn't setting her own stuff inside of the NPC resource...
-		Trying to add Custom Actions with a script inside the resource
-	However, RedPanda's resource works (as is evident by max_hp and icon being changed)
+	
 
 0.9: (????? where to put this now that I stopped working on it...)
 	Adding in pathfinding myself, since I need a little more control over pathfinding than Godot has

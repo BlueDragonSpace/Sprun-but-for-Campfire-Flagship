@@ -6,7 +6,7 @@ extends GlobalNPC
 
 @export var new_action : Array[Action]
 @export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var player_type : int = 0
-var prevent_script_instance_loop = false
+
 
 @export_group("1D Exclusive")
 @export var frying_wires = 'little toot toot train'
@@ -18,6 +18,7 @@ var prevent_script_instance_loop = false
 @export_group("3D exclusive")
 @export var placehodler3d = 'mspling iz fnu'
 
+
 # automatically sets the actions for the player, since custom player actions are in new_actions instead
 const ATTACK = preload("uid://fe6kckp853qt")
 const BIG_ATK = preload("uid://c0se36fsmgo7o")
@@ -27,6 +28,7 @@ const PASSING = preload("uid://ckrxohf0inp4t")
 const SPRUN = preload("uid://46w2r3n41yw6")
 const STUNNED = preload("uid://dsldqq7ppqvn6")
 
+#var actions = []
 
 func _init() -> void:
 	# somehow, there isn't a resource equivalent to Node's _ready() function

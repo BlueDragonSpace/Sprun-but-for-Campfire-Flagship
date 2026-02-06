@@ -5,9 +5,9 @@ func reflection(_sprun_cost) -> void:
 	# the dream that started it all
 	
 	set_max_hp(64) # minecraft stack!!
-	npc_instance.attack_stat = 12
-	npc_instance.defend_stat = 10
-	npc_instance.speed_stat = 1 # fastest possible
+	NPC_instance.attack_stat = 12
+	NPC_instance.defend_stat = 10
+	NPC_instance.speed_stat = 1 # fastest possible
 	
 	# No, you aren't going to go for a second stat boost. I refuse to let this happen
 	set_sprun_slots(1)

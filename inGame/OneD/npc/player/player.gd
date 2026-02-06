@@ -2,7 +2,7 @@ extends "res://inGame/OneD/npc/npc.gd"
 
 @onready var SprunContainer: Control = $VBoxContainer/Icon/SprunContainer
 
-# Most export qualities are handled in the npc_resource now
+# Most export qualities are handled in the NPC_resource now
 
 #@export var sprun_slots = 8 # ONLY CHANGE with set_sprun_slots()!!!!!!!!!!
 @export_range(0, 360) var sprun_container_angle = 135
@@ -21,35 +21,14 @@ var atk_upgrade_cost = 3
 var dfd_upgrade_cost = 3
 var spd_upgrade_cost = 3
 
-# the script keeps telling itself to replace itself, over and over
-var prevent_script_instance_loop = false
 
 func add_ready() -> void:
-	
 	npc_type = CHARACTER_TYPE.PLAYER
 	
-	#print('adding to read')
-	#
-	#if npc_instance.npc_script:
-		#print('we have custom script to go with it')
-		#
-		#if npc_instance.prevent_script_instance_loop == false:
-			#print('changing the instance loop')
-			#npc_instance.prevent_script_instance_loop = true
-		#else:
-			#print('changing the main thing')
-			#prevent_script_instance_loop = true
-		#
-		#if prevent_script_instance_loop == false:
-			#print('added custom script')
-			#call_deferred("set_script",npc_instance.npc_script)
-			#
-		## otherwise it's the default player script, no custom actions
-	#
-	#set_sprun_slots(npc_instance.sprun_slots)
-	#
-	#call_deferred("add_actions", npc_instance.new_action)
-	#
+	set_sprun_slots(NPC_instance.sprun_slots)
+	
+	call_deferred("add_actions", NPC_instance.new_action)
+	
 	double_add_ready()
 
 func double_add_ready() -> void:
@@ -139,7 +118,6 @@ func add_actions(custom_actions : Array) -> void:
 		new_button.connect("pressed", lambda)
 		
 		# 0 is Back Button, so everything past that is fair game
-		print(name)
 		OneDRoot.Actions.get_child(this_action.action_type + 1).add_child(new_button)
 
 # additional things I call on *every* action getting call
@@ -150,23 +128,23 @@ func add_lambda(func_action: Action, callable: Callable) -> void:
 func set_sprun(new_sprun_count):
 	## I *would* set this as the set(new) method for active_sprun, but then it calls before ready and gives me an error
 	
-	npc_instance.sprun_active = new_sprun_count
+	NPC_instance.sprun_active = new_sprun_count
 	
 	# goes through and sets the individual spruns to be active or not
-	for num in range(0, npc_instance.sprun_slots):
-		if num < npc_instance.sprun_active:
+	for num in range(0, NPC_instance.sprun_slots):
+		if num < NPC_instance.sprun_active:
 			SprunContainer.get_child(num).active = true
 		else:
 			SprunContainer.get_child(num).active = false
 	
-	if npc_instance.sprun_active > npc_instance.sprun_slots:
+	if NPC_instance.sprun_active > NPC_instance.sprun_slots:
 		print('wow you over charged on sprun congrats')
 		
-	npc_instance.sprun_active = clamp(npc_instance.sprun_active, 0, npc_instance.sprun_slots)
+	NPC_instance.sprun_active = clamp(NPC_instance.sprun_active, 0, NPC_instance.sprun_slots)
 
 func set_sprun_slots(slots) -> void:
 	
-	npc_instance.sprun_slots = slots
+	NPC_instance.sprun_slots = slots
 	
 	# delete all intial sprun container children
 	for child in SprunContainer.get_children():
@@ -187,10 +165,10 @@ func set_sprun_slots(slots) -> void:
 		#sprun.visual_rotation += deg_to_rad(45/2)
 		@warning_ignore("integer_division")
 		sprun.visual_rotation += deg_to_rad(-sprun_container_angle/2)
-		if npc_instance.sprun_slots > 1:
+		if NPC_instance.sprun_slots > 1:
 			@warning_ignore("integer_division")
-			sprun.visual_rotation += deg_to_rad(slot * sprun_container_angle / (npc_instance.sprun_slots - 1))
-	set_sprun(npc_instance.sprun_active)
+			sprun.visual_rotation += deg_to_rad(slot * sprun_container_angle / (NPC_instance.sprun_slots - 1))
+	set_sprun(NPC_instance.sprun_active)
 # player has it's intended actions set by the OneDRoot (because it's from input from the UI)
 
 #func initiate_attack(action_name: String):
@@ -204,36 +182,36 @@ func set_intent_target(image: Texture) -> void:
 	IntendedTargetIcon.texture = image
 
 func big_attack():
-	set_sprun(npc_instance.sprun_active - 1)
+	set_sprun(NPC_instance.sprun_active - 1)
 	
-	action_victim.take_damage(int(npc_instance.attack_stat * 2.5), self)
+	action_victim.take_damage(int(NPC_instance.attack_stat * 2.5), self)
 	Animate.play("attack")
 	$BigAttack.play()
 func focus():
-	set_sprun(npc_instance.sprun_active + 1)
+	set_sprun(NPC_instance.sprun_active + 1)
 	$SprunGet.play()
 
 func increase_sprun_slots():
 	set_sprun(0)
-	set_sprun_slots(npc_instance.sprun_slots + 1)
+	set_sprun_slots(NPC_instance.sprun_slots + 1)
 
 func upgrade_atk():
 	@warning_ignore("narrowing_conversion")
-	npc_instance.attack_stat *= 1.5
-	set_sprun(npc_instance.sprun_active - atk_upgrade_cost)
+	NPC_instance.attack_stat *= 1.5
+	set_sprun(NPC_instance.sprun_active - atk_upgrade_cost)
 	atk_upgrade_cost += 2
 	Animate.play("buff")
 
 func upgrade_dfd():
 	@warning_ignore("narrowing_conversion")
-	npc_instance.defend_stat *= 1.5
-	set_sprun(npc_instance.sprun_active - dfd_upgrade_cost)
+	NPC_instance.defend_stat *= 1.5
+	set_sprun(NPC_instance.sprun_active - dfd_upgrade_cost)
 	dfd_upgrade_cost += 2
 	Animate.play("buff")
 
 func upgrade_spd():
 	@warning_ignore("narrowing_conversion")
-	npc_instance.speed_stat *= 1.5
-	set_sprun(npc_instance.sprun_active - spd_upgrade_cost)
+	NPC_instance.speed_stat *= 1.5
+	set_sprun(NPC_instance.sprun_active - spd_upgrade_cost)
 	spd_upgrade_cost += 2
 	Animate.play("buff")

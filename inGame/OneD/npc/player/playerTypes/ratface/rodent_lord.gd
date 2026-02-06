@@ -13,7 +13,7 @@ func call_rat(sprun_cost : int) -> void:
 	var rat = RAT.instantiate()
 	rat.name = recieve_name("Rat ")
 	OneDRoot.Charas.add_child(rat)
-	set_sprun(npc_instance.sprun_active - sprun_cost)
+	set_sprun(NPC_instance.sprun_active - sprun_cost)
 	# poison damage? currently implemented as a separate move
 	
 	$RatSpawning.play()
@@ -22,7 +22,7 @@ func call_mouse(sprun_cost : int) -> void:
 	var mouse = MOUSE.instantiate()
 	mouse.name = recieve_name("Mouse ")
 	OneDRoot.Charas.add_child(mouse)
-	set_sprun(npc_instance.sprun_active - sprun_cost)
+	set_sprun(NPC_instance.sprun_active - sprun_cost)
 	
 	$RatSpawning.play()
 
@@ -31,7 +31,7 @@ func call_hamster(sprun_cost : int) -> void:
 	var hamster = HAMSTER.instantiate()
 	hamster.name = recieve_name("Hamster ")
 	OneDRoot.Charas.add_child(hamster)
-	set_sprun(npc_instance.sprun_active - sprun_cost)
+	set_sprun(NPC_instance.sprun_active - sprun_cost)
 	
 	$RatSpawning.play()
 

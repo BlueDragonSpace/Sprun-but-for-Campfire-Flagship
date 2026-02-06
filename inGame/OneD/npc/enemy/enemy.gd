@@ -41,15 +41,15 @@ func add_ready() -> void:
 	
 	# a really not good way to check which enemy type this is
 	if randi_range(0, 3) > 2:
-		if npc_instance.max_hp < 25:
-			npc_instance.icon = LITTLE_BLUE_1_PNG
+		if NPC_instance.max_hp < 25:
+			NPC_instance.icon = LITTLE_BLUE_1_PNG
 			
 			if randi_range(0, 3) == 2:
-				npc_instance.icon = RATTTTTTT_1_PNG # like, 1 in 16 chance of this happening. Funny times. Yes this is a joke
+				NPC_instance.icon = RATTTTTTT_1_PNG # like, 1 in 16 chance of this happening. Funny times. Yes this is a joke
 				Icon.modulate.g = 0.2
 				Icon.modulate.b = 0.2
 		else:
-			npc_instance.icon = BIGG_BLUE_1_PNG
+			NPC_instance.icon = BIGG_BLUE_1_PNG
 
 func add_take_damage(attacker) -> void:
 	last_attacker = attacker

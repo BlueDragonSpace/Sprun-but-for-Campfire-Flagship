@@ -1,7 +1,8 @@
 #@abstract ## means that the npc class is not supposed to be utilized on it's own
 extends Control
 
-@onready var Root = get_tree().get_first_node_in_group("Root")
+## This thing is now depreciated! This was NPC before making it take a Chara Resource from the Root
+
 @onready var OneDRoot = get_tree().get_current_scene().get_child(0)
 
 @onready var Intent: TextureRect = $VBoxContainer/IntentBar/Intent
@@ -25,21 +26,12 @@ extends Control
 #
 #@export var max_hp: int = 40
 
-@export var npc_resource : GlobalNPC:
-	set(new):
-		npc_resource = new
-		if new != null:
-			print(new.name + ' I am the resource set inside of npc script')
-			npc_instance = npc_resource.duplicate(true)
-@onready var npc_instance = null: #npc_resource.duplicate(true) # stats in use
-	set(new):
-		if new != null:
-			print(new.name + ' is the npc_instance of the npc script')
-		npc_instance = new
+@export var NPC_resource : GlobalNPC # base stats
+@onready var NPC_instance = NPC_resource.duplicate(true) # stats in use
 
-@onready var current_hp: int = 456: # always gets reset later
+@onready var current_hp: int = NPC_instance.max_hp:
 	set(new):
-		current_hp = clamp(new, 0, npc_instance.max_hp)
+		current_hp = clamp(new, 0, NPC_instance.max_hp)
 		
 		if HP.value > current_hp:
 			visual_hp(current_hp)
@@ -80,7 +72,7 @@ var intended_action_resource : Action
 var action_victim : Node = null:
 	set(new):
 		action_victim = new
-		IntendedTargetIcon.texture = action_victim.npc_instance.icon
+		IntendedTargetIcon.texture = action_victim.NPC_instance.icon
 
 var is_dead = false
 var size_transition = 0.0:
@@ -92,22 +84,12 @@ var size_transition = 0.0:
 const DE_BUFF_RECT = preload("uid://b2tkettp813ev")
 
 func _ready() -> void:
-	print('wating on Root to finish adding NPCs for ' + name)
-	await Root.finished_adding_npcs
-	
-	if not npc_instance:
-		npc_instance = npc_resource.duplicate(true)
-	
-	current_hp = npc_instance.max_hp
-	
-	set_max_hp(npc_instance.max_hp)
-	Icon.texture = npc_instance.icon
+	set_max_hp(NPC_instance.max_hp)
+	Icon.texture = NPC_instance.icon
 	
 	#size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	size_flags_stretch_ratio = size_transition
 	HP.size_flags_stretch_ratio = size_transition
-	
-	print('thats ready on NPC for ' + name)
 	
 	add_ready()
 
@@ -130,7 +112,7 @@ func set_current_hp_text(new_hp : int) -> void:
 
 func set_max_hp(new_hp : int) -> void:
 	
-	npc_instance.max_hp = new_hp
+	NPC_instance.max_hp = new_hp
 	current_hp = new_hp
 	visual_hp(new_hp)
 	HP.max_value = new_hp
@@ -158,7 +140,7 @@ func set_intended_action(action: Action, callable : Callable = Callable(self, ac
 	if random:
 		# generally, random is used for enemies. 
 		# certain enemies have more complex attack patterns, but this is generally their code only
-		var random_action = npc_instance.actions[randi_range(0, npc_instance.actions.size() - 1)]
+		var random_action = NPC_instance.actions[randi_range(0, NPC_instance.actions.size() - 1)]
 		
 		intended_action = Callable(self, random_action.func_name)
 		set_intent(random_action, random_action.show_target_intent)
@@ -192,7 +174,7 @@ func do_intended_action() -> void:
 	
 	if intended_action_resource.attack_all: 
 		# is it a player or an enemy?
-		if npc_instance.is_player:
+		if NPC_instance.is_player:
 			for enemy in OneDRoot.Enemies.get_children():
 				action_victim = enemy
 				intended_action.call()
@@ -243,19 +225,19 @@ func take_debuff(debuff_resource, add_expiration):
 	
 
 func defend():
-	self.current_defense += npc_instance.defend_stat
+	self.current_defense += NPC_instance.defend_stat
 	Animate.play("defend")
 	$DoDefend.play() 
 
 func attack() -> void:
 	if action_victim:
-		action_victim.take_damage(npc_instance.attack_stat, self)
+		action_victim.take_damage(NPC_instance.attack_stat, self)
 		Animate.play("attack")
 		$Attack.play()
 
 func big_attack():
 	if action_victim:
-		action_victim.take_damage(npc_instance.attack_stat * 2.5, self)
+		action_victim.take_damage(NPC_instance.attack_stat * 2.5, self)
 		Animate.play("attack")
 		$Attack.play()
 
@@ -279,9 +261,9 @@ func set_intent(action: Action, target_visible : bool = false) -> void:
 	
 	match(action.intent_type):
 		Action.INTENT.ATTACK:
-			IntentLabel.text = str(int(npc_instance.attack_stat * action.atk_mult))
+			IntentLabel.text = str(int(NPC_instance.attack_stat * action.atk_mult))
 		Action.INTENT.DEFEND:
-			IntentLabel.text = str(int(npc_instance.defend_stat * action.dfd_mult))
+			IntentLabel.text = str(int(NPC_instance.defend_stat * action.dfd_mult))
 		Action.INTENT.HEAL:
 			IntentLabel.text = str(int(action.other_num))
 		_:

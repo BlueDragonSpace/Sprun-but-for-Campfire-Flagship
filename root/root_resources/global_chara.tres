@@ -9,10 +9,17 @@
 [ext_resource type="Resource" uid="uid://ckrxohf0inp4t" path="res://inGame/OneD/npc/base_actions/passing.tres" id="6_lg7m4"]
 [ext_resource type="Resource" uid="uid://46w2r3n41yw6" path="res://inGame/OneD/npc/base_actions/sprun.tres" id="7_mcrsi"]
 [ext_resource type="Resource" uid="uid://dsldqq7ppqvn6" path="res://inGame/OneD/npc/base_actions/stunned.tres" id="8_3w72g"]
+[ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="9_o2yiv"]
+[ext_resource type="Resource" uid="uid://cu7gb1lix0hyn" path="res://inGame/OneD/npc/player/playerTypes/kitty/hide.tres" id="10_sceob"]
 
 [resource]
 script = ExtResource("1_tk763")
-player_type = 2
-is_player = true
+sprun_slots = 9
+new_action = Array[ExtResource("1_3ch6a")]([ExtResource("10_sceob")])
+player_type = 10
+name = "Kitty"
+max_hp = 10
 actions = Array[ExtResource("1_3ch6a")]([ExtResource("2_a8vlu"), ExtResource("5_070qt"), ExtResource("6_lg7m4"), ExtResource("7_mcrsi"), ExtResource("4_sceob"), ExtResource("3_o2yiv"), ExtResource("8_3w72g")])
+dimension_exist = 2
+icon = ExtResource("9_o2yiv")
 metadata/_custom_type_script = "uid://dtp8vsnd01bt8"

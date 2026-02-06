@@ -15,7 +15,6 @@ const DIMENSION = 'ZERO, ONE, TWO, THREE, FOUR'
 @export var is_player : bool = false
 @export var actions : Array[Action] = []
 @export_custom(PROPERTY_HINT_FLAGS, DIMENSION) var dimension_exist : int = 0
-@export var npc_script : Script
 
 @export_subgroup("1D Exclusive")
 @export var icon : Texture2D
