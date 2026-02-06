@@ -4,6 +4,8 @@ extends Node
 @export var Enemies : Array[GlobalEnemy]
 #@export var Stats : Array[Resource]
 
+@export var started = false
+
 enum DIMENSION {
 	ZERO, # an infinite possibility
 	ONE, # UI focus
@@ -11,8 +13,9 @@ enum DIMENSION {
 	THREE, # a wild time
 	FOUR, # an Angel's Wrath
 }
-var dimension = DIMENSION.ONE
+@export var dimension = DIMENSION.ONE
 
+const PLAYER = preload("uid://bd0auisdvfagw") # One D Player, specifically
 @onready var OneDRoot: Control = $OneDRoot
 # @onready var ThreeDRoot: Node3D = $ThreeDRoot
 
@@ -22,6 +25,24 @@ var dimension = DIMENSION.ONE
 @onready var KeyClick: AudioStreamPlayer = $KeyClick
 @onready var KeyRelease: AudioStreamPlayer = $KeyRelease
 
+signal finished_adding_npcs
+
+func _ready() -> void:
+	if started and dimension == DIMENSION.ONE:
+		
+		# add player characters to OneDRoot
+		for chara in Charas:
+			var child = PLAYER.instantiate()
+			child.npc_resource = chara
+			child.npc_instance = chara.duplicate(true)
+			child.script = chara.npc_script
+			
+			OneDRoot.Charas.add_child(child)
+			print('added child to 1d root from Root')
+	
+	print('started adding NPCs signal)')
+	finished_adding_npcs.emit()
+	print('emiitted finished adding NPCs')
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

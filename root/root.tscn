@@ -115,10 +115,11 @@ _data = {
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_e2nrw"]
 
-[node name="Root" type="Node" unique_id=923175965]
+[node name="Root" type="Node" unique_id=923175965 groups=["Root"]]
 script = ExtResource("2_jnlp7")
 Charas = Array[ExtResource("2_e2nrw")]([ExtResource("3_gj8ci")])
 Enemies = Array[ExtResource("4_5jge4")]([SubResource("Resource_y3dhr")])
+started = true
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]
 current_dimension = true

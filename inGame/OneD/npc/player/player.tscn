@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ctlnpeebeoqgd" path="res://inGame/OneD/npc/npc.tscn" id="1_kfrmh"]
 [ext_resource type="Script" uid="uid://sj0wnis8wnpb" path="res://inGame/OneD/npc/player/player.gd" id="2_v55o0"]
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="3_eymni"]
-[ext_resource type="Resource" uid="uid://pour76yy1ong" path="res://root/root_resources/global_chara.tres" id="3_m2f48"]
 [ext_resource type="AudioStream" uid="uid://jxg26yncsnmv" path="res://placeholderArt/sfx/attackPlus.wav" id="4_gtbgf"]
 [ext_resource type="AudioStream" uid="uid://bug0c63f6jtmr" path="res://placeholderArt/sfx/sprun_get.wav" id="5_gtbgf"]
 
@@ -12,7 +11,6 @@ size_flags_vertical = 3
 script = ExtResource("2_v55o0")
 sprun_container_angle = 135
 sprun_distance = 60
-NPC_resource = ExtResource("3_m2f48")
 
 [node name="VSeparator2" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="0" unique_id=645862984]
 size_flags_stretch_ratio = 0.16

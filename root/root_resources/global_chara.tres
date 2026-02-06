@@ -13,5 +13,6 @@
 [resource]
 script = ExtResource("1_tk763")
 player_type = 2
+is_player = true
 actions = Array[ExtResource("1_3ch6a")]([ExtResource("2_a8vlu"), ExtResource("5_070qt"), ExtResource("6_lg7m4"), ExtResource("7_mcrsi"), ExtResource("4_sceob"), ExtResource("3_o2yiv"), ExtResource("8_3w72g")])
 metadata/_custom_type_script = "uid://dtp8vsnd01bt8"

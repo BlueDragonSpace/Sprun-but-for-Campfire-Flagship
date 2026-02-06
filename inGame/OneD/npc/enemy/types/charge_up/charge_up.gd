@@ -10,7 +10,7 @@ func add_set_intended_action() -> void:
 	
 	if turns_charging >= 2: #charged long enough, time to fire
 		intended_action = Callable(self, "attack")
-		set_intent(NPC_instance.actions[0], true)
+		set_intent(npc_instance.actions[0], true)
 		# intent_info('Attack', 'Chargeup doing big damage and game not finished so sue me')
 		#intended_action = Callable(self, "attack")
 		#IntendedTargetIcon.visible = true
@@ -21,7 +21,7 @@ func add_set_intended_action() -> void:
 		turns_charging = 0
 	else:
 		intended_action = Callable(Global, "empty_function")
-		set_intent(NPC_instance.actions[1])
+		set_intent(npc_instance.actions[1])
 		# intended_action = Callable(Global, "empty_function")
 		# intent_info('Charging', 'something big is coming for some reason bad proBABLY')
 		#IntendedTargetIcon.visible = false
