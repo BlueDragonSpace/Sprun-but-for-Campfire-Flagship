@@ -120,9 +120,10 @@ _data = {
 script = ExtResource("2_jnlp7")
 Charas = Array[ExtResource("2_e2nrw")]([ExtResource("3_gj8ci"), ExtResource("4_y3dhr")])
 Enemies = Array[ExtResource("4_5jge4")]([SubResource("Resource_y3dhr")])
+dimension = 3
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]
-current_dimension = true
+visible = false
 
 [node name="ThreeDRoot" parent="." unique_id=1187355930 instance=ExtResource("3_ovlcs")]
 

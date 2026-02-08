@@ -86,6 +86,7 @@ const DE_BUFF_RECT = preload("uid://b2tkettp813ev")
 func _ready() -> void:
 	set_max_hp(NPC_instance.max_hp)
 	Icon.texture = NPC_instance.icon
+	name = NPC_instance.name
 	
 	#size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	size_flags_stretch_ratio = size_transition

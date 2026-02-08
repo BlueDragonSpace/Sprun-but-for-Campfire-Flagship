@@ -14,7 +14,7 @@ enum DIMENSION {
 @export var dimension = DIMENSION.ONE
 
 @onready var OneDRoot: Control = $OneDRoot
-# @onready var ThreeDRoot: Node3D = $ThreeDRoot
+@onready var ThreeDRoot: Node3D = $ThreeDRoot
 
 @onready var Animate: AnimationPlayer = $Animate
 @onready var MouseClick: AudioStreamPlayer = $MouseClick
@@ -22,17 +22,31 @@ enum DIMENSION {
 @onready var KeyClick: AudioStreamPlayer = $KeyClick
 @onready var KeyRelease: AudioStreamPlayer = $KeyRelease
 
-const PLAYER = preload("uid://bd0auisdvfagw")
+const ONE_D_PLAYER = preload("uid://bd0auisdvfagw")
+const THREE_D_PLAYER = preload("uid://crwqeuod3418")
 
 func _ready() -> void:
-	if dimension == DIMENSION.ONE:
-		for chara in Charas:
-			var child = PLAYER.instantiate()
-			child.NPC_resource = chara
+	
+	ThreeDRoot.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	match(dimension):
+		DIMENSION.ONE:
+			OneDRoot.process_mode = Node.PROCESS_MODE_INHERIT
+			for chara in Charas:
+				var child = ONE_D_PLAYER.instantiate()
+				child.NPC_resource = chara
+				
+				OneDRoot.Charas.add_child(child)
+		DIMENSION.THREE:
+			ThreeDRoot.process_mode = Node.PROCESS_MODE_INHERIT
+			for chara in Charas:
+				var child = THREE_D_PLAYER.instantiate()
+				child.NPC_resource = chara
+				child.position = Vector3(13, 5, 0)
+				
+				ThreeDRoot.Charas.add_child(child)
 			
-			OneDRoot.Charas.add_child(child)
-	
-	
+			OneDRoot.Animate.play("global_transition_out")
 
 
 func _input(event: InputEvent) -> void:

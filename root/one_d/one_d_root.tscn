@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/one_d/one_d_root.gd" id="2_vitat"]
 [ext_resource type="Texture2D" uid="uid://b535plvyviqhb" path="res://placeholderArt/ChoosyCorners-1.png (1).png" id="3_o1hsu"]
 [ext_resource type="PackedScene" uid="uid://c8l8w4n02trfl" path="res://inGame/sound/mute_button.tscn" id="4_wohbx"]
+[ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/OneD/npc/player/player.tscn" id="5_8iljn"]
 [ext_resource type="PackedScene" uid="uid://bbku30glrarxd" path="res://inGame/OneD/npc/player/playerTypes/raccoon/raccoon.tscn" id="5_b1nt6"]
 [ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/OneD/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/OneD/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
@@ -1150,7 +1151,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_nt0n7")
 script = ExtResource("2_vitat")
-started = true
 
 [node name="NoiseBackground" type="TextureRect" parent="." unique_id=191933669]
 layout_mode = 1
@@ -1336,6 +1336,9 @@ size_flags_stretch_ratio = 0.14
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="RootGame/BattleScreen/Charas" unique_id=191932641 instance=ExtResource("5_8iljn")]
+layout_mode = 2
 
 [node name="VSeparator2" type="VSeparator" parent="RootGame/BattleScreen" unique_id=1211869950]
 modulate = Color(1, 1, 1, 0)

@@ -149,6 +149,7 @@ const player_pass_text = [' looks a little agitated', ' probably needs some coff
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	button_info("You didn't character select...")
 	
 	Engine.time_scale = 1.0 # restarts for the top-right scale thing
@@ -181,6 +182,8 @@ func _process(delta: float) -> void:
 
 
 func initialize_game() -> void:
+	print(Charas.name)
+	print(Charas.get_child_count())
 	current_player = Charas.get_child(0)
 	current_enemy = Enemies.get_child(0)
 	

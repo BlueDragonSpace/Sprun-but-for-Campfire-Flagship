@@ -22,7 +22,8 @@
 		Pathfinding: change algorithm for current direction:
 			
 			Create a new node that inherits from 3DPathfind, replace it's algorithm like you would a virtual func
-				
+			
+			(ask specifically for Axis Pathfind Weight)
 			
 			y-Axis is free,
 			z-Axis is free, (and so on)
@@ -31,6 +32,12 @@
 				GDextension??? Might need to reask on Discord...
 			
 			
+			Best Position Choice AI:
+				Within Distance to attack, but as far away as possible
+				Cover
+				Line of Sight,
+				Some objective or something
+				
 		Make the Grid-Based System...
 		
 		Attacks:

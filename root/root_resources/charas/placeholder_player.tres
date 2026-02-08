@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://c35lasjc884k7"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_1t20o"]
+[ext_resource type="Texture2D" uid="uid://c3p85tdu00duw" path="res://placeholderArt/icon.svg" id="2_1h6i8"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="2_vdrr2"]
+
+[resource]
+script = ExtResource("2_vdrr2")
+name = "Player"
+icon = ExtResource("2_1h6i8")
+metadata/_custom_type_script = "uid://cx4piye3gqsc8"

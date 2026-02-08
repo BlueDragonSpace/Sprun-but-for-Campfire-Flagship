@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://52o3wyv2lrgw" path="res://root/three_d/three_d_root.gd" id="1_0xdj7"]
 [ext_resource type="PackedScene" uid="uid://crwqeuod3418" path="res://root/three_d/Entities/Players/3d_player.tscn" id="1_84ns2"]
+[ext_resource type="Resource" uid="uid://c35lasjc884k7" path="res://root/root_resources/charas/placeholder_player.tres" id="3_gb3qa"]
 [ext_resource type="PackedScene" uid="uid://bshvwfyo68bjf" path="res://root/three_d/camera_handler.tscn" id="3_qgbu4"]
 [ext_resource type="Script" uid="uid://bgw10od3katva" path="res://root/three_d/second_player_3d.gd" id="4_8yykx"]
 [ext_resource type="PackedScene" uid="uid://dehg5ipwadmh2" path="res://root/three_d/Environment/basic_block/basic_block.tscn" id="4_vmnxw"]
@@ -71,15 +72,15 @@ script = ExtResource("1_0xdj7")
 
 [node name="Player3D" parent="Charas" unique_id=175508574 instance=ExtResource("1_84ns2")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1412582, 10.234165, -11.426598)
-collision_layer = 2
-collision_mask = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.141258, 10.234165, -11.426598)
+NPC_resource = ExtResource("3_gb3qa")
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1569463232]
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=568085515]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1093737202]
+visible = false
 shape = SubResource("WorldBoundaryShape3D_j4b2l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1531429954]
