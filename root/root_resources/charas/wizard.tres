@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://bspoq313njvjn"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_o4qjq"]
+[ext_resource type="Texture2D" uid="uid://cvggsr6dniihs" path="res://placeholderArt/myPixelArt/wizerdhat-1.png (1).png" id="2_ev18f"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="2_j3cex"]
+[ext_resource type="Resource" uid="uid://c0k0uy8vxyrir" path="res://inGame/OneD/npc/player/playerTypes/wizerd/blizzard.tres" id="2_rgicw"]
+[ext_resource type="Resource" uid="uid://crwrne4qrwn6y" path="res://inGame/OneD/npc/player/playerTypes/wizerd/chill.tres" id="3_ev18f"]
+[ext_resource type="Resource" uid="uid://cwkvw576dxppf" path="res://inGame/OneD/npc/player/playerTypes/wizerd/fireball.tres" id="4_ioxnq"]
+[ext_resource type="Resource" uid="uid://2e2way0p32mh" path="res://inGame/OneD/npc/player/playerTypes/wizerd/heal.tres" id="5_djcu3"]
+[ext_resource type="Resource" uid="uid://c3a14axpyy1n0" path="res://inGame/OneD/npc/player/playerTypes/wizerd/mega_lazer.tres" id="6_yjhcq"]
+[ext_resource type="Resource" uid="uid://du80vrilqbd6t" path="res://inGame/OneD/npc/player/playerTypes/wizerd/shield.tres" id="7_7bfps"]
+[ext_resource type="Script" uid="uid://c22h5dc4inak1" path="res://inGame/OneD/npc/player/playerTypes/wizerd/wizerd.gd" id="9_ioxnq"]
+
+[resource]
+script = ExtResource("2_j3cex")
+sprun_slots = 5
+sprun_active = 1
+new_action = Array[ExtResource("1_o4qjq")]([ExtResource("2_rgicw"), ExtResource("3_ev18f"), ExtResource("4_ioxnq"), ExtResource("5_djcu3"), ExtResource("6_yjhcq"), ExtResource("7_7bfps")])
+player_type = 6
+name = "Wizard"
+speed_stat = 8
+attack_stat = 5
+defend_stat = 4
+is_player = true
+dimension_exist = 2
+icon = ExtResource("2_ev18f")
+one_d_script = ExtResource("9_ioxnq")
+metadata/_custom_type_script = "uid://cx4piye3gqsc8"

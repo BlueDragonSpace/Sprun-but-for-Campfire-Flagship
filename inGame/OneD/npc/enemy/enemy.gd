@@ -37,19 +37,7 @@ const RATTTTTTT_1_PNG = preload("uid://dmidkhslqal7n")
 func add_ready() -> void:
 	npc_type = CHARACTER_TYPE.ENEMY
 	node_is_ready = true
-	#set_max_hp(randi_range(max_hp - hp_range, max_hp + hp_range))
 	
-	# a really not good way to check which enemy type this is
-	if randi_range(0, 3) > 2:
-		if NPC_instance.max_hp < 25:
-			NPC_instance.icon = LITTLE_BLUE_1_PNG
-			
-			if randi_range(0, 3) == 2:
-				NPC_instance.icon = RATTTTTTT_1_PNG # like, 1 in 16 chance of this happening. Funny times. Yes this is a joke
-				Icon.modulate.g = 0.2
-				Icon.modulate.b = 0.2
-		else:
-			NPC_instance.icon = BIGG_BLUE_1_PNG
 
 func add_take_damage(attacker) -> void:
 	last_attacker = attacker

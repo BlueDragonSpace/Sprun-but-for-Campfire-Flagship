@@ -25,6 +25,11 @@ enum DIMENSION {
 const ONE_D_PLAYER = preload("uid://bd0auisdvfagw")
 const THREE_D_PLAYER = preload("uid://crwqeuod3418")
 
+const OneDScriptBasicPlayer = preload("uid://sj0wnis8wnpb") # basic Player Script
+const OneDScriptKitty = preload("uid://dxc2eww7oejej") # Kitty's SCRIPT
+const OneDScriptWizerd = preload("uid://c22h5dc4inak1")
+
+
 func _ready() -> void:
 	
 	ThreeDRoot.process_mode = Node.PROCESS_MODE_DISABLED
@@ -34,7 +39,11 @@ func _ready() -> void:
 			OneDRoot.process_mode = Node.PROCESS_MODE_INHERIT
 			for chara in Charas:
 				var child = ONE_D_PLAYER.instantiate()
+				
+				child.set_script(chara.one_d_script)
+				
 				child.NPC_resource = chara
+				
 				
 				OneDRoot.Charas.add_child(child)
 		DIMENSION.THREE:
@@ -42,7 +51,7 @@ func _ready() -> void:
 			for chara in Charas:
 				var child = THREE_D_PLAYER.instantiate()
 				child.NPC_resource = chara
-				child.position = Vector3(13, 5, 0)
+				child.position = Vector3(randi_range(10, 15), randi_range(3, 8), 0)
 				
 				ThreeDRoot.Charas.add_child(child)
 			

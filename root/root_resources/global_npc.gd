@@ -16,8 +16,14 @@ const DIMENSION = 'ZERO, ONE, TWO, THREE, FOUR'
 @export var actions : Array[Action] = []
 @export_custom(PROPERTY_HINT_FLAGS, DIMENSION) var dimension_exist : int = 0
 
+
 @export_subgroup("1D Exclusive")
 @export var icon : Texture2D
+
+# a fallback script, because usually I don't need a custom script for most enemies
+const BaseOneDEnemyScript = preload("uid://qk0yaqbhbtaf")
+# players just about always should have a custom script
+@export var one_d_script : Script = BaseOneDEnemyScript
 
 @export_subgroup("2D Exclusive")
 @export var move_distance = 8

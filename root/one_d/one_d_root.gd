@@ -126,7 +126,6 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 				disable_all_actions(true)
 				# it means that the Animate is going to middle, and right now
 				# -it doesn't need to do anything else
-		#print(new)
 		turn = new
 
 
@@ -182,8 +181,6 @@ func _process(delta: float) -> void:
 
 
 func initialize_game() -> void:
-	print(Charas.name)
-	print(Charas.get_child_count())
 	current_player = Charas.get_child(0)
 	current_enemy = Enemies.get_child(0)
 	
@@ -223,9 +220,13 @@ func set_enemies_intents() -> void:
 				# first, figure out if any are unavailable (hiding)
 				var all_charas = Charas.get_children()
 				
-				for chara_num in all_charas.size():
+				var chara_num = 0
+				
+				while chara_num < all_charas.size():
 					if all_charas[chara_num].check_debuff(DeBuff.DEBUFF.HIDE):
 						all_charas.remove_at(chara_num)
+					
+					chara_num += 1
 				
 				enemy.action_victim = all_charas[randi_range(0, all_charas.size() - 1)]
 			# now direct a random attack towards a randomly chosen target (overridden by aggro)
@@ -286,7 +287,7 @@ func select_enemy(index : int, is_quick : bool = false) -> void:
 	var victim = Enemies.get_child(index)
 	
 	current_player.action_victim = victim
-	current_player.set_intent_target(victim.icon)
+	current_player.set_intent_target(victim.Icon.texture)
 	
 	# removes all enemy selector children (as they are always last
 	for enemy in Enemies.get_children():
@@ -588,6 +589,7 @@ func initiate_select_enemy(is_quick : bool = false) -> void:
 		turn = TURN_TYPE.SELECT_ENEMY
 	else:
 		current_player.action_victim = current_enemy
+		current_player.set_intent_target(current_enemy.Icon.texture)
 		player_pass_turn()
 
 func initiate_select_ally() -> void:

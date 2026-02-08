@@ -17,6 +17,8 @@ func reflection(_sprun_cost) -> void:
 
 const HIDE = preload("uid://24y2bom7sjw5")
 
+# it's broken
+
 func hideAction(_sprun_cost) -> void:
 	
 	# kitty debuffs themselves

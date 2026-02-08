@@ -3,12 +3,14 @@
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_cgt8y"]
 [ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="2_h470v"]
 [ext_resource type="Resource" uid="uid://cu7gb1lix0hyn" path="res://inGame/OneD/npc/player/playerTypes/kitty/hide.tres" id="3_pwn8c"]
+[ext_resource type="Resource" uid="uid://d21q8e62mtv0h" path="res://inGame/OneD/npc/player/playerTypes/kitty/reflection.tres" id="4_h470v"]
 [ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="4_it6sl"]
+[ext_resource type="Script" uid="uid://dxc2eww7oejej" path="res://inGame/OneD/npc/player/playerTypes/kitty/kitty.gd" id="5_pwn8c"]
 
 [resource]
 script = ExtResource("4_it6sl")
 sprun_slots = 9
-new_action = Array[ExtResource("1_cgt8y")]([ExtResource("3_pwn8c")])
+new_action = Array[ExtResource("1_cgt8y")]([ExtResource("3_pwn8c"), ExtResource("4_h470v")])
 player_type = 10
 name = "Kitty"
 attack_stat = 2
@@ -17,4 +19,5 @@ max_hp = 12
 is_player = true
 dimension_exist = 2
 icon = ExtResource("2_h470v")
+one_d_script = ExtResource("5_pwn8c")
 metadata/_custom_type_script = "uid://cx4piye3gqsc8"

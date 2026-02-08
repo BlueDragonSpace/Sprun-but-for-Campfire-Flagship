@@ -6,7 +6,7 @@ extends "res://inGame/OneD/npc/npc.gd"
 
 #@export var sprun_slots = 8 # ONLY CHANGE with set_sprun_slots()!!!!!!!!!!
 @export_range(0, 360) var sprun_container_angle = 135
-@export var sprun_distance = 0 ## wow that's pretty cool
+@export var sprun_distance = 60 ## wow that's pretty cool
 const SPRUN = preload("uid://b6wgjet502thq")
 #@export var sprun_active: int = 0 # ONLY CHANGE WITH set_sprun(new_sprun_count)!!!!!!!!!! 
 # they would be an automatically set method in code but Godot throws errors on ready
@@ -39,7 +39,6 @@ func add_actions(custom_actions : Array) -> void:
 	# every player has basics:
 			# attack, defend, focus, pass
 			# they also all have back button but that isn't controlled here
-	
 	
 	for this_action in custom_actions:
 		var new_button = ACTION_BUTTON.instantiate()

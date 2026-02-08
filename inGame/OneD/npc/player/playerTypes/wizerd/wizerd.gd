@@ -1,6 +1,5 @@
 extends "res://inGame/OneD/npc/player/player.gd"
 
-@onready var WizerdAnimate: AnimationPlayer = $WizerdAnimate
 
 func mega_lazer(atk_mult, sprun_loss) -> void:
 	
@@ -8,7 +7,7 @@ func mega_lazer(atk_mult, sprun_loss) -> void:
 	## Currently working on adding ATK and DFD values to the info bar
 	
 	action_victim.take_damage(NPC_instance.attack_stat * atk_mult)
-	WizerdAnimate.play("mega_lazer")
+	#WizerdAnimate.play("mega_lazer")
 	
 	set_sprun(NPC_instance.sprun_active - sprun_loss) # ? blunder, this should be set inside of the action...
 	
