@@ -160,6 +160,8 @@ Quirks:
 	
 	Putting an enemy inside of the player section makes the game freak out because it doesn't have set sprun slots
 		However, they can still defend perfectly fine! Most stuff still works hahaha
+	
+	DeBuffs aren't yet implemented in the Root NPC_resource. This may be a feature rather than an overlook...
 
 Turn sections:
 	Player Input
@@ -206,5 +208,8 @@ Art + SFX needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, Fireball, Megalazer... everything lol
 	Make a Sprun (pixel circle, or just circle) in Blender
 
-Currently finished:
-	
+Devlog lol:
+	For a large array of reasons, I couldn't transfer both scripts and resources the way I wanted
+	So instead, I'm just sending each character in as a PackedScene, that has the npc_resource that spawned it
+	(later)
+	Figured out the error: Godot was preventing recursion? Woulda been nice if it had just told me

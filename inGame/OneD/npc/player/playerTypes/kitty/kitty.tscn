@@ -2,11 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/OneD/npc/player/player.tscn" id="1_ceooe"]
 [ext_resource type="Script" uid="uid://dxc2eww7oejej" path="res://inGame/OneD/npc/player/playerTypes/kitty/kitty.gd" id="2_u7gom"]
+[ext_resource type="Resource" uid="uid://70kgje720sl1" path="res://root/root_resources/charas/kitty.tres" id="3_y47la"]
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="5_kmnnf"]
 [ext_resource type="AudioStream" uid="uid://bqjos10bo5lsn" path="res://placeholderArt/sfx/reflection.wav" id="6_s8276"]
 
 [node name="Kitty" unique_id=1295881673 instance=ExtResource("1_ceooe")]
 script = ExtResource("2_u7gom")
+NPC_resource = ExtResource("3_y47la")
 
 [node name="IntendedTargetIcon" parent="VBoxContainer/IntentBar" parent_id_path=PackedInt32Array(1183420490) index="1" unique_id=394397062]
 texture = null

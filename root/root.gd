@@ -11,7 +11,7 @@ enum DIMENSION {
 	THREE, # a wild time
 	FOUR, # an Angel's Wrath
 }
-var dimension = DIMENSION.ONE
+@export var dimension = DIMENSION.ONE
 
 @onready var OneDRoot: Control = $OneDRoot
 # @onready var ThreeDRoot: Node3D = $ThreeDRoot
@@ -21,6 +21,18 @@ var dimension = DIMENSION.ONE
 @onready var MouseRelease: AudioStreamPlayer = $MouseRelease
 @onready var KeyClick: AudioStreamPlayer = $KeyClick
 @onready var KeyRelease: AudioStreamPlayer = $KeyRelease
+
+const PLAYER = preload("uid://bd0auisdvfagw")
+
+func _ready() -> void:
+	if dimension == DIMENSION.ONE:
+		for chara in Charas:
+			var child = PLAYER.instantiate()
+			child.NPC_resource = chara
+			
+			OneDRoot.Charas.add_child(child)
+	
+	
 
 
 func _input(event: InputEvent) -> void:

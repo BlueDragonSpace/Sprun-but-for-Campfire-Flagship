@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c46ekwwfk3ei2" path="res://placeholderArt/sfx/focus.wav" id="3_js5vo"]
 [ext_resource type="PackedScene" uid="uid://cu1ueum56s1rl" path="res://root/three_d/three_d_root.tscn" id="3_ovlcs"]
 [ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="4_5jge4"]
+[ext_resource type="Resource" uid="uid://70kgje720sl1" path="res://root/root_resources/charas/kitty.tres" id="4_y3dhr"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="5_gj8ci"]
 
 [sub_resource type="Resource" id="Resource_5jge4"]
@@ -115,9 +116,9 @@ _data = {
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_e2nrw"]
 
-[node name="Root" type="Node" unique_id=923175965]
+[node name="Root" type="Node" unique_id=923175965 groups=["Root"]]
 script = ExtResource("2_jnlp7")
-Charas = Array[ExtResource("2_e2nrw")]([ExtResource("3_gj8ci")])
+Charas = Array[ExtResource("2_e2nrw")]([ExtResource("3_gj8ci"), ExtResource("4_y3dhr")])
 Enemies = Array[ExtResource("4_5jge4")]([SubResource("Resource_y3dhr")])
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]

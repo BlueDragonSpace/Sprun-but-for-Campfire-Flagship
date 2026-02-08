@@ -1,6 +1,9 @@
 extends Control
 
+
 # NodePathssssss
+@onready var Root : Node = get_tree().get_first_node_in_group("Root")
+
 @onready var NoiseBackground: TextureRect = $NoiseBackground
 
 @onready var Charas: GridContainer = $RootGame/BattleScreen/Charas
@@ -37,10 +40,13 @@ extends Control
 
 @onready var Animate: AnimationPlayer = $Animate
 
+
+
 var current_player = null:
 	set(new):
-		LittlePlayerIcon.texture = new.NPC_instance.icon
-		current_player = new
+		if is_node_ready() and Root.is_node_ready():
+			LittlePlayerIcon.texture = new.NPC_instance.icon
+			current_player = new
 var current_enemy = null
 
 const TURN_ORDER_POINT = preload("uid://kbdvggtyupd2") # current turn marker
@@ -155,7 +161,7 @@ func _ready() -> void:
 		$RootGame.modulate.a = 1.0
 		$IntroSequence.visible = false
 		%CharacterSelect.visible = false
-		initialize_game()
+		call_deferred("initialize_game")
 	else:
 		$RootGame.visible = false
 		$RootGame.modulate.a = 0.0
@@ -184,7 +190,7 @@ func initialize_game() -> void:
 	#NoiseBackground.texture.noise.seed = randi()
 	
 	#IncreaseSprunSlots.sprun_cost = current_player.sprun_slots
-	check_upgrade_cost_actions(current_player)
+	call_deferred("check_upgrade_cost_actions",current_player)
 	
 	call_deferred("set_turn_order")
 	call_deferred("check_cost_all_actions", current_player.NPC_instance.sprun_active)

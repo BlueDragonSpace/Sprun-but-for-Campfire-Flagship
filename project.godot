@@ -51,6 +51,7 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 OneDRoot="Global group for OneD nodes"
 ThreeDRoot="global group for accessing 3DRoot properties"
 CameraHandler="Global 3D access for CameraHandler"
+Root="forgetfulnot"
 
 [gui]
 
