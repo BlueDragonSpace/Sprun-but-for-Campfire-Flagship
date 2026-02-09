@@ -2,14 +2,23 @@
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_grypt"]
 [ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="2_8i47s"]
-[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/OneD/npc/base_actions/attack.tres" id="2_smb05"]
-[ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/OneD/npc/base_actions/defend.tres" id="3_y25uy"]
+[ext_resource type="Resource" uid="uid://ckrxohf0inp4t" path="res://inGame/OneD/npc/base_actions/passing.tres" id="2_y25uy"]
+[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/enemy.gd" id="4_kcnyg"]
 [ext_resource type="Texture2D" uid="uid://bsey7jstwivxa" path="res://placeholderArt/myPixelArt/EEVVILLLLRATT-1.png.png" id="4_y25uy"]
 
 [resource]
 script = ExtResource("2_8i47s")
-name = "Ratsworth"
-actions = Array[ExtResource("1_grypt")]([ExtResource("2_smb05"), ExtResource("3_y25uy")])
+hp_range = 0
+speed_range = 0
+attack_range = 0
+defend_range = 0
+evil_growl_sound = "im boring"
+name = "Ratsworth Mctemple the Third"
+speed_stat = 0
+attack_stat = 0
+defend_stat = 0
+max_hp = 1
+actions = Array[ExtResource("1_grypt")]([ExtResource("2_y25uy")])
 dimension_exist = 2
 icon = ExtResource("4_y25uy")
 metadata/_custom_type_script = "uid://3d1durpk8i24"

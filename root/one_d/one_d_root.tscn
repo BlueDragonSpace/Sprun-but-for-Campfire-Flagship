@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cm4voswejvugr" path="res://inGame/OneD/npc/player/playerTypes/wizerd/wizerd.tscn" id="5_ih4ah"]
 [ext_resource type="PackedScene" uid="uid://d25w6c0hemmxn" path="res://inGame/OneD/npc/player/playerTypes/kitty/kitty.tscn" id="6_ajhc2"]
 [ext_resource type="PackedScene" uid="uid://bhkrj58td4ng7" path="res://inGame/OneD/npc/player/playerTypes/ratface/rodent_lord.tscn" id="7_p81qd"]
-[ext_resource type="Resource" uid="uid://ctkcu5th37ue1" path="res://root/root_resources/enemies/rat_placeholder.tres" id="8_yxtmk"]
-[ext_resource type="PackedScene" uid="uid://yb81wdv11231" path="res://inGame/OneD/npc/enemy/types/rat_king/evil_rat.tscn" id="9_8iljn"]
 [ext_resource type="Texture2D" uid="uid://docng28uw84fm" path="res://placeholderArt/myPixelArt/Ooohhhhhhh-1.png.png" id="12_5g6ql"]
 [ext_resource type="Texture2D" uid="uid://co7fnqru8dy5r" path="res://placeholderArt/Xi.png" id="13_b8b7t"]
 [ext_resource type="Texture2D" uid="uid://cl4v4yeo1gn2m" path="res://placeholderArt/myPixelArt/SwordCarrot-1.png.png" id="14_cngxt"]
@@ -1271,7 +1269,7 @@ size_flags_vertical = 1
 min_value = 0.5
 max_value = 5.0
 step = 0.1
-value = 1.0
+value = 5.0
 
 [node name="MuteButton" parent="RootGame/TopBar/HBoxContainer" unique_id=125002870 instance=ExtResource("4_wohbx")]
 layout_mode = 2
@@ -1345,32 +1343,8 @@ size_flags_stretch_ratio = 0.3
 [node name="Enemies" type="GridContainer" parent="RootGame/BattleScreen" unique_id=2075127647]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 2
+columns = 3
 metadata/_edit_use_anchors_ = true
-
-[node name="EVIL Rat" parent="RootGame/BattleScreen/Enemies" unique_id=1401321464 instance=ExtResource("9_8iljn")]
-layout_mode = 2
-NPC_resource = ExtResource("8_yxtmk")
-
-[node name="EVIL Rat2" parent="RootGame/BattleScreen/Enemies" unique_id=654357473 instance=ExtResource("9_8iljn")]
-layout_mode = 2
-NPC_resource = ExtResource("8_yxtmk")
-
-[node name="EVIL Rat3" parent="RootGame/BattleScreen/Enemies" unique_id=772905080 instance=ExtResource("9_8iljn")]
-layout_mode = 2
-NPC_resource = ExtResource("8_yxtmk")
-
-[node name="EVIL Rat4" parent="RootGame/BattleScreen/Enemies" unique_id=687782247 instance=ExtResource("9_8iljn")]
-layout_mode = 2
-NPC_resource = ExtResource("8_yxtmk")
-
-[node name="EVIL Rat5" parent="RootGame/BattleScreen/Enemies" unique_id=849603004 instance=ExtResource("9_8iljn")]
-layout_mode = 2
-NPC_resource = ExtResource("8_yxtmk")
-
-[node name="EVIL Rat6" parent="RootGame/BattleScreen/Enemies" unique_id=2004394103 instance=ExtResource("9_8iljn")]
-layout_mode = 2
-NPC_resource = ExtResource("8_yxtmk")
 
 [node name="VSeparator" type="VSeparator" parent="RootGame/BattleScreen" unique_id=303485800]
 modulate = Color(1, 1, 1, 0)

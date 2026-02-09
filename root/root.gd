@@ -23,6 +23,8 @@ enum DIMENSION {
 @onready var KeyRelease: AudioStreamPlayer = $KeyRelease
 
 const ONE_D_PLAYER = preload("uid://bd0auisdvfagw")
+const ONE_D_ENEMY = preload("uid://cmoedndryju2o")
+
 const THREE_D_PLAYER = preload("uid://crwqeuod3418")
 
 const OneDScriptBasicPlayer = preload("uid://sj0wnis8wnpb") # basic Player Script
@@ -39,13 +41,16 @@ func _ready() -> void:
 			OneDRoot.process_mode = Node.PROCESS_MODE_INHERIT
 			for chara in Charas:
 				var child = ONE_D_PLAYER.instantiate()
-				
 				child.set_script(chara.one_d_script)
-				
 				child.NPC_resource = chara
 				
-				
 				OneDRoot.Charas.add_child(child)
+			for enemy in Enemies:
+				var child = ONE_D_ENEMY.instantiate()
+				child.set_script(enemy.one_d_script)
+				child.NPC_resource = enemy
+				
+				OneDRoot.Enemies.add_child(child)
 		DIMENSION.THREE:
 			ThreeDRoot.process_mode = Node.PROCESS_MODE_INHERIT
 			for chara in Charas:

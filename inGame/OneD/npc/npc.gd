@@ -5,6 +5,7 @@ extends Control
 
 @onready var OneDRoot = get_tree().get_current_scene().get_child(0)
 
+@onready var IntentBar: HBoxContainer = $VBoxContainer/IntentBar
 @onready var Intent: TextureRect = $VBoxContainer/IntentBar/Intent
 @onready var IntentLabel: Label = $VBoxContainer/IntentBar/Intent/IntentLabel
 @onready var IntendedTargetIcon: TextureRect = $VBoxContainer/IntentBar/IntendedTargetIcon
@@ -257,7 +258,6 @@ func die() -> void:
 
 func set_intent(action: Action, target_visible : bool = false) -> void:
 	
-	
 	IntentAnimate.play("show_intent")
 	
 	match(action.intent_type):
@@ -277,6 +277,11 @@ func set_intent(action: Action, target_visible : bool = false) -> void:
 	Intent.texture = action.icon
 	intent_notif_info = [action.name, action.button_info]
 	
+	if not NPC_instance.is_player:
+		if not NPC_instance.show_intent:
+			IntentBar.visible = false
+			# lazy? probably. But it works
+
 func intent_info(main, sub):
 	var notif = NOTIF.instantiate()
 	notif.main_text = main

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="GlobalEnemy" format=3 uid="uid://dj45gqjo5agpx"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_u4ct8"]
+[ext_resource type="Resource" uid="uid://cjqrm41m3pipl" path="res://inGame/OneD/npc/enemy/types/rat_king/spawn_evil_rat.tres" id="2_1ia72"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="3_1ia72"]
+[ext_resource type="Texture2D" uid="uid://c3j0sow8dr10g" path="res://placeholderArt/i_love_rattts.webp" id="3_mahyb"]
+[ext_resource type="Script" uid="uid://cyf0ult2jjqla" path="res://inGame/OneD/npc/enemy/types/rat_king/rat_king.gd" id="4_0vq6d"]
+
+[resource]
+script = ExtResource("3_1ia72")
+evil_growl_sound = "spittle"
+name = "Rat King"
+speed_stat = 6
+attack_stat = 4
+defend_stat = 3
+max_hp = 52
+actions = Array[ExtResource("1_u4ct8")]([ExtResource("2_1ia72")])
+dimension_exist = 2
+icon = ExtResource("3_mahyb")
+one_d_script = ExtResource("4_0vq6d")
+metadata/_custom_type_script = "uid://3d1durpk8i24"

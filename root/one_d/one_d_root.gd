@@ -6,6 +6,8 @@ extends Control
 
 @onready var NoiseBackground: TextureRect = $NoiseBackground
 
+@onready var PlaySpeedSlider: HSlider = $RootGame/TopBar/HBoxContainer/PlaySpeedSlider
+
 @onready var Charas: GridContainer = $RootGame/BattleScreen/Charas
 @onready var Enemies: GridContainer = $RootGame/BattleScreen/Enemies
 @onready var TurnOrder: VBoxContainer = $RootGame/BattleScreen/TurnOrder/TurnOrder
@@ -52,20 +54,22 @@ var current_enemy = null
 const TURN_ORDER_POINT = preload("uid://kbdvggtyupd2") # current turn marker
 const TURN_ORDER_MARKER = preload("uid://dim074qeqwx6x") # character/enemy order
 const ENEMY_SELECTION = preload("uid://c6hsrr8o4xvi3")
-## ENEMIES
-const BIGG = preload("uid://bs8426h8sndoy")
-const LITTLES = preload("uid://b6qpplfncfiyr")
-const MEA = preload("uid://d2nk51jmcg81m")
-const BERSERK = preload("uid://do18m24rjb481")
-const CHARGE_UP = preload("uid://d3n5wkylral0k") 
-const RAT_KING = preload("uid://bxwa3escjv8kc")
-const EVIL_RAT = preload("uid://yb81wdv11231")
 
+## ENEMIES
+const ONE_D_ENEMY = preload("uid://cmoedndryju2o")
+
+const BERSERK = preload("uid://chlrrowfm07q0")
+const BIGG = preload("uid://c21bhfumr2dul")
+const CHARGE_UP = preload("uid://bdc4jio0olt2g")
+const LITTLE = preload("uid://bdptqkvtxt8mo")
+const RAT_KING = preload("uid://dj45gqjo5agpx")
+const EVIL_RAT = preload("uid://b3cp265u1omur")
 
 @export var started : bool = false
 @export var current_dimension = false
 # how many characters can you start with
 @export var init_chara_num = 3
+@export var wave_scaling = 1.3 # how quickly the enemies' stats increase for each wave
 
 ## player section
 var player_actions = []
@@ -151,7 +155,7 @@ func _ready() -> void:
 	
 	button_info("You didn't character select...")
 	
-	Engine.time_scale = 1.0 # restarts for the top-right scale thing
+	Engine.time_scale = PlaySpeedSlider.value
 	
 	if started: 
 		
@@ -167,6 +171,7 @@ func _ready() -> void:
 		$RootGame.modulate.a = 0.0
 		$IntroSequence.visible = true
 		$IntroSequence.modulate.a = 1.0
+	
 	
 	if current_dimension:
 		pass
@@ -188,6 +193,7 @@ func initialize_game() -> void:
 	BAK.disabled = true
 	
 	#NoiseBackground.texture.noise.seed = randi()
+	manage_enemies_columns()
 	
 	#IncreaseSprunSlots.sprun_cost = current_player.sprun_slots
 	call_deferred("check_upgrade_cost_actions",current_player)
@@ -316,74 +322,71 @@ func add_enemy_wave() -> void:
 	current_wave += 1
 	$RootGame/TopBar/HBoxContainer/WaveNum.text = str(current_wave)
 	
-	# from 0 - 5
-	match(randi_range(5, 5)):
-		0:
-			# one big 
-			var big_boi = BIGG.instantiate()
-			#big_boi.name = 'BIGG'
+	#push_warning('hey buddy the wave system really needs to get fixed, Line 319')
+	
+	# from 0 - 4
+	match(randi_range(0,4)):
+		0: # one big
+			var big_boi = ONE_D_ENEMY.instantiate()
+			big_boi.NPC_resource = BIGG
 			Enemies.add_child(big_boi)
-			Enemies.columns = 1
-		1:
-			# many littles (4 - 6)
-			for i in randi_range(4, 6):
-				
-				var little = LITTLES.instantiate()
-				little.name = "Lytle " + str(i + 1)
-				# randomized stats are handled it its ready
+		1: # many littles (4 - 6)
+			for i in randi_range(4,6):
+				var little = ONE_D_ENEMY.instantiate()
+				little.NPC_resource = LITTLE
 				Enemies.add_child(little)
-				
-				little.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # makes each enemy darker
-				
-			Enemies.columns = 2
-		2:
-			# mea (always 3)
-			for i in 3:
-				var mea = MEA.instantiate()
-				mea.name = "Mea " + str(i + 1)
-				Enemies.add_child(mea)
-				
-				mea.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # makes each enemy darker
-		3: # 2 Berserks
-			var unpredictable = BERSERK.instantiate()
-			Enemies.add_child(unpredictable)
-			Enemies.columns = 1
-		4: # 2 littles and charge_up
-			# charge_up
-			var charger = CHARGE_UP.instantiate()
+				# makes each enemy darker (I don't have a good way of differentiating similar enemies yet)
+				little.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15)
+				little.name = "Lytle " + str(i + 1)
+		2: # 2 Berserks
+			for i in 2:
+				var unpredictable = ONE_D_ENEMY.instantiate()
+				unpredictable.NPC_resource = BERSERK
+				Enemies.add_child(unpredictable)
+				unpredictable.Icon.flip_h = true
+				unpredictable.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # easy differentiation
+		3: # 2 littles and charge_up
+			## charge_up
+			var charger = ONE_D_ENEMY.instantiate()
+			charger.set_script(CHARGE_UP.one_d_script) ## HIGHLY IMPORTANT, since charge_up has a custom script for it's attack patterns
+			charger.NPC_resource = CHARGE_UP
 			Enemies.add_child(charger)
 			
-			# littles
+			## Littles
 			for i in 2:
-				var little = LITTLES.instantiate()
-				little.name = "Lytle " + str(i + 1)
+				var little = ONE_D_ENEMY.instantiate()
+				little.NPC_resource = LITTLE
 				Enemies.add_child(little)
-				little.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # makes each enemy darker
-				
-			Enemies.columns = 3
-		5: # Rat King (basically Evil Rodent Lord) [starts with two extra rats]
-			
+				# makes each enemy darker (I don't have a good way of differentiating similar enemies yet)
+				little.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15)
+				little.name = "Lytle " + str(i + 1)
+		4: # Rat King (basically Evil Rodent Lord) [starts with two extra rats]
 			for i in 4:
 				match(i):
 					1:
-						var rat = EVIL_RAT.instantiate()
-						rat.name = "Sinister"
-						Enemies.add_child(rat)
+						var evil_rat = ONE_D_ENEMY.instantiate()
+						evil_rat.NPC_resource = EVIL_RAT
+						Enemies.add_child(evil_rat)
+						
+						evil_rat.name = 'Sinister'
 					2:
-						var rat_king = RAT_KING.instantiate()
+						var rat_king = ONE_D_ENEMY.instantiate()
+						rat_king.set_script(RAT_KING.one_d_script)
+						rat_king.NPC_resource = RAT_KING
 						Enemies.add_child(rat_king)
 					3:
-						var rat = EVIL_RAT.instantiate()
-						rat.name = "Right-handed rat"
-						Enemies.add_child(rat)
-					
-			Enemies.columns = 3
+						var evil_rat = ONE_D_ENEMY.instantiate()
+						evil_rat.NPC_resource = EVIL_RAT
+						Enemies.add_child(evil_rat)
+						
+						evil_rat.name = 'Right Hand Rat'
 		_:
-			print('unknown enemy wave value')
+			push_error('unknown enemy wave value woah there buddy')
+	manage_enemies_columns()
 	
 	# increases stats based on the wave number
 	for enemy in Enemies.get_children():
-		var mult = pow(1.3, current_wave - 1)
+		var mult = pow(wave_scaling, current_wave - 1)
 		#enemy.max_hp *= mult
 		enemy.set_max_hp(enemy.NPC_instance.max_hp * mult)
 		#enemy.NPC_Resource.attack_middle_value *= mult
@@ -391,6 +394,10 @@ func add_enemy_wave() -> void:
 		#enemy.NPC_Resource.defend_middle_value *= mult
 		enemy.NPC_instance.defend_stat *= mult
 		
+
+func manage_enemies_columns(child_count: int = Enemies.get_child_count()) -> void:
+	# this is a function because i predict I'll make a more complex animation for this later
+	Enemies.columns = ceil(sqrt(child_count))
 
 func disable_all_actions(boolean: bool) -> void:
 	for container in Actions.get_children():
@@ -492,6 +499,7 @@ func remove_dead_actions(dead: Node) -> void:
 		dead.CHARACTER_TYPE.ENEMY:
 			enemies_slain += 1
 			$RootGame/TopBar/HBoxContainer/EnemiesSlainNum.text = str(enemies_slain)
+			manage_enemies_columns()
 			
 			var total_wave_kill = true
 			

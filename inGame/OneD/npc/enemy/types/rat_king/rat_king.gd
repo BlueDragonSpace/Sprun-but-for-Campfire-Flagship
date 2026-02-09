@@ -4,11 +4,16 @@ var rats_spawned = 1
 
 var rat_names = ["Jimmy", "Angela", "Thomas", "Borborygmi", "Floo", "Quark", "Gertrude", "Pumpernickel", "Slight", "Compromise", "Deernose", "Iro"]
 
-const EVIL_RAT = preload("uid://yb81wdv11231")
+const ONE_D_ENEMY = preload("uid://cmoedndryju2o")
+const EVIL_RAT = preload("uid://b3cp265u1omur") # resource for it, rather than a scene
+
 
 func spawn_evil_rat() -> void:
 	
-	var rattt = EVIL_RAT.instantiate()
+	var rattt = ONE_D_ENEMY.instantiate()
+	
+	rattt.NPC_resource = EVIL_RAT
+	OneDRoot.Enemies.add_child(rattt)
 	
 	if rat_names.size() > 0:
 		var num = randi_range(0, rat_names.size() - 1)
@@ -17,5 +22,3 @@ func spawn_evil_rat() -> void:
 	else:
 		rattt.name = "EVIL Rat " + rats_spawned
 		rats_spawned += 1
-	
-	OneDRoot.Enemies.add_child(rattt)

@@ -1,16 +1,9 @@
-
-0.8 :P:
-	Make sure when updating any stat, overrides the instance, doesn't override the base
-	I'd presume you would need to put local to scene if this isn't automatic
-	i.e. : attack_stat is increased for the character for this run, doesn't increase attack_stat for every run
+0.6 Current Stuff for replacing everything with NPC Resource:
+	Redo spawn_wave() in OneDRoot
 	
-
-0.9: (????? where to put this now that I stopped working on it...)
-	Adding in pathfinding myself, since I need a little more control over pathfinding than Godot has
-		Pass in array of all blocks to ThreeDRoot
-		Finish pathfind function, link it to a node
-			(what I'm currently on) make sure the path works I guess...
-		Decide when to use the path_find function, and display it
+	Redoing all Enemies in order:
+	
+	Then redoing all the Players:
 
 1 (Connections):
 	Connecting:
@@ -65,11 +58,6 @@
 	Major issue: Connecting Global_Player stats to fit within 1D_Player stuff... needs a new script for every actio
 	
 	
-1.75 (not Connecting or bug, ver importan):
-	
-		Enemy: Have attacks be structured as Actions (like the class_name), maybe add sprun for charge attacks?
-			Makes it so that Enemies can be reused as Charas down the line
-	
 2 (Actions and fun stuff!):
 	Revival 
 	Attack that also charges sprun
@@ -97,6 +85,8 @@
 	
 	Red Panda (fire moves!!!):
 		I love Red Pandas okay
+	
+	All Actions have sound effects, in their resource, played on animation
 	
 	Enemies:
 		Attention grabbers (forces targeting, except for group attacks and probably something else)
@@ -216,7 +206,7 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	For a large array of reasons, I couldn't transfer both scripts and resources the way I wanted
-	So instead, I'm just sending each character in as a PackedScene, that has the npc_resource that spawned it
-	(later)
-	Figured out the error: Godot was preventing recursion? Woulda been nice if it had just told me
+	RootResource is now compatible to Enemies (including Charge_Up!)
+	Readded all enemies, 
+	Redid the wave adding system (for new resource)
+	Removed Middle enemy (cuz that's kinda boring)

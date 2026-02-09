@@ -23,7 +23,7 @@ const DIMENSION = 'ZERO, ONE, TWO, THREE, FOUR'
 # a fallback script, because usually I don't need a custom script for most enemies
 const BaseOneDEnemyScript = preload("uid://qk0yaqbhbtaf")
 # players just about always should have a custom script
-@export var one_d_script : Script = BaseOneDEnemyScript
+@export var one_d_script : Script = BaseOneDEnemyScript ## You must add_script, then add in the resource it it's a custom script!!
 
 @export_subgroup("2D Exclusive")
 @export var move_distance = 8

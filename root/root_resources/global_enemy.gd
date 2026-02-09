@@ -7,6 +7,9 @@ extends GlobalNPC
 @export var attack_range : int = 4
 @export var defend_range : int = 3
 
+#okee this isn't randomized actuallly
+@export var show_intent : bool = true
+
 ## mysterious! "What evil_growl_sound?" They say, "I never found that!"
 # and they go on a long winded ARG adventure to discover that nothing really matters
 # and the evil_growl_sould literally does nothing at all

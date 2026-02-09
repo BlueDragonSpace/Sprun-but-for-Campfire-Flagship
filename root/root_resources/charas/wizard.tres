@@ -18,7 +18,6 @@ sprun_active = 1
 new_action = Array[ExtResource("1_o4qjq")]([ExtResource("2_rgicw"), ExtResource("3_ev18f"), ExtResource("4_ioxnq"), ExtResource("5_djcu3"), ExtResource("6_yjhcq"), ExtResource("7_7bfps")])
 player_type = 6
 name = "Wizard"
-speed_stat = 8
 attack_stat = 5
 defend_stat = 4
 is_player = true

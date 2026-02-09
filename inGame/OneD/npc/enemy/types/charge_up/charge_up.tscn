@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d3n5wkylral0k"]
+[gd_scene format=3 uid="uid://bxbdhmudw2poc"]
 
 [ext_resource type="PackedScene" uid="uid://cmoedndryju2o" path="res://inGame/OneD/npc/enemy/enemy.tscn" id="1_ehdvl"]
 [ext_resource type="Script" uid="uid://t57hm3eeuoec" path="res://inGame/OneD/npc/enemy/types/charge_up/charge_up.gd" id="2_2od7p"]

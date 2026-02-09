@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="GlobalEnemy" format=3 uid="uid://chlrrowfm07q0"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_jmqly"]
+[ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/OneD/npc/base_actions/defend.tres" id="2_ts8f5"]
+[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/enemy.gd" id="2_wch1t"]
+[ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/OneD/npc/base_actions/attack.tres" id="3_jy34j"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="3_v1pgg"]
+[ext_resource type="Texture2D" uid="uid://bemslt7plno52" path="res://placeholderArt/shedinja.png" id="4_t8bpt"]
+
+[resource]
+script = ExtResource("3_v1pgg")
+hp_range = 6
+show_intent = false
+evil_growl_sound = "AHAHHHHHHHHAAA"
+name = "Berserk"
+speed_stat = 8
+max_hp = 15
+actions = Array[ExtResource("1_jmqly")]([ExtResource("2_ts8f5"), ExtResource("3_jy34j")])
+dimension_exist = 2
+icon = ExtResource("4_t8bpt")
+metadata/_custom_type_script = "uid://3d1durpk8i24"

@@ -10,5 +10,5 @@ func_name = "spawn_evil_rat"
 icon = ExtResource("1_qlpfm")
 action_type = 3
 intent_type = 4
-button_info = "Spawns an EVIL Rat"
+button_info = "Spawns an EVIL Rat."
 metadata/_custom_type_script = "uid://diifqu7v6338q"

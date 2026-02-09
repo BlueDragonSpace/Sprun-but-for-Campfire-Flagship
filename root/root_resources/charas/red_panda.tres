@@ -9,6 +9,7 @@
 script = ExtResource("2_nu5x3")
 player_type = 2
 name = "Red Panda"
+is_player = true
 icon = ExtResource("2_jymac")
 one_d_script = ExtResource("3_jymac")
 metadata/_custom_type_script = "uid://cx4piye3gqsc8"
