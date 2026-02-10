@@ -480,10 +480,13 @@ func remove_dead_actions(dead: Node) -> void:
 				num += 1
 				continue
 				
+				#E 0:01:04:898   remove_dead_actions: Invalid access to property or key 'action_victim' on a base object of type 'previously freed'.
+				
+				
 			if turn_order_data[num][2].action_victim == dead:
 				if turn_order_data[num][2].action_victim is Node:
 					#turn_order_data.remove_at(num)
-					turn_order_data[num] = [null, null, null, Callable(Global, "empty_function")]
+					turn_order_data[num] = [null, null, null, Callable(Global, "empty_function"), true]
 				elif turn_order_data[num][2].action_victim is Array:
 					print('action_victim is array but I havent done that yet')
 				else:

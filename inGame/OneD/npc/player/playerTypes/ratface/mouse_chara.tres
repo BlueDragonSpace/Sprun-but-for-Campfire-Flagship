@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://b4a4w1fiyg3jt"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_78fdq"]
+[ext_resource type="Texture2D" uid="uid://c3lfkqfcsjsc4" path="res://placeholderArt/mouseOrRat.png" id="2_w0kei"]
+[ext_resource type="Script" uid="uid://sj0wnis8wnpb" path="res://inGame/OneD/npc/player/player.gd" id="3_38amd"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="4_rnlox"]
+
+[resource]
+script = ExtResource("4_rnlox")
+sprun_slots = 0
+player_type = 64
+name = "Mouse"
+speed_stat = 9
+attack_stat = 1
+defend_stat = 1
+max_hp = 4
+is_player = true
+icon = ExtResource("2_w0kei")
+one_d_script = ExtResource("3_38amd")
+metadata/_custom_type_script = "uid://cx4piye3gqsc8"

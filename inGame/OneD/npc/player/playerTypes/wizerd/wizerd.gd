@@ -10,8 +10,6 @@ func mega_lazer(atk_mult, sprun_loss) -> void:
 	#WizerdAnimate.play("mega_lazer")
 	
 	set_sprun(NPC_instance.sprun_active - sprun_loss) # ? blunder, this should be set inside of the action...
-	
-	$MegaLazer.play()
 
 func heal(sprun_loss : int) -> void:
 	action_victim.current_hp += 10

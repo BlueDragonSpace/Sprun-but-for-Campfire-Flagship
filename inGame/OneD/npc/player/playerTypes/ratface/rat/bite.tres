@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="Action" format=3 uid="uid://bqmql7wi5r6d7"]
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_5t5yn"]
+[ext_resource type="Texture2D" uid="uid://bqqxqq3uehomm" path="res://placeholderArt/vampireBite.webp" id="1_77clu"]
 
 [resource]
 script = ExtResource("1_5t5yn")
 name = "Bite"
 func_name = "bite"
+icon = ExtResource("1_77clu")
+intent_type = 6
 player_type = 32
-atk_mult = 0.3
 prep_disable = true
 needs_target = true
 show_target_intent = true

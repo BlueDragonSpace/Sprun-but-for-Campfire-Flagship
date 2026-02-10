@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://eostg6rwpxwg"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_ks7jy"]
+[ext_resource type="Texture2D" uid="uid://bs2vr1mqvjcph" path="res://placeholderArt/myPixelArt/RodentLordRn-1.png.png" id="2_l6uvo"]
+[ext_resource type="Resource" uid="uid://d2ing130rolfl" path="res://inGame/OneD/npc/player/playerTypes/ratface/RAT.tres" id="3_cjvel"]
+[ext_resource type="Resource" uid="uid://qt4lsl84qfnm" path="res://inGame/OneD/npc/player/playerTypes/ratface/MOUSE.tres" id="4_m44q6"]
+[ext_resource type="Resource" uid="uid://dbg3w60ck22n6" path="res://inGame/OneD/npc/player/playerTypes/ratface/HAMSTER.tres" id="5_ahjvo"]
+[ext_resource type="Script" uid="uid://c2yhgf20ky871" path="res://inGame/OneD/npc/player/playerTypes/ratface/rodent_lord.gd" id="6_er326"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="7_6x8pj"]
+
+[resource]
+script = ExtResource("7_6x8pj")
+sprun_slots = 3
+new_action = Array[ExtResource("1_ks7jy")]([ExtResource("3_cjvel"), ExtResource("4_m44q6"), ExtResource("5_ahjvo")])
+player_type = 18
+name = "Rodent Lord"
+speed_stat = 6
+max_hp = 27
+is_player = true
+dimension_exist = 2
+icon = ExtResource("2_l6uvo")
+one_d_script = ExtResource("6_er326")
+metadata/_custom_type_script = "uid://cx4piye3gqsc8"

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://c6xyom6hfsfnk"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_orgme"]
+[ext_resource type="Texture2D" uid="uid://dmidkhslqal7n" path="res://placeholderArt/myPixelArt/Rattttttt-1.png.png" id="2_7eitq"]
+[ext_resource type="Resource" uid="uid://bqmql7wi5r6d7" path="res://inGame/OneD/npc/player/playerTypes/ratface/rat/bite.tres" id="3_py8od"]
+[ext_resource type="Script" uid="uid://bp32kjajsr6et" path="res://inGame/OneD/npc/player/playerTypes/ratface/rat/rat.gd" id="4_js505"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="5_5psyk"]
+
+[resource]
+script = ExtResource("5_5psyk")
+new_action = Array[ExtResource("1_orgme")]([ExtResource("3_py8od")])
+player_type = 32
+name = "Rat forkin"
+speed_stat = 8
+attack_stat = 2
+defend_stat = 1
+max_hp = 4
+is_player = true
+dimension_exist = 2
+icon = ExtResource("2_7eitq")
+one_d_script = ExtResource("4_js505")
+metadata/_custom_type_script = "uid://cx4piye3gqsc8"

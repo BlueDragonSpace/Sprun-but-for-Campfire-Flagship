@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://bugkb3icjvkwe"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_vkayc"]
+[ext_resource type="Texture2D" uid="uid://dwlqw4pyj0hji" path="res://placeholderArt/sadHamster-removebg-preview.png" id="2_xunsm"]
+[ext_resource type="Script" uid="uid://sj0wnis8wnpb" path="res://inGame/OneD/npc/player/player.gd" id="3_cf1cs"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="4_hhuuo"]
+
+[resource]
+script = ExtResource("4_hhuuo")
+sprun_slots = 0
+player_type = 128
+name = "Hamster"
+speed_stat = 2
+attack_stat = 1
+defend_stat = 1
+max_hp = 7
+is_player = true
+dimension_exist = 2
+icon = ExtResource("2_xunsm")
+one_d_script = ExtResource("3_cf1cs")
+metadata/_custom_type_script = "uid://cx4piye3gqsc8"

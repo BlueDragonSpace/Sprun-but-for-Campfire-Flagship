@@ -12,8 +12,6 @@ func reflection(_sprun_cost) -> void:
 	# No, you aren't going to go for a second stat boost. I refuse to let this happen
 	set_sprun_slots(1)
 	set_sprun(0)
-	
-	$Reflecting.play()
 
 const HIDE = preload("uid://24y2bom7sjw5")
 

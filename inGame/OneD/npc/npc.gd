@@ -174,7 +174,7 @@ func do_intended_action() -> void:
 	notif.text = intent_notif_info[0] # + "\n" + IntentLabel.text
 	add_child(notif)
 	
-	if intended_action_resource.attack_all: 
+	if intended_action_resource.attack_all:
 		# is it a player or an enemy?
 		if NPC_instance.is_player:
 			for enemy in OneDRoot.Enemies.get_children():

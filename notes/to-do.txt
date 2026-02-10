@@ -1,9 +1,8 @@
 0.6 Current Stuff for replacing everything with NPC Resource:
-	Redo spawn_wave() in OneDRoot
-	
-	Redoing all Enemies in order:
-	
 	Then redoing all the Players:
+		# Rat (Chara) and Enemy renaming issues bro
+		
+	Also make sure the rat gains poison upon the Raccoon existing
 
 1 (Connections):
 	Connecting:
@@ -206,7 +205,4 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	RootResource is now compatible to Enemies (including Charge_Up!)
-	Readded all enemies, 
-	Redid the wave adding system (for new resource)
-	Removed Middle enemy (cuz that's kinda boring)
+	Fixed a death error
