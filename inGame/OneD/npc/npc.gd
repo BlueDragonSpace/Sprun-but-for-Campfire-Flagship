@@ -130,6 +130,24 @@ func check_debuff(debuff_in_question) -> Node: # returns if the debuff exists, a
 	
 	return node
 
+func take_debuff(debuff_resource, add_expiration):
+	var node_with_debuff = check_debuff(debuff_resource.debuff_type)
+	
+	if node_with_debuff: # already has that debuff, just add the number
+		node_with_debuff.expiration += add_expiration
+	else:
+		var salve = check_debuff(DeBuff.DEBUFF.SALVE)
+		if debuff_resource.is_bad and salve: # prevent bad debuff from salve
+			salve.expiration = 0 
+			# the "bad" debuff never gets added in the first place
+		else: 
+			# add the debuff
+			var child = DE_BUFF_RECT.instantiate()
+			child.debuff = debuff_resource
+			DeBuffs.add_child(child)
+			child.expiration = add_expiration
+	
+
 func set_intended_action(action: Action, callable : Callable = Callable(self, action.func_name), random: bool = false) -> void:
 	
 	# callable is passed in separately to action in case I need to .bind() something to the Callable
@@ -213,18 +231,6 @@ func take_damage(damage, attacker = null, ignore_shield = false) -> void:
 
 func add_take_damage(_attacker): # additional stuff I add to take_damage() in other classes (like enemy)
 	pass
-
-func take_debuff(debuff_resource, add_expiration):
-	var node_with_debuff = check_debuff(debuff_resource.debuff_type)
-	
-	if node_with_debuff:
-		node_with_debuff.expiration += add_expiration
-	else:
-		var child = DE_BUFF_RECT.instantiate()
-		child.debuff = debuff_resource
-		DeBuffs.add_child(child)
-		child.expiration = add_expiration
-	
 
 func defend():
 	self.current_defense += NPC_instance.defend_stat

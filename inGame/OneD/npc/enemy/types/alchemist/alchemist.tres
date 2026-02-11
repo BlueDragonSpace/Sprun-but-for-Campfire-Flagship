@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="GlobalEnemy" format=3 uid="uid://b3ba6hcfubm3r"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_1ibyg"]
+[ext_resource type="Resource" uid="uid://cyj0h4q4cvi5a" path="res://inGame/OneD/npc/enemy/types/alchemist/engross.tres" id="4_5ugm3"]
+[ext_resource type="Texture2D" uid="uid://c7025ti1ik0ia" path="res://placeholderArt/poison.webp" id="5_ns5c1"]
+[ext_resource type="Script" uid="uid://cu5ijlwnptiue" path="res://inGame/OneD/npc/enemy/types/alchemist/alchemist.gd" id="6_gjrk7"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="7_b0xdd"]
+
+[resource]
+script = ExtResource("7_b0xdd")
+attack_range = 1
+evil_growl_sound = "*splish splash*"
+name = "Alchemist"
+speed_stat = 4
+attack_stat = 3
+defend_stat = 8
+max_hp = 16
+actions = Array[ExtResource("1_1ibyg")]([ExtResource("4_5ugm3")])
+dimension_exist = 2
+icon = ExtResource("5_ns5c1")
+one_d_script = ExtResource("6_gjrk7")
+metadata/_custom_type_script = "uid://3d1durpk8i24"

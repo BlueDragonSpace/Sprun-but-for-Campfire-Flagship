@@ -7,16 +7,16 @@ extends GlobalNPC
 @export var new_action : Array[Action]
 @export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var player_type : int = 0
 
-
-@export_group("1D Exclusive")
-@export var frying_wires = 'little toot toot train'
-# possible: ATK, DFD, SPD, upgrade costs (but first get this working)
-
-@export_group("2D_exclusive")
-@export var placeholder2d = "awesometastic"
-
-@export_group("3D exclusive")
-@export var placehodler3d = 'mspling iz fnu'
+#
+#@export_group("1D Exclusive")
+#@export var frying_wires = 'little toot toot train'
+## possible: ATK, DFD, SPD, upgrade costs (but first get this working)
+#
+#@export_group("2D_exclusive")
+#@export var placeholder2d = "awesometastic"
+#
+#@export_group("3D exclusive")
+#@export var placehodler3d = 'mspling iz fnu'
 
 
 # automatically sets the actions for the player, since custom player actions are in new_actions instead

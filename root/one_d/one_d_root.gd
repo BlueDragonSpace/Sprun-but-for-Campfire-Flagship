@@ -42,8 +42,6 @@ extends Control
 
 @onready var Animate: AnimationPlayer = $Animate
 
-
-
 var current_player = null:
 	set(new):
 		if is_node_ready() and Root.is_node_ready():
@@ -80,7 +78,11 @@ var current_turn = 0
 var current_wave = 0
 var last_tab = 0 # when going from attack to selection, switches you to BAK, which is kinda annoying, so now it goes back to ATK 
 ## prep section
-@export var in_prep_round = false
+@export var in_prep_round = false:
+	set(new):
+		in_prep_round = new
+		in_first_prep_round = new
+var in_first_prep_round = false
 var prep_rounds_remaining = 3
 
 ## In-Battle
@@ -736,6 +738,11 @@ func final_pass_turn() -> void:
 	for enemy in Enemies.get_children():
 		final_pass_debuff_check(enemy)
 	
+	# yeah yeah I know this is a weird spot
+	# I need this after the final_pass_debuff check to make sure special expiration works right
+	if in_first_prep_round:
+		in_first_prep_round = false
+	
 	$RootGame/NextRound.play()
 	
 	BAK.disabled = true
@@ -754,7 +761,16 @@ func final_pass_debuff_check(npc: Node) -> void:
 			DeBuff.DEBUFF.POISON:
 				npc.take_damage(debuff_child.expiration, null, true) # ignores shields
 		
-		debuff_child.expiration -= 1
+		# ticks down expiration, as long as it doesn't have special expiration
+		match debuff_child.debuff.special_expiration:
+			DeBuff.SPECIAL_EXPIRATION.NONE:
+				debuff_child.expiration -= 1
+			DeBuff.SPECIAL_EXPIRATION.PREP:
+				print("in first prep round??")
+				if in_first_prep_round:
+					debuff_child.expiration = 0
+					print('it was in the first prep round lol')
+		
 
 ## Transitioning between dimensions
 

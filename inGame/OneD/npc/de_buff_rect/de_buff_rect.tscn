@@ -91,7 +91,7 @@ _data = {
 &"pop_in": SubResource("Animation_6s5l5")
 }
 
-[node name="DeBuffRect" type="TextureRect"]
+[node name="DeBuffRect" type="TextureRect" unique_id=252693488]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -104,7 +104,7 @@ stretch_mode = 5
 script = ExtResource("2_xe3hw")
 debuff = ExtResource("3_y8dff")
 
-[node name="Expiration" type="Label" parent="."]
+[node name="Expiration" type="Label" parent="." unique_id=667584218]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -122,11 +122,9 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Animate" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_scwi5")
-}
-autoplay = "pop_in"
+[node name="Animate" type="AnimationPlayer" parent="." unique_id=180560391]
+libraries/ = SubResource("AnimationLibrary_scwi5")
+autoplay = &"pop_in"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

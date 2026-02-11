@@ -1,9 +1,3 @@
-0.6 Current Stuff for replacing everything with NPC Resource:
-	Then redoing all the Players:
-		# Rat (Chara) and Enemy renaming issues bro
-		
-	Also make sure the rat gains poison upon the Raccoon existing
-
 1 (Connections):
 	Connecting:
 		
@@ -205,4 +199,8 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	Fixed a death error
+	Created Salve, Sigilant (Salvation), Alchemist (Engross)
+	Special Expiration
+		Make special expiratio expire at the end of a round (and not just whenever during a prep round)
+		Make attacks, hp, speed, and defend randomize on enemies)
+	

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://cyj0h4q4cvi5a"]
+
+[ext_resource type="Texture2D" uid="uid://clbdoc6jna02p" path="res://placeholderArt/myPixelArt/stinkygross.png" id="1_2oxev"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_0ntgy"]
+
+[resource]
+script = ExtResource("2_0ntgy")
+name = "Engross"
+func_name = "engross"
+icon = ExtResource("1_2oxev")
+action_type = 3
+atk_mult = 1.0
+needs_target = true
+show_target_intent = true
+button_info = "Stinky, and gross. Of course it's poison."
+metadata/_custom_type_script = "uid://diifqu7v6338q"

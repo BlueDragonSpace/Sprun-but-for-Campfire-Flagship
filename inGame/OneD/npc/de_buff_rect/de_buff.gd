@@ -33,8 +33,8 @@ enum DEBUFF {
 # expiration in turns
 @export var expiration = 1
 
-enum EXPIRATION_TIME {
+enum SPECIAL_EXPIRATION {
 	NONE,
 	PREP,
 }
-@export var special_expiration = EXPIRATION_TIME.NONE
+@export var special_expiration = SPECIAL_EXPIRATION.NONE

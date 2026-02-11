@@ -17,7 +17,7 @@ enum ACTION_TYPE {ATTACK, DEFEND, SPRUN, OTHER}
 enum INTENT {ATTACK, DEFEND, SPRUN, HEAL, MINION, BUFF, DEBUFF, PASS, OTHER}
 @export var intent_type = INTENT.ATTACK
 ## must be one of these players to see the ability (also if used illegitamitely, does the empty function)
-const PLAYER_TYPE = 'All, Basic, Wizerd, Kitty, Rodent Lord, Rat, Mouse, Hamster, Porcupine, Squirel, Flying Squirel, Beaver, Raccoon'
+const PLAYER_TYPE = 'All, Basic, Wizerd, Kitty, Rodent Lord, Rat, Mouse, Hamster, Porcupine, Squirel, Flying Squirel, Beaver, Raccoon, Sigilant, Sigilant ON'
 
 @export_custom(PROPERTY_HINT_FLAGS, PLAYER_TYPE) var player_type : int = 0
 @export var sprun_necessary: int = 0 ## necessary to carry out the action

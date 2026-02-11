@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DeBuff" format=3 uid="uid://jh6814od43pa"]
+
+[ext_resource type="Script" uid="uid://bwk8y3s88n6m6" path="res://inGame/OneD/npc/de_buff_rect/de_buff.gd" id="1_3ud5o"]
+[ext_resource type="Texture2D" uid="uid://btoxplcgu2wx7" path="res://placeholderArt/stock_potion.webp" id="1_bym0q"]
+
+[resource]
+script = ExtResource("1_3ud5o")
+debuff_type = 3
+display_name = "Salve"
+info = "Negates the next debuff.
+Expires at the end of a wave."
+icon = ExtResource("1_bym0q")
+expiration = 99
+special_expiration = 1
+metadata/_custom_type_script = "uid://bwk8y3s88n6m6"

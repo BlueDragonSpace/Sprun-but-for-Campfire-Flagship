@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://vlux50gm8n4c"]
+
+[ext_resource type="Texture2D" uid="uid://btoxplcgu2wx7" path="res://placeholderArt/stock_potion.webp" id="1_5f8wi"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_ntva4"]
+
+[resource]
+script = ExtResource("2_ntva4")
+name = "Salvation"
+func_name = "salvation"
+icon = ExtResource("1_5f8wi")
+action_type = 3
+intent_type = 5
+player_type = 8192
+sprun_necessary = 2
+sprun_loss = 2
+needs_target = true
+ally_target = true
+show_target_intent = true
+button_info = "Creates a SALVE, and removes any current debuffs.
+SALVE prevents the next debuff, expires at end of wave."
+metadata/_custom_type_script = "uid://diifqu7v6338q"
