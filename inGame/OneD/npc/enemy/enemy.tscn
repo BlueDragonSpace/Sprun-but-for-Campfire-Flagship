@@ -7,13 +7,6 @@
 [node name="Enemy" unique_id=654357473 instance=ExtResource("1_y8jsf")]
 size_flags_vertical = 3
 script = ExtResource("2_sumcb")
-hp_range = 5
-speed_middle_value = 5
-speed_range = 2
-attack_middle_value = 7
-attack_range = 5
-defend_middle_value = 5
-defend_range = 3
 NPC_resource = ExtResource("3_f6q3n")
 
 [node name="Icon" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="3" unique_id=1248940755]

@@ -82,6 +82,8 @@ var size_transition = 0.0:
 		size_flags_stretch_ratio = size_transition
 		set_deferred("HP.size_flags_stretch_ratio", size_transition)
 
+var previous_action : Action.ACTION_TYPE = Action.ACTION_TYPE.OTHER
+
 const DE_BUFF_RECT = preload("uid://b2tkettp813ev")
 
 func _ready() -> void:
@@ -160,11 +162,22 @@ func set_intended_action(action: Action, callable : Callable = Callable(self, ac
 	if random:
 		# generally, random is used for enemies. 
 		# certain enemies have more complex attack patterns, but this is generally their code only
-		var random_action = NPC_instance.actions[randi_range(0, NPC_instance.actions.size() - 1)]
+		
+		var possible_actions = NPC_instance.actions.duplicate(true)
+		
+		# prevents defending twice in a row (defend must always be the second action for this to work right)
+		if previous_action == Action.ACTION_TYPE.DEFEND:
+			print('removing defend from arrays')
+			possible_actions.remove_at(1)
+		
+		var random_action = possible_actions[randi_range(0, possible_actions.size() - 1)]
 		
 		intended_action = Callable(self, random_action.func_name)
 		set_intent(random_action, random_action.show_target_intent)
 		intended_action_resource = random_action
+		previous_action = intended_action_resource.action_type
+		print(previous_action as Action.ACTION_TYPE)
+		print("-----------------------------")
 	else:
 		intended_action = callable
 		set_intent(action)
@@ -204,6 +217,13 @@ func do_intended_action() -> void:
 				intended_action.call()
 	else:
 		intended_action.call()
+	
+	add_do_intended_action()
+
+func add_do_intended_action() -> void:
+	# for enemies, randomizes their stats
+	# for players, usually does nothing
+	pass
  
 func take_damage(damage, attacker = null, ignore_shield = false) -> void:
 	

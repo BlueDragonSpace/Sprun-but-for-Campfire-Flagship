@@ -6,6 +6,7 @@ extends GlobalNPC
 @export var speed_range  : int = 3
 @export var attack_range : int = 4
 @export var defend_range : int = 3
+@export var wave_scaling : float = 1.0 ## should be set automatically based on wave count
 
 #okee this isn't randomized actuallly
 @export var show_intent : bool = true

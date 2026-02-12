@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cu1ueum56s1rl" path="res://root/three_d/three_d_root.tscn" id="3_ovlcs"]
 [ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="4_5jge4"]
 [ext_resource type="Resource" uid="uid://cotvxl6y2u8w" path="res://inGame/OneD/npc/player/playerTypes/sigilant/sigilant.tres" id="5_0n2s5"]
-[ext_resource type="Resource" uid="uid://ctkcu5th37ue1" path="res://root/root_resources/enemies/rat_placeholder.tres" id="5_gj8ci"]
+[ext_resource type="Resource" uid="uid://bdptqkvtxt8mo" path="res://inGame/OneD/npc/enemy/types/little.tres" id="5_gj8ci"]
 
 [sub_resource type="Animation" id="Animation_js5vo"]
 length = 0.001
@@ -109,7 +109,7 @@ _data = {
 [node name="Root" type="Node" unique_id=923175965 groups=["Root"]]
 script = ExtResource("2_jnlp7")
 Charas = Array[ExtResource("2_e2nrw")]([ExtResource("5_0n2s5")])
-Enemies = Array[ExtResource("4_5jge4")]([ExtResource("5_gj8ci")])
+Enemies = Array[ExtResource("4_5jge4")]([ExtResource("5_gj8ci"), ExtResource("5_gj8ci"), ExtResource("5_gj8ci"), ExtResource("5_gj8ci"), ExtResource("5_gj8ci")])
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]
 started = true

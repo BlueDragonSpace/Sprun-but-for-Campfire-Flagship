@@ -10,8 +10,8 @@
 [resource]
 script = ExtResource("6_o2qyx")
 hp_range = 3
-attack_range = 3
-defend_range = 2
+attack_range = 2
+defend_range = 1
 evil_growl_sound = "what a twink"
 name = "Lytle (num set in code)"
 speed_stat = 7

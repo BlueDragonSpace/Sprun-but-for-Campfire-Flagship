@@ -75,11 +75,13 @@ var player_actions = []
 var mid_animation_action = func() : pass
 var turn_order_data = [] # speed_stat, icon, node_path, action, is_dead
 var current_turn = 0
-var current_wave = 0
+@export var current_wave = 0
 var last_tab = 0 # when going from attack to selection, switches you to BAK, which is kinda annoying, so now it goes back to ATK 
 ## prep section
 @export var in_prep_round = false:
 	set(new):
+		# so far nowhere in the code is in_prep_round set to true
+		# it's only set this way (currently, 2/11/26) in an animation
 		in_prep_round = new
 		in_first_prep_round = new
 var in_first_prep_round = false
@@ -327,7 +329,7 @@ func add_enemy_wave() -> void:
 	#push_warning('hey buddy the wave system really needs to get fixed, Line 319')
 	
 	# from 0 - 4
-	match(randi_range(0,4)):
+	match(randi_range(0,0)):
 		0: # one big
 			var big_boi = ONE_D_ENEMY.instantiate()
 			big_boi.NPC_resource = BIGG
@@ -389,12 +391,8 @@ func add_enemy_wave() -> void:
 	# increases stats based on the wave number
 	for enemy in Enemies.get_children():
 		var mult = pow(wave_scaling, current_wave - 1)
-		#enemy.max_hp *= mult
 		enemy.set_max_hp(enemy.NPC_instance.max_hp * mult)
-		#enemy.NPC_Resource.attack_middle_value *= mult
-		enemy.NPC_instance.attack_stat *= mult
-		#enemy.NPC_Resource.defend_middle_value *= mult
-		enemy.NPC_instance.defend_stat *= mult
+		enemy.NPC_instance.wave_scaling = mult
 		
 
 func manage_enemies_columns(child_count: int = Enemies.get_child_count()) -> void:
@@ -706,9 +704,9 @@ func final_pass_turn() -> void:
 			current_player = Charas.get_child(num) # sets the current_player to one that's not dead
 		break
 	
-	for chara in Charas.get_children():
-		if chara.is_dead == false:
-			chara.hide_intent()
+	#for chara in Charas.get_children():
+		#if chara.is_dead == false:
+			#chara.hide_intent()
 	
 	if in_prep_round:
 		prep_rounds_remaining -= 1
@@ -766,10 +764,8 @@ func final_pass_debuff_check(npc: Node) -> void:
 			DeBuff.SPECIAL_EXPIRATION.NONE:
 				debuff_child.expiration -= 1
 			DeBuff.SPECIAL_EXPIRATION.PREP:
-				print("in first prep round??")
 				if in_first_prep_round:
 					debuff_child.expiration = 0
-					print('it was in the first prep round lol')
 		
 
 ## Transitioning between dimensions

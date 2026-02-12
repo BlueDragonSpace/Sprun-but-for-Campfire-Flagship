@@ -9,7 +9,7 @@
 
 [resource]
 script = ExtResource("6_3pyo5")
-hp_range = 7
+hp_range = 6
 name = "BIGG"
 speed_stat = 4
 attack_stat = 8

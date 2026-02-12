@@ -199,8 +199,7 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	Created Salve, Sigilant (Salvation), Alchemist (Engross)
-	Special Expiration
-		Make special expiratio expire at the end of a round (and not just whenever during a prep round)
-		Make attacks, hp, speed, and defend randomize on enemies)
+		fixed annoying intent popup at end of turn
+		randomized enemy stats (again), now works with wave_scaling
+		enemies don't defend twice in a row
 	
