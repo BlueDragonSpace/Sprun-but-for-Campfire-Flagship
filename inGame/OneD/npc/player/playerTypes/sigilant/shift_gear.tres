@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://cjb7jl4jmr8v6"]
+
+[ext_resource type="Texture2D" uid="uid://btt707mw1vw14" path="res://placeholderArt/myPixelArt/lazyGea1.png" id="1_8k3my"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_y0o34"]
+
+[resource]
+script = ExtResource("2_y0o34")
+name = "Shift Gear"
+func_name = "shift_gear"
+icon = ExtResource("1_8k3my")
+action_type = 3
+intent_type = 5
+player_type = 24576
+button_info = "Allows Sigilant to utilize more powerful moves, but makes them lack basic actions (ATK, DFD, FOCUS)"
+metadata/_custom_type_script = "uid://diifqu7v6338q"

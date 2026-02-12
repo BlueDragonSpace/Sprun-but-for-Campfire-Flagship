@@ -199,7 +199,4 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-		fixed annoying intent popup at end of turn
-		randomized enemy stats (again), now works with wave_scaling
-		enemies don't defend twice in a row
 	

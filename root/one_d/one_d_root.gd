@@ -600,7 +600,11 @@ func initiate_select_enemy(is_quick : bool = false) -> void:
 		turn = TURN_TYPE.SELECT_ENEMY
 	else:
 		current_player.action_victim = current_enemy
-		current_player.set_intent_target(current_enemy.Icon.texture)
+		if not is_quick:
+			current_player.set_intent_target(current_enemy.Icon.texture)
+		else:
+			current_player.intended_action.call()
+			current_player.intended_action = Global.empty_function
 		player_pass_turn()
 
 func initiate_select_ally() -> void:

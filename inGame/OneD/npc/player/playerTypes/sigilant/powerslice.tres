@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://by6ai6phaadmv"]
+
+[ext_resource type="Texture2D" uid="uid://82uo7wwlltbs" path="res://placeholderArt/myPixelArt/lazySlice.png" id="1_rko4l"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_fxls3"]
+
+[resource]
+script = ExtResource("2_fxls3")
+name = "Powerslice"
+func_name = "attack"
+icon = ExtResource("1_rko4l")
+player_type = 16384
+sprun_necessary = 2
+sprun_loss = 2
+atk_mult = 3.0
+attack_all = true
+button_info = "Large group damage."
+metadata/_custom_type_script = "uid://diifqu7v6338q"

@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="GlobalEnemy" format=3 uid="uid://ctkcu5th37ue1"]
 
-[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_grypt"]
-[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="2_8i47s"]
-[ext_resource type="Resource" uid="uid://ckrxohf0inp4t" path="res://inGame/OneD/npc/base_actions/passing.tres" id="2_y25uy"]
-[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/enemy.gd" id="4_kcnyg"]
-[ext_resource type="Texture2D" uid="uid://bsey7jstwivxa" path="res://placeholderArt/myPixelArt/EEVVILLLLRATT-1.png.png" id="4_y25uy"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_0naq8"]
+[ext_resource type="Resource" uid="uid://ckrxohf0inp4t" path="res://inGame/OneD/npc/base_actions/passing.tres" id="2_mlmh5"]
+[ext_resource type="Texture2D" uid="uid://bsey7jstwivxa" path="res://placeholderArt/myPixelArt/EEVVILLLLRATT-1.png.png" id="3_bdrty"]
+[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/enemy.gd" id="4_i3oyj"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="5_35wit"]
 
 [resource]
-script = ExtResource("2_8i47s")
+script = ExtResource("5_35wit")
 hp_range = 0
 speed_range = 0
 attack_range = 0
@@ -17,8 +17,8 @@ name = "Ratsworth Mctemple the Third"
 speed_stat = 0
 attack_stat = 0
 defend_stat = 0
-max_hp = 1
-actions = Array[ExtResource("1_grypt")]([ExtResource("2_y25uy")])
+max_hp = 50
+actions = Array[ExtResource("1_0naq8")]([ExtResource("2_mlmh5")])
 dimension_exist = 2
-icon = ExtResource("4_y25uy")
+icon = ExtResource("3_bdrty")
 metadata/_custom_type_script = "uid://3d1durpk8i24"

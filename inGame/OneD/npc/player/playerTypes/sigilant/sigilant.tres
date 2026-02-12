@@ -5,11 +5,13 @@
 [ext_resource type="Resource" uid="uid://vlux50gm8n4c" path="res://inGame/OneD/npc/player/playerTypes/sigilant/salvation.tres" id="3_rm36l"]
 [ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="3_un8kh"]
 [ext_resource type="Script" uid="uid://doykdacdhnoji" path="res://inGame/OneD/npc/player/playerTypes/sigilant/sigilant.gd" id="4_nxccl"]
+[ext_resource type="Resource" uid="uid://by6ai6phaadmv" path="res://inGame/OneD/npc/player/playerTypes/sigilant/powerslice.tres" id="4_rm36l"]
+[ext_resource type="Resource" uid="uid://cjb7jl4jmr8v6" path="res://inGame/OneD/npc/player/playerTypes/sigilant/shift_gear.tres" id="5_nxccl"]
 
 [resource]
 script = ExtResource("3_un8kh")
 sprun_slots = 6
-new_action = Array[ExtResource("1_frpbl")]([ExtResource("3_rm36l")])
+new_action = Array[ExtResource("1_frpbl")]([ExtResource("3_rm36l"), ExtResource("4_rm36l"), ExtResource("5_nxccl")])
 player_type = 8194
 name = "Sigilant"
 speed_stat = 3
