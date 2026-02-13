@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_fxls3")
 name = "Powerslice"
-func_name = "attack"
+func_name = "powerslice"
 icon = ExtResource("1_rko4l")
 player_type = 16384
 sprun_necessary = 2

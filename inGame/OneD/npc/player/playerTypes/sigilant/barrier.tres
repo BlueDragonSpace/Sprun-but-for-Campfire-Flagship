@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://c7k8v53xhao1g"]
+
+[ext_resource type="Texture2D" uid="uid://cabes2fs7mpl7" path="res://placeholderArt/myPixelArt/teamDefend1.png" id="1_5fysc"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_vpuhd"]
+
+[resource]
+script = ExtResource("2_vpuhd")
+name = "Barrier"
+func_name = "team_defend"
+icon = ExtResource("1_5fysc")
+action_type = 1
+intent_type = 1
+player_type = 16384
+sprun_necessary = 2
+sprun_loss = 2
+dfd_mult = 2.0
+ally_target = true
+attack_all = true
+button_info = "Defends the full team."
+metadata/_custom_type_script = "uid://diifqu7v6338q"

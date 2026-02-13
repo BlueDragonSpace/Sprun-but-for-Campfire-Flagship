@@ -19,7 +19,7 @@ func add_take_damage(attacker) -> void:
 	last_attacker = attacker
 
 # REFERENCE: randi_range(middle_value + range, middle_value - range)
-func add_do_intended_action() -> void:
+func add_do_intended_action(_action_res) -> void:
 	
 	randomize_stats()
 

@@ -11,6 +11,7 @@
 script = ExtResource("6_c8xvc")
 hp_range = 2
 speed_range = 4
+attack_range = 1
 defend_range = 2
 evil_growl_sound = "*clink*"
 name = "Keykeeper"

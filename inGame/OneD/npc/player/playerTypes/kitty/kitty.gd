@@ -1,6 +1,6 @@
 extends "res://inGame/OneD/npc/player/player.gd"
 
-func reflection(_sprun_cost) -> void:
+func reflection() -> void:
 	
 	# the dream that started it all
 	
@@ -17,7 +17,7 @@ const HIDE = preload("uid://24y2bom7sjw5")
 
 # it's broken
 
-func hideAction(_sprun_cost) -> void:
+func hideAction() -> void:
 	
 	# kitty debuffs themselves
 	take_debuff(HIDE, 2)

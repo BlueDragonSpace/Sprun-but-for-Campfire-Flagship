@@ -151,7 +151,7 @@ var current_round = 0:
 # the player types, for use within the root, as an array rather than one string
 var root_player_type_array = Action.PLAYER_TYPE.split(', ')
 
-const to_player_text = ['Continue.', 'Escape.', 'Worth.', 'Catastrophe.', 'Perpetual.', 'Cycles.', 'The Hazy Abyss. They are there.', 'Enemies will always target the last character to attack them. Or defend.', 'Rounds end immediately once the last enemy is felled. All actions after that are cancelled.', 'Tabs on the Action bar can be dragged and dropped.']
+const to_player_text = ['Continue.', 'Escape.', 'Worth.', 'Catastrophe.', 'Perpetual.', 'Cycles.', 'The Hazy Abyss. They are there.', 'Enemies target the last character to attack them.', 'Rounds end immediately once the last enemy is felled. All actions after that are cancelled.', 'Tabs on the Action bar can be dragged and dropped.', 'Enemies cannot defend twice in a row.']
 const player_pass_text = [' looks a little agitated', ' probably needs some coffee', ' wonders why they are in the abyss', ' whistles', ' is quite tired of this nonsense', '.', ' doesn\'t really like all the rats']
 
 # Called when the node enters the scene tree for the first time.
@@ -632,6 +632,12 @@ func player_pass_turn() -> void:
 	# if: they are, end the turn
 	# else: go to the next player and get their action
 	
+	# but first, check if the BAK button should work
+	if not current_player.intended_action_resource.is_quick:
+		BAK.disabled = false
+	else:
+		BAK.set_deferred("disabled", true)
+	
 	if current_player == Charas.get_child(-1):
 		# sets the TurnOrderPointMaster to the correct y position for the first point
 		add_turn_order_point(0)
@@ -645,7 +651,9 @@ func player_pass_turn() -> void:
 		
 		# chooses a random text from all player_pass_text's, and puts the current player's name in front of it
 		button_info(current_player.NPC_instance.name + player_pass_text[randi_range(0, player_pass_text.size() - 1)])
-		BAK.disabled = false
+		
+		
+		
 		back_action = Callable(self, "player_reverse_pass_turn")
 
 func player_reverse_pass_turn() -> void:

@@ -60,7 +60,7 @@ func add_actions(custom_actions : Array) -> void:
 		
 		match(this_action.action_type):
 			0: ## ATTACK
-				var callable = Callable(self, this_action.func_name).bind(this_action.atk_mult, this_action.sprun_loss)
+				var callable = Callable(self, this_action.func_name).bind(this_action.atk_mult)
 				
 				 
 				# hmmmmmmmm... refactor
@@ -84,7 +84,7 @@ func add_actions(custom_actions : Array) -> void:
 				
 			1: ## DEFEND
 				lambda = func():
-					var callable = Callable(self, this_action.func_name).bind(this_action.dfd_mult, this_action.sprun_loss)
+					var callable = Callable(self, this_action.func_name).bind(this_action.dfd_mult)
 					
 					add_lambda(this_action, callable)
 					
@@ -102,7 +102,7 @@ func add_actions(custom_actions : Array) -> void:
 			_:
 				lambda = func():
 					
-					var callable = Callable(self, this_action.func_name).bind(this_action.sprun_loss)
+					var callable = Callable(self, this_action.func_name)
 					
 					add_lambda(this_action, callable)
 					
@@ -123,6 +123,10 @@ func add_actions(custom_actions : Array) -> void:
 func add_lambda(func_action: Action, callable: Callable) -> void:
 	set_intended_action(func_action, callable)
 	set_intent(func_action)
+
+func add_do_intended_action(action_res: Action) -> void:
+	
+	set_sprun(NPC_instance.sprun_active - action_res.sprun_loss)
 
 func set_sprun(new_sprun_count):
 	## I *would* set this as the set(new) method for active_sprun, but then it calls before ready and gives me an error

@@ -205,7 +205,11 @@ func do_intended_action() -> void:
 	
 	if intended_action_resource.attack_all:
 		# is it a player or an enemy?
-		if NPC_instance.is_player:
+		# is it targeting allies or the opposing side?
+		
+		# this is an XAND gate actually... too bad i don't know the keywords for one
+		
+		if (NPC_instance.is_player and not intended_action_resource.ally_target) or (not NPC_instance.is_player and intended_action_resource.ally_target):
 			for enemy in OneDRoot.Enemies.get_children():
 				action_victim = enemy
 				intended_action.call()
@@ -216,11 +220,12 @@ func do_intended_action() -> void:
 	else:
 		intended_action.call()
 	
-	add_do_intended_action()
+	add_do_intended_action(intended_action_resource)
 
-func add_do_intended_action() -> void:
+@warning_ignore("unused_parameter")
+func add_do_intended_action(action_res: Action) -> void:
 	# for enemies, randomizes their stats
-	# for players, usually does nothing
+	# for players, spends sprun
 	pass
  
 func take_damage(damage, attacker = null, ignore_shield = false) -> void:

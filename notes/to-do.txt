@@ -199,4 +199,7 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	
+	Instant actions disable BAK
+	Added Sigilant Group Defend
+	(fixed group actions spending repeatedly using more sprun than labelled, by putting set_sprun to be automatically set)
+	# check the sprun cost for all characters!!!

@@ -10,32 +10,26 @@ const RAT_CHARA = preload("uid://c6xyom6hfsfnk")
 const HAMSTER_CHARA = preload("uid://bugkb3icjvkwe")
 const MOUSE_CHARA = preload("uid://b4a4w1fiyg3jt")
 
-func call_rat(sprun_cost : int) -> void:
+func call_rat() -> void:
 	
 	var rat = PLAYER.instantiate()
 	rat.NPC_resource = RAT_CHARA
 	OneDRoot.Charas.add_child(rat)
 	rat.NPC_instance.name = recieve_name("Rat ")
-	
-	set_sprun(NPC_instance.sprun_active - sprun_cost)
 	# the poison damage? currently implemented as a separate move
 
-func call_mouse(sprun_cost : int) -> void:
+func call_mouse() -> void:
 	var mouse = PLAYER.instantiate()
 	mouse.NPC_resource = MOUSE_CHARA
 	OneDRoot.Charas.add_child(mouse)
 	mouse.NPC_instance.name = recieve_name("Mouse ")
-	
-	set_sprun(NPC_instance.sprun_active - sprun_cost)
 
-func call_hamster(sprun_cost : int) -> void:
+func call_hamster() -> void:
 	
 	var hamster = PLAYER.instantiate()
 	hamster.NPC_resource = HAMSTER_CHARA
 	OneDRoot.Charas.add_child(hamster)
 	hamster.NPC_instance.name = recieve_name("Hamster ")
-	
-	set_sprun(NPC_instance.sprun_active - sprun_cost)
 
 func recieve_name(base: String) -> String:
 	
