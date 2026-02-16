@@ -96,7 +96,6 @@
 	Turn Limit til next wave (prevent hold onto one enemy to increase Sprun stats)
 	Create Custom Theme (buttons, sliders, the whole shebang)
 	Differentiate between similar enemies and rats
-	(Kitty, the Sun Robot thing) Gaining new attacks in new form
 		Resizing Actions Tabs (think about when I played my own game on mobile) - Only changed by font_size, or perhaps add code..?
 	Resize Entire Screen (any idea how truly useful this thing is on my weird -ahhh TV resolution settings???)
 	Seeding (random, that is)
@@ -153,35 +152,22 @@ Quirks:
 	
 	DeBuffs aren't yet implemented in the Root NPC_resource. This may be a feature rather than an overlook...
 
-Turn sections:
-	Player Input
-	Middle:
-		Defense,
-		Quick Actions,
-		The Rest (by the timeline)
-	End
-
 Refactoring
 	Animation tracks don't worry about unresolvable tracks (the NPC's animate node has a track for Enemy intent, but Player doesn't have intent and doesn't need the track)
 	Make HP changing set by a tween (instead of process)
 	Set that one .set() method that isn't already in ready() for some reason
 	Open slot for an Action resource on the ActionButton (for use in default player actions)
 
-
-Tips for players:
-	Hey you can rearrange the tabs on the Action Bar (thanks Godot!)
-	Beating the final enemy of a wave immediately ends the wave; you can't do actions in the turn past ending the enemy
-	Prep rounds will always be at least two, because I am too lazy to add an "s" to the end
-	Aggro!
-
 Bugs:
 	After Bunnell playtested, immediate next turn was an error where all enemies' last child (an audio node) was deleted, and I have no idea why that happened
-	Intent shows random target sometimes, but still directs actual action correctly
 	Strange rounding error, difference between shown stat bar damage and actual inflicted damage
 		(need a specific case, forgot where to find one and too annoyed to bother)
 		For now, it's me not paying attension to damage
-	
-	Intent popping up for a second every new turn
+Semibugs??:
+	(2/13/2026) Using a quick action to end a round looks weird, but functions properly
+
+Exploits:
+	Hold onto one enemy at the end of a round (do I want players to do this? not really, but it's a good tactic)
 
 Noot noot
 Holy carp the game works on mobile by accident!!!!
@@ -199,7 +185,11 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	Instant actions disable BAK
-	Added Sigilant Group Defend
-	(fixed group actions spending repeatedly using more sprun than labelled, by putting set_sprun to be automatically set)
-	# check the sprun cost for all characters!!!
+	Prepped and ready for ship!
+	
+	SELF DESTRUCT
+	Kitty's stats and Protection move
+	Sigilant in Selection Screen
+	Leftover intents on Prep Start
+	Fixed another quick action exploit
+	Playtested and fixed a lot of small errors

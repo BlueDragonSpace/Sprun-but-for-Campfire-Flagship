@@ -8,11 +8,13 @@
 [ext_resource type="Resource" uid="uid://by6ai6phaadmv" path="res://inGame/OneD/npc/player/playerTypes/sigilant/powerslice.tres" id="4_rm36l"]
 [ext_resource type="Resource" uid="uid://cjb7jl4jmr8v6" path="res://inGame/OneD/npc/player/playerTypes/sigilant/shift_gear.tres" id="5_nxccl"]
 [ext_resource type="Resource" uid="uid://c7k8v53xhao1g" path="res://inGame/OneD/npc/player/playerTypes/sigilant/barrier.tres" id="6_3ph4i"]
+[ext_resource type="Resource" uid="uid://3dq5yjw216sk" path="res://inGame/OneD/npc/player/playerTypes/sigilant/heavy_heart.tres" id="7_hwtaf"]
+[ext_resource type="Resource" uid="uid://dwxa5rqkjy3ln" path="res://inGame/OneD/npc/player/playerTypes/sigilant/self_destruct.tres" id="8_4x7sh"]
 
 [resource]
 script = ExtResource("3_un8kh")
 sprun_slots = 6
-new_action = Array[ExtResource("1_frpbl")]([ExtResource("3_rm36l"), ExtResource("4_rm36l"), ExtResource("5_nxccl"), ExtResource("6_3ph4i")])
+new_action = Array[ExtResource("1_frpbl")]([ExtResource("3_rm36l"), ExtResource("4_rm36l"), ExtResource("5_nxccl"), ExtResource("6_3ph4i"), ExtResource("7_hwtaf"), ExtResource("8_4x7sh")])
 player_type = 8194
 name = "Sigilant"
 speed_stat = 3

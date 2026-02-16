@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Action" format=3 uid="uid://46w2r3n41yw6"]
 
-[ext_resource type="Texture2D" uid="uid://cqmahlm6jr7w8" path="res://placeholderArt/Sprun.png" id="1_a0koe"]
+[ext_resource type="Texture2D" uid="uid://c8n0k3x2k67si" path="res://placeholderArt/myPixelArt/NewSprun-1.png.png" id="1_2pp45"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_lpts4"]
 
 [resource]
 script = ExtResource("2_lpts4")
 name = "Focus"
 func_name = "focus"
-icon = ExtResource("1_a0koe")
+icon = ExtResource("1_2pp45")
 action_type = 2
 intent_type = 7
 button_info = "Preparing for a large attack..."

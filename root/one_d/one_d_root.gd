@@ -53,6 +53,9 @@ const TURN_ORDER_POINT = preload("uid://kbdvggtyupd2") # current turn marker
 const TURN_ORDER_MARKER = preload("uid://dim074qeqwx6x") # character/enemy order
 const ENEMY_SELECTION = preload("uid://c6hsrr8o4xvi3")
 
+# BASIC PLayer (why am I yelling
+const PLAYER = preload("uid://bd0auisdvfagw")
+
 ## ENEMIES
 const ONE_D_ENEMY = preload("uid://cmoedndryju2o")
 
@@ -113,9 +116,17 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 					# removes all enemy selector children, since they're the last to be added
 					for enemy in Enemies.get_children():
 						enemy.get_child(-1).queue_free()
-					BAK.disabled = true
+					
+					if not last_action_was_quick:
+						BAK.disabled = false
+						# dang defining the next back_action, inside the back action
+						# now that's meta
+						back_action = Callable(self, "player_reverse_pass_turn")
+					else:
+						BAK.disabled = true
+						
 					Actions.find_child("Attack").visible = true # makes the attack tab visible again after backing out
-			TURN_TYPE.SELECT_ALLY:
+			TURN_TYPE.SELECT_ALLY: # I should really make a function for this thing so I don't have to repeat most of SELECT_ENEMY...
 				disable_all_actions(true)
 				BAK.disabled = false
 				back_action = func(): 
@@ -123,7 +134,12 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 					# removes all enemy selector children, since they're the last to be added
 					for chara in Charas.get_children():
 						chara.get_child(-1).queue_free()
-					BAK.disabled = true
+					
+					if not last_action_was_quick:
+						BAK.disabled = false
+						back_action = Callable(self, "player_reverse_pass_turn")
+					else:
+						BAK.disabled = true
 			TURN_TYPE.MIDDLE:
 				middle_round_loop()
 			TURN_TYPE.END:
@@ -140,7 +156,9 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 ## Stats?
 var enemies_slain = 0
 
+
 var back_action = Callable(Global, "empty_function")
+var last_action_was_quick = false # prevents going back if the last move was quick
 
 var in_transition = false
 var current_round = 0:
@@ -329,7 +347,7 @@ func add_enemy_wave() -> void:
 	#push_warning('hey buddy the wave system really needs to get fixed, Line 319')
 	
 	# from 0 - 4
-	match(randi_range(0,0)):
+	match(randi_range(0,4)):
 		0: # one big
 			var big_boi = ONE_D_ENEMY.instantiate()
 			big_boi.NPC_resource = BIGG
@@ -520,6 +538,12 @@ func remove_dead_actions(dead: Node) -> void:
 				current_round += 1
 				Animate.play("TWK")
 				$TWK/Sounddddd.play()
+				
+				# characters don't lose their intent until the end of round
+				# since round ends prematurely, end the intent with it
+				for chara in Charas.get_children():
+					if chara.Intent.visible:
+						chara.hide_intent()
 			
 		dead.CHARACTER_TYPE.PLAYER:
 			
@@ -635,7 +659,9 @@ func player_pass_turn() -> void:
 	# but first, check if the BAK button should work
 	if not current_player.intended_action_resource.is_quick:
 		BAK.disabled = false
+		last_action_was_quick = false
 	else:
+		last_action_was_quick = true
 		BAK.set_deferred("disabled", true)
 	
 	if current_player == Charas.get_child(-1):
@@ -857,16 +883,20 @@ func _on_end_character_select_pressed() -> void:
 	if %CharacterSelect.characters_selected == init_chara_num:
 		%CharacterSelect.load_characters()
 		for character in %CharacterSelect.character_array:
-			var cha = character.instantiate()
-			Charas.add_child(cha)
+			var basic_player = PLAYER.instantiate()
+			basic_player.set_script(character.one_d_script)
+			basic_player.NPC_resource = character
+			Charas.add_child(basic_player)
 			Animate.play('chara_select_to_game')
 		button_info('A last stand.')
 		initialize_game()
 	elif %CharacterSelect.characters_selected > 0 and %CharacterSelect.characters_selected < init_chara_num:
 		%CharacterSelect.load_characters()
 		for character in %CharacterSelect.character_array:
-			var cha = character.instantiate()
-			Charas.add_child(cha)
+			var basic_player = PLAYER.instantiate()
+			basic_player.set_script(character.one_d_script)
+			basic_player.NPC_resource = character
+			Charas.add_child(basic_player)
 			Animate.play('chara_select_to_game')
 		button_info('Damaged goods, before even beginning their journey.')
 		initialize_game()

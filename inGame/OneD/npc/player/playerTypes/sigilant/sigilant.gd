@@ -23,8 +23,8 @@ func shift_gear() -> void:
 	# 2^0 = 1
 	# 2^1 = 2
 	# + 2 = Basic
-	# 2^14 = Sigilant
-	# 2^15 = Sigilant ON
+	# 2^13 = Sigilant
+	# 2^14 = Sigilant ON
 	
 	# is sigilant + basic (in bitshift form)
 	if NPC_instance.player_type == (pow(2, 13) + 2):
@@ -37,8 +37,15 @@ func shift_gear() -> void:
 
 func powerslice(attack_mult) -> void:
 	action_victim.take_damage(NPC_instance.attack_stat * attack_mult)
+	# heavy_heart also uses this same code
+	# I would use the default attack action but it doesn't take an attack_mult into account (cuz it's also linked to enemies)
 
-func team_defend(defend_mult,) -> void:
+func team_defend(defend_mult) -> void:
 	action_victim.current_defense += NPC_instance.defend_stat * defend_mult
 	action_victim.Animate.play("defend")
 	$DoDefend.play()
+
+func self_destruct(attack_mult) -> void:
+	action_victim.take_damage(NPC_instance.attack_stat * attack_mult)
+	
+	take_damage(31415)

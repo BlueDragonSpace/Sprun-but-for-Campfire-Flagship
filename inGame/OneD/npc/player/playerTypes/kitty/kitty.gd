@@ -2,16 +2,23 @@ extends "res://inGame/OneD/npc/player/player.gd"
 
 func reflection() -> void:
 	
-	# the dream that started it all
+	# the Dream that started it all
 	
 	set_max_hp(64) # minecraft stack!!
 	NPC_instance.attack_stat = 12
 	NPC_instance.defend_stat = 10
-	NPC_instance.speed_stat = 1 # fastest possible
+	NPC_instance.speed_stat = 99 # aka really freaking fast
 	
-	# No, you aren't going to go for a second stat boost. I refuse to let this happen
+	# base Dream
 	set_sprun_slots(1)
 	set_sprun(0)
+	
+	## turns into the Dream
+	# 2^15 = Reflected Kitty
+	# adding two gives basic actions (by bit-shifting)
+	NPC_instance.player_type = pow(2,15) + 2
+	Icon.self_modulate = Color(Color.BLUE)
+
 
 const HIDE = preload("uid://24y2bom7sjw5")
 
@@ -21,13 +28,14 @@ func hideAction() -> void:
 	
 	# kitty debuffs themselves
 	take_debuff(HIDE, 2)
+
+const SALVE = preload("uid://jh6814od43pa")
+
+func dream(defend_mult: int) -> void:
+	# defends and gives a Salve to all allies
+	action_victim.current_defense += NPC_instance.defend_stat * defend_mult
+	action_victim.Animate.play("defend")
+	$DoDefend.play()
 	
-	#var debuff_child = check_debuff(DeBuff.DEBUFF.HIDE) #finds the HIDE
-	
-	#if debuff_child:
-		#print('found the hide, added 2')
-		#debuff_child.expiration += 2
-	#else:
-		#var child = DE_BUFF_RECT.instantiate()
-		#child.debuff = HIDE
-		#DeBuffs.add_child(child)
+	# adds the salve
+	action_victim.take_debuff(SALVE, 99)

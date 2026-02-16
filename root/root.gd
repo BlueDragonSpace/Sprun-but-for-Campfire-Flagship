@@ -13,6 +13,8 @@ enum DIMENSION {
 }
 @export var dimension = DIMENSION.ONE
 
+@export var disable_dimension_shifting = true
+
 @onready var OneDRoot: Control = $OneDRoot
 @onready var ThreeDRoot: Node3D = $ThreeDRoot
 
@@ -74,7 +76,7 @@ func _input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("dimension_shift"):
+	if Input.is_action_just_pressed("dimension_shift") and not disable_dimension_shifting:
 		dimension_shift(dimension, DIMENSION.TWO)
 	
 		# silly little click and release sound effects (Kinito.PET !!)

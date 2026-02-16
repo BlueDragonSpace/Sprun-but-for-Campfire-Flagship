@@ -13,6 +13,6 @@ sprun_necessary = 2
 sprun_loss = 2
 atk_mult = 1.5
 prep_disable = true
-ally_target = true
+needs_target = true
 show_target_intent = true
 button_info = "Also adds Fire debuff. Fire starts slow, but does more damage over time."

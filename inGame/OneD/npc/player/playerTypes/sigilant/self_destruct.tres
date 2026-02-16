@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" format=3 uid="uid://dwxa5rqkjy3ln"]
+
+[ext_resource type="Texture2D" uid="uid://clu7j8tdi4166" path="res://placeholderArt/myPixelArt/lazyExplosion.png" id="1_bywc0"]
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_kj5sv"]
+
+[resource]
+script = ExtResource("2_kj5sv")
+name = "Self-Destruct"
+func_name = "self_destruct"
+icon = ExtResource("1_bywc0")
+player_type = 8192
+atk_mult = 100.0
+attack_all = true
+button_info = "BLOWS UPPPP (don't worry, your teammates aren't affected by the blast)"
+metadata/_custom_type_script = "uid://diifqu7v6338q"

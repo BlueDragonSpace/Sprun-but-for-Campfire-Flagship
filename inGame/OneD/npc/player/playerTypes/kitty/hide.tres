@@ -11,4 +11,4 @@ icon = ExtResource("1_prvk5")
 action_type = 3
 intent_type = 5
 player_type = 8
-button_info = "Enemies cannot directly target this character the next 2 turns. Ineffective while alone."
+button_info = "Enemies cannot directly target Kitty the next 2 turns. Ineffective while alone."

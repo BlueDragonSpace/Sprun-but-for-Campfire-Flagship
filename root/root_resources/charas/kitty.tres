@@ -5,16 +5,17 @@
 [ext_resource type="Resource" uid="uid://cu7gb1lix0hyn" path="res://inGame/OneD/npc/player/playerTypes/kitty/hide.tres" id="3_pwn8c"]
 [ext_resource type="Resource" uid="uid://d21q8e62mtv0h" path="res://inGame/OneD/npc/player/playerTypes/kitty/reflection.tres" id="4_h470v"]
 [ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="4_it6sl"]
+[ext_resource type="Resource" uid="uid://bg2fyrspehbec" path="res://inGame/OneD/npc/player/playerTypes/kitty/dream.tres" id="5_it6sl"]
 [ext_resource type="Script" uid="uid://dxc2eww7oejej" path="res://inGame/OneD/npc/player/playerTypes/kitty/kitty.gd" id="5_pwn8c"]
 
 [resource]
 script = ExtResource("4_it6sl")
 sprun_slots = 9
-new_action = Array[ExtResource("1_cgt8y")]([ExtResource("3_pwn8c"), ExtResource("4_h470v")])
+new_action = Array[ExtResource("1_cgt8y")]([ExtResource("3_pwn8c"), ExtResource("4_h470v"), ExtResource("5_it6sl")])
 player_type = 10
 name = "Kitty"
 attack_stat = 3
-defend_stat = 6
+defend_stat = 4
 max_hp = 12
 is_player = true
 dimension_exist = 2

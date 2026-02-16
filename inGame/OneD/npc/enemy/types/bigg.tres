@@ -11,7 +11,7 @@
 script = ExtResource("6_3pyo5")
 hp_range = 6
 name = "BIGG"
-speed_stat = 4
+speed_stat = 3
 attack_stat = 8
 defend_stat = 6
 max_hp = 35
