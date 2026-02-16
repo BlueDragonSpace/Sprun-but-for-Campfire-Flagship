@@ -1,4 +1,6 @@
 NEW VERSION 0.0.5!!!!! TRY ITTTTTTT (or don't it won't hurt my feelings): [Sprun 0.0.5](https://file.garden/ZvYk8SE050beWacV/Sprun/0.0.5/Sprun.html)
+0.0.4: [Sprun 0.0.4](https://file.garden/ZvYk8SE050beWacV/Sprun/0.0.4/Sprun.html)
+0.0.be4: [Yes, like "before" it's a joke](https://file.garden/ZvYk8SE050beWacV/Sprun/0.0.be4/Sprun.html)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
