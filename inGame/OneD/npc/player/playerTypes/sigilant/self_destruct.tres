@@ -10,6 +10,7 @@ func_name = "self_destruct"
 icon = ExtResource("1_bywc0")
 player_type = 8192
 atk_mult = 100.0
+prep_disable = true
 attack_all = true
 button_info = "BLOWS UPPPP (don't worry, your teammates aren't affected by the blast)"
 metadata/_custom_type_script = "uid://diifqu7v6338q"

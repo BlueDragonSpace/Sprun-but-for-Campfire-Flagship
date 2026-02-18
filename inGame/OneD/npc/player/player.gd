@@ -11,9 +11,6 @@ const SPRUN = preload("uid://b6wgjet502thq")
 #@export var sprun_active: int = 0 # ONLY CHANGE WITH set_sprun(new_sprun_count)!!!!!!!!!! 
 # they would be an automatically set method in code but Godot throws errors on ready
 
-#@export var new_action: Array[Action]
-#@export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var player_type : int = 0
-
 const ACTION_BUTTON = preload("uid://drtw4kuprkapi")
  
 # costs are listed in Sprun USD all purchases sold separately
@@ -21,13 +18,19 @@ var atk_upgrade_cost = 3
 var dfd_upgrade_cost = 3
 var spd_upgrade_cost = 3
 
+# prevent adding new actions (such as when there are duplicate characters on purpose, such as rats)
+var add_actions_bool = true
 
 func add_ready() -> void:
 	npc_type = CHARACTER_TYPE.PLAYER
 	
 	set_sprun_slots(NPC_instance.sprun_slots)
 	
-	call_deferred("add_actions", NPC_instance.new_action)
+	if add_actions_bool:
+		call_deferred("add_actions", NPC_instance.new_action)
+		print('we addedah the actionah')
+	else:
+		print('refusing to add the actions')
 	
 	double_add_ready()
 
@@ -51,6 +54,11 @@ func add_actions(custom_actions : Array) -> void:
 		new_button.atk_mult = this_action.atk_mult
 		new_button.dfd_mult = this_action.dfd_mult
 		new_button.ally_target = this_action.ally_target
+		
+		if this_action.intent_type == Action.INTENT.HEAL:
+			new_button.display_heal = true
+		else:
+			new_button.display_heal = false
 		
 		# why I didn't just link the resource? I have no idea
 		# probably gonna end up refactoring this down the line cuz this is pretty awful

@@ -91,9 +91,10 @@
 	Show Next Enemy Wave in Prep Rounds
 	Enemies utilizing debuffs (poison, fire, maybe weakening or destrengthening if I make those)
 	Sprun Movement Shifting depending on size (too far when small, too close when big)
+	Center "Wave Cleared"
 	Litle dialogue things (but even more, like character-to-character interaction, and in the middle of battle...)
 	Cat Battle! (don't actually hit the cat, or bad stuff happens)
-	Turn Limit til next wave (prevent hold onto one enemy to increase Sprun stats)
+	Turn Limit til next wave (prevent hold onto one enemy to increase Sprun stats) - Porklike! Invincible Enemy that appears after a certain number of rounds
 	Create Custom Theme (buttons, sliders, the whole shebang)
 	Differentiate between similar enemies and rats
 		Resizing Actions Tabs (think about when I played my own game on mobile) - Only changed by font_size, or perhaps add code..?
@@ -115,17 +116,14 @@
 4: 
 	Death saves? (Deltarune, DnD, revival at all?)
 	Hide unnecessary tabs (rat cannot defend)
+	Skip characters that don't have any actions (like hamsters and mice)
+	
+	
 	
 	art and music lol
 	https://lonebot.itch.io/make-it-juicy
 	
 	Shovel's Pixel Perfect screen resolution thing (1920 x 1080)
-	
-	And create content lol 
-		Actions
-		Characters
-		Enemies
-		Progression(?) / Scaling
 	
 	Tutorial (make it good gosh darn it):
 		Turn Queue!!!!!!!! (top to bottom)
@@ -140,6 +138,7 @@
 	
 6 (almost definitely never gonna happen):
 	Different kinds of sprun (red for ATK, blue for DFD, and so on)
+	Pass to maintain defense
 
 Quirks:
 	Balance the funny and serious (makes both more meaningful)
@@ -185,11 +184,7 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	Prepped and ready for ship!
-	
-	SELF DESTRUCT
-	Kitty's stats and Protection move
-	Sigilant in Selection Screen
-	Leftover intents on Prep Start
-	Fixed another quick action exploit
-	Playtested and fixed a lot of small errors
+	Fixed Rat Bite
+	Disabled FOCUS at max Sprun
+	Modified Healing Handling
+	Little more playtest balancing

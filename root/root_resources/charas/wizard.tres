@@ -15,7 +15,7 @@
 script = ExtResource("2_j3cex")
 sprun_slots = 5
 sprun_active = 1
-new_action = Array[ExtResource("1_o4qjq")]([ExtResource("2_rgicw"), ExtResource("3_ev18f"), ExtResource("4_ioxnq"), ExtResource("5_djcu3"), ExtResource("6_yjhcq"), ExtResource("7_7bfps")])
+new_action = Array[ExtResource("1_o4qjq")]([ExtResource("2_rgicw"), ExtResource("3_ev18f"), ExtResource("4_ioxnq"), ExtResource("6_yjhcq"), ExtResource("5_djcu3"), ExtResource("7_7bfps")])
 player_type = 6
 name = "Wizard"
 attack_stat = 5

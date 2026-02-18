@@ -12,6 +12,7 @@ extends Button
 @export var atk_mult : float = 0.0
 @export var dfd_mult : float = 0.0
 @export var display_speed : bool = false
+var display_heal : bool = false
 
 @export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var usable_on_player: int = 0
 @export var prep_disable = false
@@ -25,7 +26,7 @@ func check_cost(sprun: int) -> void:
 
 func send_info() -> void:
 	$Focus.play()
-	OneDRoot.button_info(info, sprun_cost, atk_mult, dfd_mult, display_speed)
+	OneDRoot.button_info(info, sprun_cost, atk_mult, dfd_mult, display_speed, display_heal)
 
 func _on_focus_entered() -> void:
 	send_info()

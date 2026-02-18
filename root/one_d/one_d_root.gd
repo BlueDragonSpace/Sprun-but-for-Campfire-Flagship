@@ -13,6 +13,7 @@ extends Control
 @onready var TurnOrder: VBoxContainer = $RootGame/BattleScreen/TurnOrder/TurnOrder
 
 @onready var Actions: TabContainer = $RootGame/LowerBar/VBoxContainer/Actions
+@onready var Focus: Button = $RootGame/LowerBar/VBoxContainer/Actions/Sprun/FOCUS
 @onready var IncreaseSprunSlots: Button = $RootGame/LowerBar/VBoxContainer/Actions/Sprun/IncreaseSprunSlots
 @onready var ATKUp: Button = $RootGame/LowerBar/VBoxContainer/Actions/Sprun/ATKUp
 @onready var DFDUp: Button = $RootGame/LowerBar/VBoxContainer/Actions/Sprun/DFDUp
@@ -26,6 +27,7 @@ extends Control
 @onready var SprunCostLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/SprunCostLabel
 @onready var ATKStatIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/ATKStatIcon
 @onready var ATKStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/ATKStatLabel
+@onready var HealIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/HealIcon
 @onready var DFDStatIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/DFDStatIcon
 @onready var DFDStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/DFDStatLabel
 @onready var SPDStatIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/SPDStatIcon
@@ -344,8 +346,6 @@ func add_enemy_wave() -> void:
 	current_wave += 1
 	$RootGame/TopBar/HBoxContainer/WaveNum.text = str(current_wave)
 	
-	#push_warning('hey buddy the wave system really needs to get fixed, Line 319')
-	
 	# from 0 - 4
 	match(randi_range(0,4)):
 		0: # one big
@@ -440,6 +440,10 @@ func check_cost_all_actions(sprun: int) -> void:
 	for container in Actions.get_children():
 		for action in container.get_children():
 			action.check_cost(sprun)
+	
+	# also disables sprun when you are at max sprun
+	if current_player.NPC_instance.sprun_active >= current_player.NPC_instance.sprun_slots:
+		Focus.disabled = true
 
 func check_actions_visible(player_type_bitwise: int = current_player.NPC_instance.player_type) -> void:
 	
@@ -560,7 +564,7 @@ func remove_dead_actions(dead: Node) -> void:
 				$TPK/Soundd.play()
 
 # technically a signal function... to change the info when for focus and mouse_entering
-func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, dfd_value: float = 0, display_speed: bool = false) -> void:
+func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, dfd_value: float = 0, display_speed: bool = false, display_heal: bool = false) -> void:
 	ActionInfo.text = new_info
 	
 	# probably a better way to do this... but double nodes? and this many values?
@@ -591,6 +595,13 @@ func button_info(new_info: String, sprun_cost: int = 0, atk_value: float = 0, df
 		DFDStatIcon.visible = true
 		DFDStatLabel.visible = true
 		DFDStatLabel.text = str(int(dfd_value * current_player.NPC_instance.defend_stat))
+	
+	# heal is basically an offshoot of DFD
+	if display_heal:
+		DFDStatIcon.visible = false
+		HealIcon.visible = true
+	else:
+		HealIcon.visible = false
 	
 	## SPD (speed)
 	if display_speed == false:

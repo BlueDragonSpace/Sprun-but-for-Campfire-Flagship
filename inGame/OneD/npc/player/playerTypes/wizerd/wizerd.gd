@@ -9,8 +9,9 @@ func mega_lazer(atk_mult) -> void:
 	action_victim.take_damage(NPC_instance.attack_stat * atk_mult)
 	#WizerdAnimate.play("mega_lazer")
 
-func heal() -> void:
-	action_victim.current_hp += 10
+func heal(dfd_mult) -> void:
+	# it's literally a negative attack lol
+	action_victim.take_damage(NPC_instance.defend_stat * dfd_mult * -1)
 
 func shield(defend_mult) -> void:
 	action_victim.current_defense += NPC_instance.defend_stat * defend_mult

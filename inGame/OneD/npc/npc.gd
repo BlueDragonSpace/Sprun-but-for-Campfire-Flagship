@@ -230,27 +230,32 @@ func add_do_intended_action(action_res: Action) -> void:
  
 func take_damage(damage, attacker = null, ignore_shield = false) -> void:
 	
-	if ignore_shield:
-		current_hp -= damage
-		Animate.play("take_hit")
-	else:
-		if current_defense > 0:
-			var undefended_damage = damage - current_defense
-			current_defense = clamp(current_defense - damage, 0, INF)
-			
-			if undefended_damage > 0:
-				current_hp -= undefended_damage
-				Animate.play("take_hit")
-			else:
-				$DefendAttack.play()
-		else:
+	if damage > 0:
+		if ignore_shield:
 			current_hp -= damage
+			Animate.play("take_hit")
+		else:
+			if current_defense > 0:
+				var undefended_damage = damage - current_defense
+				current_defense = clamp(current_defense - damage, 0, INF)
+				
+				if undefended_damage > 0:
+					current_hp -= undefended_damage
+					Animate.play("take_hit")
+				else:
+					$DefendAttack.play()
+			else:
+				current_hp -= damage
+				
+		if current_hp <= 0:
+			die()
 			
-	if current_hp <= 0:
-		die()
-		
-	if attacker != null:
-		add_take_damage(attacker)
+		if attacker != null:
+			add_take_damage(attacker)
+	else:
+		# it's a healing move
+		current_hp -= damage
+		Animate.play("heal")
 
 func add_take_damage(_attacker): # additional stuff I add to take_damage() in other classes (like enemy)
 	pass
@@ -294,8 +299,9 @@ func set_intent(action: Action, target_visible : bool = false) -> void:
 			IntentLabel.text = str(int(NPC_instance.attack_stat * action.atk_mult))
 		Action.INTENT.DEFEND:
 			IntentLabel.text = str(int(NPC_instance.defend_stat * action.dfd_mult))
+		# wonder if there's a "or" statement for match statements...
 		Action.INTENT.HEAL:
-			IntentLabel.text = str(int(action.other_num))
+			IntentLabel.text = str(int(NPC_instance.defend_stat * action.dfd_mult))
 		_:
 			IntentLabel.text = '' # by default, there is no text on the Intent
 	

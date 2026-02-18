@@ -4,16 +4,28 @@ var rodent_names = ['Four', 'Casper', 'Rockton', 'Chrispytopher', 'Tortus, Archi
 
 var rodent_count = 1
 
+var rat_actions_added = false # prevents actions being added to action bar twice
+
 #const RAT = preload("uid://c02utralqt5h")
 const PLAYER = preload("uid://bd0auisdvfagw")
 const RAT_CHARA = preload("uid://c6xyom6hfsfnk")
+
 const HAMSTER_CHARA = preload("uid://bugkb3icjvkwe")
 const MOUSE_CHARA = preload("uid://b4a4w1fiyg3jt")
 
 func call_rat() -> void:
 	
 	var rat = PLAYER.instantiate()
+	rat.set_script(RAT_CHARA.one_d_script)
 	rat.NPC_resource = RAT_CHARA
+	
+	if rat_actions_added:
+		rat.add_actions_bool = false
+		print('in rodent lord, preventing the adding of actions')
+	else:
+		rat_actions_added = true
+		print('in rodent lord, added actions')
+	
 	OneDRoot.Charas.add_child(rat)
 	rat.NPC_instance.name = recieve_name("Rat ")
 	# the poison damage? currently implemented as a separate move

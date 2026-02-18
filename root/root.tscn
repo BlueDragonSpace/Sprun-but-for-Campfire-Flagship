@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bv0n51038h5c7"]
 
 [ext_resource type="PackedScene" uid="uid://d3wbwxma2hkqm" path="res://root/one_d/one_d_root.tscn" id="1_1xv2g"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="2_5jge4"]
 [ext_resource type="Script" uid="uid://clibohg1fjvmb" path="res://root/root.gd" id="2_jnlp7"]
+[ext_resource type="Resource" uid="uid://eostg6rwpxwg" path="res://root/root_resources/charas/rat_lord.tres" id="3_5jge4"]
 [ext_resource type="AudioStream" uid="uid://c46ekwwfk3ei2" path="res://placeholderArt/sfx/focus.wav" id="3_js5vo"]
 [ext_resource type="PackedScene" uid="uid://cu1ueum56s1rl" path="res://root/three_d/three_d_root.tscn" id="3_ovlcs"]
 [ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="4_5jge4"]
@@ -107,9 +109,11 @@ _data = {
 
 [node name="Root" type="Node" unique_id=923175965 groups=["Root"]]
 script = ExtResource("2_jnlp7")
+Charas = Array[ExtResource("2_5jge4")]([ExtResource("3_5jge4")])
 Enemies = Array[ExtResource("4_5jge4")]([ExtResource("7_th5d7"), ExtResource("8_ep6pg")])
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]
+started = true
 current_dimension = true
 
 [node name="ThreeDRoot" parent="." unique_id=1187355930 instance=ExtResource("3_ovlcs")]

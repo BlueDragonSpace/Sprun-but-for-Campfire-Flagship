@@ -8,6 +8,7 @@
 
 [resource]
 script = ExtResource("5_5psyk")
+sprun_slots = 0
 new_action = Array[ExtResource("1_orgme")]([ExtResource("3_py8od")])
 player_type = 32
 name = "Rat forkin"

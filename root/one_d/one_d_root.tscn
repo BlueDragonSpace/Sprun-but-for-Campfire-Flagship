@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/one_d/one_d_root.gd" id="2_vitat"]
 [ext_resource type="Texture2D" uid="uid://b535plvyviqhb" path="res://placeholderArt/ChoosyCorners-1.png (1).png" id="3_o1hsu"]
 [ext_resource type="PackedScene" uid="uid://c8l8w4n02trfl" path="res://inGame/sound/mute_button.tscn" id="4_wohbx"]
+[ext_resource type="Texture2D" uid="uid://ckcs3wyskdnk3" path="res://placeholderArt/myPixelArt/lazyHeal1.png" id="8_yxtmk"]
 [ext_resource type="Texture2D" uid="uid://b8oyr6v6wjvgf" path="res://placeholderArt/myPixelArt/lazySpeed1.png" id="9_voo86"]
 [ext_resource type="Texture2D" uid="uid://docng28uw84fm" path="res://placeholderArt/myPixelArt/Ooohhhhhhh-1.png.png" id="12_5g6ql"]
 [ext_resource type="Texture2D" uid="uid://co7fnqru8dy5r" path="res://placeholderArt/Xi.png" id="13_b8b7t"]
@@ -1432,9 +1433,11 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator3" type="VSeparator" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=603229772]
-modulate = Color(1, 1, 1, 0)
+[node name="HealIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=2039088384]
 layout_mode = 2
+texture = ExtResource("8_yxtmk")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="DFDStatIcon" type="TextureRect" parent="RootGame/LowerBar/VBoxContainer/InfoBar" unique_id=1173811552]
 layout_mode = 2
@@ -1531,7 +1534,7 @@ icon = ExtResource("15_ggsxi")
 expand_icon = true
 info = "Defend against enemy attacks."
 dfd_mult = 1.0
-usable_on_player = 98
+usable_on_player = 226
 
 [node name="Sprun" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=1972192148]
 visible = false
