@@ -1,3 +1,11 @@
+NEW VERSION 0.0.5!!!!! TRY ITTTTTTT (or don't it won't hurt my feelings): [Sprun 0.0.5](https://file.garden/ZvYk8SE050beWacV/Sprun/0.0.5/Sprun.html)
+
+0.0.4: [Sprun 0.0.4](https://file.garden/ZvYk8SE050beWacV/Sprun/0.0.4/Sprun.html)
+
+0.0.be4: [Yes, like "before" it's a joke](https://file.garden/ZvYk8SE050beWacV/Sprun/0.0.be4/Sprun.html)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Turn-based, with multiple characters to control, an action queue system, and scaling. (and a really cool background!) 
 The game is completely resizable to any resolution size! It's made of Godot's Control Nodes to facilitate this!
 Currently working on as a part of Hack Club's Campfire Flagship. (was previously entered into Hack Club's Milkyway)

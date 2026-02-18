@@ -159,9 +159,17 @@ Refactoring
 
 Bugs:
 	After Bunnell playtested, immediate next turn was an error where all enemies' last child (an audio node) was deleted, and I have no idea why that happened
+	(2/18/2026) Still happens, $DoDefend, after a player Rat died, for both characters
+	
 	Strange rounding error, difference between shown stat bar damage and actual inflicted damage
 		(need a specific case, forgot where to find one and too annoyed to bother)
 		For now, it's me not paying attension to damage
+	
+	Multiple Rat Bites callable / action_button problem:
+		# the callable is exclusively linked to the player that created it
+		# even if another player had the same move, it calls the callable of the player that created it, instead of the current_player
+		# I need a way to pass in the current_player that pressed it, in a similar way to the basic character actions
+				
 Semibugs??:
 	(2/13/2026) Using a quick action to end a round looks weird, but functions properly
 
@@ -184,7 +192,7 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	Fixed Rat Bite
+	Fixed Rat Bite (nope it has another issue)
 	Disabled FOCUS at max Sprun
 	Modified Healing Handling
 	Little more playtest balancing

@@ -65,12 +65,17 @@ func add_actions(custom_actions : Array) -> void:
 		
 		@warning_ignore("standalone_expression")
 		var lambda = func() : null
+		var callable = Callable(self, this_action.func_name)
 		
 		match(this_action.action_type):
 			0: ## ATTACK
-				var callable = Callable(self, this_action.func_name).bind(this_action.atk_mult)
+				callable.bind(this_action.atk_mult)
 				
-				 
+				# the callable is exclusively linked to the player that created it
+				# even if another player had the same move, it calls the callable of the player that created it, instead of the current_player
+				# I need a way to pass in the current_player that pressed it, in a similar way to the basic character actions
+				
+				
 				# hmmmmmmmm... refactor
 				if not this_action.is_quick:
 					lambda = func(): 
@@ -92,7 +97,7 @@ func add_actions(custom_actions : Array) -> void:
 				
 			1: ## DEFEND
 				lambda = func():
-					var callable = Callable(self, this_action.func_name).bind(this_action.dfd_mult)
+					callable.bind(this_action.dfd_mult)
 					
 					add_lambda(this_action, callable)
 					
@@ -103,14 +108,8 @@ func add_actions(custom_actions : Array) -> void:
 							OneDRoot.initiate_select_enemy()
 					else:
 						OneDRoot.player_pass_turn()
-			#2: ## SPRUN
-				#lambda = func():
-					#intended_action = Callable(self, this_action.func_name)
-					#OneDRoot.player_pass_turn()
 			_:
 				lambda = func():
-					
-					var callable = Callable(self, this_action.func_name)
 					
 					add_lambda(this_action, callable)
 					
