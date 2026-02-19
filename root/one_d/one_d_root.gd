@@ -97,8 +97,8 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 @export var turn = TURN_TYPE.PLAYER:
 	set(new):
 		match(new):
-			# goes through what the previous state was, and does things based on that
 			
+			# goes through what the previous state was, and does things based on that
 			TURN_TYPE.PLAYER:
 				# disabling
 				disable_all_actions(false)
@@ -502,19 +502,9 @@ func remove_dead_actions(dead: Node) -> void:
 				num += 1
 				continue
 				
-				#E 0:01:04:898   remove_dead_actions: Invalid access to property or key 'action_victim' on a base object of type 'previously freed'.
-				
-				
 			if turn_order_data[num][2].action_victim == dead:
 				if turn_order_data[num][2].action_victim is Node:
-					#turn_order_data.remove_at(num)
 					turn_order_data[num] = [null, null, null, Callable(Global, "empty_function"), true]
-				elif turn_order_data[num][2].action_victim is Array:
-					print('action_victim is array but I havent done that yet')
-				else:
-					print('what the hell')
-					print('action victim is dead, but container is not a Node or Array')
-					
 		
 		num += 1 # progress the loop
 		
@@ -535,6 +525,7 @@ func remove_dead_actions(dead: Node) -> void:
 					break
 			
 			if total_wave_kill:
+				print('total wave kill')
 				current_enemy = null
 				TWKPrepRoundsLabel.text = str(prep_rounds_remaining - 1)
 				# the prep_rounds_remaining is off by one at the start, to justify when it gets
@@ -545,11 +536,19 @@ func remove_dead_actions(dead: Node) -> void:
 				
 				# characters don't lose their intent until the end of round
 				# since round ends prematurely, end the intent with it
-				for chara in Charas.get_children():
-					if chara.Intent.visible:
-						chara.hide_intent()
+				if Charas.get_child_count() > 0:
+					for chara in Charas.get_children():
+						if chara.Intent.visible:
+							chara.hide_intent()
+				else:
+					print('both all died')
+					# both every player and every enemy is dead, likely from a Self-Destruct move
+					# gotta override the TWK with a TPK
+					#$TPK/Soundd.play()
 			
+				
 		dead.CHARACTER_TYPE.PLAYER:
+			print('player dead')
 			
 			var total_party_kill = true
 			
@@ -560,7 +559,8 @@ func remove_dead_actions(dead: Node) -> void:
 					break
 			
 			if total_party_kill:
-				Animate.play("TPK")
+				print('total_party_kill')
+				Animate.call_deferred("play","TPK") # deferred so it overrides a TWK if both happen at the same time
 				$TPK/Soundd.play()
 
 # technically a signal function... to change the info when for focus and mouse_entering
@@ -621,7 +621,6 @@ func initiate_select_enemy(is_quick : bool = false) -> void:
 			var selector = ENEMY_SELECTION.instantiate()
 			selector.text = ''
 			selector.info = enemy.name
-			#selector.connect("pressed", select_enemy, index)
 			selector.pressed.connect(select_enemy.bind(index, is_quick))
 			
 			#if index == 0:
@@ -772,7 +771,7 @@ func final_pass_turn() -> void:
 			Animate.call_deferred("queue", "exiting_TWK")
 	
 	set_enemies_intents()
-	set_turn_order()
+	call_deferred("set_turn_order") # deferred for DeBuff Kills
 	Animate.play("to_player")
 	
 	## DEBUFF HANDLING

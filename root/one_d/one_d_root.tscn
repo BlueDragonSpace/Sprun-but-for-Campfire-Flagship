@@ -1271,7 +1271,7 @@ size_flags_vertical = 1
 min_value = 0.5
 max_value = 5.0
 step = 0.1
-value = 1.0
+value = 5.0
 
 [node name="MuteButton" parent="RootGame/TopBar/HBoxContainer" unique_id=125002870 instance=ExtResource("4_wohbx")]
 layout_mode = 2

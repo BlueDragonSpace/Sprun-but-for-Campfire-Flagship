@@ -69,7 +69,7 @@ func add_actions(custom_actions : Array) -> void:
 		
 		match(this_action.action_type):
 			0: ## ATTACK
-				callable.bind(this_action.atk_mult)
+				callable = callable.bind(this_action.atk_mult)
 				
 				# the callable is exclusively linked to the player that created it
 				# even if another player had the same move, it calls the callable of the player that created it, instead of the current_player
@@ -79,7 +79,10 @@ func add_actions(custom_actions : Array) -> void:
 				# hmmmmmmmm... refactor
 				if not this_action.is_quick:
 					lambda = func(): 
-						add_lambda(this_action, callable)
+						@warning_ignore("confusable_capture_reassignment")
+						# confusing? yes
+						# necessary for duplicate characters? also yes
+						callable = add_lambda(this_action, callable)
 						
 						if this_action.needs_target:
 							OneDRoot.initiate_select_enemy()
@@ -87,7 +90,8 @@ func add_actions(custom_actions : Array) -> void:
 							OneDRoot.player_pass_turn()
 				else:
 					lambda = func():
-						add_lambda(this_action, callable)
+						@warning_ignore("confusable_capture_reassignment")
+						callable = add_lambda(this_action, callable)
 						
 						if this_action.needs_target:
 							OneDRoot.initiate_select_enemy(true)
@@ -96,10 +100,10 @@ func add_actions(custom_actions : Array) -> void:
 							
 				
 			1: ## DEFEND
+				callable = callable.bind(this_action.dfd_mult)
 				lambda = func():
-					callable.bind(this_action.dfd_mult)
-					
-					add_lambda(this_action, callable)
+					@warning_ignore("confusable_capture_reassignment")
+					callable = add_lambda(this_action, callable)
 					
 					if this_action.needs_target:
 						if this_action.ally_target:
@@ -110,8 +114,8 @@ func add_actions(custom_actions : Array) -> void:
 						OneDRoot.player_pass_turn()
 			_:
 				lambda = func():
-					
-					add_lambda(this_action, callable)
+					@warning_ignore("confusable_capture_reassignment")
+					callable = add_lambda(this_action, callable)
 					
 					if this_action.needs_target:
 						if this_action.ally_target:
@@ -127,9 +131,22 @@ func add_actions(custom_actions : Array) -> void:
 		OneDRoot.Actions.get_child(this_action.action_type + 1).add_child(new_button)
 
 # additional things I call on *every* action getting call
-func add_lambda(func_action: Action, callable: Callable) -> void:
-	set_intended_action(func_action, callable)
-	set_intent(func_action)
+func add_lambda(func_action: Action, callable: Callable) -> Callable:
+	
+	# detect the current player that is using the button, since it might not be the same as the one that made the button
+	# especially important in terms of duplicates, like multiple Rat Bites
+	
+	#var callable = Callable(self, this_action.func_name)
+	var da_player = OneDRoot.current_player
+	print(da_player.name)
+	var new_callable = Callable(da_player, func_action.func_name)
+	
+	# then do the boring stuff
+	da_player.set_intended_action(func_action, callable)
+	da_player.set_intent(func_action)
+	
+	return new_callable
+
 
 func add_do_intended_action(action_res: Action) -> void:
 	
