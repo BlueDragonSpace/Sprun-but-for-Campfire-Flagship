@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GlobalEnemy" format=3 uid="uid://gndwnt2kepjt"]
+
+[ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_e6dar"]
+[ext_resource type="Resource" uid="uid://ckrxohf0inp4t" path="res://inGame/OneD/npc/base_actions/passing.tres" id="2_xh3v3"]
+[ext_resource type="Texture2D" uid="uid://dkwgqscbsik62" path="res://placeholderArt/TurnOrderPoint.png" id="3_e0vtg"]
+[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/enemy.gd" id="4_0u41l"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="5_bgc3q"]
+
+[resource]
+script = ExtResource("5_bgc3q")
+name = "placeholder enemy"
+max_hp = 44
+actions = Array[ExtResource("1_e6dar")]([ExtResource("2_xh3v3")])
+icon = ExtResource("3_e0vtg")
+metadata/_custom_type_script = "uid://3d1durpk8i24"

@@ -6,6 +6,7 @@ extends GlobalNPC
 
 @export var new_action : Array[Action]
 @export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var player_type : int = 0
+@export var minion_num: int = 0 ## if not a minion, 0, else counts up automatically past that
 
 #
 #@export_group("1D Exclusive")

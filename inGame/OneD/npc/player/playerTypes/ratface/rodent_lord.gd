@@ -18,6 +18,7 @@ func call_rat() -> void:
 	var rat = PLAYER.instantiate()
 	rat.set_script(RAT_CHARA.one_d_script)
 	rat.NPC_resource = RAT_CHARA
+	rat.NPC_resource.minion_num = rodent_count
 	
 	if rat_actions_added:
 		rat.add_actions_bool = false
@@ -53,6 +54,6 @@ func recieve_name(base: String) -> String:
 		rodent_names.remove_at(num) # makes sure the name doesn't reappear
 	else:
 		return_name = base + str(rodent_count)
-		rodent_count += 1
 	
+	rodent_count += 1
 	return return_name

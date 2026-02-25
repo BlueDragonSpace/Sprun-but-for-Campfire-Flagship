@@ -26,11 +26,8 @@ func add_ready() -> void:
 	
 	set_sprun_slots(NPC_instance.sprun_slots)
 	
-	if add_actions_bool:
-		call_deferred("add_actions", NPC_instance.new_action)
-		print('we addedah the actionah')
-	else:
-		print('refusing to add the actions')
+	#if add_actions_bool:
+	call_deferred("add_actions", NPC_instance.new_action)
 	
 	double_add_ready()
 
@@ -54,6 +51,7 @@ func add_actions(custom_actions : Array) -> void:
 		new_button.atk_mult = this_action.atk_mult
 		new_button.dfd_mult = this_action.dfd_mult
 		new_button.ally_target = this_action.ally_target
+		new_button.minion_num = NPC_instance.minion_num
 		
 		if this_action.intent_type == Action.INTENT.HEAL:
 			new_button.display_heal = true
@@ -97,7 +95,6 @@ func add_actions(custom_actions : Array) -> void:
 							OneDRoot.initiate_select_enemy(true)
 						else:
 							OneDRoot.player_pass_turn()
-							
 				
 			1: ## DEFEND
 				callable = callable.bind(this_action.dfd_mult)
@@ -144,6 +141,9 @@ func add_lambda(func_action: Action, callable: Callable) -> Callable:
 	# then do the boring stuff
 	da_player.set_intended_action(func_action, callable)
 	da_player.set_intent(func_action)
+	
+	## significant progress!
+	## however, the intended target is always the button creator's target, instead of current_player's target
 	
 	return new_callable
 

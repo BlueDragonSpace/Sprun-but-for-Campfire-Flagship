@@ -10,5 +10,6 @@ func_name = "focus"
 icon = ExtResource("1_2pp45")
 action_type = 2
 intent_type = 7
-button_info = "Preparing for a large attack..."
+button_info = "Charging for a stronger move...
+"
 metadata/_custom_type_script = "uid://diifqu7v6338q"

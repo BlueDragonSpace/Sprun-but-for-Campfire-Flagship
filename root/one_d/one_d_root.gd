@@ -328,6 +328,8 @@ func select_enemy(index : int, is_quick : bool = false) -> void:
 		current_player.intended_action.call()
 		current_player.intended_action = Global.empty_function
 	
+	print(current_player.action_victim.name + " inside of select enemy")
+	
 	Actions.find_child("Attack").visible = true # found it annoying to attack twice in a row, it goes to BAK and you have to go back to the Attack tab manually. No more!
 	player_pass_turn()
 
@@ -458,11 +460,11 @@ func check_actions_visible(player_type_bitwise: int = current_player.NPC_instanc
 	for tab in Actions.get_children():
 		for action in tab.get_children():
 			
+			# check if it matches by the player_type
 			action.visible = false
 			
 			if action.usable_on_player & 1: # if 'All' is set, it's gonna be visible
 				action.visible = true
-				continue
 			
 			#for bit in root_player_type_array.size(): # loops through every player type
 				## if the action and the player have at least one of the same bit type, the action is visible (doesn't go through all bits?)
@@ -471,7 +473,12 @@ func check_actions_visible(player_type_bitwise: int = current_player.NPC_instanc
 				## potential downfall, when a character has two flags, would it mess up this system? idk
 			if action.usable_on_player & player_type_bitwise != 0: 
 				action.visible = true
-				continue
+			
+			# check if it matches by the minion_num
+			if not action.minion_num == 0: # if it is 0 then it's not a minion and I don't care
+				if action.minion_num != current_player.NPC_instance.minion_num:
+					action.visible = false
+					print('wow invisibled')
 
 func remove_dead_actions(dead: Node) -> void:
 	

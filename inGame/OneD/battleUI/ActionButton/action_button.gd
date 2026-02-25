@@ -15,6 +15,7 @@ extends Button
 var display_heal : bool = false
 
 @export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var usable_on_player: int = 0
+@export var minion_num: int = 0 # 0 for not a minion, anything past is a minion
 @export var prep_disable = false
 @export var ally_target = false
 

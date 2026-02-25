@@ -62,6 +62,7 @@
 	Double Damage team next move
 	Minor / Cheap heal 
 	Trap (attack, only in Prep, damages enemies as soon as they appear)
+	Attack that does more damage if enemy has [DEBUFF]
 	
 	(needs inventory system) Raccoon eats trash and washes hands
 	
@@ -169,9 +170,10 @@ Bugs:
 		# the callable is exclusively linked to the player that created it
 		# even if another player had the same move, it calls the callable of the player that created it, instead of the current_player
 		# I need a way to pass in the current_player that pressed it, in a similar way to the basic character actions
-	
-	DeBuff kills skip an NPC: specifically the one that caused the debuff (it was rat both times)
-	
+		
+		Progress! Can have differing actions both working, but the intended target is wrong
+		Refer to player.gd plz
+		
 Semibugs??:
 	(2/13/2026) Using a quick action to end a round looks weird, but functions properly
 
@@ -194,5 +196,15 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	Fixed when everything dies at the same time
-	Fixed NPC debuffer not doing action on a debuff kill
+	(working on Multiple Rat Bites):
+		Attacking with first rat directs second rat (bite) to attack first rat's target
+		Biting with first rat directs (in same way)
+		
+		(doesn't seem to be a problem with the actual victim variable, just the asking of from which character the target is supposed to come from)
+	
+	IGNORING MY PREVIOUS SOLUTION, JUST GONNA ADD AN IDENTIFIER TO EVERY MINION BUTTON AND VISIBILIZE THAT
+	
+	(future balancing):
+		increase DFD stat, decrease sprun slots as a whole for increasing stats character wide
+		- it's far easier to buff your stats as wizard or sigil vs when you start with one slot as raccoon
+	
