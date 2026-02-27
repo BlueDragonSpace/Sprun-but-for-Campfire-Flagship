@@ -30,9 +30,10 @@ extends Control
 @export var NPC_resource : GlobalNPC # base stats
 @onready var NPC_instance = NPC_resource.duplicate(true) # stats in use
 
-@onready var current_hp: int = NPC_instance.max_hp:
+@onready var current_hp: int = NPC_instance.current_hp:
 	set(new):
 		current_hp = clamp(new, 0, NPC_instance.max_hp)
+		NPC_instance.current_hp = current_hp
 		
 		if HP.value > current_hp:
 			visual_hp(current_hp)

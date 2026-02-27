@@ -12,6 +12,7 @@ const DIMENSION = 'ZERO, ONE, TWO, THREE, FOUR'
 @export var attack_stat : int = 6
 @export var defend_stat : int = 5
 @export var max_hp : int = 22
+var current_hp : int = max_hp
 @export var is_player : bool = false
 @export var actions : Array[Action] = []
 @export_custom(PROPERTY_HINT_FLAGS, DIMENSION) var dimension_exist : int = 0

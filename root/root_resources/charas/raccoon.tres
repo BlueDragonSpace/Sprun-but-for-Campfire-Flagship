@@ -11,6 +11,7 @@
 
 [resource]
 script = ExtResource("8_1rovx")
+sprun_slots = 2
 new_action = Array[ExtResource("1_272bs")]([ExtResource("3_ns8h5"), ExtResource("4_pelnd"), ExtResource("5_c1nq8"), ExtResource("6_sh70t")])
 player_type = 4098
 name = "Raccoon"

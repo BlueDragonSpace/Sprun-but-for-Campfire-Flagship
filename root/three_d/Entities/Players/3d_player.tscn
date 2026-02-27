@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_l74qy"]
 [ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="2_o1s4l"]
 [ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="3_litxs"]
+[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/enemy.gd" id="4_litxs"]
 
 [sub_resource type="Resource" id="Resource_l74qy"]
 script = ExtResource("3_litxs")
@@ -15,6 +16,13 @@ metadata/_custom_type_script = "uid://cx4piye3gqsc8"
 
 [sub_resource type="BoxMesh" id="BoxMesh_l74qy"]
 size = Vector3(0.5, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_litxs"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_litxs"]
+material = SubResource("StandardMaterial3D_litxs")
+text = "HP Bar Text"
 
 [node name="3DPlayer" type="CharacterBody3D" unique_id=766144830]
 collision_layer = 2
@@ -41,3 +49,7 @@ texture_filter = 0
 texture = ExtResource("2_o1s4l")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=166503806]
+
+[node name="HPtext" type="MeshInstance3D" parent="." unique_id=1348134642]
+transform = Transform3D(7.9999995, 13.856407, 8.121595e-07, -6.928205, 3.9999995, 13.856406, 12, -6.928203, 8.000001, 0, 2.595492, 0)
+mesh = SubResource("TextMesh_litxs")

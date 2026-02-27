@@ -46,7 +46,7 @@ extends Control
 
 var current_player = null:
 	set(new):
-		if is_node_ready() and Root.is_node_ready():
+		if is_node_ready() and Root.is_node_ready() and new != null:
 			LittlePlayerIcon.texture = new.NPC_instance.icon
 			current_player = new
 var current_enemy = null
@@ -189,7 +189,8 @@ func _ready() -> void:
 		$RootGame.modulate.a = 1.0
 		$IntroSequence.visible = false
 		%CharacterSelect.visible = false
-		call_deferred("initialize_game")
+		if current_dimension:
+			call_deferred("initialize_game")
 	else:
 		$RootGame.visible = false
 		$RootGame.modulate.a = 0.0
@@ -210,6 +211,7 @@ func _process(delta: float) -> void:
 
 
 func initialize_game() -> void:
+	
 	current_player = Charas.get_child(0)
 	current_enemy = Enemies.get_child(0)
 	

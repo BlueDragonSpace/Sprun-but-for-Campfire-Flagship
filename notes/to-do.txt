@@ -166,19 +166,12 @@ Bugs:
 		(need a specific case, forgot where to find one and too annoyed to bother)
 		For now, it's me not paying attension to damage
 	
-	Multiple Rat Bites callable / action_button problem:
-		# the callable is exclusively linked to the player that created it
-		# even if another player had the same move, it calls the callable of the player that created it, instead of the current_player
-		# I need a way to pass in the current_player that pressed it, in a similar way to the basic character actions
-		
-		Progress! Can have differing actions both working, but the intended target is wrong
-		Refer to player.gd plz
-		
 Semibugs??:
 	(2/13/2026) Using a quick action to end a round looks weird, but functions properly
 
 Exploits:
 	Hold onto one enemy at the end of a round (do I want players to do this? not really, but it's a good tactic)
+		- could just keep buffing selves til infinity and healing with wizard, theoretically
 
 Noot noot
 Holy carp the game works on mobile by accident!!!!
@@ -196,15 +189,9 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	(working on Multiple Rat Bites):
-		Attacking with first rat directs second rat (bite) to attack first rat's target
-		Biting with first rat directs (in same way)
-		
-		(doesn't seem to be a problem with the actual victim variable, just the asking of from which character the target is supposed to come from)
+	Making character stats in 3D transfer to 1D and vice versa
 	
-	IGNORING MY PREVIOUS SOLUTION, JUST GONNA ADD AN IDENTIFIER TO EVERY MINION BUTTON AND VISIBILIZE THAT
-	
-	(future balancing):
-		increase DFD stat, decrease sprun slots as a whole for increasing stats character wide
-		- it's far easier to buff your stats as wizard or sigil vs when you start with one slot as raccoon
+	Separate UI of OneD to what is used in all of them
+	Make a bunch of OneD functions be global so that I can use them in 3D (ideally what makes it a turn-based game, and an inherited script for functionalities)
+	go to the bathroom you idiot
 	

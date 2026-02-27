@@ -3,6 +3,8 @@ extends CharacterBody3D
 @onready var ThreeDRoot : Node3D = get_tree().get_first_node_in_group("ThreeDRoot")
 @onready var CameraHandler : Node3D = ThreeDRoot.get_node("CameraHandler")
 
+@onready var HPtext: MeshInstance3D = $HPtext
+
 @export var NPC_resource : GlobalChara
 @onready var NPC_instance = NPC_resource.duplicate(true) # stats in use
 
@@ -16,6 +18,14 @@ var can_jump = true #this is actually based on camera lol
 func _ready() -> void:
 	name = NPC_instance.name
 	Icon.texture = NPC_instance.icon
+	
+	HPtext.mesh.text = str(NPC_instance.current_hp)
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("3DMasochism"):
+		# a really un elaborate way to lose HP
+		NPC_instance.current_hp -= 5
+		HPtext.mesh.text = str(NPC_instance.current_hp)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

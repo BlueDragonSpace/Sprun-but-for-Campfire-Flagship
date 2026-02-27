@@ -36,34 +36,7 @@ const OneDScriptWizerd = preload("uid://c22h5dc4inak1")
 
 func _ready() -> void:
 	
-	ThreeDRoot.process_mode = Node.PROCESS_MODE_DISABLED
-	
-	match(dimension):
-		DIMENSION.ONE:
-			OneDRoot.process_mode = Node.PROCESS_MODE_INHERIT
-			for chara in Charas:
-				var child = ONE_D_PLAYER.instantiate()
-				child.set_script(chara.one_d_script)
-				child.NPC_resource = chara
-				
-				OneDRoot.Charas.add_child(child)
-			for enemy in Enemies:
-				var child = ONE_D_ENEMY.instantiate()
-				child.set_script(enemy.one_d_script)
-				child.NPC_resource = enemy
-				
-				OneDRoot.Enemies.add_child(child)
-		DIMENSION.THREE:
-			ThreeDRoot.process_mode = Node.PROCESS_MODE_INHERIT
-			for chara in Charas:
-				var child = THREE_D_PLAYER.instantiate()
-				child.NPC_resource = chara
-				child.position = Vector3(randi_range(10, 15), randi_range(3, 8), 0)
-				
-				ThreeDRoot.Charas.add_child(child)
-			
-			OneDRoot.Animate.play("global_transition_out")
-
+	change_dimension(dimension, null)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -76,8 +49,13 @@ func _input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _unhandled_input(event: InputEvent) -> void:
+	
 	if Input.is_action_just_pressed("dimension_shift") and not disable_dimension_shifting:
-		dimension_shift(dimension, DIMENSION.TWO)
+		match dimension:
+			DIMENSION.ONE:
+				change_dimension(DIMENSION.THREE, dimension)
+			DIMENSION.THREE:
+				change_dimension(DIMENSION.ONE, dimension)
 	
 		# silly little click and release sound effects (Kinito.PET !!)
 	if not event is InputEventMouseButton and not event is InputEventMouseMotion:
@@ -98,21 +76,72 @@ func _unhandled_input(event: InputEvent) -> void:
 # 1 <-> 3 / 2: Background / Environment fades, character sprites *tween* to new position
 # 2 <-> 3: Ortho screws everything up... needs pre
 
-func dimension_shift(_from, to) -> void:
+func change_dimension(next_dimension, prev_dimension) -> void:
 	
-	#new_dimension : int
-	
-	# turn off previous dimension
-	match(to):
+	# puts the info in the local dimension, puts it in the root to read by the next dimension
+	match(prev_dimension):
 		DIMENSION.ONE:
+			# do charas
+			Charas.clear()
+			for child in OneDRoot.Charas.get_children():
+				Charas.append(child.NPC_instance)
+				child.queue_free()
+			# do enemies
+			Enemies.clear()
+			for child in OneDRoot.Enemies.get_children():
+				Enemies.append(child.NPC_instance)
+				child.queue_free()
+			
+			#OneDRoot.process_mode = Node.PROCESS_MODE_DISABLED
+		
+		DIMENSION.THREE:
+			# do charas
+			Charas.clear()
+			for child in ThreeDRoot.Charas.get_children():
+				Charas.append(child.NPC_instance)
+				child.queue_free()
+			# do enemies
+			Enemies.clear()
+			for child in ThreeDRoot.Enemies.get_children():
+				Enemies.append(child.NPC_instance)
+				child.queue_free()
+			
+			ThreeDRoot.process_mode = Node.PROCESS_MODE_DISABLED
+			
+		null: # don't read anything new, just pass in whatever is in the Charas and Enemies data already
 			pass
-		DIMENSION.TWO:
-			OneDRoot.Animate.play('global_transition_out')
-		3:
-			pass
-		4:
-			print('out of the fourth')
-		_:
-			print('illegal dimension entered, what did you do')
 	
-	#dimension = new_dimension
+	
+	# reads the info in the root, matches it to the current dimension
+	match(next_dimension):
+		DIMENSION.ONE:
+			OneDRoot.process_mode = Node.PROCESS_MODE_INHERIT
+			for chara in Charas:
+				var child = ONE_D_PLAYER.instantiate()
+				child.set_script(chara.one_d_script)
+				child.NPC_resource = chara
+				
+				OneDRoot.Charas.add_child(child)
+			for enemy in Enemies:
+				var child = ONE_D_ENEMY.instantiate()
+				child.set_script(enemy.one_d_script)
+				child.NPC_resource = enemy
+				
+				OneDRoot.Enemies.add_child(child)
+				
+			dimension = DIMENSION.ONE
+			
+			OneDRoot.Animate.play_backwards("global_transition_out")
+			
+		DIMENSION.THREE:
+			ThreeDRoot.process_mode = Node.PROCESS_MODE_INHERIT
+			for chara in Charas:
+				var child = THREE_D_PLAYER.instantiate()
+				child.NPC_resource = chara
+				child.position = Vector3(randi_range(10, 15), randi_range(3, 8), 0)
+				
+				ThreeDRoot.Charas.add_child(child)
+			
+			dimension = DIMENSION.THREE
+			
+			OneDRoot.Animate.play("global_transition_out")

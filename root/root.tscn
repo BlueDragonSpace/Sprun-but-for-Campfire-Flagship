@@ -111,12 +111,15 @@ _data = {
 script = ExtResource("2_jnlp7")
 Charas = Array[ExtResource("2_5jge4")]([ExtResource("3_5jge4")])
 Enemies = Array[ExtResource("4_5jge4")]([ExtResource("7_y3dhr"), ExtResource("6_5jge4")])
+dimension = 3
+disable_dimension_shifting = false
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]
+process_priority = 1
 started = true
-current_dimension = true
 
 [node name="ThreeDRoot" parent="." unique_id=1187355930 instance=ExtResource("3_ovlcs")]
+process_priority = 1
 
 [node name="Animate" type="AnimationPlayer" parent="." unique_id=1105804438]
 libraries/ = SubResource("AnimationLibrary_y5gj7")

@@ -8,8 +8,6 @@ const AStarManhattanScript = preload("uid://tgfyjj5ftu2k")
 @onready var Nav: NavigationAgent3D = $Nav
 @onready var LineOfSight: RayCast3D = $LineOfSight
 
-@onready var Player: Node3D = %Player
-
 const GREEN_CIRCLE = preload("uid://dco50bis2p58v")
 const YELLOW_LINE = preload("uid://cjpw7x1tm1uou")
 
@@ -35,7 +33,7 @@ func _physics_process(delta: float) -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("display_path"):
 		print('displaying path')
-		var path = AStarManhattanAccess.find_path(self.position, Player.position, ThreeDRoot.block_indexes)
+		var path = AStarManhattanAccess.find_path(self.position, ThreeDRoot.Player.position, ThreeDRoot.block_indexes)
 		print(path)
 		
 		var prev_point = null
@@ -56,9 +54,11 @@ func _input(_event: InputEvent) -> void:
 func _on_timer_timeout() -> void:
 	
 	if use_auto_timer:
-		# navigation + pathfinding
-		Nav.set_target_position(Player.global_position)
-		Nav.get_final_position()
+		## navigation + pathfinding
+		#Nav.set_target_position(ThreeDRoot.Player.global_position)
+		#Nav.get_final_position()
+		#
+		## line of sight
+		#LineOfSight.target_position = ThreeDRoot.Player.global_position - global_position
 		
-		# line of sight
-		LineOfSight.target_position = Player.global_position - global_position
+		pass

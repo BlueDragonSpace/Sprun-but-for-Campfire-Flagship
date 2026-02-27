@@ -3,15 +3,11 @@ extends Node3D
 @onready var CurrentCamera : Camera3D = %CameraHandler.CurrentCamera
 @onready var PathfindBot: CharacterBody3D = $PathfindBot
 @onready var Charas: Node3D = $Charas
+@onready var Enemies: Node3D = $Enemies
+@onready var Player: CharacterBody3D = $Charas/Kitty
+
 
 @export var cam_speed = 5
-### Currently not in use
- #all blocks send their deepest regards to the root
- #in which the sorrowfully declare;
- #no pathfinding nor movement shall occur here
-#var block_indexes : Array[Vector3i] = [] 
-
-## yes this is in use
 
 # allows the mouse to click to pathfind (this was stolen from the official Godot 3D pathfind tutorial lol)
 # to make this work you should probably turn off use_auto_timer
@@ -37,4 +33,4 @@ func _physics_process(delta: float) -> void:
 	
 	if direction and %CameraHandler:
 		position += Vector3(input_dir.x, input_dir.y, 0.0) * %CameraHandler.CurrentCamera.global_basis * cam_speed * delta
-	
+		

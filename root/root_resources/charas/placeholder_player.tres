@@ -7,8 +7,6 @@
 
 [resource]
 script = ExtResource("2_vdrr2")
-sprun_slots = 1000
-sprun_active = 100
 player_type = 2
 name = "Jimmy Mc Spazzle"
 speed_stat = 99999999
