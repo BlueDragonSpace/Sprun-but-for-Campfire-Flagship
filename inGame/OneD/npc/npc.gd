@@ -1,8 +1,6 @@
 #@abstract ## means that the npc class is not supposed to be utilized on it's own
 extends Control
 
-## This thing is now depreciated! This was NPC before making it take a Chara Resource from the Root
-
 @onready var OneDRoot = get_tree().get_current_scene().get_child(0)
 
 @onready var IntentBar: HBoxContainer = $VBoxContainer/IntentBar
@@ -28,7 +26,10 @@ extends Control
 #@export var max_hp: int = 40
 
 @export var NPC_resource : GlobalNPC # base stats
-@onready var NPC_instance = NPC_resource.duplicate(true) # stats in use
+@onready var NPC_instance = NPC_resource.duplicate(true): # stats in use
+	set(new):
+		NPC_instance = new
+		set_max_hp(NPC_instance.max_hp)
 
 @onready var current_hp: int = NPC_instance.current_hp:
 	set(new):
@@ -88,7 +89,10 @@ var previous_action : Action.ACTION_TYPE = Action.ACTION_TYPE.OTHER
 const DE_BUFF_RECT = preload("uid://b2tkettp813ev")
 
 func _ready() -> void:
-	set_max_hp(NPC_instance.max_hp)
+	
+	# reading in 
+	call_deferred("set_max_hp", NPC_instance.max_hp)
+	#set_max_hp(NPC_instance.max_hp)
 	Icon.texture = NPC_instance.icon
 	name = NPC_instance.name
 	
@@ -104,6 +108,7 @@ func add_ready() -> void:
 	pass
 
 func visual_hp(new_hp : int) -> void:
+	print(new_hp, ' tweening it')
 	
 	var tween = create_tween()
 	tween.tween_method(set_current_hp_text, HP.value, new_hp, 0.4)  # tweens the text
@@ -118,8 +123,10 @@ func set_current_hp_text(new_hp : int) -> void:
 func set_max_hp(new_hp : int) -> void:
 	
 	NPC_instance.max_hp = new_hp
-	current_hp = new_hp
-	visual_hp(new_hp)
+	current_hp = NPC_instance.current_hp
+	print(current_hp, "set-max-hp current hp")
+	print(new_hp, " set max-hp new hp")
+	visual_hp(current_hp)
 	HP.max_value = new_hp
 	MaxHp.text = str(new_hp)
 

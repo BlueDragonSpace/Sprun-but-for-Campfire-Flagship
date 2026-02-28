@@ -29,9 +29,9 @@ const ONE_D_ENEMY = preload("uid://cmoedndryju2o")
 
 const THREE_D_PLAYER = preload("uid://crwqeuod3418")
 
-const OneDScriptBasicPlayer = preload("uid://sj0wnis8wnpb") # basic Player Script
-const OneDScriptKitty = preload("uid://dxc2eww7oejej") # Kitty's SCRIPT
-const OneDScriptWizerd = preload("uid://c22h5dc4inak1")
+#const OneDScriptBasicPlayer = preload("uid://sj0wnis8wnpb") # basic Player Script
+#const OneDScriptKitty = preload("uid://dxc2eww7oejej") # Kitty's SCRIPT
+#const OneDScriptWizerd = preload("uid://c22h5dc4inak1")
 
 
 func _ready() -> void:
@@ -80,7 +80,7 @@ func change_dimension(next_dimension, prev_dimension) -> void:
 	
 	# puts the info in the local dimension, puts it in the root to read by the next dimension
 	match(prev_dimension):
-		DIMENSION.ONE:
+		DIMENSION.ONE: # woah emoji 😒😒😒😒💕💕
 			# do charas
 			Charas.clear()
 			for child in OneDRoot.Charas.get_children():
@@ -122,6 +122,7 @@ func change_dimension(next_dimension, prev_dimension) -> void:
 				child.NPC_resource = chara
 				
 				OneDRoot.Charas.add_child(child)
+				child.set_max_hp(child.NPC_resource.max_hp)
 			for enemy in Enemies:
 				var child = ONE_D_ENEMY.instantiate()
 				child.set_script(enemy.one_d_script)
@@ -131,7 +132,9 @@ func change_dimension(next_dimension, prev_dimension) -> void:
 				
 			dimension = DIMENSION.ONE
 			
+			# set up the OneDRoot
 			OneDRoot.Animate.play_backwards("global_transition_out")
+			OneDRoot.initialize_game()
 			
 		DIMENSION.THREE:
 			ThreeDRoot.process_mode = Node.PROCESS_MODE_INHERIT

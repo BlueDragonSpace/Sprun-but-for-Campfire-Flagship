@@ -4,7 +4,7 @@ extends Node3D
 @onready var PathfindBot: CharacterBody3D = $PathfindBot
 @onready var Charas: Node3D = $Charas
 @onready var Enemies: Node3D = $Enemies
-@onready var Player: CharacterBody3D = $Charas/Kitty
+#@onready var Player: CharacterBody3D = $Charas/Kitty
 
 
 @export var cam_speed = 5

@@ -64,21 +64,23 @@
 	Trap (attack, only in Prep, damages enemies as soon as they appear)
 	Attack that does more damage if enemy has [DEBUFF]
 	
+	Strength / Dexterity Buff (would also entail adding these nums to the UI bar)
+	
 	(needs inventory system) Raccoon eats trash and washes hands
 	
-	Blood Lord Vampire character? (probably useful with Rodent Lord):
-		Bite allies + enemies to heal (-2), 
-	
-	Sigilant (charge up robot, sprun is like a battery to this guy):
-		Focus at double pace, 7 slots or so to start
-		Change mode (like Kitty) + costs sprun to initiate:
-			Once in this mode, must keep using moves that drain sprun or it switches back
-			Level 3 Attack
-			Level 2 Attack + Block
-			End early (adds a sprun + heal?)
-	
-	Red Panda (fire moves!!!):
-		I love Red Pandas okay
+	Characters!!!!!!!!!!!!:
+		
+		Blood Lord Vampire character? (probably useful with Rodent Lord):
+			Bite allies + enemies to heal (-2), 
+		
+		Bard Character (Carroto from Nabiu):
+			Free Bless (remove debuff)
+			weak attacks
+			Increases Attack/DEF/SPEED/ something else for all characters, likely as a buff (power of music lol)
+			
+		
+		Red Panda (fire moves!!!):
+			I love Red Pandas okay
 	
 	All Actions have sound effects, in their resource, played on animation
 	
@@ -190,8 +192,9 @@ Art + SFX needed:
 
 Devlog lol:
 	Making character stats in 3D transfer to 1D and vice versa
+	(M for maschism, C switches dimension)
+	
 	
 	Separate UI of OneD to what is used in all of them
 	Make a bunch of OneD functions be global so that I can use them in 3D (ideally what makes it a turn-based game, and an inherited script for functionalities)
-	go to the bathroom you idiot
 	

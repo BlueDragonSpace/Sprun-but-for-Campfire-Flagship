@@ -19,6 +19,7 @@ func _ready() -> void:
 	name = NPC_instance.name
 	Icon.texture = NPC_instance.icon
 	
+	print(str(NPC_instance.current_hp) + " reading in 3D Player")
 	HPtext.mesh.text = str(NPC_instance.current_hp)
 
 func _input(_event: InputEvent) -> void:
