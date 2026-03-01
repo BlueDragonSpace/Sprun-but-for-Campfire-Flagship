@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dp6sl47df53kt"]
 
 [ext_resource type="Script" uid="uid://c58n5hj11wrf0" path="res://root/three_d/NPCs/3dnpc.gd" id="1_igsjm"]
-[ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="2_hkuay"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cfwuy"]
 
@@ -16,6 +15,157 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="TextMesh" id="TextMesh_vveda"]
 material = SubResource("StandardMaterial3D_litxs")
 text = "HP Bar Text"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q778e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_igsjm"]
+material = SubResource("StandardMaterial3D_q778e")
+size = Vector3(4, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkuay"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cfwuy"]
+material = SubResource("StandardMaterial3D_hkuay")
+size = Vector3(3.9, 0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if5rb"]
+transparency = 1
+albedo_color = Color(0, 0, 1, 0.33333334)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bgqsv"]
+material = SubResource("StandardMaterial3D_if5rb")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="Animation" id="Animation_igsjm"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_hkuay"]
+resource_name = "die"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.96)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.96)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.96)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cfwuy"]
+resource_name = "pop_in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_if5rb"]
+_data = {
+&"RESET": SubResource("Animation_igsjm"),
+&"die": SubResource("Animation_hkuay"),
+&"pop_in": SubResource("Animation_cfwuy")
+}
 
 [node name="3dnpc" type="CharacterBody3D" unique_id=225495943]
 script = ExtResource("1_igsjm")
@@ -36,10 +186,29 @@ pixel_size = 0.06
 billboard = 1
 no_depth_test = true
 texture_filter = 0
-texture = ExtResource("2_hkuay")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=931775020]
 
 [node name="HPtext" type="MeshInstance3D" parent="." unique_id=1619697627]
 transform = Transform3D(7.9999995, 13.856407, 8.121595e-07, -6.928205, 3.9999995, 13.856406, 12, -6.928203, 8.000001, 0, 2.595492, 0)
 mesh = SubResource("TextMesh_vveda")
+
+[node name="DeBuffs" type="Node3D" parent="." unique_id=1585696317]
+
+[node name="HPBar" type="Node3D" parent="." unique_id=2141242155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="HPGreen" type="MeshInstance3D" parent="HPBar" unique_id=1379425815]
+mesh = SubResource("BoxMesh_igsjm")
+skeleton = NodePath("../..")
+
+[node name="HPRed" type="MeshInstance3D" parent="HPBar" unique_id=569840209]
+mesh = SubResource("BoxMesh_cfwuy")
+skeleton = NodePath("../..")
+
+[node name="Shield" type="MeshInstance3D" parent="." unique_id=263374896]
+mesh = SubResource("SphereMesh_bgqsv")
+
+[node name="Animate" type="AnimationPlayer" parent="." unique_id=1991447976]
+libraries/ = SubResource("AnimationLibrary_if5rb")
+autoplay = &"pop_in"

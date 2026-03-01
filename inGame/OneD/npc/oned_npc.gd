@@ -3,8 +3,6 @@ extends "res://root/global_npc_script.gd"
 
 # scene for every NPC represented in OneD
 
-@onready var OneDRoot = get_tree().get_current_scene().get_child(0)
-
 @onready var IntentBar: HBoxContainer = $VBoxContainer/IntentBar
 @onready var Intent: TextureRect = $VBoxContainer/IntentBar/Intent
 @onready var IntentLabel: Label = $VBoxContainer/IntentBar/Intent/IntentLabel
@@ -16,31 +14,21 @@ extends "res://root/global_npc_script.gd"
 @onready var CurrentHp: Label = $VBoxContainer/LowerBar/HP/HPBar/CurrentHP
 @onready var MaxHp: Label = $VBoxContainer/LowerBar/HP/HPBar/MaxHP
 
-@onready var Animate: AnimationPlayer = $Animate
-#
-## Character Icon
-#@export var icon = Image
-#
-## stats
-#@export var speed_stat : int = 12
-#
-#@export var max_hp: int = 40
+#@export var NPC_resource : GlobalNPC # base stats
+#@onready var NPC_instance = NPC_resource.duplicate(true): # stats in use
+	#set(new):
+		#NPC_instance = new
+		#set_max_hp(NPC_instance.max_hp)
 
-@export var NPC_resource : GlobalNPC # base stats
-@onready var NPC_instance = NPC_resource.duplicate(true): # stats in use
-	set(new):
-		NPC_instance = new
-		set_max_hp(NPC_instance.max_hp)
-
-@onready var current_hp: int = NPC_instance.current_hp:
-	set(new):
-		current_hp = clamp(new, 0, NPC_instance.max_hp)
-		NPC_instance.current_hp = current_hp
-		
-		if HP.value > current_hp:
-			visual_hp(current_hp)
-		elif HP.value < current_hp:
-			visual_hp(current_hp)
+#@onready var current_hp: int = NPC_instance.current_hp:
+	#set(new):
+		#current_hp = clamp(new, 0, NPC_instance.max_hp)
+		#NPC_instance.current_hp = current_hp
+		#
+		#if HP.value > current_hp:
+			#visual_hp(current_hp)
+		#elif HP.value < current_hp:
+			#visual_hp(current_hp)
 #
 #@export var attack_stat : int = 3
 #@export var defend_stat : int = 5
@@ -54,22 +42,10 @@ const AUTO_FADE_NOTIF = preload("uid://dr7fpgloton5f")
 #
 #@export var actions : Array[Action]
 
-# preload actions
-const STUNNED = preload("uid://dsldqq7ppqvn6")
-
 # bad code: is it Npc or Character!
 # and worst of all: Characters are contolled by Player, meaning that they are literal PCs instead of NPCs
 enum CHARACTER_TYPE {ENEMY, PLAYER, NUHUH}
 var npc_type = CHARACTER_TYPE.NUHUH # this class isn't intended to be used on it's own...
-
-var current_defense : int = 0:
-	set(new):
-		if new <= 0:
-			$VBoxContainer/LowerBar/Shield.visible = false
-		else:
-			$VBoxContainer/LowerBar/Shield.visible = true
-		$VBoxContainer/LowerBar/Shield/ShieldNum.text = str(new)
-		current_defense = new
 
 var intended_action = Callable(Global, "empty_function")
 var intended_action_resource : Action
@@ -78,7 +54,6 @@ var action_victim : Node = null:
 		action_victim = new
 		IntendedTargetIcon.texture = action_victim.NPC_instance.icon
 
-var is_dead = false
 #var size_transition = 0.0:
 	#set(new):
 		#size_transition = new
@@ -91,7 +66,7 @@ func _ready() -> void:
 	
 	# intial setting up from global_npc_script
 	DeBuffs = get_node("VBoxContainer/DeBuffs")
-	print(DeBuffs.name)
+	Animate = get_node("Animate")
 	
 	# reading in 
 	set_max_hp(NPC_instance.max_hp)
@@ -128,6 +103,13 @@ func set_max_hp(new_hp : int) -> void:
 	visual_hp(current_hp)
 	HP.max_value = new_hp
 	MaxHp.text = str(new_hp)
+
+func visual_dfd(new_dfd: int) -> void:
+	if new_dfd <= 0:
+		$VBoxContainer/LowerBar/Shield.visible = false
+	else:
+		$VBoxContainer/LowerBar/Shield.visible = true
+	$VBoxContainer/LowerBar/Shield/ShieldNum.text = str(new_dfd)
 
 func set_intended_action(action: Action, callable : Callable = Callable(self, action.func_name), random: bool = false) -> void:
 	
@@ -207,37 +189,37 @@ func add_do_intended_action(action_res: Action) -> void:
 	# for players, spends sprun
 	pass
  
-func take_damage(damage, attacker = null, ignore_shield = false) -> void:
-	
-	if damage > 0:
-		if ignore_shield:
-			current_hp -= damage
-			Animate.play("take_hit")
-		else:
-			if current_defense > 0:
-				var undefended_damage = damage - current_defense
-				current_defense = clamp(current_defense - damage, 0, INF)
-				
-				if undefended_damage > 0:
-					current_hp -= undefended_damage
-					Animate.play("take_hit")
-				else:
-					$DefendAttack.play()
-			else:
-				current_hp -= damage
-				
-		if current_hp <= 0:
-			die()
-			
-		if attacker != null:
-			add_take_damage(attacker)
-	else:
-		# it's a healing move
-		current_hp -= damage
-		Animate.play("heal")
-
-func add_take_damage(_attacker): # additional stuff I add to take_damage() in other classes (like enemy)
-	pass
+#func take_damage(damage, attacker = null, ignore_shield = false) -> void:
+	#
+	#if damage > 0:
+		#if ignore_shield:
+			#current_hp -= damage
+			#Animate.play("take_hit")
+		#else:
+			#if current_defense > 0:
+				#var undefended_damage = damage - current_defense
+				#current_defense = clamp(current_defense - damage, 0, INF)
+				#
+				#if undefended_damage > 0:
+					#current_hp -= undefended_damage
+					#Animate.play("take_hit")
+				#else:
+					#$DefendAttack.play()
+			#else:
+				#current_hp -= damage
+				#
+		#if current_hp <= 0:
+			#die()
+			#
+		#if attacker != null:
+			#add_take_damage(attacker)
+	#else:
+		## it's a healing move
+		#current_hp -= damage
+		#Animate.play("heal")
+#
+#func add_take_damage(_attacker): # additional stuff I add to take_damage() in other classes (like enemy)
+	#pass
 
 func defend():
 	self.current_defense += NPC_instance.defend_stat
@@ -258,16 +240,6 @@ func big_attack():
 
 func passing() -> void:
 	Global.empty_function()
-
-func die() -> void:
-	
-	# you can only die once
-	if is_dead == false:
-		is_dead = true
-		OneDRoot.remove_dead_actions(self)
-		Animate.call_deferred("play", "die")
-	
-	$Death.play()
 
 func set_intent(action: Action, target_visible : bool = false) -> void:
 	

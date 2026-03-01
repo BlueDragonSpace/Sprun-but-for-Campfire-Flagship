@@ -48,7 +48,7 @@
 			Upon Kitty's Reflection, sees greater world, zoom into Kitty as through a 2D camera into single pixel of color
 		Move camera script to not be apart of just one player (but the average position of each of them)
 	
-	
+	maybe: 3D doesn't display exact numbers, which could make or break your run
 	
 	Major issue: Connecting Global_Player stats to fit within 1D_Player stuff... needs a new script for every actio
 	
@@ -199,3 +199,5 @@ Devlog lol:
 	
 	Make a bunch of OneD functions be global so that I can use them in 3D (ideally what makes it a turn-based game, and an inherited script for functionalities)
 	(basically proceed to do this, as of 2/28, already started with the check and take_debuff functions)
+	
+	Current_hp starting glitch (why do they start with less hp than intended? max_hp?)
