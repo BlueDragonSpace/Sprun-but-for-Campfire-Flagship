@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bq520o0hbpclo"
-path="res://.godot/imported/SoundOff-1.png.png-16bcc04281ab2dc2339f92bb5bf31db8.ctex"
+path="res://.godot/imported/SoundOff-1.png.png-a48fbf5451260debd73895e5a1e86006.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://placeholderArt/SoundOff-1.png.png"
-dest_files=["res://.godot/imported/SoundOff-1.png.png-16bcc04281ab2dc2339f92bb5bf31db8.ctex"]
+source_file="res://placeholderArt/myPixelArt/SoundOff-1.png.png"
+dest_files=["res://.godot/imported/SoundOff-1.png.png-a48fbf5451260debd73895e5a1e86006.ctex"]
 
 [params]
 

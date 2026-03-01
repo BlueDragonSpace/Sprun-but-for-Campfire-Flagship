@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bbku30glrarxd"]
 
-[ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/OneD/npc/player/player.tscn" id="1_m5oq8"]
+[ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/OneD/npc/player/oned_player.tscn" id="1_m5oq8"]
 [ext_resource type="Script" uid="uid://ce6ywj1ahln6d" path="res://inGame/OneD/npc/player/playerTypes/raccoon/raccoon.gd" id="2_w3pjq"]
 [ext_resource type="Resource" uid="uid://ch56xq26ov4yl" path="res://inGame/OneD/npc/player/playerTypes/raccoon/daggers.tres" id="3_gqmbh"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="3_q3srw"]

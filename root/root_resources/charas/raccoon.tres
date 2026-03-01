@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://dnetxknb0osum" path="res://inGame/OneD/npc/player/playerTypes/raccoon/inject.tres" id="5_c1nq8"]
 [ext_resource type="Resource" uid="uid://c7jivkc0dwrjl" path="res://inGame/OneD/npc/player/playerTypes/raccoon/sneak_attack.tres" id="6_sh70t"]
 [ext_resource type="Script" uid="uid://ce6ywj1ahln6d" path="res://inGame/OneD/npc/player/playerTypes/raccoon/raccoon.gd" id="7_cj1gv"]
-[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="8_1rovx"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara_resource.gd" id="8_1rovx"]
 
 [resource]
 script = ExtResource("8_1rovx")

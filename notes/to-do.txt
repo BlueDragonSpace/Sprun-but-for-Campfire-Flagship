@@ -48,6 +48,8 @@
 			Upon Kitty's Reflection, sees greater world, zoom into Kitty as through a 2D camera into single pixel of color
 		Move camera script to not be apart of just one player (but the average position of each of them)
 	
+	
+	
 	Major issue: Connecting Global_Player stats to fit within 1D_Player stuff... needs a new script for every actio
 	
 	
@@ -191,10 +193,9 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 Devlog lol:
-	Making character stats in 3D transfer to 1D and vice versa
-	(M for maschism, C switches dimension)
+	Separate UI of OneD to what is used in all of them:
+		When not current dimension, every action button does a different thing (ideally, each action is defined differently for differing dimension players) i.e. Kitty reflection would involve a particle effect system in 3D, but simpler in 1D, in code
+		
 	
-	
-	Separate UI of OneD to what is used in all of them
 	Make a bunch of OneD functions be global so that I can use them in 3D (ideally what makes it a turn-based game, and an inherited script for functionalities)
-	
+	(basically proceed to do this, as of 2/28, already started with the check and take_debuff functions)

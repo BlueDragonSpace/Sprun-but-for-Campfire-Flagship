@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhkrj58td4ng7"]
 
-[ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/OneD/npc/player/player.tscn" id="1_ra5ly"]
+[ext_resource type="PackedScene" uid="uid://bd0auisdvfagw" path="res://inGame/OneD/npc/player/oned_player.tscn" id="1_ra5ly"]
 [ext_resource type="Script" uid="uid://c2yhgf20ky871" path="res://inGame/OneD/npc/player/playerTypes/ratface/rodent_lord.gd" id="2_8x0pt"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="3_68fry"]
 [ext_resource type="Resource" uid="uid://d2ing130rolfl" path="res://inGame/OneD/npc/player/playerTypes/ratface/RAT.tres" id="3_jl2p5"]

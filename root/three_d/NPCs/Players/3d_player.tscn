@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://crwqeuod3418"]
+
+[ext_resource type="PackedScene" uid="uid://dp6sl47df53kt" path="res://root/three_d/NPCs/3DNPC.tscn" id="1_tigjw"]
+[ext_resource type="Script" uid="uid://1yddsj3mviwe" path="res://root/three_d/NPCs/Players/3d_player.gd" id="1_wh8uw"]
+
+[node name="3DPlayer" unique_id=225495943 instance=ExtResource("1_tigjw")]
+script = ExtResource("1_wh8uw")

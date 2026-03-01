@@ -1,5 +1,9 @@
 extends Control
 
+# OneDRoot is always active, even when another Root is the current scene, because it serves
+# -as the UI for the game, without it, there would be no interaction
+
+# the OneDRoot script also handles the backbone mechanics of the game, like the turn_queue and death handling
 
 # NodePathssssss
 @onready var Root : Node = get_tree().get_first_node_in_group("Root")
@@ -8,8 +12,11 @@ extends Control
 
 @onready var PlaySpeedSlider: HSlider = $RootGame/TopBar/HBoxContainer/PlaySpeedSlider
 
-@onready var Charas: GridContainer = $RootGame/BattleScreen/Charas
-@onready var Enemies: GridContainer = $RootGame/BattleScreen/Enemies
+# these two can also take from the node paths of other Roots,
+# highly Variable, if I say so myself
+@onready var Charas: Node = $RootGame/BattleScreen/Charas # both are GridContainers, btw
+@onready var Enemies: Node = $RootGame/BattleScreen/Enemies
+
 @onready var TurnOrder: VBoxContainer = $RootGame/BattleScreen/TurnOrder/TurnOrder
 
 @onready var Actions: TabContainer = $RootGame/LowerBar/VBoxContainer/Actions
@@ -202,6 +209,7 @@ func _ready() -> void:
 		pass
 	else:
 		Animate.play("global_transition_out", -1, 99)
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -209,7 +217,7 @@ func _process(delta: float) -> void:
 
 ## custom functions (other than signals) below
 
-
+# intializes the game for when OneDRoot is the currently played dimension
 func initialize_game() -> void:
 	
 	current_player = Charas.get_child(0)
@@ -228,6 +236,13 @@ func initialize_game() -> void:
 	call_deferred("check_cost_all_actions", current_player.NPC_instance.sprun_active)
 	call_deferred("check_actions_visible", current_player.NPC_instance.player_type)
 	set_enemies_intents()
+
+# initializes for other dimensions (duh)
+func initialize_for_other_dimension(dimension_root: Node) -> void:
+	Charas = dimension_root.Charas
+	Enemies = dimension_root.Enemies
+	
+	initialize_game()
 
 func restart_tree() -> void:
 	get_tree().reload_current_scene()
@@ -419,7 +434,10 @@ func add_enemy_wave() -> void:
 
 func manage_enemies_columns(child_count: int = Enemies.get_child_count()) -> void:
 	# this is a function because i predict I'll make a more complex animation for this later
-	Enemies.columns = ceil(sqrt(child_count))
+	
+	# one of the few things exclusive to the First Dimension
+	if Enemies is GridContainer:
+		Enemies.columns = ceil(sqrt(child_count))
 
 func disable_all_actions(boolean: bool) -> void:
 	for container in Actions.get_children():
@@ -534,7 +552,6 @@ func remove_dead_actions(dead: Node) -> void:
 					break
 			
 			if total_wave_kill:
-				print('total wave kill')
 				current_enemy = null
 				TWKPrepRoundsLabel.text = str(prep_rounds_remaining - 1)
 				# the prep_rounds_remaining is off by one at the start, to justify when it gets
@@ -635,8 +652,7 @@ func initiate_select_enemy(is_quick : bool = false) -> void:
 			#if index == 0:
 				#selector.call_deferred("grab_focus")
 				# first enemy grabs focus (intended for tabbing mode, without mouse)
-			  
-			#current_enemy = Enemies.get_child(0)
+			
 			enemy.add_child(selector)
 		
 		Actions.find_child("BackButton").visible = true # sets the action tab visible to be set to back

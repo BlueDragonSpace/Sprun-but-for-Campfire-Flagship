@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="2_h470v"]
 [ext_resource type="Resource" uid="uid://cu7gb1lix0hyn" path="res://inGame/OneD/npc/player/playerTypes/kitty/hide.tres" id="3_pwn8c"]
 [ext_resource type="Resource" uid="uid://d21q8e62mtv0h" path="res://inGame/OneD/npc/player/playerTypes/kitty/reflection.tres" id="4_h470v"]
-[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="4_it6sl"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara_resource.gd" id="4_it6sl"]
 [ext_resource type="Resource" uid="uid://bg2fyrspehbec" path="res://inGame/OneD/npc/player/playerTypes/kitty/dream.tres" id="5_it6sl"]
 [ext_resource type="Script" uid="uid://dxc2eww7oejej" path="res://inGame/OneD/npc/player/playerTypes/kitty/kitty.gd" id="5_pwn8c"]
 

@@ -1,4 +1,4 @@
-extends "res://inGame/OneD/npc/npc.gd"
+extends "res://inGame/OneD/npc/oned_npc.gd"
 
 @onready var SprunContainer: Control = $VBoxContainer/Icon/SprunContainer
 

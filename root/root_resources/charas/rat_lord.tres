@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://qt4lsl84qfnm" path="res://inGame/OneD/npc/player/playerTypes/ratface/MOUSE.tres" id="4_m44q6"]
 [ext_resource type="Resource" uid="uid://dbg3w60ck22n6" path="res://inGame/OneD/npc/player/playerTypes/ratface/HAMSTER.tres" id="5_ahjvo"]
 [ext_resource type="Script" uid="uid://c2yhgf20ky871" path="res://inGame/OneD/npc/player/playerTypes/ratface/rodent_lord.gd" id="6_er326"]
-[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="7_6x8pj"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara_resource.gd" id="7_6x8pj"]
 
 [resource]
 script = ExtResource("7_6x8pj")

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://f25l2rpvo2h3"]
+
+[ext_resource type="PackedScene" uid="uid://dp6sl47df53kt" path="res://root/three_d/NPCs/3DNPC.tscn" id="1_kwvsh"]
+[ext_resource type="Script" uid="uid://btnxn1pgd5vx" path="res://root/three_d/NPCs/Enemies/3d_enemy.gd" id="2_tujkt"]
+
+[node name="3D_enemy" unique_id=225495943 instance=ExtResource("1_kwvsh")]
+script = ExtResource("2_tujkt")

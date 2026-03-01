@@ -4,8 +4,8 @@
 [ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/OneD/npc/base_actions/attack.tres" id="2_5qlmf"]
 [ext_resource type="Resource" uid="uid://bfl5bur20t3il" path="res://inGame/OneD/npc/base_actions/defend.tres" id="3_152j0"]
 [ext_resource type="Texture2D" uid="uid://cbf1okw3pe3p5" path="res://placeholderArt/myPixelArt/LittleRed-1.png.png" id="4_rd6v6"]
-[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/enemy.gd" id="5_0i6ir"]
-[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="6_o2qyx"]
+[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/oned_enemy.gd" id="5_0i6ir"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy_resource.gd" id="6_o2qyx"]
 
 [resource]
 script = ExtResource("6_o2qyx")

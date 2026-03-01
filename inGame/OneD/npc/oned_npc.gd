@@ -1,5 +1,7 @@
-#@abstract ## means that the npc class is not supposed to be utilized on it's own
-extends Control
+@abstract ## means that the npc class is not supposed to be utilized on it's own
+extends "res://root/global_npc_script.gd"
+
+# scene for every NPC represented in OneD
 
 @onready var OneDRoot = get_tree().get_current_scene().get_child(0)
 
@@ -13,7 +15,6 @@ extends Control
 @onready var HP: TextureProgressBar = $VBoxContainer/LowerBar/HP
 @onready var CurrentHp: Label = $VBoxContainer/LowerBar/HP/HPBar/CurrentHP
 @onready var MaxHp: Label = $VBoxContainer/LowerBar/HP/HPBar/MaxHP
-@onready var DeBuffs: HBoxContainer = $VBoxContainer/DeBuffs
 
 @onready var Animate: AnimationPlayer = $Animate
 #
@@ -78,27 +79,28 @@ var action_victim : Node = null:
 		IntendedTargetIcon.texture = action_victim.NPC_instance.icon
 
 var is_dead = false
-var size_transition = 0.0:
-	set(new):
-		size_transition = new
-		size_flags_stretch_ratio = size_transition
-		set_deferred("HP.size_flags_stretch_ratio", size_transition)
+#var size_transition = 0.0:
+	#set(new):
+		#size_transition = new
+		#size_flags_stretch_ratio = size_transition
+		#set_deferred("HP.size_flags_stretch_ratio", size_transition)
 
 var previous_action : Action.ACTION_TYPE = Action.ACTION_TYPE.OTHER
 
-const DE_BUFF_RECT = preload("uid://b2tkettp813ev")
-
 func _ready() -> void:
 	
+	# intial setting up from global_npc_script
+	DeBuffs = get_node("VBoxContainer/DeBuffs")
+	print(DeBuffs.name)
+	
 	# reading in 
-	call_deferred("set_max_hp", NPC_instance.max_hp)
-	#set_max_hp(NPC_instance.max_hp)
+	set_max_hp(NPC_instance.max_hp)
 	Icon.texture = NPC_instance.icon
 	name = NPC_instance.name
 	
 	#size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	size_flags_stretch_ratio = size_transition
-	HP.size_flags_stretch_ratio = size_transition
+	#size_flags_stretch_ratio = size_transition
+	#HP.size_flags_stretch_ratio = size_transition
 	
 	add_ready()
 
@@ -108,7 +110,6 @@ func add_ready() -> void:
 	pass
 
 func visual_hp(new_hp : int) -> void:
-	print(new_hp, ' tweening it')
 	
 	var tween = create_tween()
 	tween.tween_method(set_current_hp_text, HP.value, new_hp, 0.4)  # tweens the text
@@ -124,39 +125,9 @@ func set_max_hp(new_hp : int) -> void:
 	
 	NPC_instance.max_hp = new_hp
 	current_hp = NPC_instance.current_hp
-	print(current_hp, "set-max-hp current hp")
-	print(new_hp, " set max-hp new hp")
 	visual_hp(current_hp)
 	HP.max_value = new_hp
 	MaxHp.text = str(new_hp)
-
-func check_debuff(debuff_in_question) -> Node: # returns if the debuff exists, and the Node connected to it
-	var node = null
-	
-	for debuff_child in DeBuffs.get_children():
-		if debuff_child.debuff.debuff_type == debuff_in_question:
-			node = debuff_child
-			break
-	
-	return node
-
-func take_debuff(debuff_resource, add_expiration):
-	var node_with_debuff = check_debuff(debuff_resource.debuff_type)
-	
-	if node_with_debuff: # already has that debuff, just add the number
-		node_with_debuff.expiration += add_expiration
-	else:
-		var salve = check_debuff(DeBuff.DEBUFF.SALVE)
-		if debuff_resource.is_bad and salve: # prevent bad debuff from salve
-			salve.expiration = 0 
-			# the "bad" debuff never gets added in the first place
-		else: 
-			# add the debuff
-			var child = DE_BUFF_RECT.instantiate()
-			child.debuff = debuff_resource
-			DeBuffs.add_child(child)
-			child.expiration = add_expiration
-	
 
 func set_intended_action(action: Action, callable : Callable = Callable(self, action.func_name), random: bool = false) -> void:
 	

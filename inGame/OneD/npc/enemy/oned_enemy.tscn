@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cmoedndryju2o"]
+
+[ext_resource type="PackedScene" uid="uid://ctlnpeebeoqgd" path="res://inGame/OneD/npc/oned_npc.tscn" id="1_a8we7"]
+[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/oned_enemy.gd" id="2_7k35h"]
+[ext_resource type="Resource" uid="uid://c5hmf5r6i3e87" path="res://root/root_resources/global_enemy_resource.tres" id="3_6wg5b"]
+
+[node name="Enemy" unique_id=654357473 instance=ExtResource("1_a8we7")]
+size_flags_vertical = 3
+script = ExtResource("2_7k35h")
+NPC_resource = ExtResource("3_6wg5b")
+
+[node name="Icon" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="3" unique_id=1248940755]
+expand_mode = 2
+
+[node name="LowerBar" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="7" unique_id=997484585]
+layout_direction = 3

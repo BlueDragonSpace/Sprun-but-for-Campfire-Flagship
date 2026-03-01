@@ -1,4 +1,4 @@
-extends "res://inGame/OneD/npc/player/player.gd"
+extends "res://inGame/OneD/npc/player/oned_player.gd"
 
 
 const SALVE = preload("uid://jh6814od43pa")

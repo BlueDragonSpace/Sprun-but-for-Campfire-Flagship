@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cyj0h4q4cvi5a" path="res://inGame/OneD/npc/enemy/types/alchemist/engross.tres" id="4_5ugm3"]
 [ext_resource type="Texture2D" uid="uid://c7025ti1ik0ia" path="res://placeholderArt/poison.webp" id="5_ns5c1"]
 [ext_resource type="Script" uid="uid://cu5ijlwnptiue" path="res://inGame/OneD/npc/enemy/types/alchemist/alchemist.gd" id="6_gjrk7"]
-[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="7_b0xdd"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy_resource.gd" id="7_b0xdd"]
 
 [resource]
 script = ExtResource("7_b0xdd")

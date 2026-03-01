@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dp6sl47df53kt"]
+
+[ext_resource type="Script" uid="uid://c58n5hj11wrf0" path="res://root/three_d/NPCs/3dnpc.gd" id="1_igsjm"]
+[ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="2_hkuay"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cfwuy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_if5rb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bgqsv"]
+size = Vector3(0.5, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_litxs"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_vveda"]
+material = SubResource("StandardMaterial3D_litxs")
+text = "HP Bar Text"
+
+[node name="3dnpc" type="CharacterBody3D" unique_id=225495943]
+script = ExtResource("1_igsjm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1260765394]
+shape = SubResource("CapsuleShape3D_cfwuy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1712187806]
+mesh = SubResource("CapsuleMesh_if5rb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=966428516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58521104, -0.4612341)
+mesh = SubResource("BoxMesh_bgqsv")
+
+[node name="Icon" type="Sprite3D" parent="." unique_id=183717553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pixel_size = 0.06
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("2_hkuay")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=931775020]
+
+[node name="HPtext" type="MeshInstance3D" parent="." unique_id=1619697627]
+transform = Transform3D(7.9999995, 13.856407, 8.121595e-07, -6.928205, 3.9999995, 13.856406, 12, -6.928203, 8.000001, 0, 2.595492, 0)
+mesh = SubResource("TextMesh_vveda")

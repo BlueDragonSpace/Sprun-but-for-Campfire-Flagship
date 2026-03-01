@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dmidkhslqal7n" path="res://placeholderArt/myPixelArt/Rattttttt-1.png.png" id="2_7eitq"]
 [ext_resource type="Resource" uid="uid://bqmql7wi5r6d7" path="res://inGame/OneD/npc/player/playerTypes/ratface/rat/bite.tres" id="3_py8od"]
 [ext_resource type="Script" uid="uid://bp32kjajsr6et" path="res://inGame/OneD/npc/player/playerTypes/ratface/rat/rat.gd" id="4_js505"]
-[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara.gd" id="5_5psyk"]
+[ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara_resource.gd" id="5_5psyk"]
 
 [resource]
 script = ExtResource("5_5psyk")

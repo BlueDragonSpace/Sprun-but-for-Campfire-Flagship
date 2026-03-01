@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_u4ct8"]
 [ext_resource type="Resource" uid="uid://cjqrm41m3pipl" path="res://inGame/OneD/npc/enemy/types/rat_king/spawn_evil_rat.tres" id="2_1ia72"]
-[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="3_1ia72"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy_resource.gd" id="3_1ia72"]
 [ext_resource type="Texture2D" uid="uid://c3j0sow8dr10g" path="res://placeholderArt/i_love_rattts.webp" id="3_mahyb"]
 [ext_resource type="Script" uid="uid://cyf0ult2jjqla" path="res://inGame/OneD/npc/enemy/types/rat_king/rat_king.gd" id="4_0vq6d"]
 

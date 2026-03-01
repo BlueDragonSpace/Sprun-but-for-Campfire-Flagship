@@ -1,4 +1,4 @@
-extends "res://inGame/OneD/npc/player/player.gd"
+extends "res://inGame/OneD/npc/player/oned_player.gd"
 
 var rodent_names = ['Four', 'Casper', 'Rockton', 'Chrispytopher', 'Tortus, Archiduke of Portland', 'Hello', 'Yellow', 'Snuffles', 'Baxter', 'Porky', 'Without', 'Wan']
 
@@ -6,7 +6,6 @@ var rodent_count = 1
 
 var rat_actions_added = false # prevents actions being added to action bar twice
 
-#const RAT = preload("uid://c02utralqt5h")
 const PLAYER = preload("uid://bd0auisdvfagw")
 const RAT_CHARA = preload("uid://c6xyom6hfsfnk")
 

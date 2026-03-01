@@ -1,4 +1,4 @@
-extends "res://inGame/OneD/npc/player/player.gd"
+extends "res://inGame/OneD/npc/player/oned_player.gd"
 
 
 func mega_lazer(atk_mult) -> void:

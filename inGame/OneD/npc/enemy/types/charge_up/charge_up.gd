@@ -1,4 +1,4 @@
-extends "res://inGame/OneD/npc/enemy/enemy.gd"
+extends "res://inGame/OneD/npc/enemy/oned_enemy.gd"
 
 
 var turns_charging = 0

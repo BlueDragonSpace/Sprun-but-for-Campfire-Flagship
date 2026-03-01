@@ -1,7 +1,7 @@
 class_name GlobalNPC
 extends Resource
 
-## Main class of all NPCs in the game.
+## Main resource class of all NPCs in the game.
 ## This resource is just the data of each player_type, no matter what dimension
 
 const DIMENSION = 'ZERO, ONE, TWO, THREE, FOUR'

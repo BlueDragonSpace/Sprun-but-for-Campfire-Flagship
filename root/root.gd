@@ -28,6 +28,8 @@ const ONE_D_PLAYER = preload("uid://bd0auisdvfagw")
 const ONE_D_ENEMY = preload("uid://cmoedndryju2o")
 
 const THREE_D_PLAYER = preload("uid://crwqeuod3418")
+const THREE_D_ENEMY = preload("uid://f25l2rpvo2h3")
+
 
 #const OneDScriptBasicPlayer = preload("uid://sj0wnis8wnpb") # basic Player Script
 #const OneDScriptKitty = preload("uid://dxc2eww7oejej") # Kitty's SCRIPT
@@ -145,6 +147,14 @@ func change_dimension(next_dimension, prev_dimension) -> void:
 				
 				ThreeDRoot.Charas.add_child(child)
 			
+			for enemy in Enemies:
+				var child = THREE_D_ENEMY.instantiate()
+				child.NPC_resource = enemy
+				child.position = Vector3(-randi_range(10, 15), randi_range(3, 8), 0)
+				
+				ThreeDRoot.Enemies.add_child(child)
+			
 			dimension = DIMENSION.THREE
 			
 			OneDRoot.Animate.play("global_transition_out")
+			OneDRoot.initialize_for_other_dimension(ThreeDRoot)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8l8w4n02trfl"]
+[gd_scene format=3 uid="uid://c8l8w4n02trfl"]
 
-[ext_resource type="Texture2D" uid="uid://c25ehsvb06pmv" path="res://placeholderArt/SoundOn-1.png.png" id="1_vcwrs"]
+[ext_resource type="Texture2D" uid="uid://c25ehsvb06pmv" path="res://placeholderArt/myPixelArt/SoundOn-1.png.png" id="1_vcwrs"]
 [ext_resource type="Script" uid="uid://m86f1gnh056y" path="res://inGame/sound/mute_button.gd" id="2_uoyxl"]
 
 [node name="MuteButton" type="Button"]

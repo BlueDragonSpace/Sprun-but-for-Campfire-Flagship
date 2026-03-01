@@ -1,4 +1,4 @@
-extends "res://inGame/OneD/npc/npc.gd"
+extends "res://inGame/OneD/npc/oned_npc.gd"
 
 var node_is_ready = false # a small get around for INTENTS.ATTACK
 var last_attacker : Node = null # remembers the last player to attack it

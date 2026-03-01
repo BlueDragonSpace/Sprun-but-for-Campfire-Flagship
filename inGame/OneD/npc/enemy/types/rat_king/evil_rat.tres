@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_dorsh"]
 [ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/OneD/npc/base_actions/attack.tres" id="2_8vp0s"]
-[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/enemy.gd" id="2_sbbdr"]
-[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy.gd" id="3_8vp0s"]
+[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/oned_enemy.gd" id="2_sbbdr"]
+[ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy_resource.gd" id="3_8vp0s"]
 [ext_resource type="Texture2D" uid="uid://bsey7jstwivxa" path="res://placeholderArt/myPixelArt/EEVVILLLLRATT-1.png.png" id="3_uwkh6"]
 
 [resource]

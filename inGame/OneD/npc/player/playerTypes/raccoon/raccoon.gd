@@ -1,4 +1,4 @@
-extends "res://inGame/OneD/npc/player/player.gd"
+extends "res://inGame/OneD/npc/player/oned_player.gd"
 
 func daggers(atk_mult) -> void:
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c25ehsvb06pmv"
-path="res://.godot/imported/SoundOn-1.png.png-5e8c16e6e80f59fa32eab079a1353e2c.ctex"
+uid="uid://bl0s4in47kjej"
+path="res://.godot/imported/InheritanceChart.png-8efcac12f676d54ddca5fea6c0bc43fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://placeholderArt/SoundOn-1.png.png"
-dest_files=["res://.godot/imported/SoundOn-1.png.png-5e8c16e6e80f59fa32eab079a1353e2c.ctex"]
+source_file="res://placeholderArt/InheritanceChart.png"
+dest_files=["res://.godot/imported/InheritanceChart.png-8efcac12f676d54ddca5fea6c0bc43fc.ctex"]
 
 [params]
 
