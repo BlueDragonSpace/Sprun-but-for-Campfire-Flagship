@@ -17,7 +17,7 @@ func reflection() -> void:
 	# 2^15 = Reflected Kitty
 	# adding two gives basic actions (by bit-shifting)
 	NPC_instance.player_type = pow(2,15) + 2
-	Icon.self_modulate = Color(Color.BLUE)
+	Icon.modulate = Color(Color.BLUE)
 
 
 const HIDE = preload("uid://24y2bom7sjw5")

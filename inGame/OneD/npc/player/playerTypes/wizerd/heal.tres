@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_3pv3v"]
 [ext_resource type="Texture2D" uid="uid://dkwgqscbsik62" path="res://placeholderArt/TurnOrderPoint.png" id="1_gw2i4"]
+[ext_resource type="AudioStream" uid="uid://cf3yd37uesou3" path="res://placeholderArt/sfx/healing.wav" id="3_e6vxl"]
 
 [resource]
 script = ExtResource("1_3pv3v")
@@ -19,3 +20,4 @@ needs_target = true
 ally_target = true
 show_target_intent = true
 button_info = "Heals based on DFD stat. Only takes away 2 sprun."
+sound = ExtResource("3_e6vxl")

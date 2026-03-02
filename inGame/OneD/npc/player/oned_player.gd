@@ -12,11 +12,6 @@ const SPRUN = preload("uid://b6wgjet502thq")
 # they would be an automatically set method in code but Godot throws errors on ready
 
 const ACTION_BUTTON = preload("uid://drtw4kuprkapi")
- 
-# costs are listed in Sprun USD all purchases sold separately
-var atk_upgrade_cost = 3
-var dfd_upgrade_cost = 3
-var spd_upgrade_cost = 3
 
 # prevent adding new actions (such as when there are duplicate characters on purpose, such as rats)
 var add_actions_bool = true
@@ -225,20 +220,20 @@ func increase_sprun_slots():
 func upgrade_atk():
 	@warning_ignore("narrowing_conversion")
 	NPC_instance.attack_stat *= 1.5
-	set_sprun(NPC_instance.sprun_active - atk_upgrade_cost)
-	atk_upgrade_cost += 2
+	set_sprun(NPC_instance.sprun_active - NPC_instance.atk_upgrade_cost)
+	NPC_instance.atk_upgrade_cost += 2
 	Animate.play("buff")
 
 func upgrade_dfd():
 	@warning_ignore("narrowing_conversion")
 	NPC_instance.defend_stat *= 1.5
-	set_sprun(NPC_instance.sprun_active - dfd_upgrade_cost)
-	dfd_upgrade_cost += 2
+	set_sprun(NPC_instance.sprun_active - NPC_instance.dfd_upgrade_cost)
+	NPC_instance.dfd_upgrade_cost += 2
 	Animate.play("buff")
 
 func upgrade_spd():
 	@warning_ignore("narrowing_conversion")
 	NPC_instance.speed_stat *= 1.5
-	set_sprun(NPC_instance.sprun_active - spd_upgrade_cost)
-	spd_upgrade_cost += 2
+	set_sprun(NPC_instance.sprun_active - NPC_instance.spd_upgrade_cost)
+	NPC_instance.spd_upgrade_cost += 2
 	Animate.play("buff")

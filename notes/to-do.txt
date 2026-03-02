@@ -58,6 +58,8 @@
 	Display 3D intent, likely on corner of character symbol in TurnQueue
 	
 2 (Actions and fun stuff!):
+	All Actions should have sound effects! put it in the Action Resource
+	
 	Revival 
 	Attack that also charges sprun
 	Attack that also defends
@@ -97,6 +99,8 @@
 		Debuffer / Drains Sprun?
 		Group shield
 3:
+	Constantly a timer til the next wave, rather than prep rounds at the end of beating all enemies in a wave
+		Fixes a balancing problem where players can hold onto one weak enemy, and keep gaining Sprun
 	Show Next Enemy Wave in Prep Rounds
 	Enemies utilizing debuffs (poison, fire, maybe weakening or destrengthening if I make those)
 	Sprun Movement Shifting depending on size (too far when small, too close when big)
@@ -196,12 +200,16 @@ Art + SFX needed:
 	Fire debuff, Speed stat, Poison debuff, Berserk enemy, Charge-up enemy, Fireball, Megalazer... everything lol
 	Make a Sprun (pixel circle, or just circle) in Blender
 
-Devlog lol:
+
+Current focus:
 	Separate UI of OneD to what is used in all of them:
 		When not current dimension, every action button does a different thing (ideally, each action is defined differently for differing dimension players) i.e. Kitty reflection would involve a particle effect system in 3D, but simpler in 1D, in code
+		However, the action is still named the same thing in code, and is run the same, what is called is different however
 	
-	Make a bunch of OneD functions be global so that I can use them in 3D (ideally what makes it a turn-based game, and an inherited script for functionalities)
-	(basically proceed to do this, as of 2/28, already started with the check and take_debuff functions)
+	All 3DNPCs start as Nodes? Maybe because that's it's script but it shouldn't change what the node type is...
 	
-	Bug: Max_hp still appears to be setting some cap on HP, likely the baseline hp instead of 20?
-	Also remove the print(hp) stuff
+
+
+Devlog lol:
+	Globalization fixes... slowing getting to 3D doing a full turn
+	Fixed a max hp bug, all actions now have a sound field

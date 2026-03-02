@@ -4,6 +4,11 @@ extends GlobalNPC
 @export var sprun_slots = 1
 @export var sprun_active = 0
 
+# costs are listed in Sprun USD all purchases sold separately
+@export var atk_upgrade_cost = 3
+@export var dfd_upgrade_cost = 3
+@export var spd_upgrade_cost = 3
+
 @export var new_action : Array[Action]
 @export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var player_type : int = 0
 @export var minion_num: int = 0 ## if not a minion, 0, else counts up automatically past that

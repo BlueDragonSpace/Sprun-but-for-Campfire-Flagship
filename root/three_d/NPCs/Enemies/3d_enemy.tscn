@@ -5,3 +5,5 @@
 
 [node name="3D_enemy" unique_id=225495943 instance=ExtResource("1_kwvsh")]
 script = ExtResource("2_tujkt")
+
+[node name="ThisIsAnEnemy" type="Node" parent="." index="9" unique_id=653854900]

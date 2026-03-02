@@ -3,14 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://d3wbwxma2hkqm" path="res://root/one_d/one_d_root.tscn" id="1_1xv2g"]
 [ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara_resource.gd" id="2_5jge4"]
 [ext_resource type="Script" uid="uid://clibohg1fjvmb" path="res://root/root.gd" id="2_jnlp7"]
-[ext_resource type="Resource" uid="uid://eostg6rwpxwg" path="res://root/root_resources/charas/rat_lord.tres" id="3_5jge4"]
 [ext_resource type="AudioStream" uid="uid://c46ekwwfk3ei2" path="res://placeholderArt/sfx/focus.wav" id="3_js5vo"]
 [ext_resource type="PackedScene" uid="uid://cu1ueum56s1rl" path="res://root/three_d/three_d_root.tscn" id="3_ovlcs"]
 [ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy_resource.gd" id="4_5jge4"]
-[ext_resource type="Resource" uid="uid://bspoq313njvjn" path="res://root/root_resources/charas/wizard.tres" id="5_0n2s5"]
 [ext_resource type="Resource" uid="uid://70kgje720sl1" path="res://root/root_resources/charas/kitty.tres" id="5_th5d7"]
 [ext_resource type="Resource" uid="uid://ctkcu5th37ue1" path="res://inGame/OneD/npc/enemy/types/rat_placeholder.tres" id="7_y3dhr"]
-[ext_resource type="Resource" uid="uid://dj45gqjo5agpx" path="res://inGame/OneD/npc/enemy/types/rat_king/rat_king.tres" id="8_ep6pg"]
 
 [sub_resource type="Animation" id="Animation_js5vo"]
 length = 0.001
@@ -111,8 +108,8 @@ _data = {
 
 [node name="Root" type="Node" unique_id=923175965 groups=["Root"]]
 script = ExtResource("2_jnlp7")
-Charas = Array[ExtResource("2_5jge4")]([ExtResource("3_5jge4"), ExtResource("5_th5d7"), ExtResource("5_0n2s5")])
-Enemies = Array[ExtResource("4_5jge4")]([ExtResource("7_y3dhr"), ExtResource("8_ep6pg")])
+Charas = Array[ExtResource("2_5jge4")]([ExtResource("5_th5d7")])
+Enemies = Array[ExtResource("4_5jge4")]([ExtResource("7_y3dhr")])
 disable_dimension_shifting = false
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]

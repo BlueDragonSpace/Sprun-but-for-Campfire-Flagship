@@ -29,11 +29,11 @@ func shift_gear() -> void:
 	# is sigilant + basic (in bitshift form)
 	if NPC_instance.player_type == (pow(2, 13) + 2):
 		NPC_instance.player_type = pow(2, 14) # turns to Sigilant ON
-		Icon.self_modulate = Color(Color.BLUE)
+		Icon.modulate = Color(Color.BLUE)
 	else:
 		# shifts back to regular
 		NPC_instance.player_type = pow(2, 13) + 2
-		Icon.self_modulate = Color(Color.WHITE)
+		Icon.modulate = Color(Color.WHITE)
 
 func powerslice(attack_mult) -> void:
 	action_victim.take_damage(NPC_instance.attack_stat * attack_mult)

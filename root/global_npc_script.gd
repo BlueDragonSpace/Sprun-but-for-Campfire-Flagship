@@ -10,9 +10,10 @@ extends Node
 ### ALL NPCs must have these nodes to be an NPC
 # aka they all get defined later by the dimension 
 # aka they are @abstract NodePaths i guess?
-var DeBuffs = null # container for DeBuffs
-var Animate = null # AnimationPlayer: must contain die, 
-# funny enough I always rename my AnimationPlayer nodes to Animate, just a quirk
+var DeBuffs : Node = null # container for DeBuffs
+var Animate : AnimationPlayer = null # AnimationPlayer: must contain die, (lol forgot to add)
+var Sound : Node = null # Any node that plays sound (interestingly, they aren't linked in the tree, and are separate by dimension...)
+var Intent : Node = null # Displays intent, presumably by a 2D icon
 
 #########################################################################333333 </3
 
@@ -34,7 +35,6 @@ var action_victim : Node = null:
 var is_dead = false
 @onready var current_hp: int = NPC_instance.current_hp:
 	set(new):
-		print(new)
 		current_hp = clamp(new, 0, NPC_instance.max_hp)
 		NPC_instance.current_hp = current_hp
 		
@@ -103,6 +103,10 @@ func do_intended_action() -> void:
 	
 	current_defense = 0
 	visual_intent(intended_action_resource, false)
+	
+	if intended_action_resource.sound:
+		Sound.stream = intended_action_resource.sound
+		Sound.play()
 	
 	# I don't really think the notif is necessary
 	#visual_notif(intended_action_resource)

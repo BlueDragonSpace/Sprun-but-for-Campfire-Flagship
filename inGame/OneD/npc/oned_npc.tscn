@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://bgm5xr0twjahx" path="res://placeholderArt/sfx/attack.wav" id="9_cyy6r"]
 [ext_resource type="AudioStream" uid="uid://qwvtdoovi5il" path="res://placeholderArt/sfx/shieldMaybeCloth.wav" id="10_iggh6"]
 [ext_resource type="AudioStream" uid="uid://c6a7y511mjrn3" path="res://placeholderArt/sfx/death.wav" id="11_ot2c7"]
-[ext_resource type="AudioStream" uid="uid://cvxoanu0qn6i8" path="res://placeholderArt/sfx/shieldBetter.wav" id="12_011av"]
 
 [sub_resource type="Animation" id="Animation_x86hb"]
 length = 0.001
@@ -312,21 +311,6 @@ tracks/1/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 1)
 }
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sound")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("9_cyy6r")
-}],
-"times": PackedFloat32Array(0.06666667)
-}
-tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_7qu08"]
 resource_name = "buff"
@@ -378,21 +362,6 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0.08, -0.25, 0, 0.25, 0, 0.07, -0.06666667, 0.005, 0, 0, 0.08, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 1)
 }
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sound")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.4564,
-"start_offset": 0.0,
-"stream": ExtResource("12_011av")
-}],
-"times": PackedFloat32Array(0.033333335)
-}
-tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_wk2dw"]
 resource_name = "die"

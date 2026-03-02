@@ -31,9 +31,9 @@ const PLAYER_TYPE = 'All, Basic, Wizerd, Kitty, Rodent Lord, Rat, Mouse, Hamster
 @export var show_target_intent: bool = false ## shows the targeted victim
 @export var attack_all: bool = false ## repeats the action multiple times for every character selected (and skip the choose target phase) (Also it doesn't have to be an attack and can be for allies too)
 @export var is_quick: bool = false ## goes instantly, doesn't kill
-
-# make this a far bigger text field...
 @export_multiline var button_info: String = 'sub info words about the action' ## hover over button
+
+@export var sound : AudioStream = null
 
 @export_group("2D Exclusive")
 @export var action_range = 8

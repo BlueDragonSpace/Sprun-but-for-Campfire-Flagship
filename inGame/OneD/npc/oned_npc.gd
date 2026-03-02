@@ -4,7 +4,7 @@ extends "res://root/global_npc_script.gd"
 # scene for every NPC represented in OneD
 
 @onready var IntentBar: HBoxContainer = $VBoxContainer/IntentBar
-@onready var Intent: TextureRect = $VBoxContainer/IntentBar/Intent
+#@onready var Intent: TextureRect = $VBoxContainer/IntentBar/Intent
 @onready var IntentLabel: Label = $VBoxContainer/IntentBar/Intent/IntentLabel
 @onready var IntendedTargetIcon: TextureRect = $VBoxContainer/IntentBar/IntendedTargetIcon
 @onready var IntentAnimate: AnimationPlayer = $VBoxContainer/IntentBar/IntentAnimate
@@ -14,7 +14,7 @@ extends "res://root/global_npc_script.gd"
 @onready var CurrentHp: Label = $VBoxContainer/LowerBar/HP/HPBar/CurrentHP
 @onready var MaxHp: Label = $VBoxContainer/LowerBar/HP/HPBar/MaxHP
 
-@onready var Sound: AudioStreamPlayer = $Sound
+#@onready var Sound: AudioStreamPlayer = $Sound
 
 #@export var NPC_resource : GlobalNPC # base stats
 #@onready var NPC_instance = NPC_resource.duplicate(true): # stats in use
@@ -60,6 +60,8 @@ func _ready() -> void:
 	# intial setting up from global_npc_script
 	DeBuffs = get_node("VBoxContainer/DeBuffs")
 	Animate = get_node("Animate")
+	Sound = get_node("Sound")
+	Intent = get_node("VBoxContainer/IntentBar/Intent")
 	
 	# reading in 
 	set_max_hp(NPC_instance.max_hp)
@@ -92,7 +94,7 @@ func set_current_hp_text(new_hp : int) -> void:
 func set_max_hp(new_hp : int) -> void:
 	
 	NPC_instance.max_hp = new_hp
-	current_hp = NPC_instance.current_hp
+	current_hp = NPC_instance.max_hp # when max_hp is set, refill hp to full
 	visual_hp(current_hp)
 	HP.max_value = new_hp
 	MaxHp.text = str(new_hp)

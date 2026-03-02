@@ -320,7 +320,7 @@ func set_turn_order() -> void:
 	for body in turn_order_data:
 		var marker = TURN_ORDER_MARKER.instantiate()
 		marker.texture = body[1]
-		marker.self_modulate = body[2].Icon.self_modulate
+		marker.self_modulate = body[2].Icon.modulate
 		TurnOrder.add_child(marker)
 
 func add_turn_order_point(point) -> void:
@@ -344,8 +344,6 @@ func select_enemy(index : int, is_quick : bool = false) -> void:
 	if is_quick:
 		current_player.intended_action.call()
 		current_player.intended_action = Global.empty_function
-	
-	print(current_player.action_victim.name + " inside of select enemy")
 	
 	Actions.find_child("Attack").visible = true # found it annoying to attack twice in a row, it goes to BAK and you have to go back to the Attack tab manually. No more!
 	player_pass_turn()
@@ -377,7 +375,7 @@ func add_enemy_wave() -> void:
 				little.NPC_resource = LITTLE
 				Enemies.add_child(little)
 				# makes each enemy darker (I don't have a good way of differentiating similar enemies yet)
-				little.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15)
+				little.Icon.modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15)
 				little.name = "Lytle " + str(i + 1)
 		2: # 2 Berserks
 			for i in 2:
@@ -385,7 +383,7 @@ func add_enemy_wave() -> void:
 				unpredictable.NPC_resource = BERSERK
 				Enemies.add_child(unpredictable)
 				unpredictable.Icon.flip_h = true
-				unpredictable.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # easy differentiation
+				unpredictable.Icon.modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # easy differentiation
 		3: # 2 littles and charge_up
 			## charge_up
 			var charger = ONE_D_ENEMY.instantiate()
@@ -399,7 +397,7 @@ func add_enemy_wave() -> void:
 				little.NPC_resource = LITTLE
 				Enemies.add_child(little)
 				# makes each enemy darker (I don't have a good way of differentiating similar enemies yet)
-				little.Icon.self_modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15)
+				little.Icon.modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15)
 				little.name = "Lytle " + str(i + 1)
 		4: # Rat King (basically Evil Rodent Lord) [starts with two extra rats]
 			for i in 4:
@@ -453,9 +451,9 @@ func disable_all_non_prep_moves(boolean: bool) -> void:
 func check_upgrade_cost_actions(character: Node) -> void:
 	# intended for player, changes the cost of upgrade actions to be specific to player
 	IncreaseSprunSlots.sprun_cost = character.NPC_instance.sprun_slots
-	ATKUp.sprun_cost = character.atk_upgrade_cost
-	DFDUp.sprun_cost = character.dfd_upgrade_cost
-	SPDUp.sprun_cost = character.spd_upgrade_cost
+	ATKUp.sprun_cost = character.NPC_instance.atk_upgrade_cost
+	DFDUp.sprun_cost = character.NPC_instance.dfd_upgrade_cost
+	SPDUp.sprun_cost = character.NPC_instance.spd_upgrade_cost
 
 func check_cost_all_actions(sprun: int) -> void:
 	# ends up disabling each action if you don't have the necessary sprun

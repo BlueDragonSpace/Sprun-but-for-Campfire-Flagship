@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dp6sl47df53kt"]
 
 [ext_resource type="Script" uid="uid://c58n5hj11wrf0" path="res://root/three_d/NPCs/3dnpc.gd" id="1_igsjm"]
+[ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="2_hkuay"]
+[ext_resource type="Texture2D" uid="uid://crp4ukof8ml5r" path="res://placeholderArt/myPixelArt/broken_sword.png" id="3_cfwuy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cfwuy"]
 
@@ -85,7 +87,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16, 0.16666667, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.001, -0.16, 0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 0.96)
 }
 tracks/1/type = "bezier"
@@ -96,7 +98,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16, 0.16666667, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.001, -0.16, 0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 0.96)
 }
 tracks/2/type = "bezier"
@@ -107,7 +109,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16, 0.16666667, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.001, -0.16, 0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 0.96)
 }
 tracks/3/type = "method"
@@ -135,7 +137,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
+"points": PackedFloat32Array(0.001, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/1/type = "bezier"
@@ -146,7 +148,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
+"points": PackedFloat32Array(0.001, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/2/type = "bezier"
@@ -157,7 +159,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
+"points": PackedFloat32Array(0.001, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 1)
 }
 
@@ -191,10 +193,21 @@ skeleton = NodePath("../..")
 
 [node name="Icon" type="Sprite3D" parent="Art" unique_id=183717553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+modulate = Color(1, 1, 1, 0.45882353)
 pixel_size = 0.06
 billboard = 1
 no_depth_test = true
 texture_filter = 0
+texture = ExtResource("2_hkuay")
+
+[node name="Intent" type="Sprite3D" parent="Art" unique_id=1530758476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+modulate = Color(1, 1, 1, 0.5921569)
+pixel_size = 0.05
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("3_cfwuy")
 
 [node name="HPBar" type="Node3D" parent="." unique_id=2141242155]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -207,7 +220,7 @@ skeleton = NodePath("../..")
 mesh = SubResource("BoxMesh_cfwuy")
 skeleton = NodePath("../..")
 
-[node name="HPtext" type="MeshInstance3D" parent="." unique_id=1619697627]
+[node name="HPText" type="MeshInstance3D" parent="." unique_id=1619697627]
 transform = Transform3D(7.9999995, 13.856407, 8.121595e-07, -6.928205, 3.9999995, 13.856406, 12, -6.928203, 8.000001, 0, 2.595492, 0)
 mesh = SubResource("TextMesh_vveda")
 
@@ -218,8 +231,4 @@ mesh = SubResource("SphereMesh_bgqsv")
 libraries/ = SubResource("AnimationLibrary_if5rb")
 autoplay = &"pop_in"
 
-[node name="Label" type="Label" parent="." unique_id=1666970082]
-offset_right = 40.0
-offset_bottom = 16.0
-text = "There are words on the wall
-you can't read though"
+[node name="Sound" type="AudioStreamPlayer3D" parent="." unique_id=1639004323]

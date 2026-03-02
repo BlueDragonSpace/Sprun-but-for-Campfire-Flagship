@@ -80,16 +80,19 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func change_dimension(next_dimension, prev_dimension) -> void:
 	
+	# if null, don't read anything new, just pass in whatever is in the Charas and Enemies data already
+	if prev_dimension != null:
+		Charas.clear()
+		Enemies.clear()
+	
 	# puts the info in the local dimension, puts it in the root to read by the next dimension
 	match(prev_dimension):
 		DIMENSION.ONE: # woah emoji 😒😒😒😒💕💕
 			# do charas
-			Charas.clear()
 			for child in OneDRoot.Charas.get_children():
 				Charas.append(child.NPC_instance)
 				child.queue_free()
 			# do enemies
-			Enemies.clear()
 			for child in OneDRoot.Enemies.get_children():
 				Enemies.append(child.NPC_instance)
 				child.queue_free()
@@ -98,20 +101,16 @@ func change_dimension(next_dimension, prev_dimension) -> void:
 		
 		DIMENSION.THREE:
 			# do charas
-			Charas.clear()
 			for child in ThreeDRoot.Charas.get_children():
 				Charas.append(child.NPC_instance)
 				child.queue_free()
 			# do enemies
-			Enemies.clear()
 			for child in ThreeDRoot.Enemies.get_children():
 				Enemies.append(child.NPC_instance)
 				child.queue_free()
 			
 			ThreeDRoot.process_mode = Node.PROCESS_MODE_DISABLED
 			
-		null: # don't read anything new, just pass in whatever is in the Charas and Enemies data already
-			pass
 	
 	
 	# reads the info in the root, matches it to the current dimension
