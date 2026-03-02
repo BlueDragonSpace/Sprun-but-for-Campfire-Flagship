@@ -140,7 +140,7 @@ func add_lambda(func_action: Action, callable: Callable) -> Callable:
 	
 	# then do the boring stuff
 	da_player.set_intended_action(func_action, callable)
-	da_player.set_intent(func_action)
+	da_player.visual_intent(func_action)
 	
 	## significant progress!
 	## however, the intended target is always the button creator's target, instead of current_player's target

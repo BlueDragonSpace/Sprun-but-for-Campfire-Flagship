@@ -1,5 +1,6 @@
 extends "res://inGame/OneD/npc/player/oned_player.gd"
 
+const HEAL_SOUND = preload("uid://cf3yd37uesou3")
 
 func mega_lazer(atk_mult) -> void:
 	
@@ -12,6 +13,9 @@ func mega_lazer(atk_mult) -> void:
 func heal(dfd_mult) -> void:
 	# it's literally a negative attack lol
 	action_victim.take_damage(NPC_instance.defend_stat * dfd_mult * -1)
+	
+	Sound.stream = HEAL_SOUND
+	Sound.play()
 
 func shield(defend_mult) -> void:
 	action_victim.current_defense += NPC_instance.defend_stat * defend_mult

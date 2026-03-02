@@ -14,6 +14,8 @@ extends "res://root/global_npc_script.gd"
 @onready var CurrentHp: Label = $VBoxContainer/LowerBar/HP/HPBar/CurrentHP
 @onready var MaxHp: Label = $VBoxContainer/LowerBar/HP/HPBar/MaxHP
 
+@onready var Sound: AudioStreamPlayer = $Sound
+
 #@export var NPC_resource : GlobalNPC # base stats
 #@onready var NPC_instance = NPC_resource.duplicate(true): # stats in use
 	#set(new):
@@ -47,20 +49,11 @@ const AUTO_FADE_NOTIF = preload("uid://dr7fpgloton5f")
 enum CHARACTER_TYPE {ENEMY, PLAYER, NUHUH}
 var npc_type = CHARACTER_TYPE.NUHUH # this class isn't intended to be used on it's own...
 
-var intended_action = Callable(Global, "empty_function")
-var intended_action_resource : Action
-var action_victim : Node = null:
-	set(new):
-		action_victim = new
-		IntendedTargetIcon.texture = action_victim.NPC_instance.icon
-
 #var size_transition = 0.0:
 	#set(new):
 		#size_transition = new
 		#size_flags_stretch_ratio = size_transition
 		#set_deferred("HP.size_flags_stretch_ratio", size_transition)
-
-var previous_action : Action.ACTION_TYPE = Action.ACTION_TYPE.OTHER
 
 func _ready() -> void:
 	
@@ -111,84 +104,17 @@ func visual_dfd(new_dfd: int) -> void:
 		$VBoxContainer/LowerBar/Shield.visible = true
 	$VBoxContainer/LowerBar/Shield/ShieldNum.text = str(new_dfd)
 
-func set_intended_action(action: Action, callable : Callable = Callable(self, action.func_name), random: bool = false) -> void:
-	
-	# callable is passed in separately to action in case I need to .bind() something to the Callable
-	# Keep in mind that Action is just a resource; a sheet of data
-	# Callables are the actual functions that do the thing
-	
-	# this has nothing to do with the action_victim,
-	# that must be set by other means (selction scene for charas, mostly randomly for enemies)
-	
-	if random:
-		# generally, random is used for enemies. 
-		# certain enemies have more complex attack patterns, but this is generally their code only
-		
-		var possible_actions = NPC_instance.actions.duplicate(true)
-		
-		# prevents defending twice in a row (defend must always be the second action for this to work right)
-		if previous_action == Action.ACTION_TYPE.DEFEND:
-			possible_actions.remove_at(1)
-		
-		var random_action = possible_actions[randi_range(0, possible_actions.size() - 1)]
-		
-		intended_action = Callable(self, random_action.func_name)
-		set_intent(random_action, random_action.show_target_intent)
-		intended_action_resource = random_action
-	else:
-		intended_action = callable
-		set_intent(action)
-		intended_action_resource = action
-	
-	previous_action = intended_action_resource.action_type
-	
-	# if stunned, just overrule all of this junk
-	if check_debuff(DeBuff.DEBUFF.STUN):
-		set_intent(STUNNED)
-		intended_action = Callable(Global, "empty_function")
-		intended_action_resource = STUNNED
-	
-	add_set_intended_action()
+func visual_action_victim(victim: Node) -> void:
+	IntendedTargetIcon.texture = victim.NPC_instance.icon
 
-func add_set_intended_action() -> void: # virtual function, though actual virtual functions don't work the way I like...
-	pass
-
-#for some reason, if you call a Callable as a Callable, the function doesn't go through
-func do_intended_action() -> void:
-	
-	current_defense = 0
-	hide_intent()
-	
+func visual_notif(_action_resource: Action) -> void:
 	var notif = AUTO_FADE_NOTIF.instantiate()
 	# displays name of move and it's number
 	notif.text = intent_notif_info[0] # + "\n" + IntentLabel.text
 	add_child(notif)
-	
-	if intended_action_resource.attack_all:
-		# is it a player or an enemy?
-		# is it targeting allies or the opposing side?
-		
-		# this is an XAND gate actually... too bad i don't know the keywords for one
-		
-		if (NPC_instance.is_player and not intended_action_resource.ally_target) or (not NPC_instance.is_player and intended_action_resource.ally_target):
-			for enemy in OneDRoot.Enemies.get_children():
-				action_victim = enemy
-				intended_action.call()
-		else:
-			for chara in OneDRoot.Charas.get_children():
-				action_victim = chara
-				intended_action.call()
-	else:
-		intended_action.call()
-	
-	add_do_intended_action(intended_action_resource)
 
-@warning_ignore("unused_parameter")
-func add_do_intended_action(action_res: Action) -> void:
-	# for enemies, randomizes their stats
-	# for players, spends sprun
-	pass
- 
+#for some reason, if you call a Callable as a Callable, the function doesn't go through
+
 #func take_damage(damage, attacker = null, ignore_shield = false) -> void:
 	#
 	#if damage > 0:
@@ -221,52 +147,35 @@ func add_do_intended_action(action_res: Action) -> void:
 #func add_take_damage(_attacker): # additional stuff I add to take_damage() in other classes (like enemy)
 	#pass
 
-func defend():
-	self.current_defense += NPC_instance.defend_stat
-	Animate.play("defend")
-	$DoDefend.play() 
-
-func attack() -> void:
-	if action_victim:
-		action_victim.take_damage(NPC_instance.attack_stat, self)
-		Animate.play("attack")
-		$Attack.play()
-
-func big_attack():
-	if action_victim:
-		action_victim.take_damage(NPC_instance.attack_stat * 2.5, self)
-		Animate.play("attack")
-		$Attack.play()
-
-func passing() -> void:
-	Global.empty_function()
-
-func set_intent(action: Action, target_visible : bool = false) -> void:
+func visual_intent(action: Action, visible: bool = true) -> void:
 	
-	IntentAnimate.play("show_intent")
-	
-	match(action.intent_type):
-		Action.INTENT.ATTACK:
-			IntentLabel.text = str(int(NPC_instance.attack_stat * action.atk_mult))
-		Action.INTENT.DEFEND:
-			IntentLabel.text = str(int(NPC_instance.defend_stat * action.dfd_mult))
-		# wonder if there's a "or" statement for match statements...
-		Action.INTENT.HEAL:
-			IntentLabel.text = str(int(NPC_instance.defend_stat * action.dfd_mult))
-		_:
-			IntentLabel.text = '' # by default, there is no text on the Intent
-	
-	if target_visible:
-		IntendedTargetIcon.visible = target_visible
-	else:
-		IntendedTargetIcon.visible = action.show_target_intent
-	Intent.texture = action.icon
-	intent_notif_info = [action.name, action.button_info]
-	
-	if not NPC_instance.is_player:
-		if not NPC_instance.show_intent:
-			IntentBar.visible = false
-			# lazy? probably. But it works
+	if visible:
+		IntentAnimate.play("show_intent")
+		
+		match(action.intent_type):
+			Action.INTENT.ATTACK:
+				IntentLabel.text = str(int(NPC_instance.attack_stat * action.atk_mult))
+			Action.INTENT.DEFEND:
+				IntentLabel.text = str(int(NPC_instance.defend_stat * action.dfd_mult))
+			# wonder if there's a "or" statement for match statements...
+			Action.INTENT.HEAL:
+				IntentLabel.text = str(int(NPC_instance.defend_stat * action.dfd_mult))
+			_:
+				IntentLabel.text = '' # by default, there is no text on the Intent
+		
+		if action.show_target_intent:
+			IntendedTargetIcon.visible = true
+		else:
+			IntendedTargetIcon.visible = action.show_target_intent
+		Intent.texture = action.icon
+		intent_notif_info = [action.name, action.button_info]
+		
+		if not NPC_instance.is_player:
+			if not NPC_instance.show_intent:
+				IntentBar.visible = false
+				# lazy? probably. But it works
+	else: # need to hide intent, likely from doing the action
+		IntentAnimate.play("hide_intent")
 
 func intent_info(main, sub):
 	var notif = NOTIF.instantiate()

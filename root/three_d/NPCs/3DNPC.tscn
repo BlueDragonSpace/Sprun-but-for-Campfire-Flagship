@@ -9,14 +9,8 @@
 [sub_resource type="BoxMesh" id="BoxMesh_bgqsv"]
 size = Vector3(0.5, 0.2, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_litxs"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="TextMesh" id="TextMesh_vveda"]
-material = SubResource("StandardMaterial3D_litxs")
-text = "HP Bar Text"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q778e"]
+albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_igsjm"]
 material = SubResource("StandardMaterial3D_q778e")
@@ -28,6 +22,13 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_cfwuy"]
 material = SubResource("StandardMaterial3D_hkuay")
 size = Vector3(3.9, 0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_litxs"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_vveda"]
+material = SubResource("StandardMaterial3D_litxs")
+text = "HP Bar Text"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if5rb"]
 transparency = 1
@@ -173,27 +174,27 @@ script = ExtResource("1_igsjm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1260765394]
 shape = SubResource("CapsuleShape3D_cfwuy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1712187806]
-mesh = SubResource("CapsuleMesh_if5rb")
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=931775020]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=966428516]
+[node name="DeBuffs" type="Node3D" parent="." unique_id=1585696317]
+
+[node name="Art" type="Node3D" parent="." unique_id=852117328]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Art" unique_id=1712187806]
+mesh = SubResource("CapsuleMesh_if5rb")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Art" unique_id=966428516]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58521104, -0.4612341)
 mesh = SubResource("BoxMesh_bgqsv")
+skeleton = NodePath("../..")
 
-[node name="Icon" type="Sprite3D" parent="." unique_id=183717553]
+[node name="Icon" type="Sprite3D" parent="Art" unique_id=183717553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 pixel_size = 0.06
 billboard = 1
 no_depth_test = true
 texture_filter = 0
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=931775020]
-
-[node name="HPtext" type="MeshInstance3D" parent="." unique_id=1619697627]
-transform = Transform3D(7.9999995, 13.856407, 8.121595e-07, -6.928205, 3.9999995, 13.856406, 12, -6.928203, 8.000001, 0, 2.595492, 0)
-mesh = SubResource("TextMesh_vveda")
-
-[node name="DeBuffs" type="Node3D" parent="." unique_id=1585696317]
 
 [node name="HPBar" type="Node3D" parent="." unique_id=2141242155]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -206,9 +207,19 @@ skeleton = NodePath("../..")
 mesh = SubResource("BoxMesh_cfwuy")
 skeleton = NodePath("../..")
 
+[node name="HPtext" type="MeshInstance3D" parent="." unique_id=1619697627]
+transform = Transform3D(7.9999995, 13.856407, 8.121595e-07, -6.928205, 3.9999995, 13.856406, 12, -6.928203, 8.000001, 0, 2.595492, 0)
+mesh = SubResource("TextMesh_vveda")
+
 [node name="Shield" type="MeshInstance3D" parent="." unique_id=263374896]
 mesh = SubResource("SphereMesh_bgqsv")
 
 [node name="Animate" type="AnimationPlayer" parent="." unique_id=1991447976]
 libraries/ = SubResource("AnimationLibrary_if5rb")
 autoplay = &"pop_in"
+
+[node name="Label" type="Label" parent="." unique_id=1666970082]
+offset_right = 40.0
+offset_bottom = 16.0
+text = "There are words on the wall
+you can't read though"

@@ -3,10 +3,10 @@ extends "res://root/global_npc_script.gd"
 @onready var ThreeDRoot : Node3D = get_tree().get_first_node_in_group("ThreeDRoot")
 @onready var CameraHandler : Node3D = ThreeDRoot.get_node("CameraHandler")
 
+@onready var Art: Node3D = $Art
 @onready var HPtext: MeshInstance3D = $HPtext
 @onready var HPGreen: MeshInstance3D = $HPBar/Green
 @onready var HPRed: MeshInstance3D = $HPBar/HPRed
-
 @onready var Shield: MeshInstance3D = $Shield
 
 
@@ -48,3 +48,19 @@ func visual_dfd(new_dfd: int) -> void: # displays current defense:
 		Shield.visible = false
 	else:
 		Shield.visible = true
+
+func visual_action_victim(victim: Node):
+	# rotates the entire character, but hey, it gets the point across
+	Art.look_at(victim.position)
+
+func visual_intent(action: Action, visible: bool = true): # displays intent
+	# later on, the symbol for the Action taken by players is gonna be displayed
+	# - either on their symbol for the TurnQueue (or next to their physical location)
+	# - for now this is a later to-do
+	pass
+
+func visual_notif(_action_resource: Action): # upon doing action, shows something on screen:
+	# actually I don't really think I need this for 3D
+	# it seems kinda unncessary for 1D as well since it's so hard to see, and it should be 
+	# - fairly obvious what the action is given the visuals from Animate
+	pass

@@ -23,6 +23,14 @@ var Animate = null # AnimationPlayer: must contain die,
 		NPC_instance = new
 		set_max_hp(NPC_instance.max_hp)
 
+var intended_action = Callable(Global, "empty_function") # the actual code function part of the action
+var intended_action_resource : Action # data for the intended_action
+
+var action_victim : Node = null:
+	set(new):
+		action_victim = new
+		visual_action_victim(action_victim)
+
 var is_dead = false
 @onready var current_hp: int = NPC_instance.current_hp:
 	set(new):
@@ -40,6 +48,9 @@ var current_defense : int = 0:
 	set(new):
 		current_defense = new
 		visual_dfd(current_defense)
+
+# remembers the last action you took
+var previous_action : Action.ACTION_TYPE = Action.ACTION_TYPE.OTHER
 
 # this thing
 @onready var OneDRoot = get_tree().get_first_node_in_group("OneDRoot")
@@ -76,13 +87,6 @@ func take_debuff(debuff_resource, add_expiration):
 			DeBuffs.add_child(child)
 			child.expiration = add_expiration
 
-@abstract
-func set_max_hp(new_hp: int) -> void # sets the max_hp, such as upon Kitty's Reflection
-@abstract
-func visual_hp(new_hp: int) -> void # displays the current_hp, instantly or by tween
-@abstract
-func visual_dfd(new_dfd: int) -> void # displays current defense
-
 func die() -> void:
 	
 	# you can only die once (I don't reccomend trying to twice either)
@@ -90,6 +94,95 @@ func die() -> void:
 		is_dead = true
 		OneDRoot.remove_dead_actions(self)
 		Animate.call_deferred("play", "die")
+
+func do_intended_action() -> void:
+	
+	# visual_intent
+	# visual_notif
+	# OneDRoot to current_dimension (defined by Root)
+	
+	current_defense = 0
+	visual_intent(intended_action_resource, false)
+	
+	# I don't really think the notif is necessary
+	#visual_notif(intended_action_resource)
+	
+	
+	if intended_action_resource.attack_all:
+		# is it a player or an enemy?
+		# is it targeting allies or the opposing side?
+		
+		# this is an XOR gate actually... too bad i don't know the keywords for one
+		
+		if (NPC_instance.is_player and not intended_action_resource.ally_target) or (not NPC_instance.is_player and intended_action_resource.ally_target):
+			for enemy in OneDRoot.Enemies.get_children():
+				action_victim = enemy
+				intended_action.call()
+		else:
+			for chara in OneDRoot.Charas.get_children():
+				action_victim = chara
+				intended_action.call()
+	else:
+		intended_action.call()
+	
+	add_do_intended_action(intended_action_resource)
+
+func set_intended_action(action: Action, callable : Callable = Callable(self, action.func_name), random: bool = false) -> void:
+	
+	# callable is passed in separately to action in case I need to .bind() something to the Callable
+	# Keep in mind that Action is just a resource; a sheet of data
+	# Callables are the actual functions that do the thing
+	
+	# this has nothing to do with the action_victim,
+	# that must be set by other means (selction scene for charas, mostly randomly for enemies)
+	
+	if random:
+		# generally, random is used for enemies. 
+		# certain enemies have more complex attack patterns, but this is generally their code only
+		
+		var possible_actions = NPC_instance.actions.duplicate(true)
+		
+		# prevents defending twice in a row (defend must always be the second action for this to work right)
+		if previous_action == Action.ACTION_TYPE.DEFEND:
+			possible_actions.remove_at(1)
+		
+		var random_action = possible_actions[randi_range(0, possible_actions.size() - 1)]
+		
+		intended_action = Callable(self, random_action.func_name)
+		visual_intent(random_action)
+		intended_action_resource = random_action
+	else:
+		intended_action = callable
+		visual_intent(action)
+		intended_action_resource = action
+	
+	previous_action = intended_action_resource.action_type
+	
+	# if stunned, just overrule all of this junk
+	if check_debuff(DeBuff.DEBUFF.STUN):
+		visual_intent(STUNNED)
+		intended_action = Callable(Global, "empty_function")
+		intended_action_resource = STUNNED
+	
+	add_set_intended_action()
+
+# basic Action actions lol
+func defend():
+	self.current_defense += NPC_instance.defend_stat
+	Animate.play("defend")
+
+func attack() -> void:
+	if action_victim:
+		action_victim.take_damage(NPC_instance.attack_stat, self)
+		Animate.play("attack")
+
+func big_attack():
+	if action_victim:
+		action_victim.take_damage(NPC_instance.attack_stat * 2.5, self)
+		Animate.play("attack")
+
+func passing() -> void:
+	Global.empty_function()
 
 func take_damage(damage, attacker = null, ignore_shield = false) -> void:
 	
@@ -120,5 +213,28 @@ func take_damage(damage, attacker = null, ignore_shield = false) -> void:
 		current_hp -= damage
 		Animate.play("heal")
 
+# these should be abstract, but they're not always utilized (technically virtual, but I can't add custom virtual functions without GDExtension junk)
 func add_take_damage(_attacker): # additional stuff I add to take_damage() in other classes (like enemy)
 	pass
+
+func add_do_intended_action(_action_res: Action):
+	# for enemies, randomizes their stats
+	# for players, spends sprun
+	# at least in OneD (maybe I'll change for 3D)
+	pass
+
+func add_set_intended_action() -> void:
+	pass
+
+@abstract
+func set_max_hp(new_hp: int) -> void # sets the max_hp, such as upon Kitty's Reflection
+@abstract
+func visual_hp(new_hp: int) -> void # displays the current_hp, instantly or by tween
+@abstract
+func visual_dfd(new_dfd: int) -> void # displays current defense
+@abstract
+func visual_action_victim(victim: Node) # OneD, changes intent, ThreeD looks at the victim
+@abstract
+func visual_intent(action: Action, visible: bool = true) # displays intent
+@abstract
+func visual_notif(action_resource: Action) # upon doing action, shows something on screen
