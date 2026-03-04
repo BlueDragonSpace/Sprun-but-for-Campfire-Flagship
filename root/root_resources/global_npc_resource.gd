@@ -1,4 +1,4 @@
-class_name GlobalNPC
+class_name GlobalNPCResource
 extends Resource
 
 ## Main resource class of all NPCs in the game.

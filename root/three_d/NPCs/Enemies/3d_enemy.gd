@@ -1,3 +1,4 @@
-extends "res://root/three_d/NPCs/3dnpc.gd"
+class_name ThreeDEnemy
+extends ThreeDNPC
 
 # basically just a potato right now

@@ -57,6 +57,16 @@
 	
 	Display 3D intent, likely on corner of character symbol in TurnQueue
 	
+	Connecting likely isn't a good idea, should rewire and restart the project if I should continue it
+		(rewriting every single player script twice is a horrible idea)
+			(rewriting the entire thing though? It's not uncommon but it still seems a little too much)
+		Could also redo the prep system while I'm at it haha
+		
+		Player Globalization:
+			Player stats, such as HP, shouldn't be directly in the scripts of what represents them, but in Root
+				When HP changes, signal, the representation in [dimension] catches it and responds...
+					intended_target would target a resource, not a node?
+	
 2 (Actions and fun stuff!):
 	All Actions should have sound effects! put it in the Action Resource
 	
@@ -126,6 +136,8 @@
 	Auto-count / add green text for when sprun is met (Draven playtest, the two separate corners of the screen where you have the sprun on left, and the total cost on the right)
 	
 	Way to unlock new moves (such as: being locked because first-time sprun)
+	
+	Tab to move through game (do game exclusively through keyboard, useful towards working with a controller)
 4: 
 	Death saves? (Deltarune, DnD, revival at all?)
 	Hide unnecessary tabs (rat cannot defend)
@@ -201,15 +213,5 @@ Art + SFX needed:
 	Make a Sprun (pixel circle, or just circle) in Blender
 
 
-Current focus:
-	Separate UI of OneD to what is used in all of them:
-		When not current dimension, every action button does a different thing (ideally, each action is defined differently for differing dimension players) i.e. Kitty reflection would involve a particle effect system in 3D, but simpler in 1D, in code
-		However, the action is still named the same thing in code, and is run the same, what is called is different however
-	
-	All 3DNPCs start as Nodes? Maybe because that's it's script but it shouldn't change what the node type is...
-	
-
-
 Devlog lol:
-	Globalization fixes... slowing getting to 3D doing a full turn
-	Fixed a max hp bug, all actions now have a sound field
+	

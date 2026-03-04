@@ -1,4 +1,6 @@
-extends "res://inGame/OneD/npc/player/oned_player.gd"
+extends OneDPlayer
+
+var inherit_from = ThreeDPlayer
 
 func reflection() -> void:
 	
@@ -18,7 +20,6 @@ func reflection() -> void:
 	# adding two gives basic actions (by bit-shifting)
 	NPC_instance.player_type = pow(2,15) + 2
 	Icon.modulate = Color(Color.BLUE)
-
 
 const HIDE = preload("uid://24y2bom7sjw5")
 

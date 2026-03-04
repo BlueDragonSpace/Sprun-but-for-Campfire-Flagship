@@ -10,8 +10,6 @@
 [node name="Player" unique_id=191932641 instance=ExtResource("1_kfrmh")]
 size_flags_vertical = 3
 script = ExtResource("2_v55o0")
-sprun_container_angle = 135
-sprun_distance = 60
 NPC_resource = ExtResource("3_m2f48")
 
 [node name="VSeparator2" parent="VBoxContainer" parent_id_path=PackedInt32Array(1192966142) index="0" unique_id=645862984]

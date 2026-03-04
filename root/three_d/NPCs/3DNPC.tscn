@@ -12,6 +12,7 @@
 size = Vector3(0.5, 0.2, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q778e"]
+resource_local_to_scene = true
 albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_igsjm"]
@@ -19,6 +20,7 @@ material = SubResource("StandardMaterial3D_q778e")
 size = Vector3(4, 0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkuay"]
+resource_local_to_scene = true
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cfwuy"]
@@ -29,6 +31,7 @@ size = Vector3(3.9, 0.25, 0.25)
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_vveda"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_litxs")
 text = "HP Bar Text"
 
@@ -201,7 +204,7 @@ texture_filter = 0
 texture = ExtResource("2_hkuay")
 
 [node name="Intent" type="Sprite3D" parent="Art" unique_id=1530758476]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 modulate = Color(1, 1, 1, 0.5921569)
 pixel_size = 0.05
 billboard = 1

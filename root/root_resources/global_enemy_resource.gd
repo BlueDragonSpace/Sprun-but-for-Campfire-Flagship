@@ -1,5 +1,5 @@
-class_name GlobalEnemy
-extends GlobalNPC
+class_name GlobalEnemyResource
+extends GlobalNPCResource
 
 # generally, enemies are randomized
 @export var hp_range     : int = 5

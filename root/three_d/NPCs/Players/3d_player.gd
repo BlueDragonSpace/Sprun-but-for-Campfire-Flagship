@@ -1,4 +1,5 @@
-extends "res://root/three_d/NPCs/3dnpc.gd"
+class_name ThreeDPlayer
+extends ThreeDNPC
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("3DMasochism"):
@@ -17,6 +18,7 @@ func _physics_process(delta: float) -> void:
 	
 	#if direction and CameraHandler:
 	if CameraHandler:
+		# position must be referenced using self, since the script doesn't contain it, but the node does
 		self.position += Vector3(input_dir.x, input_dir.y, 0.0) * CameraHandler.CurrentCamera.global_basis * SPEED * delta
 	
 	#if Input.is_action_just_pressed("3DJump") and is_on_floor() and can_jump:

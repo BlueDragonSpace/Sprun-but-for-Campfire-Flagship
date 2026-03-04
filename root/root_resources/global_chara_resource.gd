@@ -1,5 +1,5 @@
-class_name GlobalChara
-extends GlobalNPC
+class_name GlobalCharaResource
+extends GlobalNPCResource
 
 @export var sprun_slots = 1
 @export var sprun_active = 0

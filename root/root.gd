@@ -1,7 +1,7 @@
 extends Node
 
-@export var Charas : Array[GlobalChara]
-@export var Enemies : Array[GlobalEnemy]
+@export var Charas : Array[GlobalCharaResource]
+@export var Enemies : Array[GlobalEnemyResource]
 #@export var Stats : Array[Resource]
 
 enum DIMENSION {
@@ -135,7 +135,8 @@ func change_dimension(next_dimension, prev_dimension) -> void:
 			
 			# set up the OneDRoot
 			OneDRoot.Animate.play_backwards("global_transition_out")
-			OneDRoot.initialize_game()
+			if OneDRoot.started:
+				OneDRoot.initialize_game()
 			
 		DIMENSION.THREE:
 			ThreeDRoot.process_mode = Node.PROCESS_MODE_INHERIT

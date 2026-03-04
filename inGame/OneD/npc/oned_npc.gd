@@ -1,10 +1,11 @@
 @abstract ## means that the npc class is not supposed to be utilized on it's own
-extends "res://root/global_npc_script.gd"
+class_name OneDNPC
+extends GlobalNPC
 
 # scene for every NPC represented in OneD
 
 @onready var IntentBar: HBoxContainer = $VBoxContainer/IntentBar
-#@onready var Intent: TextureRect = $VBoxContainer/IntentBar/Intent
+@onready var Intent: TextureRect = $VBoxContainer/IntentBar/Intent
 @onready var IntentLabel: Label = $VBoxContainer/IntentBar/Intent/IntentLabel
 @onready var IntendedTargetIcon: TextureRect = $VBoxContainer/IntentBar/IntendedTargetIcon
 @onready var IntentAnimate: AnimationPlayer = $VBoxContainer/IntentBar/IntentAnimate
@@ -61,7 +62,6 @@ func _ready() -> void:
 	DeBuffs = get_node("VBoxContainer/DeBuffs")
 	Animate = get_node("Animate")
 	Sound = get_node("Sound")
-	Intent = get_node("VBoxContainer/IntentBar/Intent")
 	
 	# reading in 
 	set_max_hp(NPC_instance.max_hp)

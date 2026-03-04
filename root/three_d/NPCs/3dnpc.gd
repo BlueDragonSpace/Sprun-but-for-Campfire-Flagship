@@ -1,9 +1,11 @@
-extends "res://root/global_npc_script.gd"
+class_name ThreeDNPC
+extends GlobalNPC
 
 @onready var ThreeDRoot : Node3D = get_tree().get_first_node_in_group("ThreeDRoot")
 @onready var CameraHandler : Node3D = ThreeDRoot.get_node("CameraHandler")
 
 @onready var Art: Node3D = $Art
+@onready var Intent: Sprite3D = $Art/Intent
 @onready var HPText: MeshInstance3D = $HPText
 @onready var HPGreen: MeshInstance3D = $HPBar/HPGreen
 @onready var HPRed: MeshInstance3D = $HPBar/HPRed
@@ -58,12 +60,15 @@ func visual_action_victim(_victim: Node):
 	## rotates the entire character, but hey, it gets the point across
 	#Art.look_at(victim.position)
 
-func visual_intent(_action: Action, _visible: bool = true): # displays intent
+func visual_intent(action: Action, visible: bool = true): # displays intent
 	## HERE
 	# later on, the symbol for the Action taken by players is gonna be displayed
 	# - either on their symbol for the TurnQueue (or next to their physical location)
-	# - for now this is a later to-do
-	pass
+	# - for now this is just displaying it right on the player
+	
+	Intent.visible = visible
+	Intent.texture = action.icon
+	
 
 func visual_notif(_action_resource: Action): # upon doing action, shows something on screen:
 	# actually I don't really think I need this for 3D

@@ -1,4 +1,5 @@
 @abstract
+class_name GlobalNPC
 extends Node
 
 ## core functionalities in action of all NPCs across the game
@@ -13,12 +14,11 @@ extends Node
 var DeBuffs : Node = null # container for DeBuffs
 var Animate : AnimationPlayer = null # AnimationPlayer: must contain die, (lol forgot to add)
 var Sound : Node = null # Any node that plays sound (interestingly, they aren't linked in the tree, and are separate by dimension...)
-var Intent : Node = null # Displays intent, presumably by a 2D icon
 
 #########################################################################333333 </3
 
 # variables
-@export var NPC_resource : GlobalNPC # base stats
+@export var NPC_resource : GlobalNPCResource # base stats
 @onready var NPC_instance = NPC_resource.duplicate(true): # stats in use
 	set(new):
 		NPC_instance = new
