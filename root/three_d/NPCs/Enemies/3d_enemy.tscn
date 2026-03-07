@@ -3,7 +3,56 @@
 [ext_resource type="PackedScene" uid="uid://dp6sl47df53kt" path="res://root/three_d/NPCs/3DNPC.tscn" id="1_kwvsh"]
 [ext_resource type="Script" uid="uid://btnxn1pgd5vx" path="res://root/three_d/NPCs/Enemies/3d_enemy.gd" id="2_tujkt"]
 
-[node name="3D_enemy" unique_id=225495943 instance=ExtResource("1_kwvsh")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1l1ov"]
+resource_local_to_scene = true
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u0lo7"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1l1ov")
+size = Vector3(4, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4n3a"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0otmo"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_g4n3a")
+size = Vector3(3.9, 0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_litxs"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_npgyf"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_litxs")
+text = "HP Bar Text"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7bto"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0, 0, 1, 0.33333334)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l27au"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_a7bto")
+radius = 1.0
+height = 2.0
+
+[node name="3DEnemy" unique_id=225495943 instance=ExtResource("1_kwvsh")]
 script = ExtResource("2_tujkt")
+
+[node name="HPGreen" parent="HPBar" parent_id_path=PackedInt32Array(2141242155) index="0" unique_id=1379425815]
+mesh = SubResource("BoxMesh_u0lo7")
+
+[node name="HPRed" parent="HPBar" parent_id_path=PackedInt32Array(2141242155) index="1" unique_id=569840209]
+mesh = SubResource("BoxMesh_0otmo")
+
+[node name="HPText" parent="." index="5" unique_id=1619697627]
+mesh = SubResource("TextMesh_npgyf")
+
+[node name="Shield" parent="." index="6" unique_id=263374896]
+mesh = SubResource("SphereMesh_l27au")
 
 [node name="ThisIsAnEnemy" type="Node" parent="." index="9" unique_id=653854900]

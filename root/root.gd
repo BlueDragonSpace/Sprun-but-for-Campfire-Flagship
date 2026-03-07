@@ -2,7 +2,6 @@ extends Node
 
 @export var Charas : Array[GlobalCharaResource]
 @export var Enemies : Array[GlobalEnemyResource]
-#@export var Stats : Array[Resource]
 
 enum DIMENSION {
 	ZERO, # an infinite possibility
@@ -80,10 +79,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func change_dimension(next_dimension, prev_dimension) -> void:
 	
+	# has data already been created? Or are we reading anew?
+	var is_data_initialized = false
+	
 	# if null, don't read anything new, just pass in whatever is in the Charas and Enemies data already
 	if prev_dimension != null:
 		Charas.clear()
 		Enemies.clear()
+		is_data_initialized = true
+		OneDRoot.destroy_custom_actions()
 	
 	# puts the info in the local dimension, puts it in the root to read by the next dimension
 	match(prev_dimension):
@@ -112,15 +116,25 @@ func change_dimension(next_dimension, prev_dimension) -> void:
 			ThreeDRoot.process_mode = Node.PROCESS_MODE_DISABLED
 			
 	
+	OneDRoot.current_dimension = false
 	
 	# reads the info in the root, matches it to the current dimension
 	match(next_dimension):
 		DIMENSION.ONE:
 			OneDRoot.process_mode = Node.PROCESS_MODE_INHERIT
+			OneDRoot.current_dimension = true
+			
+			#OneDRoot.Charas is variable depending on which dimension it's for, unlike most other roots
+			# I have to set it back to it's own Charas node
+			OneDRoot.Charas = OneDRoot.get_node("RootGame/BattleScreen/Charas")
+			# same for enemies
+			OneDRoot.Enemies = OneDRoot.get_node("RootGame/BattleScreen/Enemies")
+			
 			for chara in Charas:
 				var child = ONE_D_PLAYER.instantiate()
 				child.set_script(chara.one_d_script)
 				child.NPC_resource = chara
+				child.NPC_resource.initialized = is_data_initialized
 				
 				OneDRoot.Charas.add_child(child)
 				child.set_max_hp(child.NPC_resource.max_hp)
@@ -128,6 +142,7 @@ func change_dimension(next_dimension, prev_dimension) -> void:
 				var child = ONE_D_ENEMY.instantiate()
 				child.set_script(enemy.one_d_script)
 				child.NPC_resource = enemy
+				child.NPC_resource.initialized = is_data_initialized
 				
 				OneDRoot.Enemies.add_child(child)
 				
@@ -143,14 +158,18 @@ func change_dimension(next_dimension, prev_dimension) -> void:
 			for chara in Charas:
 				var child = THREE_D_PLAYER.instantiate()
 				child.NPC_resource = chara
-				child.position = Vector3(randi_range(10, 15), randi_range(3, 8), 0)
+				child.NPC_resource.initialized = is_data_initialized
+				
+				child.position = Vector3(randi_range(5, 15), randi_range(-3, 11), 0)
 				
 				ThreeDRoot.Charas.add_child(child)
 			
 			for enemy in Enemies:
 				var child = THREE_D_ENEMY.instantiate()
 				child.NPC_resource = enemy
-				child.position = Vector3(-randi_range(10, 15), randi_range(3, 8), 0)
+				child.NPC_resource.initialized = is_data_initialized
+				
+				child.position = Vector3(-randi_range(5, 15), randi_range(-3, 11), 0)
 				
 				ThreeDRoot.Enemies.add_child(child)
 			

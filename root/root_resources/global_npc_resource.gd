@@ -17,6 +17,9 @@ const DIMENSION = 'ZERO, ONE, TWO, THREE, FOUR'
 @export var actions : Array[Action] = []
 @export_custom(PROPERTY_HINT_FLAGS, DIMENSION) var dimension_exist : int = 0
 
+var initialized = false # the very first time an enemy is created, it is given random hp
+# when it changes into another dimension, because the resource is created anew, the engine
+# - thinks that it must give another random hp value, when it already has one
 
 @export_subgroup("1D Exclusive")
 @export var icon : Texture2D

@@ -5,7 +5,7 @@ extends Button
 # (probably should be)
 
 # info for the info bar
-@onready var OneDRoot = get_tree().get_current_scene().get_child(0)
+@onready var OneDRoot = get_tree().get_first_node_in_group("OneDRoot")
 
 @export var info: String = 'default text... uwu'
 @export var sprun_cost : int = 0
@@ -18,6 +18,7 @@ var display_heal : bool = false
 @export var minion_num: int = 0 # 0 for not a minion, anything past is a minion
 @export var prep_disable = false
 @export var ally_target = false
+var is_custom = false # was created as a part of a player script,
 
 func check_cost(sprun: int) -> void:
 	if sprun >= sprun_cost:

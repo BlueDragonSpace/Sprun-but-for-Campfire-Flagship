@@ -14,7 +14,10 @@ const RATTTTTTT_1_PNG = preload("uid://dmidkhslqal7n")
 func add_ready() -> void:
 	npc_type = CHARACTER_TYPE.ENEMY
 	
-	randomize_stats(true)
+	
+	if not NPC_resource.initialized:
+		randomize_stats(true)
+		NPC_resource.initialized = true
 
 func add_take_damage(attacker) -> void:
 	last_attacker = attacker

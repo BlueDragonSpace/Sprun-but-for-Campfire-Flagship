@@ -61,6 +61,8 @@ var current_enemy = null
 const TURN_ORDER_POINT = preload("uid://kbdvggtyupd2") # current turn marker
 const TURN_ORDER_MARKER = preload("uid://dim074qeqwx6x") # character/enemy order
 const ENEMY_SELECTION = preload("uid://c6hsrr8o4xvi3")
+const ENEMY_SELECT_3D = preload("uid://dmsspumwnssly")
+
 
 # BASIC PLayer (why am I yelling
 const PLAYER = preload("uid://bd0auisdvfagw")
@@ -334,7 +336,8 @@ func select_enemy(index : int, is_quick : bool = false) -> void:
 	var victim = Enemies.get_child(index)
 	
 	current_player.action_victim = victim
-	current_player.set_intent_target(victim.Icon.texture)
+	if current_dimension:
+		current_player.set_intent_target(victim.Icon.texture)
 	
 	# removes all enemy selector children (as they are always last
 	for enemy in Enemies.get_children():
@@ -447,6 +450,12 @@ func disable_all_non_prep_moves(boolean: bool) -> void:
 		for action in container.get_children():
 			if action.prep_disable:
 				action.disabled = boolean
+
+func destroy_custom_actions() -> void:
+	for container in Actions.get_children():
+		for action in container.get_children():
+			if action.is_custom:
+				action.queue_free()
 
 func check_upgrade_cost_actions(character: Node) -> void:
 	# intended for player, changes the cost of upgrade actions to be specific to player
@@ -642,10 +651,17 @@ func initiate_select_enemy(is_quick : bool = false) -> void:
 		for enemy in Enemies.get_children():
 			
 			var index = enemy.get_index()
-			var selector = ENEMY_SELECTION.instantiate()
-			selector.text = ''
-			selector.info = enemy.name
-			selector.pressed.connect(select_enemy.bind(index, is_quick))
+			
+			var selector = null
+			
+			if current_dimension:
+				selector = ENEMY_SELECTION.instantiate()
+				selector.text = ''
+				selector.info = enemy.name
+				selector.pressed.connect(select_enemy.bind(index, is_quick))
+			else:
+				selector = ENEMY_SELECT_3D.instantiate()
+				selector.input_event.connect(select_enemy.bind(index, is_quick))
 			
 			#if index == 0:
 				#selector.call_deferred("grab_focus")

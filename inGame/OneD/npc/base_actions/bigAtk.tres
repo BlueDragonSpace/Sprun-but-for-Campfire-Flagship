@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_17ghn"]
 [ext_resource type="Texture2D" uid="uid://cl4v4yeo1gn2m" path="res://placeholderArt/myPixelArt/SwordCarrot-1.png.png" id="1_24jvq"]
+[ext_resource type="AudioStream" uid="uid://jxg26yncsnmv" path="res://placeholderArt/sfx/attackPlus.wav" id="3_yjy17"]
 
 [resource]
 script = ExtResource("1_17ghn")
@@ -13,4 +14,5 @@ prep_disable = true
 needs_target = true
 show_target_intent = true
 button_info = "Attack, but better."
+sound = ExtResource("3_yjy17")
 metadata/_custom_type_script = "uid://diifqu7v6338q"

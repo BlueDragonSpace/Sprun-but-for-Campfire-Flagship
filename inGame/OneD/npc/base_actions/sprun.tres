@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c8n0k3x2k67si" path="res://placeholderArt/myPixelArt/NewSprun-1.png.png" id="1_2pp45"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_lpts4"]
+[ext_resource type="AudioStream" uid="uid://bug0c63f6jtmr" path="res://placeholderArt/sfx/sprun_get.wav" id="3_tdwr6"]
 
 [resource]
 script = ExtResource("2_lpts4")
@@ -12,4 +13,5 @@ action_type = 2
 intent_type = 7
 button_info = "Charging for a stronger move...
 "
+sound = ExtResource("3_tdwr6")
 metadata/_custom_type_script = "uid://diifqu7v6338q"

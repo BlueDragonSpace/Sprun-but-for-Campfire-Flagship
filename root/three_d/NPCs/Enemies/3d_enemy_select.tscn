@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dmsspumwnssly"]
+
+[ext_resource type="Script" uid="uid://b1846ysqm0h1g" path="res://root/three_d/NPCs/Enemies/3d_enemy_select.gd" id="1_mstjs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s3px"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.15)
+
+[sub_resource type="SphereMesh" id="SphereMesh_auwrc"]
+material = SubResource("StandardMaterial3D_6s3px")
+radius = 2.0
+height = 4.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tujkt"]
+radius = 2.0
+
+[node name="3DEnemySelect" type="Area3D" unique_id=1211874631]
+script = ExtResource("1_mstjs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=67789703]
+mesh = SubResource("SphereMesh_auwrc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1413363036]
+shape = SubResource("SphereShape3D_tujkt")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

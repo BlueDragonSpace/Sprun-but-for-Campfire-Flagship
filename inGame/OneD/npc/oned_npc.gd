@@ -15,27 +15,6 @@ extends GlobalNPC
 @onready var CurrentHp: Label = $VBoxContainer/LowerBar/HP/HPBar/CurrentHP
 @onready var MaxHp: Label = $VBoxContainer/LowerBar/HP/HPBar/MaxHP
 
-#@onready var Sound: AudioStreamPlayer = $Sound
-
-#@export var NPC_resource : GlobalNPC # base stats
-#@onready var NPC_instance = NPC_resource.duplicate(true): # stats in use
-	#set(new):
-		#NPC_instance = new
-		#set_max_hp(NPC_instance.max_hp)
-
-#@onready var current_hp: int = NPC_instance.current_hp:
-	#set(new):
-		#current_hp = clamp(new, 0, NPC_instance.max_hp)
-		#NPC_instance.current_hp = current_hp
-		#
-		#if HP.value > current_hp:
-			#visual_hp(current_hp)
-		#elif HP.value < current_hp:
-			#visual_hp(current_hp)
-#
-#@export var attack_stat : int = 3
-#@export var defend_stat : int = 5
-
 var current_intent = Action.INTENT.ATTACK
 var intent_notif_info = ['None', 'No intent has been set yet.']
 const NOTIF = preload("uid://ccl3stwaax0r3")
@@ -94,7 +73,11 @@ func set_current_hp_text(new_hp : int) -> void:
 func set_max_hp(new_hp : int) -> void:
 	
 	NPC_instance.max_hp = new_hp
-	current_hp = NPC_instance.max_hp # when max_hp is set, refill hp to full
+	
+	if not NPC_resource.initialized:
+		print('set current hp to max_hp')
+		current_hp = NPC_instance.max_hp # when max_hp is set, refill hp to full
+	
 	visual_hp(current_hp)
 	HP.max_value = new_hp
 	MaxHp.text = str(new_hp)
@@ -114,40 +97,6 @@ func visual_notif(_action_resource: Action) -> void:
 	# displays name of move and it's number
 	notif.text = intent_notif_info[0] # + "\n" + IntentLabel.text
 	add_child(notif)
-
-#for some reason, if you call a Callable as a Callable, the function doesn't go through
-
-#func take_damage(damage, attacker = null, ignore_shield = false) -> void:
-	#
-	#if damage > 0:
-		#if ignore_shield:
-			#current_hp -= damage
-			#Animate.play("take_hit")
-		#else:
-			#if current_defense > 0:
-				#var undefended_damage = damage - current_defense
-				#current_defense = clamp(current_defense - damage, 0, INF)
-				#
-				#if undefended_damage > 0:
-					#current_hp -= undefended_damage
-					#Animate.play("take_hit")
-				#else:
-					#$DefendAttack.play()
-			#else:
-				#current_hp -= damage
-				#
-		#if current_hp <= 0:
-			#die()
-			#
-		#if attacker != null:
-			#add_take_damage(attacker)
-	#else:
-		## it's a healing move
-		#current_hp -= damage
-		#Animate.play("heal")
-#
-#func add_take_damage(_attacker): # additional stuff I add to take_damage() in other classes (like enemy)
-	#pass
 
 func visual_intent(action: Action, visible: bool = true) -> void:
 	

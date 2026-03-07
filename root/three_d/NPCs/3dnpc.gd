@@ -11,8 +11,10 @@ extends GlobalNPC
 @onready var HPRed: MeshInstance3D = $HPBar/HPRed
 @onready var Shield: MeshInstance3D = $Shield
 
-
+# added for necessity of the OneDRoot
 @onready var Icon: Sprite3D = $Art/Icon
+@onready var IntendedTargetIcon: Sprite3D = $Art/IntendedTargetIcon
+
 
 const SPEED = 20.0
 const JUMP_VELOCITY = 4.5

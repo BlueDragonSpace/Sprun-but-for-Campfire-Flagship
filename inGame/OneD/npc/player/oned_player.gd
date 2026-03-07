@@ -22,7 +22,6 @@ func add_ready() -> void:
 	
 	set_sprun_slots(NPC_instance.sprun_slots)
 	
-	#if add_actions_bool:
 	call_deferred("add_actions", NPC_instance.new_action)
 	
 	double_add_ready()
@@ -32,10 +31,12 @@ func double_add_ready() -> void:
 	pass
 
 func add_actions(custom_actions : Array) -> void:
-	# every player has basics:
-			# attack, defend, focus, pass
-			# they also all have back button but that isn't controlled here
-	
+	print('added actions')
+		# if not, have to create and connect to the buttons
+		# every player has basics:
+				# attack, defend, focus, pass
+				# they also all have back button but that isn't controlled here
+				
 	for this_action in custom_actions:
 		var new_button = ACTION_BUTTON.instantiate()
 		new_button.info = this_action.button_info
@@ -48,6 +49,7 @@ func add_actions(custom_actions : Array) -> void:
 		new_button.dfd_mult = this_action.dfd_mult
 		new_button.ally_target = this_action.ally_target
 		new_button.minion_num = NPC_instance.minion_num
+		new_button.is_custom = true
 		
 		if this_action.intent_type == Action.INTENT.HEAL:
 			new_button.display_heal = true
