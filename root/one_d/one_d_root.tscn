@@ -1553,25 +1553,13 @@ layout_mode = 2
 text = "Increase Sprun Slots"
 info = "Increase your max Sprun storage. Costs the max amount of sprun you can hold."
 
-[node name="ATKUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=915772057 instance=ExtResource("17_32om6")]
+[node name="LevelUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=915772057 instance=ExtResource("17_32om6")]
 layout_mode = 2
-text = "ATK Upgrade"
-info = "Multiply current ATK by 1.5. Costs 2 more sprun for each use."
+text = "LEVEL UP"
+info = "Multiply all stats by 1.5. Costs 2 more sprun for each use."
 sprun_cost = 3
 atk_mult = 1.0
-
-[node name="DFDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=688805653 instance=ExtResource("17_32om6")]
-layout_mode = 2
-text = "DFD Upgrade"
-info = "Multiply current DFD by 1.5. Costs 2 more sprun for each use."
-sprun_cost = 3
 dfd_mult = 1.0
-
-[node name="SPDUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=1774202845 instance=ExtResource("17_32om6")]
-layout_mode = 2
-text = "SPD Upgrade"
-info = "Multiply current SPD by 1.5. Costs 2 more sprun for each use."
-sprun_cost = 3
 display_speed = true
 
 [node name="Other" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=528564938]
@@ -1934,9 +1922,7 @@ libraries/ = SubResource("AnimationLibrary_y3dhr")
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Defend/DFD" to="." method="_on_dfd_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/FOCUS" to="." method="_on_focus_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/IncreaseSprunSlots" to="." method="_on_increase_sprun_slots_pressed"]
-[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/ATKUp" to="." method="_on_atk_up_pressed"]
-[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/DFDUp" to="." method="_on_dfd_up_pressed"]
-[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/SPDUp" to="." method="_on_spd_up_pressed"]
+[connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Sprun/LevelUp" to="." method="_on_level_up_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Other/ITM" to="." method="_on_itm_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/Other/PASS" to="." method="_on_pass_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/DevTools/Masochism" to="." method="_on_masochism_pressed"]

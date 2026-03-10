@@ -43,13 +43,17 @@ height = 2.0
 [node name="3DEnemy" unique_id=225495943 instance=ExtResource("1_kwvsh")]
 script = ExtResource("2_tujkt")
 
-[node name="HPGreen" parent="HPBar" parent_id_path=PackedInt32Array(2141242155) index="0" unique_id=1379425815]
+[node name="HPBar" parent="." index="4" unique_id=2141242155]
+visible = false
+
+[node name="HPGreen" parent="HPBar" index="0" unique_id=1379425815]
 mesh = SubResource("BoxMesh_u0lo7")
 
-[node name="HPRed" parent="HPBar" parent_id_path=PackedInt32Array(2141242155) index="1" unique_id=569840209]
+[node name="HPRed" parent="HPBar" index="1" unique_id=569840209]
 mesh = SubResource("BoxMesh_0otmo")
 
 [node name="HPText" parent="." index="5" unique_id=1619697627]
+visible = false
 mesh = SubResource("TextMesh_npgyf")
 
 [node name="Shield" parent="." index="6" unique_id=263374896]

@@ -22,9 +22,7 @@ extends Control
 @onready var Actions: TabContainer = $RootGame/LowerBar/VBoxContainer/Actions
 @onready var Focus: Button = $RootGame/LowerBar/VBoxContainer/Actions/Sprun/FOCUS
 @onready var IncreaseSprunSlots: Button = $RootGame/LowerBar/VBoxContainer/Actions/Sprun/IncreaseSprunSlots
-@onready var ATKUp: Button = $RootGame/LowerBar/VBoxContainer/Actions/Sprun/ATKUp
-@onready var DFDUp: Button = $RootGame/LowerBar/VBoxContainer/Actions/Sprun/DFDUp
-@onready var SPDUp: Button = $RootGame/LowerBar/VBoxContainer/Actions/Sprun/SPDUp
+@onready var LevelUp: Button = $RootGame/LowerBar/VBoxContainer/Actions/Sprun/LevelUp
 
 @onready var BAK: Button = $RootGame/LowerBar/VBoxContainer/Actions/BackButton/BAK
 
@@ -92,7 +90,7 @@ var current_turn = 0
 @export var current_wave = 0
 var last_tab = 0 # when going from attack to selection, switches you to BAK, which is kinda annoying, so now it goes back to ATK 
 ## prep section
-@export var in_prep_round = false:
+var in_prep_round = false:
 	set(new):
 		# so far nowhere in the code is in_prep_round set to true
 		# it's only set this way (currently, 2/11/26) in an animation
@@ -100,6 +98,11 @@ var last_tab = 0 # when going from attack to selection, switches you to BAK, whi
 		in_first_prep_round = new
 var in_first_prep_round = false
 var prep_rounds_remaining = 3
+
+@export var use_pork_rounds = false ## false sets game closer to Porklike (https://krystman.itch.io/porklike), speed through rounds, or else more enemies will appear, leftover rounds are prep
+@export var max_pork_rounds = 6
+var pork_rounds = max_pork_rounds # used in conjuction with previous
+var all_enemies_dead = false
 
 ## In-Battle
 enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
@@ -114,7 +117,7 @@ enum TURN_TYPE {PLAYER, SELECT_ENEMY, SELECT_ALLY, MIDDLE, END, TRANSITION}
 				BAK.disabled = true
 				check_upgrade_cost_actions(current_player)
 				check_cost_all_actions(current_player.NPC_instance.sprun_active)
-				if in_prep_round:
+				if in_prep_round or all_enemies_dead:
 					disable_all_non_prep_moves(true)
 				# visible (-ing)
 				check_actions_visible(current_player.NPC_instance.player_type)
@@ -230,6 +233,10 @@ func initialize_game() -> void:
 	
 	#NoiseBackground.texture.noise.seed = randi()
 	manage_enemies_columns()
+	
+	if use_pork_rounds:
+		$RootGame/TopBar/HBoxContainer/PrepRoundsRemaining.text = "Rounds Remaining:"
+		TopBarPrepRoundsLabel.text = str(max_pork_rounds)
 	
 	#IncreaseSprunSlots.sprun_cost = current_player.sprun_slots
 	call_deferred("check_upgrade_cost_actions",current_player)
@@ -363,75 +370,86 @@ func select_ally(index : int) -> void:
 
 func add_enemy_wave() -> void:
 	
+	all_enemies_dead = false
+	
 	current_wave += 1
 	$RootGame/TopBar/HBoxContainer/WaveNum.text = str(current_wave)
 	
+	var enemies_to_add = []
+	
 	# from 0 - 4
-	match(randi_range(0,4)):
+	match(randi_range(1,1)):
 		0: # one big
 			var big_boi = ONE_D_ENEMY.instantiate()
 			big_boi.NPC_resource = BIGG
-			Enemies.add_child(big_boi)
+			enemies_to_add.push_back(big_boi)
 		1: # many littles (4 - 6)
 			for i in randi_range(4,6):
 				var little = ONE_D_ENEMY.instantiate()
 				little.NPC_resource = LITTLE
-				Enemies.add_child(little)
+				enemies_to_add.push_back(little)
 				# makes each enemy darker (I don't have a good way of differentiating similar enemies yet)
-				little.Icon.modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15)
-				little.name = "Lytle " + str(i + 1)
+				little.icon_modulate = Color(1 - i * 0.175, 1 - i * 0.175, 1 - i * 0.175)
+				little.set_deferred("name", "Lytle " + str(i + 1))
 		2: # 2 Berserks
 			for i in 2:
 				var unpredictable = ONE_D_ENEMY.instantiate()
 				unpredictable.NPC_resource = BERSERK
-				Enemies.add_child(unpredictable)
-				unpredictable.Icon.flip_h = true
-				unpredictable.Icon.modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15) # easy differentiation
+				enemies_to_add.push_back(unpredictable)
+				unpredictable.set_deferred("Icon.flip_h", true)
+				unpredictable.set_deferred("modulate", Color(1 - i * 0.175, 1 - i * 0.175, 1 - i * 0.175)) # easy differentiation
 		3: # 2 littles and charge_up
 			## charge_up
 			var charger = ONE_D_ENEMY.instantiate()
 			charger.set_script(CHARGE_UP.one_d_script) ## HIGHLY IMPORTANT, since charge_up has a custom script for it's attack patterns
 			charger.NPC_resource = CHARGE_UP
-			Enemies.add_child(charger)
+			enemies_to_add.push_back(charger)
 			
 			## Littles
 			for i in 2:
 				var little = ONE_D_ENEMY.instantiate()
 				little.NPC_resource = LITTLE
-				Enemies.add_child(little)
-				# makes each enemy darker (I don't have a good way of differentiating similar enemies yet)
-				little.Icon.modulate = Color(1 - i * 0.15, 1 - i * 0.15, 1 - i * 0.15)
-				little.name = "Lytle " + str(i + 1)
+				enemies_to_add.push_back(little)
+				little.icon_modulate = Color(1 - i * 0.175, 1 - i * 0.175, 1 - i * 0.175)
+				little.set_deferred("name", "Lytle " + str(i + 1))
 		4: # Rat King (basically Evil Rodent Lord) [starts with two extra rats]
 			for i in 4:
 				match(i):
 					1:
 						var evil_rat = ONE_D_ENEMY.instantiate()
 						evil_rat.NPC_resource = EVIL_RAT
-						Enemies.add_child(evil_rat)
+						enemies_to_add.push_back(evil_rat)
 						
-						evil_rat.name = 'Sinister'
+						evil_rat.set_deferred("name", 'Sinister')
 					2:
 						var rat_king = ONE_D_ENEMY.instantiate()
 						rat_king.set_script(RAT_KING.one_d_script)
 						rat_king.NPC_resource = RAT_KING
-						Enemies.add_child(rat_king)
+						enemies_to_add.push_back(rat_king)
 					3:
 						var evil_rat = ONE_D_ENEMY.instantiate()
 						evil_rat.NPC_resource = EVIL_RAT
-						Enemies.add_child(evil_rat)
+						enemies_to_add.push_back(evil_rat)
 						
-						evil_rat.name = 'Right Hand Rat'
+						evil_rat.set_deferred("name", 'Right Hand Rat')
 		_:
 			push_error('unknown enemy wave value woah there buddy')
-	manage_enemies_columns()
 	
 	# increases stats based on the wave number
-	for enemy in Enemies.get_children():
+	for enemy in enemies_to_add:
+		Enemies.add_child(enemy)
 		var mult = pow(wave_scaling, current_wave - 1)
 		enemy.set_max_hp(enemy.NPC_instance.max_hp * mult)
 		enemy.NPC_instance.wave_scaling = mult
 		
+	
+	manage_enemies_columns()
+	set_enemies_intents()
+	current_enemy = Enemies.get_child(0)
+	
+	if use_pork_rounds:
+		pork_rounds = max_pork_rounds
+		TopBarPrepRoundsLabel.text = str(pork_rounds)
 
 func manage_enemies_columns(child_count: int = Enemies.get_child_count()) -> void:
 	# this is a function because i predict I'll make a more complex animation for this later
@@ -460,9 +478,7 @@ func destroy_custom_actions() -> void:
 func check_upgrade_cost_actions(character: Node) -> void:
 	# intended for player, changes the cost of upgrade actions to be specific to player
 	IncreaseSprunSlots.sprun_cost = character.NPC_instance.sprun_slots
-	ATKUp.sprun_cost = character.NPC_instance.atk_upgrade_cost
-	DFDUp.sprun_cost = character.NPC_instance.dfd_upgrade_cost
-	SPDUp.sprun_cost = character.NPC_instance.spd_upgrade_cost
+	LevelUp.sprun_cost = character.NPC_instance.level_up_cost
 
 func check_cost_all_actions(sprun: int) -> void:
 	# ends up disabling each action if you don't have the necessary sprun
@@ -564,8 +580,14 @@ func remove_dead_actions(dead: Node) -> void:
 				# the prep_rounds_remaining is off by one at the start, to justify when it gets
 				#-decreased whenever a round ends
 				current_round += 1
-				Animate.play("TWK")
-				$TWK/Sounddddd.play()
+				
+				if not use_pork_rounds:
+					Animate.play("TWK")
+					$TWK/Sounddddd.play()
+				
+				all_enemies_dead = true
+				
+				
 				
 				# characters don't lose their intent until the end of round
 				# since round ends prematurely, end the intent with it
@@ -658,10 +680,11 @@ func initiate_select_enemy(is_quick : bool = false) -> void:
 				selector = ENEMY_SELECTION.instantiate()
 				selector.text = ''
 				selector.info = enemy.name
+				
 				selector.pressed.connect(select_enemy.bind(index, is_quick))
 			else:
 				selector = ENEMY_SELECT_3D.instantiate()
-				selector.input_event.connect(select_enemy.bind(index, is_quick))
+				selector.clicked.connect(select_enemy.bind(index, is_quick))
 			
 			#if index == 0:
 				#selector.call_deferred("grab_focus")
@@ -795,7 +818,7 @@ func final_pass_turn() -> void:
 		#if chara.is_dead == false:
 			#chara.hide_intent()
 	
-	if in_prep_round:
+	if in_prep_round and not use_pork_rounds:
 		prep_rounds_remaining -= 1
 		TopBarPrepRoundsLabel.text = str(prep_rounds_remaining)
 		
@@ -834,6 +857,14 @@ func final_pass_turn() -> void:
 	
 	current_turn = 0
 	current_round += 1
+	
+	if use_pork_rounds:
+		pork_rounds -= 1
+		TopBarPrepRoundsLabel.text = str(pork_rounds)
+		
+		# at the end of the pork round timer, adds another wave of enemies
+		if pork_rounds == 0:
+			add_enemy_wave()
 
 # ticks down / enacts debuff effects
 func final_pass_debuff_check(npc: Node) -> void: 
@@ -875,18 +906,6 @@ func _on_focus_pressed() -> void:
 	player_pass_turn()
 func _on_increase_sprun_slots_pressed() -> void:
 	var action = Callable(current_player, "increase_sprun_slots")
-	current_player.set_intended_action(current_player.NPC_instance.actions[4], action)
-	player_pass_turn()
-func _on_atk_up_pressed() -> void:
-	var action = Callable(current_player, "upgrade_atk")
-	current_player.set_intended_action(current_player.NPC_instance.actions[4], action)
-	player_pass_turn()
-func _on_dfd_up_pressed() -> void:
-	var action = Callable(current_player, "upgrade_dfd")
-	current_player.set_intended_action(current_player.NPC_instance.actions[4], action)
-	player_pass_turn()
-func _on_spd_up_pressed() -> void:
-	var action = Callable(current_player, "upgrade_spd")
 	current_player.set_intended_action(current_player.NPC_instance.actions[4], action)
 	player_pass_turn()
 func _on_itm_pressed() -> void:
@@ -964,3 +983,8 @@ func _on_show_top_bar_pressed() -> void:
 func _on_move_mouse_entered() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _on_level_up_pressed() -> void:
+	var action = Callable(current_player, "level_up")
+	current_player.set_intended_action(current_player.NPC_instance.actions[4], action)
+	player_pass_turn()

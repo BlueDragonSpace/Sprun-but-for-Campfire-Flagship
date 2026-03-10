@@ -20,5 +20,5 @@ func spawn_evil_rat() -> void:
 		rattt.name = rat_names[num]
 		rat_names.remove_at(num) # makes sure the name can't be used again
 	else:
-		rattt.name = "EVIL Rat " + rats_spawned
+		rattt.name = "EVIL Rat " + str(rats_spawned)
 		rats_spawned += 1

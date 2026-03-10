@@ -31,8 +31,8 @@ func double_add_ready() -> void:
 	pass
 
 func add_actions(custom_actions : Array) -> void:
-	print('added actions')
-		# if not, have to create and connect to the buttons
+	#print('added actions')
+	# for all custom actions
 		# every player has basics:
 				# attack, defend, focus, pass
 				# they also all have back button but that isn't controlled here
@@ -220,23 +220,11 @@ func increase_sprun_slots():
 	set_sprun(0)
 	set_sprun_slots(NPC_instance.sprun_slots + 1)
 
-func upgrade_atk():
+func level_up():
 	@warning_ignore("narrowing_conversion")
 	NPC_instance.attack_stat *= 1.5
-	set_sprun(NPC_instance.sprun_active - NPC_instance.atk_upgrade_cost)
-	NPC_instance.atk_upgrade_cost += 2
-	Animate.play("buff")
-
-func upgrade_dfd():
-	@warning_ignore("narrowing_conversion")
 	NPC_instance.defend_stat *= 1.5
-	set_sprun(NPC_instance.sprun_active - NPC_instance.dfd_upgrade_cost)
-	NPC_instance.dfd_upgrade_cost += 2
-	Animate.play("buff")
-
-func upgrade_spd():
-	@warning_ignore("narrowing_conversion")
-	NPC_instance.speed_stat *= 1.5
-	set_sprun(NPC_instance.sprun_active - NPC_instance.spd_upgrade_cost)
-	NPC_instance.spd_upgrade_cost += 2
+	NPC_instance.speed_stat  *= 1.5
+	NPC_instance.level_up_cost += 2
+	set_sprun(NPC_instance.sprun_active - NPC_instance.level_up_cost)
 	Animate.play("buff")

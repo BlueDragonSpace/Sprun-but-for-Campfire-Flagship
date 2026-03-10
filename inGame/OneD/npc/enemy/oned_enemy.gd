@@ -5,6 +5,8 @@ var node_is_ready = false # a small get around for INTENTS.ATTACK
 var last_attacker : Node = null # remembers the last player to attack it
 var last_action : Action.ACTION_TYPE = Action.ACTION_TYPE.OTHER # prevents defending twice in a row
 
+var icon_modulate = Color(Color.WHITE)
+
 # random other icons
 const BIGG_BLUE_1_PNG = preload("uid://bpyet5t7bpkww")
 const LITTLE_BLUE_1_PNG = preload("uid://dtkrx4fskgr5r")
@@ -14,6 +16,7 @@ const RATTTTTTT_1_PNG = preload("uid://dmidkhslqal7n")
 func add_ready() -> void:
 	npc_type = CHARACTER_TYPE.ENEMY
 	
+	Icon.modulate = icon_modulate # for some reason I have to go around loopholes to do this
 	
 	if not NPC_resource.initialized:
 		randomize_stats(true)

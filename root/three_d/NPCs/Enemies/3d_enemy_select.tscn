@@ -8,6 +8,7 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0.15)
 
 [sub_resource type="SphereMesh" id="SphereMesh_auwrc"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_6s3px")
 radius = 2.0
 height = 4.0
@@ -16,6 +17,7 @@ height = 4.0
 radius = 2.0
 
 [node name="3DEnemySelect" type="Area3D" unique_id=1211874631]
+priority = 1
 script = ExtResource("1_mstjs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=67789703]
@@ -24,5 +26,6 @@ mesh = SubResource("SphereMesh_auwrc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1413363036]
 shape = SubResource("SphereShape3D_tujkt")
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

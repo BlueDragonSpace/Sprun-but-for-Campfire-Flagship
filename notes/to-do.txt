@@ -1,3 +1,5 @@
+woah to-do
+
 1 (Connections):
 	Connecting:
 		
@@ -70,7 +72,6 @@
 					intended_target would target a resource, not a node?
 	
 2 (Actions and fun stuff!):
-	All Actions should have sound effects! put it in the Action Resource
 	
 	Revival 
 	Attack that also charges sprun
@@ -232,5 +233,19 @@ New system (not currently in progress):
 
 
 Devlog lol:
-	Data transfer from 1D to 3D!!!
-	(why is the resource correct for initialized, but the instance isn't??)
+	Data transfer from 1D to 3D (still...)
+	Successful Attack! (stll a million other problems! such as custom actions!!! seriously why did I make it this way... why did I wait til so late in development to enter 3D)..)
+	Focus does not work correctly
+	
+	Holy crap I do not want to work on the data transfer
+	It seems like a problem worth restarting the entire freaking project over it is so bad
+	
+	For now, smaller things to get to pay off Campfire Flagship:
+		Level up, rather than specific stat boosts (check)
+		Wave turn limit, rather than once all enemies are gone:
+			Test when multiple waves added at same time (yup!)
+			Make enemies not upgrade when from previous wave (yup!)
+			Enemy differentiation is now strange, but it didn't work well in the first place so I'm not too mad about it
+	
+	Bugs: Enemy max hp visual wrong (actual value?)
+		Enemy doesn't have intent on wave spawn

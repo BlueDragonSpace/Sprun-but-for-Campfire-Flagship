@@ -5,9 +5,7 @@ extends GlobalNPCResource
 @export var sprun_active = 0
 
 # costs are listed in Sprun USD all purchases sold separately
-@export var atk_upgrade_cost = 3
-@export var dfd_upgrade_cost = 3
-@export var spd_upgrade_cost = 3
+@export var level_up_cost = 3
 
 @export var new_action : Array[Action]
 @export_custom(PROPERTY_HINT_FLAGS, Action.PLAYER_TYPE) var player_type : int = 0

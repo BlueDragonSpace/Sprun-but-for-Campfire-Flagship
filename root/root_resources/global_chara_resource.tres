@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://pour76yy1ong"]
+[gd_resource type="Resource" script_class="GlobalCharaResource" format=3 uid="uid://pour76yy1ong"]
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_3ch6a"]
 [ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara_resource.gd" id="1_tk763"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://ckrxohf0inp4t" path="res://inGame/OneD/npc/base_actions/passing.tres" id="6_lg7m4"]
 [ext_resource type="Resource" uid="uid://46w2r3n41yw6" path="res://inGame/OneD/npc/base_actions/sprun.tres" id="7_mcrsi"]
 [ext_resource type="Resource" uid="uid://dsldqq7ppqvn6" path="res://inGame/OneD/npc/base_actions/stunned.tres" id="8_3w72g"]
+[ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/oned_enemy.gd" id="9_bbsux"]
 
 [resource]
 script = ExtResource("1_tk763")

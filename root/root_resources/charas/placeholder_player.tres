@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://c35lasjc884k7"]
+[gd_resource type="Resource" script_class="GlobalCharaResource" format=3 uid="uid://c35lasjc884k7"]
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_1t20o"]
 [ext_resource type="Texture2D" uid="uid://c3p85tdu00duw" path="res://placeholderArt/icon.svg" id="2_1h6i8"]
@@ -10,7 +10,7 @@ script = ExtResource("2_vdrr2")
 player_type = 2
 name = "Jimmy Mc Spazzle"
 speed_stat = 99999999
-attack_stat = 50000
+attack_stat = 2
 defend_stat = 500000
 max_hp = 99999
 is_player = true

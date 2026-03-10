@@ -74,8 +74,7 @@ func set_max_hp(new_hp : int) -> void:
 	
 	NPC_instance.max_hp = new_hp
 	
-	if not NPC_resource.initialized:
-		print('set current hp to max_hp')
+	if not NPC_resource.initialized or not NPC_instance.is_player:
 		current_hp = NPC_instance.max_hp # when max_hp is set, refill hp to full
 	
 	visual_hp(current_hp)
