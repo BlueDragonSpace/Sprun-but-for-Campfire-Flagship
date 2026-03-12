@@ -2,16 +2,18 @@
 
 [ext_resource type="Theme" uid="uid://cyy1ccrel07nx" path="res://root/root.tres" id="1_nt0n7"]
 [ext_resource type="Script" uid="uid://dpipac1vlx4vl" path="res://root/one_d/one_d_root.gd" id="2_vitat"]
-[ext_resource type="Texture2D" uid="uid://b535plvyviqhb" path="res://placeholderArt/ChoosyCorners-1.png (1).png" id="3_o1hsu"]
+[ext_resource type="Texture2D" uid="uid://b535plvyviqhb" path="res://placeholderArt/stolen/ChoosyCorners-1.png (1).png" id="3_o1hsu"]
 [ext_resource type="PackedScene" uid="uid://c8l8w4n02trfl" path="res://inGame/sound/mute_button.tscn" id="4_wohbx"]
 [ext_resource type="Texture2D" uid="uid://ckcs3wyskdnk3" path="res://placeholderArt/myPixelArt/lazyHeal1.png" id="8_yxtmk"]
 [ext_resource type="Texture2D" uid="uid://b8oyr6v6wjvgf" path="res://placeholderArt/myPixelArt/lazySpeed1.png" id="9_voo86"]
 [ext_resource type="Texture2D" uid="uid://docng28uw84fm" path="res://placeholderArt/myPixelArt/Ooohhhhhhh-1.png.png" id="12_5g6ql"]
-[ext_resource type="Texture2D" uid="uid://co7fnqru8dy5r" path="res://placeholderArt/Xi.png" id="13_b8b7t"]
+[ext_resource type="Texture2D" uid="uid://co7fnqru8dy5r" path="res://placeholderArt/stolen/Xi.png" id="13_b8b7t"]
 [ext_resource type="Texture2D" uid="uid://cl4v4yeo1gn2m" path="res://placeholderArt/myPixelArt/SwordCarrot-1.png.png" id="14_cngxt"]
 [ext_resource type="Texture2D" uid="uid://bvhkmrse4oqmm" path="res://placeholderArt/myPixelArt/ShieldBadArt-1.png.png" id="15_ggsxi"]
 [ext_resource type="Texture2D" uid="uid://dbpy4cytd2toj" path="res://placeholderArt/myPixelArt/HigherQualityNewSprun.png" id="16_x4h2s"]
+[ext_resource type="PackedScene" uid="uid://6xrqwkwvr6jp" path="res://inGame/OneD/characterSelect/character_move_display.tscn" id="17_20myc"]
 [ext_resource type="PackedScene" uid="uid://drtw4kuprkapi" path="res://inGame/OneD/battleUI/ActionButton/action_button.tscn" id="17_32om6"]
+[ext_resource type="Texture2D" uid="uid://bdb2ui47063yf" path="res://placeholderArt/stolen/rightwardArrow.webp" id="17_b1nt6"]
 [ext_resource type="Resource" uid="uid://bspoq313njvjn" path="res://root/root_resources/charas/wizard.tres" id="18_8iljn"]
 [ext_resource type="Texture2D" uid="uid://c8n0k3x2k67si" path="res://placeholderArt/myPixelArt/NewSprun-1.png.png" id="18_ye5o8"]
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="19_skhea"]
@@ -27,8 +29,8 @@
 [ext_resource type="Resource" uid="uid://fyjis16kll8h" path="res://root/root_resources/charas/raccoon.tres" id="24_20myc"]
 [ext_resource type="Shader" uid="uid://ddycup0alwvnl" path="res://shaders/chromaticAberation.gdshader" id="24_a1wwb"]
 [ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="24_yxtmk"]
-[ext_resource type="Texture2D" uid="uid://bvkltfjfh1r7g" path="res://placeholderArt/scizor.png" id="25_05ql3"]
-[ext_resource type="Texture2D" uid="uid://7eya5knr354s" path="res://placeholderArt/raccoonFiller.png" id="25_8iljn"]
+[ext_resource type="Texture2D" uid="uid://bvkltfjfh1r7g" path="res://placeholderArt/stolen/scizor.png" id="25_05ql3"]
+[ext_resource type="Texture2D" uid="uid://7eya5knr354s" path="res://placeholderArt/stolen/raccoonFiller.png" id="25_8iljn"]
 [ext_resource type="Shader" uid="uid://dftiegl3xn8fh" path="res://shaders/pixelizer.gdshader" id="25_28rp8"]
 [ext_resource type="Texture2D" uid="uid://bs2vr1mqvjcph" path="res://placeholderArt/myPixelArt/RodentLordRn-1.png.png" id="25_b1nt6"]
 [ext_resource type="Resource" uid="uid://cotvxl6y2u8w" path="res://root/root_resources/charas/sigilant.tres" id="26_gba7a"]
@@ -1271,7 +1273,7 @@ size_flags_vertical = 1
 min_value = 0.5
 max_value = 5.0
 step = 0.1
-value = 5.0
+value = 1.0
 
 [node name="MuteButton" parent="RootGame/TopBar/HBoxContainer" unique_id=125002870 instance=ExtResource("4_wohbx")]
 layout_mode = 2
@@ -1556,7 +1558,7 @@ info = "Increase your max Sprun storage. Costs the max amount of sprun you can h
 [node name="LevelUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=915772057 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "LEVEL UP"
-info = "Multiply all stats by 1.5. Costs 2 more sprun for each use."
+info = "All stats 1.5x, heal to full. Costs 2 more sprun for each use."
 sprun_cost = 3
 atk_mult = 1.0
 dfd_mult = 1.0
@@ -1647,6 +1649,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.17
 
 [node name="BigIcon" type="TextureRect" parent="CharacterSelect/VBoxContainer" unique_id=1441798769]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
@@ -1666,11 +1669,172 @@ layout_mode = 2
 text = "Fall into the Longest Dream."
 horizontal_alignment = 1
 
-[node name="VSeparator3" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=212944283]
+[node name="VSeparator4" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=1024174459]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.17
+
+[node name="Stats" type="HBoxContainer" parent="CharacterSelect/VBoxContainer" unique_id=834150273]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelect/VBoxContainer/Stats" unique_id=1707026650]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer" unique_id=158919729]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.61
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer" unique_id=2079257843]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=1957188992]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 2.05
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=944779850]
+layout_mode = 2
+texture = ExtResource("14_cngxt")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ATK" type="Label" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=506526796]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "3"
+
+[node name="TextureRect2" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=297353798]
+layout_mode = 2
+texture = ExtResource("15_ggsxi")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DFD" type="Label" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=651454239]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "1"
+
+[node name="TextureRect3" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=53406976]
+layout_mode = 2
+texture = ExtResource("9_voo86")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SPD" type="Label" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=2089447920]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "4"
+
+[node name="VSeparator2" type="VSeparator" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=1893887180]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 2.05
+
+[node name="HSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer" unique_id=1475785424]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.61
+
+[node name="Moves" type="VBoxContainer" parent="CharacterSelect/VBoxContainer/Stats" unique_id=261776676]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterMoveDisplay" parent="CharacterSelect/VBoxContainer/Stats/Moves" unique_id=881666821 instance=ExtResource("17_20myc")]
+layout_mode = 2
+
+[node name="SampleMove2" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves" unique_id=1570737662]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Icon" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove2" unique_id=469387843]
+layout_mode = 2
+texture = ExtResource("17_b1nt6")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Words" type="VBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove2" unique_id=192589514]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove2/Words" unique_id=2041504845]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "MoveName"
+
+[node name="HSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove2/Words" unique_id=1710595632]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove2/Words" unique_id=948843259]
+layout_mode = 2
+text = "this is what the move does okay great"
+
+[node name="SampleMove3" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves" unique_id=429184746]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Icon" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove3" unique_id=1079268980]
+layout_mode = 2
+texture = ExtResource("17_b1nt6")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Words" type="VBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove3" unique_id=389065965]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove3/Words" unique_id=1093174561]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "MoveName"
+
+[node name="HSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove3/Words" unique_id=1691597203]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove3/Words" unique_id=1549161454]
+layout_mode = 2
+text = "this is what the move does okay great"
+
+[node name="SampleMove4" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves" unique_id=896362049]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Icon" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove4" unique_id=1819104152]
+layout_mode = 2
+texture = ExtResource("17_b1nt6")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Words" type="VBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove4" unique_id=1125811010]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove4/Words" unique_id=2030710018]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "MoveName"
+
+[node name="HSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove4/Words" unique_id=1528988767]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove4/Words" unique_id=1196563158]
+layout_mode = 2
+text = "this is what the move does okay great"
+
+[node name="VSeparator3" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=212944283]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.09
 
 [node name="CharacterChoosing" type="GridContainer" parent="CharacterSelect/VBoxContainer" unique_id=1381028855]
 layout_mode = 2

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DeBuff" format=3 uid="uid://e7tvxsuq03v8"]
+
+[ext_resource type="Script" uid="uid://bwk8y3s88n6m6" path="res://inGame/OneD/npc/de_buff_rect/de_buff.gd" id="1_6cgov"]
+[ext_resource type="Texture2D" uid="uid://caqaikjuw33t4" path="res://placeholderArt/myPixelArt/fortifiedtemp.png" id="1_l85yn"]
+
+[resource]
+script = ExtResource("1_6cgov")
+debuff_type = 3
+display_name = "Fortified"
+info = "Prevents the loss of defense at the start of turns."
+icon = ExtResource("1_l85yn")
+expiration = 999
+special_expiration = 2
+metadata/_custom_type_script = "uid://bwk8y3s88n6m6"

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://fyjis16kll8h"]
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_272bs"]
-[ext_resource type="Texture2D" uid="uid://7eya5knr354s" path="res://placeholderArt/raccoonFiller.png" id="2_gqpkb"]
+[ext_resource type="Texture2D" uid="uid://7eya5knr354s" path="res://placeholderArt/stolen/raccoonFiller.png" id="2_gqpkb"]
 [ext_resource type="Resource" uid="uid://ch56xq26ov4yl" path="res://inGame/OneD/npc/player/playerTypes/raccoon/daggers.tres" id="3_ns8h5"]
 [ext_resource type="Resource" uid="uid://crk1pkslwu51l" path="res://inGame/OneD/npc/player/playerTypes/raccoon/flashbang.tres" id="4_pelnd"]
 [ext_resource type="Resource" uid="uid://dnetxknb0osum" path="res://inGame/OneD/npc/player/playerTypes/raccoon/inject.tres" id="5_c1nq8"]

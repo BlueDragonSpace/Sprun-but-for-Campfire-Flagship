@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Action" format=3 uid="uid://d2ing130rolfl"]
 
-[ext_resource type="Texture2D" uid="uid://bnvnxoddtaevo" path="res://placeholderArt/squeezeRat-removebg-preview.png" id="1_e8gnp"]
+[ext_resource type="Texture2D" uid="uid://bnvnxoddtaevo" path="res://placeholderArt/stolen/squeezeRat-removebg-preview.png" id="1_e8gnp"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_e8gnp"]
 
 [resource]

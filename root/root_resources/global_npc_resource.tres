@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://ckrxohf0inp4t" path="res://inGame/OneD/npc/base_actions/passing.tres" id="5_hfruc"]
 [ext_resource type="Resource" uid="uid://46w2r3n41yw6" path="res://inGame/OneD/npc/base_actions/sprun.tres" id="6_qjykj"]
 [ext_resource type="Resource" uid="uid://dsldqq7ppqvn6" path="res://inGame/OneD/npc/base_actions/stunned.tres" id="7_gfv0u"]
-[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://icon.svg" id="8_7bus2"]
+[ext_resource type="Texture2D" uid="uid://c3p85tdu00duw" path="res://placeholderArt/icon.svg" id="8_7bus2"]
 
 [resource]
 script = ExtResource("1_kmacc")

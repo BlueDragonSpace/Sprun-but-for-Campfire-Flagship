@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://qk0yaqbhbtaf" path="res://inGame/OneD/npc/enemy/oned_enemy.gd" id="2_wch1t"]
 [ext_resource type="Resource" uid="uid://fe6kckp853qt" path="res://inGame/OneD/npc/base_actions/attack.tres" id="3_jy34j"]
 [ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy_resource.gd" id="3_v1pgg"]
-[ext_resource type="Texture2D" uid="uid://bemslt7plno52" path="res://placeholderArt/shedinja.png" id="4_t8bpt"]
+[ext_resource type="Texture2D" uid="uid://bemslt7plno52" path="res://placeholderArt/stolen/shedinja.png" id="4_t8bpt"]
 
 [resource]
 script = ExtResource("3_v1pgg")

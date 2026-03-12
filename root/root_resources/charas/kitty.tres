@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://70kgje720sl1"]
+[gd_resource type="Resource" script_class="GlobalCharaResource" format=3 uid="uid://70kgje720sl1"]
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_cgt8y"]
 [ext_resource type="Texture2D" uid="uid://vn78vumn6uw7" path="res://placeholderArt/myPixelArt/KittyButLyin-1.png (1).png" id="2_h470v"]

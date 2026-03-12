@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DeBuff" format=3 uid="uid://bl67tpbwsavb3"]
 
 [ext_resource type="Script" uid="uid://bwk8y3s88n6m6" path="res://inGame/OneD/npc/de_buff_rect/de_buff.gd" id="1_pws83"]
-[ext_resource type="Texture2D" uid="uid://dxbabyo5o8fvk" path="res://placeholderArt/snowflake.webp" id="1_uicst"]
+[ext_resource type="Texture2D" uid="uid://dxbabyo5o8fvk" path="res://placeholderArt/stolen/snowflake.webp" id="1_uicst"]
 
 [resource]
 script = ExtResource("1_pws83")

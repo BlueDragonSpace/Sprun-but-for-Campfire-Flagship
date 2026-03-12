@@ -378,7 +378,7 @@ func add_enemy_wave() -> void:
 	var enemies_to_add = []
 	
 	# from 0 - 4
-	match(randi_range(1,1)):
+	match(randi_range(0,4)):
 		0: # one big
 			var big_boi = ONE_D_ENEMY.instantiate()
 			big_boi.NPC_resource = BIGG
@@ -881,9 +881,11 @@ func final_pass_debuff_check(npc: Node) -> void:
 		match debuff_child.debuff.special_expiration:
 			DeBuff.SPECIAL_EXPIRATION.NONE:
 				debuff_child.expiration -= 1
-			DeBuff.SPECIAL_EXPIRATION.PREP:
+			DeBuff.SPECIAL_EXPIRATION.PREP: 
 				if in_first_prep_round:
 					debuff_child.expiration = 0
+			DeBuff.SPECIAL_EXPIRATION.NEVER:
+				pass # obviously does nothing
 		
 
 ## Transitioning between dimensions

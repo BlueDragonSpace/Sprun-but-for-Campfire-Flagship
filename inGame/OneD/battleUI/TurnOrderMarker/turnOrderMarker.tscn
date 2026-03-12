@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dim074qeqwx6x"]
+[gd_scene format=3 uid="uid://dim074qeqwx6x"]
 
-[ext_resource type="Texture2D" uid="uid://cqmahlm6jr7w8" path="res://placeholderArt/Sprun.png" id="1_1u8fv"]
+[ext_resource type="Texture2D" uid="uid://cqmahlm6jr7w8" path="res://placeholderArt/stolen/Sprun.png" id="1_1u8fv"]
 
 [node name="TurnOrderMarker" type="TextureRect"]
 anchors_preset = 8

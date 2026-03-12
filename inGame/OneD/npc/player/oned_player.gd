@@ -133,7 +133,6 @@ func add_lambda(func_action: Action, callable: Callable) -> Callable:
 	
 	#var callable = Callable(self, this_action.func_name)
 	var da_player = OneDRoot.current_player
-	print(da_player.name)
 	var new_callable = Callable(da_player, func_action.func_name)
 	
 	# then do the boring stuff
@@ -225,6 +224,10 @@ func level_up():
 	NPC_instance.attack_stat *= 1.5
 	NPC_instance.defend_stat *= 1.5
 	NPC_instance.speed_stat  *= 1.5
+	
+	# heals to full in the code
+	set_max_hp(NPC_instance.max_hp * 1.2)
+	
 	NPC_instance.level_up_cost += 2
 	set_sprun(NPC_instance.sprun_active - NPC_instance.level_up_cost)
 	Animate.play("buff")

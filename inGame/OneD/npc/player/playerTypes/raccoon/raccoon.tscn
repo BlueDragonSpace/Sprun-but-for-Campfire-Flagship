@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ce6ywj1ahln6d" path="res://inGame/OneD/npc/player/playerTypes/raccoon/raccoon.gd" id="2_w3pjq"]
 [ext_resource type="Resource" uid="uid://ch56xq26ov4yl" path="res://inGame/OneD/npc/player/playerTypes/raccoon/daggers.tres" id="3_gqmbh"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="3_q3srw"]
-[ext_resource type="Texture2D" uid="uid://7eya5knr354s" path="res://placeholderArt/raccoonFiller.png" id="4_gqmbh"]
+[ext_resource type="Texture2D" uid="uid://7eya5knr354s" path="res://placeholderArt/stolen/raccoonFiller.png" id="4_gqmbh"]
 [ext_resource type="Resource" uid="uid://c7jivkc0dwrjl" path="res://inGame/OneD/npc/player/playerTypes/raccoon/sneak_attack.tres" id="4_ne3ci"]
 [ext_resource type="Resource" uid="uid://dnetxknb0osum" path="res://inGame/OneD/npc/player/playerTypes/raccoon/inject.tres" id="5_knys8"]
 [ext_resource type="Resource" uid="uid://crk1pkslwu51l" path="res://inGame/OneD/npc/player/playerTypes/raccoon/flashbang.tres" id="7_q3srw"]

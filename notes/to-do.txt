@@ -78,8 +78,7 @@ woah to-do
 	Attack that also defends
 	Heavy Block (costs sprun)
 	Full Block (Like Defect's Barrier)
-	Call attention (utilize aggro) [plus this is basically the opposite of Kitty's Hide]
-	Salve (prevents a debuff) + Removing all debuffs upon using a buff
+	Sigilant - Call attention (utilize aggro) [plus this is basically the opposite of Kitty's Hide]
 	Double Damage team next move
 	Minor / Cheap heal 
 	Trap (attack, only in Prep, damages enemies as soon as they appear)
@@ -102,6 +101,11 @@ woah to-do
 		
 		Red Panda (fire moves!!!):
 			I love Red Pandas okay
+		
+		Sgt. Cotton (Fighter - Sheep):
+			7 Base ATK, (low defense?)
+			NO MAGIC
+			Trap - Make a fake enemy during prep, when enemies come into play they take damage and are stunned
 	
 	All Actions have sound effects, in their resource, played on animation
 	
@@ -112,8 +116,9 @@ woah to-do
 		Debuffer / Drains Sprun?
 		Group shield
 3:
-	Constantly a timer til the next wave, rather than prep rounds at the end of beating all enemies in a wave
-		Fixes a balancing problem where players can hold onto one weak enemy, and keep gaining Sprun
+	Display Stats on Character Select Screen + Moves
+	
+	
 	Show Next Enemy Wave in Prep Rounds
 	Enemies utilizing debuffs (poison, fire, maybe weakening or destrengthening if I make those)
 	Sprun Movement Shifting depending on size (too far when small, too close when big)
@@ -233,19 +238,4 @@ New system (not currently in progress):
 
 
 Devlog lol:
-	Data transfer from 1D to 3D (still...)
-	Successful Attack! (stll a million other problems! such as custom actions!!! seriously why did I make it this way... why did I wait til so late in development to enter 3D)..)
-	Focus does not work correctly
-	
-	Holy crap I do not want to work on the data transfer
-	It seems like a problem worth restarting the entire freaking project over it is so bad
-	
-	For now, smaller things to get to pay off Campfire Flagship:
-		Level up, rather than specific stat boosts (check)
-		Wave turn limit, rather than once all enemies are gone:
-			Test when multiple waves added at same time (yup!)
-			Make enemies not upgrade when from previous wave (yup!)
-			Enemy differentiation is now strange, but it didn't work well in the first place so I'm not too mad about it
-	
-	Bugs: Enemy max hp visual wrong (actual value?)
-		Enemy doesn't have intent on wave spawn
+	Fortified Buff, (added to sigilant)

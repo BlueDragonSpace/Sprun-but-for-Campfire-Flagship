@@ -60,11 +60,11 @@ const DE_BUFF_RECT = preload("uid://b2tkettp813ev") # Scene: notif for debuff
 const STUNNED = preload("uid://dsldqq7ppqvn6") # Action: basically pass (this isn't the DeBuff)
 
 ## Functions
-func check_debuff(debuff_in_question) -> Node: # returns if the debuff exists, and the Node connected to it
+func check_debuff(debuff_type) -> Node: # returns if the debuff exists, and the Node connected to it
 	var node = null
 	
 	for debuff_child in DeBuffs.get_children():
-		if debuff_child.debuff.debuff_type == debuff_in_question:
+		if debuff_child.debuff.debuff_type == debuff_type:
 			node = debuff_child
 			break
 	
@@ -87,6 +87,20 @@ func take_debuff(debuff_resource, add_expiration):
 			DeBuffs.add_child(child)
 			child.expiration = add_expiration
 
+func clease_deduffs(only_bad: bool = true):
+	print('plz note this function is not tested yet!')
+	
+	for debuff_child in DeBuffs.get_children():
+		
+		if not debuff_child.debuff.is_bad and only_bad:
+			pass # either it's a buff, or only_bad is off and it's cleasing all, good or bad
+		else:
+			debuff_child.debuff.expiration = 0
+
+func remove_debuff(debuff_type):
+	var node = check_debuff(debuff_type)
+	node.expiration = 0
+
 func die() -> void:
 	
 	# you can only die once (I don't reccomend trying to twice either)
@@ -101,7 +115,10 @@ func do_intended_action() -> void:
 	# visual_notif
 	# OneDRoot to current_dimension (defined by Root)
 	
-	current_defense = 0
+	# if not fortified, lose all defense
+	if not check_debuff(DeBuff.DEBUFF.FORTIFIED):
+		current_defense = 0
+	
 	visual_intent(intended_action_resource, false)
 	
 	if intended_action_resource.sound:

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Action" format=3 uid="uid://qt4lsl84qfnm"]
 
-[ext_resource type="Texture2D" uid="uid://c3lfkqfcsjsc4" path="res://placeholderArt/mouseOrRat.png" id="1_kdno3"]
+[ext_resource type="Texture2D" uid="uid://c3lfkqfcsjsc4" path="res://placeholderArt/stolen/mouseOrRat.png" id="1_kdno3"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_kdno3"]
 
 [resource]

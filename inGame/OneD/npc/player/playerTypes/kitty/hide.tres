@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Action" format=3 uid="uid://cu7gb1lix0hyn"]
 
-[ext_resource type="Texture2D" uid="uid://cud2twh7olt08" path="res://placeholderArt/snakeBox.png" id="1_prvk5"]
+[ext_resource type="Texture2D" uid="uid://cud2twh7olt08" path="res://placeholderArt/stolen/snakeBox.png" id="1_prvk5"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_prvk5"]
 
 [resource]

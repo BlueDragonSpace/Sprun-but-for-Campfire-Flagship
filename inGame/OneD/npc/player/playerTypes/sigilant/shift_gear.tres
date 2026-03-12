@@ -11,6 +11,6 @@ icon = ExtResource("1_8k3my")
 action_type = 3
 intent_type = 5
 player_type = 24576
-button_info = "Allows Sigilant to utilize more powerful moves, but makes them lack basic actions (ATK, DFD, FOCUS)
+button_info = "Allows Sigilant to utilize more powerful moves and retain defense, but makes them lack basic actions (ATK, DFD, FOCUS)
 Or goes back to normal, if already shifted."
 metadata/_custom_type_script = "uid://diifqu7v6338q"

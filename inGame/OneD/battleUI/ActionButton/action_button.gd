@@ -7,7 +7,7 @@ extends Button
 # info for the info bar
 @onready var OneDRoot = get_tree().get_first_node_in_group("OneDRoot")
 
-@export var info: String = 'default text... uwu'
+@export_multiline var info: String = 'default text... uwu'
 @export var sprun_cost : int = 0
 @export var atk_mult : float = 0.0
 @export var dfd_mult : float = 0.0

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GlobalChara" format=3 uid="uid://bspoq313njvjn"]
+[gd_resource type="Resource" script_class="GlobalCharaResource" format=3 uid="uid://bspoq313njvjn"]
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_o4qjq"]
 [ext_resource type="Texture2D" uid="uid://cvggsr6dniihs" path="res://placeholderArt/myPixelArt/wizerdhat-1.png (1).png" id="2_ev18f"]
@@ -18,7 +18,6 @@ sprun_active = 1
 new_action = Array[ExtResource("1_o4qjq")]([ExtResource("2_rgicw"), ExtResource("3_ev18f"), ExtResource("4_ioxnq"), ExtResource("6_yjhcq"), ExtResource("5_djcu3"), ExtResource("7_7bfps")])
 player_type = 6
 name = "Wizard"
-attack_stat = 5
 defend_stat = 4
 max_hp = 16
 is_player = true

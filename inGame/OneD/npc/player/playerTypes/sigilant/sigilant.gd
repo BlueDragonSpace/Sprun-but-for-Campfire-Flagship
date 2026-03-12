@@ -1,6 +1,6 @@
 extends "res://inGame/OneD/npc/player/oned_player.gd"
 
-
+const FORTIFIED = preload("uid://e7tvxsuq03v8") # HERE test it!!!!!!
 const SALVE = preload("uid://jh6814od43pa")
 
 func salvation() -> void:
@@ -30,10 +30,12 @@ func shift_gear() -> void:
 	if NPC_instance.player_type == (pow(2, 13) + 2):
 		NPC_instance.player_type = pow(2, 14) # turns to Sigilant ON
 		Icon.modulate = Color(Color.BLUE)
+		self.take_debuff(FORTIFIED, 99)
 	else:
 		# shifts back to regular
 		NPC_instance.player_type = pow(2, 13) + 2
 		Icon.modulate = Color(Color.WHITE)
+		self.remove_debuff(DeBuff.DEBUFF.FORTIFIED)
 
 func powerslice(attack_mult) -> void:
 	action_victim.take_damage(NPC_instance.attack_stat * attack_mult)
@@ -43,9 +45,8 @@ func powerslice(attack_mult) -> void:
 func team_defend(defend_mult) -> void:
 	action_victim.current_defense += NPC_instance.defend_stat * defend_mult
 	action_victim.Animate.play("defend")
-	$DoDefend.play()
 
 func self_destruct(attack_mult) -> void:
 	action_victim.take_damage(NPC_instance.attack_stat * attack_mult)
 	
-	take_damage(31415)
+	take_damage(NPC_instance.max_hp) # should always kill itself, even if it's HP is more than it's attack damage (somehow)

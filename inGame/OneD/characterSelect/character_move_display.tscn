@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://6xrqwkwvr6jp"]
+
+[ext_resource type="Texture2D" uid="uid://bdb2ui47063yf" path="res://placeholderArt/stolen/rightwardArrow.webp" id="1_aeofr"]
+[ext_resource type="Script" uid="uid://8qpn44c1ig85" path="res://inGame/OneD/characterSelect/character_move_display.gd" id="1_jn7i1"]
+
+[node name="CharacterMoveDisplay" type="HBoxContainer" unique_id=881666821]
+size_flags_vertical = 3
+script = ExtResource("1_jn7i1")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1502223652]
+layout_mode = 2
+texture = ExtResource("1_aeofr")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Words" type="VBoxContainer" parent="." unique_id=2022776767]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Words" unique_id=913118125]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "MoveName"
+
+[node name="HSeparator" type="HSeparator" parent="Words" unique_id=963175128]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Info" type="Label" parent="Words" unique_id=1518461210]
+layout_mode = 2
+text = "this is what the move does okay great"

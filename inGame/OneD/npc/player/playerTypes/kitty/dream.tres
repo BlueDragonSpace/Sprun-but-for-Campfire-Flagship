@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Action" format=3 uid="uid://bg2fyrspehbec"]
 
-[ext_resource type="Texture2D" uid="uid://btoxplcgu2wx7" path="res://placeholderArt/stock_potion.webp" id="1_oe6ul"]
+[ext_resource type="Texture2D" uid="uid://btoxplcgu2wx7" path="res://placeholderArt/stolen/stock_potion.webp" id="1_oe6ul"]
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="2_778a5"]
 
 [resource]

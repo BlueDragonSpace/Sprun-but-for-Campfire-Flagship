@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://kbdvggtyupd2"]
+[gd_scene format=3 uid="uid://kbdvggtyupd2"]
 
-[ext_resource type="Texture2D" uid="uid://dkwgqscbsik62" path="res://placeholderArt/TurnOrderPoint.png" id="1_ahker"]
+[ext_resource type="Texture2D" uid="uid://dkwgqscbsik62" path="res://placeholderArt/stolen/TurnOrderPoint.png" id="1_ahker"]
 
 [node name="TurnOrderPoint" type="TextureRect"]
 anchors_preset = 6

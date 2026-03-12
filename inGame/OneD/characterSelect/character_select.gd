@@ -3,16 +3,46 @@ extends HBoxContainer
 var characters_selected = 0
 var character_array = []
 
+# displaying stats upon button hover
 @onready var BigIcon: TextureRect = $VBoxContainer/BigIcon
 @onready var Info: Label = $VBoxContainer/Info
 @onready var SubInfo: Label = $VBoxContainer/SubInfo
+@onready var Stats: HBoxContainer = $VBoxContainer/Stats
+@onready var ATK: Label = $VBoxContainer/Stats/VBoxContainer/HBoxContainer/ATK
+@onready var DFD: Label = $VBoxContainer/Stats/VBoxContainer/HBoxContainer/DFD
+@onready var SPD: Label = $VBoxContainer/Stats/VBoxContainer/HBoxContainer/SPD
+@onready var Moves: VBoxContainer = $VBoxContainer/Stats/Moves
 
 @onready var CharacterChoosing: GridContainer = $VBoxContainer/CharacterChoosing
 
-func button_info(info: String, sub_info: String, info_icon: Texture = preload("res://placeholderArt/myPixelArt/Bigg-1.png.png")) -> void:
+const CHARACTER_MOVE_DISPLAY = preload("uid://6xrqwkwvr6jp")
+
+func button_info(info: String, sub_info: String, info_icon: Texture = preload("res://placeholderArt/myPixelArt/Bigg-1.png.png"), character_resource: GlobalCharaResource = null) -> void:
 	BigIcon.texture = info_icon
 	Info.text = info
 	SubInfo.text = sub_info
+	
+	# whether or not there's a character resource, remove all the data
+	for child in Moves.get_children():
+		child.queue_free()
+	
+	if not character_resource == null:
+		Stats.visible = true
+		
+		ATK.text = str(character_resource.attack_stat)
+		DFD.text = str(character_resource.defend_stat)
+		SPD.text = str(character_resource.speed_stat)
+		
+		for action in character_resource.new_action:
+			var child = CHARACTER_MOVE_DISPLAY.instantiate()
+			
+			Moves.add_child(child)
+			
+			child.Icon.texture = action.icon
+			child.Name.text = action.name
+			child.Info.text = action.button_info
+	else:
+		Stats.visible = false
 
 func load_characters() -> void:
 	for child in CharacterChoosing.get_children():

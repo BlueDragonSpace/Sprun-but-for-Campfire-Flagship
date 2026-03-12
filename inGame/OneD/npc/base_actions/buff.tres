@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Action" format=3 uid="uid://ds1u2a18cppdb"]
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_1eqhq"]
-[ext_resource type="Texture2D" uid="uid://dw8l5oeyu0us6" path="res://placeholderArt/upArrow.webp" id="1_skwj8"]
+[ext_resource type="Texture2D" uid="uid://dw8l5oeyu0us6" path="res://placeholderArt/stolen/upArrow.webp" id="1_skwj8"]
 [ext_resource type="AudioStream" uid="uid://cnevvu2dnjofy" path="res://placeholderArt/sfx/mega_lazer.wav" id="3_uk73s"]
 
 [resource]

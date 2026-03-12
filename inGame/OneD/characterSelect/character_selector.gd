@@ -9,4 +9,4 @@ extends CheckBox
 @onready var CharacterSelect = %CharacterSelect
 
 func _on_mouse_entered() -> void:
-	CharacterSelect.button_info(info, sub_info, info_icon)
+	CharacterSelect.button_info(info, sub_info, info_icon, linked_character)
