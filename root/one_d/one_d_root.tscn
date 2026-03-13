@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dbpy4cytd2toj" path="res://placeholderArt/myPixelArt/HigherQualityNewSprun.png" id="16_x4h2s"]
 [ext_resource type="PackedScene" uid="uid://6xrqwkwvr6jp" path="res://inGame/OneD/characterSelect/character_move_display.tscn" id="17_20myc"]
 [ext_resource type="PackedScene" uid="uid://drtw4kuprkapi" path="res://inGame/OneD/battleUI/ActionButton/action_button.tscn" id="17_32om6"]
-[ext_resource type="Texture2D" uid="uid://bdb2ui47063yf" path="res://placeholderArt/stolen/rightwardArrow.webp" id="17_b1nt6"]
 [ext_resource type="Resource" uid="uid://bspoq313njvjn" path="res://root/root_resources/charas/wizard.tres" id="18_8iljn"]
 [ext_resource type="Texture2D" uid="uid://c8n0k3x2k67si" path="res://placeholderArt/myPixelArt/NewSprun-1.png.png" id="18_ye5o8"]
 [ext_resource type="PackedScene" uid="uid://c3e3n4jvt2s4t" path="res://inGame/sound/random_pitch.tscn" id="19_skhea"]
@@ -35,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://bs2vr1mqvjcph" path="res://placeholderArt/myPixelArt/RodentLordRn-1.png.png" id="25_b1nt6"]
 [ext_resource type="Resource" uid="uid://cotvxl6y2u8w" path="res://root/root_resources/charas/sigilant.tres" id="26_gba7a"]
 [ext_resource type="Shader" uid="uid://bo0lvrtc1mrha" path="res://shaders/rainbows.gdshader" id="26_v6bl5"]
+[ext_resource type="Texture2D" uid="uid://w7barm6qi5et" path="res://placeholderArt/myPixelArt/piggy.png" id="29_20myc"]
 
 [sub_resource type="Gradient" id="Gradient_ovlcs"]
 colors = PackedColorArray(0.8590829, 0.7058417, 0, 1, 0, 0.3835572, 0.75477016, 1)
@@ -219,6 +219,14 @@ _data = {
 &"RESET": SubResource("Animation_b1nt6"),
 &"hide_top_bar": SubResource("Animation_yxtmk"),
 &"show_top_bar": SubResource("Animation_20myc")
+}
+
+[sub_resource type="Animation" id="Animation_05ql3"]
+resource_name = "display_stats"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gba7a"]
+_data = {
+&"display_stats": SubResource("Animation_05ql3")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gj8ci"]
@@ -1536,7 +1544,7 @@ icon = ExtResource("15_ggsxi")
 expand_icon = true
 info = "Defend against enemy attacks."
 dfd_mult = 1.0
-usable_on_player = 226
+usable_on_player = 130
 
 [node name="Sprun" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=1972192148]
 visible = false
@@ -1558,7 +1566,7 @@ info = "Increase your max Sprun storage. Costs the max amount of sprun you can h
 [node name="LevelUp" parent="RootGame/LowerBar/VBoxContainer/Actions/Sprun" unique_id=915772057 instance=ExtResource("17_32om6")]
 layout_mode = 2
 text = "LEVEL UP"
-info = "All stats 1.5x, heal to full. Costs 2 more sprun for each use."
+info = "All stats 1.5x, max HP 1.2x, heal to full. Costs 2 more sprun for each use."
 sprun_cost = 3
 atk_mult = 1.0
 dfd_mult = 1.0
@@ -1683,67 +1691,74 @@ size_flags_stretch_ratio = 0.35
 [node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelect/VBoxContainer/Stats" unique_id=1707026650]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
 alignment = 1
-
-[node name="HSeparator2" type="HSeparator" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer" unique_id=158919729]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.61
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer" unique_id=2079257843]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=1957188992]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_stretch_ratio = 2.05
-
 [node name="TextureRect" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=944779850]
 layout_mode = 2
 texture = ExtResource("14_cngxt")
-expand_mode = 3
 stretch_mode = 5
 
 [node name="ATK" type="Label" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=506526796]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 32
 text = "3"
 
-[node name="TextureRect2" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=297353798]
-layout_mode = 2
-texture = ExtResource("15_ggsxi")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="DFD" type="Label" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=651454239]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "1"
-
-[node name="TextureRect3" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=53406976]
-layout_mode = 2
-texture = ExtResource("9_voo86")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="SPD" type="Label" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=2089447920]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "4"
-
-[node name="VSeparator2" type="VSeparator" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer" unique_id=1893887180]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_stretch_ratio = 2.05
-
-[node name="HSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer" unique_id=1475785424]
-self_modulate = Color(1, 1, 1, 0)
+[node name="HBoxContainer2" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer" unique_id=1906917475]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.61
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer2" unique_id=362425437]
+layout_mode = 2
+texture = ExtResource("15_ggsxi")
+stretch_mode = 5
+
+[node name="DFD" type="Label" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer2" unique_id=757139570]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer" unique_id=688452763]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer3" unique_id=1263978670]
+layout_mode = 2
+texture = ExtResource("9_voo86")
+stretch_mode = 5
+
+[node name="SPD" type="Label" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer3" unique_id=2106011414]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "4"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer" unique_id=305964246]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer4" unique_id=1604881475]
+layout_mode = 2
+texture = ExtResource("8_yxtmk")
+stretch_mode = 5
+
+[node name="MHP" type="Label" parent="CharacterSelect/VBoxContainer/Stats/VBoxContainer/HBoxContainer4" unique_id=1408871954]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="VSeparator" type="VSeparator" parent="CharacterSelect/VBoxContainer/Stats" unique_id=1815634725]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.02
 
 [node name="Moves" type="VBoxContainer" parent="CharacterSelect/VBoxContainer/Stats" unique_id=261776676]
 layout_mode = 2
@@ -1752,83 +1767,11 @@ size_flags_horizontal = 3
 [node name="CharacterMoveDisplay" parent="CharacterSelect/VBoxContainer/Stats/Moves" unique_id=881666821 instance=ExtResource("17_20myc")]
 layout_mode = 2
 
-[node name="SampleMove2" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves" unique_id=1570737662]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Icon" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove2" unique_id=469387843]
-layout_mode = 2
-texture = ExtResource("17_b1nt6")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Words" type="VBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove2" unique_id=192589514]
+[node name="CharacterMoveDisplay2" parent="CharacterSelect/VBoxContainer/Stats/Moves" unique_id=955608755 instance=ExtResource("17_20myc")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove2/Words" unique_id=2041504845]
+[node name="CharacterMoveDisplay3" parent="CharacterSelect/VBoxContainer/Stats/Moves" unique_id=773434445 instance=ExtResource("17_20myc")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "MoveName"
-
-[node name="HSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove2/Words" unique_id=1710595632]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove2/Words" unique_id=948843259]
-layout_mode = 2
-text = "this is what the move does okay great"
-
-[node name="SampleMove3" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves" unique_id=429184746]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Icon" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove3" unique_id=1079268980]
-layout_mode = 2
-texture = ExtResource("17_b1nt6")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Words" type="VBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove3" unique_id=389065965]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove3/Words" unique_id=1093174561]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "MoveName"
-
-[node name="HSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove3/Words" unique_id=1691597203]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove3/Words" unique_id=1549161454]
-layout_mode = 2
-text = "this is what the move does okay great"
-
-[node name="SampleMove4" type="HBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves" unique_id=896362049]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Icon" type="TextureRect" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove4" unique_id=1819104152]
-layout_mode = 2
-texture = ExtResource("17_b1nt6")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Words" type="VBoxContainer" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove4" unique_id=1125811010]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove4/Words" unique_id=2030710018]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "MoveName"
-
-[node name="HSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove4/Words" unique_id=1528988767]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="CharacterSelect/VBoxContainer/Stats/Moves/SampleMove4/Words" unique_id=1196563158]
-layout_mode = 2
-text = "this is what the move does okay great"
 
 [node name="VSeparator3" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=212944283]
 modulate = Color(1, 1, 1, 0)
@@ -1889,9 +1832,27 @@ sub_info = "Does group damage, and can skip the turn queue."
 info_icon = ExtResource("25_8iljn")
 linked_character = ExtResource("24_20myc")
 
+[node name="Random" type="Button" parent="CharacterSelect/VBoxContainer/CharacterChoosing" unique_id=1667340862]
+layout_mode = 2
+text = "Random"
+
+[node name="VSeparator5" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=2123379696]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="PorkRounds" parent="CharacterSelect/VBoxContainer" unique_id=1773495734 instance=ExtResource("22_akxu1")]
+layout_mode = 2
+text = "Use Pork Rounds"
+icon = ExtResource("29_20myc")
+info = "Pork Rounds"
+sub_info = "Disables Prep Rounds, and enemy waves only ever spawn every 7 rounds."
+info_icon = ExtResource("29_20myc")
+
 [node name="EndCharacterSelect" type="Button" parent="CharacterSelect/VBoxContainer" unique_id=1363648875]
 layout_mode = 2
-text = "3 shall enter."
+text = "Begin anew"
 
 [node name="VSeparator" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=1609887138]
 modulate = Color(1, 1, 1, 0)
@@ -1904,6 +1865,9 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.17
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterSelect" unique_id=197426565]
+libraries/ = SubResource("AnimationLibrary_gba7a")
 
 [node name="TPK" type="ColorRect" parent="." unique_id=1500180873]
 visible = false
@@ -2094,6 +2058,8 @@ libraries/ = SubResource("AnimationLibrary_y3dhr")
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/DevTools/AutoSprun" to="." method="_on_auto_sprun_pressed"]
 [connection signal="pressed" from="RootGame/LowerBar/VBoxContainer/Actions/DevTools/AutoHeal" to="." method="_on_auto_heal_pressed"]
 [connection signal="mouse_entered" from="RootGame/MOVE" to="." method="_on_move_mouse_entered"]
+[connection signal="pressed" from="CharacterSelect/VBoxContainer/CharacterChoosing/Random" to="CharacterSelect" method="_on_random_pressed"]
+[connection signal="pressed" from="CharacterSelect/VBoxContainer/PorkRounds" to="." method="_on_pork_rounds_pressed"]
 [connection signal="pressed" from="CharacterSelect/VBoxContainer/EndCharacterSelect" to="." method="_on_end_character_select_pressed"]
 [connection signal="pressed" from="TPK/CenterBox/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="IntroSequence/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

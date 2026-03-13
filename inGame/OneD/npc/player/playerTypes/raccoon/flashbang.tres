@@ -15,5 +15,5 @@ sprun_loss = 1
 prep_disable = true
 needs_target = true
 show_target_intent = true
-button_info = "THE LIGHT"
+button_info = "THE LIGHT (stuns target)"
 metadata/_custom_type_script = "uid://diifqu7v6338q"

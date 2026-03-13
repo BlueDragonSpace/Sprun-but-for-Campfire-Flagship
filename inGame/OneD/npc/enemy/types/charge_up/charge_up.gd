@@ -1,9 +1,9 @@
 extends "res://inGame/OneD/npc/enemy/oned_enemy.gd"
 
 
-var turns_charging = 0
+var turns_charging = -1
 
-# like the little wizard enemy of Slay the Spire!
+# like the little wizard enemy of Slay the Spire! But Bigger!
 
 func add_set_intended_action() -> void:
 	# basically overrules everything set previously

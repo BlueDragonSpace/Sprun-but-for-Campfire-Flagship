@@ -38,8 +38,8 @@ extends Control
 @onready var SPDStatIcon: TextureRect = $RootGame/LowerBar/VBoxContainer/InfoBar/SPDStatIcon
 @onready var SPDStatLabel: Label = $RootGame/LowerBar/VBoxContainer/InfoBar/SPDStatLabel
 
-
 @onready var EndCharacterSelect: Button = $CharacterSelect/VBoxContainer/EndCharacterSelect
+@onready var PorkRounds: CheckBox = $CharacterSelect/VBoxContainer/PorkRounds
 
 
 @onready var TWKPrepRoundsLabel: Label = $TWK/Labels/VBoxContainer/Num
@@ -209,12 +209,6 @@ func _ready() -> void:
 		$IntroSequence.visible = true
 		$IntroSequence.modulate.a = 1.0
 	
-	
-	if current_dimension:
-		pass
-	else:
-		Animate.play("global_transition_out", -1, 99)
-		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -521,7 +515,6 @@ func check_actions_visible(player_type_bitwise: int = current_player.NPC_instanc
 			if not action.minion_num == 0: # if it is 0 then it's not a minion and I don't care
 				if action.minion_num != current_player.NPC_instance.minion_num:
 					action.visible = false
-					print('wow invisibled')
 
 func remove_dead_actions(dead: Node) -> void:
 	
@@ -990,3 +983,7 @@ func _on_level_up_pressed() -> void:
 	var action = Callable(current_player, "level_up")
 	current_player.set_intended_action(current_player.NPC_instance.actions[4], action)
 	player_pass_turn()
+
+## this is technically part of Character Select, but it changes a var in the OneDRoot
+func _on_pork_rounds_pressed() -> void:
+	use_pork_rounds = PorkRounds.button_pressed

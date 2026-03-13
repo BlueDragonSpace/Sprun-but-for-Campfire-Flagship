@@ -3,12 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://d3wbwxma2hkqm" path="res://root/one_d/one_d_root.tscn" id="1_1xv2g"]
 [ext_resource type="Script" uid="uid://cx4piye3gqsc8" path="res://root/root_resources/global_chara_resource.gd" id="2_5jge4"]
 [ext_resource type="Script" uid="uid://clibohg1fjvmb" path="res://root/root.gd" id="2_jnlp7"]
-[ext_resource type="Resource" uid="uid://cotvxl6y2u8w" path="res://root/root_resources/charas/sigilant.tres" id="3_5jge4"]
+[ext_resource type="Resource" uid="uid://eostg6rwpxwg" path="res://root/root_resources/charas/rat_lord.tres" id="3_0n2s5"]
 [ext_resource type="AudioStream" uid="uid://c46ekwwfk3ei2" path="res://placeholderArt/sfx/focus.wav" id="3_js5vo"]
 [ext_resource type="PackedScene" uid="uid://cu1ueum56s1rl" path="res://root/three_d/three_d_root.tscn" id="3_ovlcs"]
 [ext_resource type="Script" uid="uid://3d1durpk8i24" path="res://root/root_resources/global_enemy_resource.gd" id="4_5jge4"]
+[ext_resource type="Resource" uid="uid://fyjis16kll8h" path="res://root/root_resources/charas/raccoon.tres" id="4_b1gtb"]
 [ext_resource type="Resource" uid="uid://cg1w1lkcppysi" path="res://inGame/OneD/npc/enemy/types/gatekeeper.tres" id="4_e2nrw"]
 [ext_resource type="Resource" uid="uid://dbal3ksaoydot" path="res://inGame/OneD/npc/enemy/types/keykeeper.tres" id="4_gj8ci"]
+[ext_resource type="Resource" uid="uid://bdc4jio0olt2g" path="res://inGame/OneD/npc/enemy/types/charge_up/charge_up.tres" id="8_th5d7"]
 
 [sub_resource type="Animation" id="Animation_js5vo"]
 length = 0.001
@@ -109,16 +111,18 @@ _data = {
 
 [node name="Root" type="Node" unique_id=923175965 groups=["Root"]]
 script = ExtResource("2_jnlp7")
-Charas = Array[ExtResource("2_5jge4")]([ExtResource("3_5jge4")])
-Enemies = Array[ExtResource("4_5jge4")]([ExtResource("4_gj8ci"), ExtResource("4_e2nrw")])
+Charas = Array[ExtResource("2_5jge4")]([ExtResource("3_0n2s5"), ExtResource("4_b1gtb")])
+Enemies = Array[ExtResource("4_5jge4")]([ExtResource("4_gj8ci"), ExtResource("4_e2nrw"), ExtResource("8_th5d7")])
 
 [node name="OneDRoot" parent="." unique_id=104950528 instance=ExtResource("1_1xv2g")]
 process_priority = 1
 mouse_filter = 2
+started = true
 current_dimension = true
 
 [node name="ThreeDRoot" parent="." unique_id=1187355930 instance=ExtResource("3_ovlcs")]
 process_priority = 1
+visible = false
 
 [node name="Animate" type="AnimationPlayer" parent="." unique_id=1105804438]
 libraries/ = SubResource("AnimationLibrary_y5gj7")

@@ -162,6 +162,7 @@ woah to-do
 		Turn Queue!!!!!!!! (top to bottom)
 		Taking away sprun vs Sprun needed to use
 		What character's turn it is
+		Hover over Debuffs and Intents
 5:
 	Distributing...:
 		Steam, Itch, so on
@@ -236,6 +237,9 @@ New system (not currently in progress):
 	+Saves memory by not having to rewrite the NPC_resources to the dimension
 	+Prevents having to write every player script twice for dimensions
 
-
 Devlog lol:
-	Fortified Buff, (added to sigilant)
+	Character Select HP
+	Random Select
+	Pork Rounds
+	Disabled Defending for Rats and Mice (so that Hamster is viable)
+	Fixed a charge-up spawn bug
