@@ -1,4 +1,4 @@
-0.0.6: [Sprun 0.0.6](https://file.garden/ZvYk8SE050beWacV/Sprun/0.0.6/Sprun.html)
+0.0.6: [Sprun 0.0.6](https://file.garden/ZvYk8SE050beWacV/Sprun/0.0.6/Sprun.html) or on [Itch.io](https://bluedragon-space.itch.io/sprun)
 
 0.0.5: [Sprun 0.0.5](https://file.garden/ZvYk8SE050beWacV/Sprun/0.0.5/Sprun.html)
 
