@@ -559,40 +559,16 @@ func remove_dead_actions(dead: Node) -> void:
 			$RootGame/TopBar/HBoxContainer/EnemiesSlainNum.text = str(enemies_slain)
 			manage_enemies_columns()
 			
-			var total_wave_kill = true
+			var total_wave_kill_bool = true
 			
 			for loop in Enemies.get_child_count():
 				if Enemies.get_child(loop).is_dead == false:
-					total_wave_kill = false
+					total_wave_kill_bool = false
 					current_enemy = Enemies.get_child(loop)
 					break
 			
-			if total_wave_kill:
-				current_enemy = null
-				TWKPrepRoundsLabel.text = str(prep_rounds_remaining - 1)
-				# the prep_rounds_remaining is off by one at the start, to justify when it gets
-				#-decreased whenever a round ends
-				current_round += 1
-				
-				if not use_pork_rounds:
-					Animate.play("TWK")
-					$TWK/Sounddddd.play()
-				
-				all_enemies_dead = true
-				
-				
-				
-				# characters don't lose their intent until the end of round
-				# since round ends prematurely, end the intent with it
-				if Charas.get_child_count() > 0:
-					for chara in Charas.get_children():
-						if chara.Intent.visible:
-							chara.hide_intent()
-				else:
-					print('both all died')
-					# both every player and every enemy is dead, likely from a Self-Destruct move
-					# gotta override the TWK with a TPK
-					#$TPK/Soundd.play()
+			if total_wave_kill_bool:
+				total_wave_kill()
 			
 				
 		dead.CHARACTER_TYPE.PLAYER:
@@ -688,13 +664,16 @@ func initiate_select_enemy(is_quick : bool = false) -> void:
 		Actions.find_child("BackButton").visible = true # sets the action tab visible to be set to back
 		turn = TURN_TYPE.SELECT_ENEMY
 	else:
-		current_player.action_victim = current_enemy
-		if not is_quick:
-			current_player.set_intent_target(current_enemy.Icon.texture)
+		if current_enemy: # does current_enemy exist?
+			current_player.action_victim = current_enemy
+			if not is_quick:
+				current_player.set_intent_target(current_enemy.Icon.texture)
+			else:
+				current_player.intended_action.call()
+				current_player.intended_action = Global.empty_function
+			player_pass_turn()
 		else:
-			current_player.intended_action.call()
-			current_player.intended_action = Global.empty_function
-		player_pass_turn()
+			total_wave_kill() # if the current_enemy doesn't exist, probably cuz everything died
 
 func initiate_select_ally() -> void:
 	# pretty much the same exact code as initiate_select_enemy, but for charas
@@ -791,6 +770,33 @@ func middle_round_loop() -> void:
 		Animate.play("middle_round")
 	else:
 		final_pass_turn()
+
+func total_wave_kill() -> void:
+	current_enemy = null
+	TWKPrepRoundsLabel.text = str(prep_rounds_remaining - 1)
+	# the prep_rounds_remaining is off by one at the start, to justify when it gets
+	#-decreased whenever a round ends
+	current_round += 1
+	
+	if not use_pork_rounds:
+		Animate.play("TWK")
+		$TWK/Sounddddd.play()
+	
+	all_enemies_dead = true
+	
+	
+	
+	# characters don't lose their intent until the end of round
+	# since round ends prematurely, end the intent with it
+	if Charas.get_child_count() > 0:
+		for chara in Charas.get_children():
+			if chara.Intent.visible:
+				chara.hide_intent()
+	else:
+		print('both all died')
+		# both every player and every enemy is dead, likely from a Self-Destruct move
+		# gotta override the TWK with a TPK
+		#$TPK/Soundd.play()
 
 func final_pass_turn() -> void:
 	

@@ -1495,7 +1495,7 @@ layout_mode = 2
 [node name="Actions" type="TabContainer" parent="RootGame/LowerBar/VBoxContainer" unique_id=169339694]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 5
+current_tab = 1
 drag_to_rearrange_enabled = true
 
 [node name="BackButton" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=1779824555]
@@ -1510,7 +1510,6 @@ info = "Rechoose last action."
 usable_on_player = 1
 
 [node name="Attack" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=578126803]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -1591,6 +1590,7 @@ info = "Pass this character's turn."
 usable_on_player = 1
 
 [node name="DevTools" type="HBoxContainer" parent="RootGame/LowerBar/VBoxContainer/Actions" unique_id=318212625]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 5
 
@@ -1674,7 +1674,8 @@ horizontal_alignment = 1
 [node name="SubInfo" type="Label" parent="CharacterSelect/VBoxContainer" unique_id=1331170081]
 modulate = Color(0.68307734, 0.6830774, 0.68307734, 1)
 layout_mode = 2
-text = "Fall into the Longest Dream."
+text = "Fall into the Longest Dream.
+(sorry 'bout the bad UI :P)"
 horizontal_alignment = 1
 
 [node name="VSeparator4" type="HSeparator" parent="CharacterSelect/VBoxContainer" unique_id=1024174459]
@@ -1847,7 +1848,13 @@ layout_mode = 2
 text = "Use Pork Rounds"
 icon = ExtResource("29_20myc")
 info = "Pork Rounds"
-sub_info = "Disables Prep Rounds, and enemy waves only ever spawn every 7 rounds."
+sub_info = "Disables Prep Rounds, and enemy waves only ever spawn every 6 rounds.
+
+This could mean that you have more turns without enemies if you end them quickly,
+or you could have multiple enemy waves at the same time.
+
+[This was inspired by the game Porklike by Krystman]
+"
 info_icon = ExtResource("29_20myc")
 
 [node name="EndCharacterSelect" type="Button" parent="CharacterSelect/VBoxContainer" unique_id=1363648875]

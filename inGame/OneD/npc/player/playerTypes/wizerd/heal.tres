@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Action" format=3 uid="uid://2e2way0p32mh"]
 
 [ext_resource type="Script" uid="uid://diifqu7v6338q" path="res://inGame/OneD/npc/base_actions/action.gd" id="1_3pv3v"]
-[ext_resource type="Texture2D" uid="uid://dkwgqscbsik62" path="res://placeholderArt/stolen/TurnOrderPoint.png" id="1_gw2i4"]
+[ext_resource type="Texture2D" uid="uid://ckcs3wyskdnk3" path="res://placeholderArt/myPixelArt/lazyHeal1.png" id="1_e6vxl"]
 [ext_resource type="AudioStream" uid="uid://cf3yd37uesou3" path="res://placeholderArt/sfx/healing.wav" id="3_e6vxl"]
 
 [resource]
 script = ExtResource("1_3pv3v")
 name = "Heal"
 func_name = "heal"
-icon = ExtResource("1_gw2i4")
+icon = ExtResource("1_e6vxl")
 action_type = 1
 intent_type = 3
 player_type = 4

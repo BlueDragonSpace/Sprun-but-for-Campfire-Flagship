@@ -1,5 +1,9 @@
 woah to-do
 
+0.1 (I'm never gonna get to these, but in the unlikely case that I do come back...):
+	Fix the UI changing size on displaying character info
+	Strange bug that causes a softlock instead of going to prep rounds that I just encountered
+
 1 (Connections):
 	Connecting:
 		
@@ -238,8 +242,5 @@ New system (not currently in progress):
 	+Prevents having to write every player script twice for dimensions
 
 Devlog lol:
-	Character Select HP
-	Random Select
-	Pork Rounds
-	Disabled Defending for Rats and Mice (so that Hamster is viable)
-	Fixed a charge-up spawn bug
+	Final Ship: fufill export_checklist,
+	Fully Disabled 3D from interacting with the game, since there isn't a good reason to keep it

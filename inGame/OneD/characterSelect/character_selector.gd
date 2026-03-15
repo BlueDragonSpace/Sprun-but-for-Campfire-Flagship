@@ -1,7 +1,7 @@
 extends CheckBox
 
 @export var info = 'baseplate textign'
-@export var sub_info = 'less information cuz boring stats'
+@export_multiline(" a lot of words") var sub_info = 'less information cuz boring stats'
 @export var info_icon = Texture2D
 @export var linked_character : GlobalCharaResource
 

@@ -149,7 +149,7 @@ func change_dimension(next_dimension, prev_dimension) -> void:
 			dimension = DIMENSION.ONE
 			
 			# set up the OneDRoot
-			OneDRoot.Animate.play_backwards("global_transition_out")
+			#OneDRoot.Animate.play_backwards("global_transition_out") # not useful anymore cuz no more dimension switching :(
 			if OneDRoot.started:
 				OneDRoot.initialize_game()
 			
